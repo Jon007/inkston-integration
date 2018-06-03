@@ -1,0 +1,99 @@
+body.single-wpbdp_listing #wrap-content
+{
+position:inherit;
+height: auto;
+}
+.wpbdp-listing a:not(.wpbdp-button) {
+color: #39aa39;
+}
+.wpbdp-listing .listing-title a, .wpbdp-listing .listing-title h2 {
+color: #1a1919;
+}
+#wpbdp-listing-form-fields input.intextbox{
+min-width: 300px;
+width: 90%;
+}
+#wpbdp-listing-form-fields .wpbdp-form-field-type-url input.intextbox{
+display:inline-block;
+width: 30%;
+}
+#wpbdp-listing-form-fields .wpbdp-form-field-type-url input.intextbox.inselect{
+display:inline-block;
+width: 50%;
+}
+#wpbdp-listing-form-fields  .wpbdp-form-field .field-description {
+float:none;
+margin-left: 20px;
+}
+.wpbdp-listing .listing-details{
+margin-left: 0px;
+}
+/*
+.wpbdp-listing .listing-details a:not(.wpbdp-button)
+*/
+.wpbdp-listing .listing-details div.field-value.wpbdp-field-meta,
+.wpbdp-listing .listing-details div.field-value.wpbdp-field-association-category{
+  display:inline-block;
+  width:auto;
+  margin-right: 10px;
+} 
+.wpbdp-listing .social-fields {
+margin:0;
+}
+.wpbdp-listing .social-fields a, .wpbdp-listing .social-fields .social-field{
+float:right;
+}
+.wpbdp-listing .social-fields a{
+margin-right: 5px;
+margin-top: 4px;	
+}
+.wpbdp-listing-single .extra-images ul li img {
+max-width:min-content;
+}
+.wpbdp-form-field .field-description,
+.wpbdp-listing label, .wpbdp-form-field-label label{
+color: #686464;
+}
+.wpbdp-form-field-type-checkbox div.wpbdmcheckboxclass, 
+select.required{
+color: #1a1919;
+}
+.address-info br { 
+display: inline;
+clear:none;
+content: ', ';
+}
+.address-info br:after { 
+content: ', ';
+}
+.wpbdp-listing .address-info label{
+display:inline-block;	
+}
+.address-info label:after{
+content: ': ';
+}	
+.excerpt-content .listing-thumbnail img{max-width: 200px;}
+.excerpt-content{line-height:normal}
+body.wpbdp-view-show_listing #wrap-content {margin-top:45px;}
+body.wpbdp-view-show_listing #wrap-header {display:none}
+body.wpbdp-view-show_listing header.page-header {display:none}
+@media (min-height: 900px){
+body.wpbdp-view-show_listing #wrap-content {margin-top:45px;}
+body.wpbdp-view-show_listing #wrap-header{display:none}
+body.wpbdp-view-show_listing header.page-header {display:none}
+}		
+.wpbdp-listing .listing-thumbnail{margin-right:1.5em;}
+.wpbdp-listing-single .main-image {
+float:left;
+margin-left:0px;
+}
+.wpbdp-listing-single input.wpbdp-button.back-to-dir{margin-top:-60px;float:right;}
+@media (max-width: 1000px){
+.wpbdp-listing-single input.wpbdp-button.back-to-dir{margin-top:-42px;}
+}
+.wpbdp-form-field.terms-and-conditions a{display:block;}
+.wpbdp-plan-selection-wrapper{display:none;}
+.wpbdp-submit-listing-section-content .wpbdp-msg.tip{display:none;}
+.listing-actions a.button,
+.listing-actions a.button:hover{background-image:none;}
+#wpbdp-submit-listing .wpbdp-submit-listing-form-actions input[type="submit"] {float: none;}

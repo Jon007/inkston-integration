@@ -1,0 +1,19 @@
+/* 
+    Created on : 28-May-2018, 22:10:01
+    Author     : jon
+*/
+
+
+/*allow language specific content by adding lang and code to the class of any element */
+body.lang .lang{display:none;}
+body.lang.en .lang.en,
+body.lang.fr .lang.fr,
+body.lang.es .lang.es,
+body.lang.de .lang.de{display:initial;}
+
+/* hide/show sections based on login status: default version for caches should be logged out */
+/* photoline-inkston version: */
+body .hide-if-logged-in{display:initial!important;}
+body.logged-in .hide-if-logged-in{display:none!important;}
+body .hide-if-logged-out{display:none!important;}
+body.logged-in .hide-if-logged-out{display:initial!important;}

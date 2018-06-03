@@ -1,0 +1,35 @@
+/* 
+    Created on : 03-Jun-2018, 20:39:02
+    Author     : jon
+*/
+/* wishlist sharing buttons */
+.tinv-wishlist .social-buttons {border:2px solid green;border-radius:5px;padding-left:10px;padding-right:10px;margin-right:15px;}
+.tinv-wishlist .social-buttons ul {margin-bottom: 0px;}
+/* product add to wishlist button */
+#content .tinvwl_add_to_wishlist_button.button{
+text-transform: uppercase;
+font-weight: 600;
+letter-spacing: 1px;
+-webkit-font-smoothing: antialiased;
+font-size: 14px;
+line-height: 16px;
+margin-top:0;
+margin-bottom: 5px;
+float: right;
+position: relative;
+margin-right: 50%;
+}
+#content div.product-type-woosb .tinvwl_add_to_wishlist_button.button{
+margin-top: 5px;
+}
+body.tinvwl-theme-style .menu-share-container{display:none;} 
+
+/* format wishlist heart link footer */
+.site-footer .wishlist_products_counter a .fa{color:#AF3632;font-size:16px;}
+.site-footer .wishlist_products_counter a .wishlist_products_counter_number{color:#AF3632;font-size:14px;}
+.wishlist_products_counter.wishlist-counter-with-products .fa-heart-o:before {
+  content: "\f004";
+}
+.wishlist_products_counter{margin-right:1em;}
+.wishlist_products_counter .wishlist_products_counter_number{display:none;}
+.wishlist_products_counter.wishlist-counter-with-products .wishlist_products_counter_number{display:inline-block;}

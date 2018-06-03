@@ -1,0 +1,1321 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: inkston\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2018-05-20 19:36+0000\n"
+"PO-Revision-Date: 2018-05-20 19:39+0000\n"
+"Last-Translator: moqiao <nobody@localhost>\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .."
+
+#: functions.php:199
+msgid "Buy"
+msgstr "Comprar"
+
+#: functions.php:202 functions.php:1671
+msgid "View"
+msgstr "Ver"
+
+#: functions.php:207
+msgid "Add"
+msgstr "Añadir"
+
+#: functions.php:209 functions.php:216 functions.php:220
+msgid "Read"
+msgstr "Leer"
+
+#: functions.php:214
+msgid "Choose"
+msgstr "Elegir"
+
+#: functions.php:284 functions.php:293 functions.php:294 functions.php:295
+#: inc/contextual-help.php:65
+msgid "Top Menu"
+msgstr "Menu Top"
+
+#: functions.php:285
+msgid "Hamburger Menu"
+msgstr ""
+
+#: functions.php:286
+msgid "Primary Menu"
+msgstr "Menu Principal"
+
+#: functions.php:287 inc/contextual-help.php:60
+msgid "Social Menu"
+msgstr "Menu Social"
+
+#: functions.php:288 functions.php:296 functions.php:297 functions.php:298
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:340
+msgid "Sidebar Posts"
+msgstr ""
+
+#: functions.php:348
+msgid "Sidebar Pages"
+msgstr ""
+
+#: functions.php:356
+msgid "Footer1"
+msgstr ""
+
+#: functions.php:357
+msgid "Located in the footer left."
+msgstr ""
+
+#: functions.php:365
+msgid "Footer2"
+msgstr ""
+
+#: functions.php:366
+msgid "Located in the footer center."
+msgstr ""
+
+#: functions.php:374
+msgid "Footer3"
+msgstr ""
+
+#: functions.php:375
+msgid "Located in the footer right."
+msgstr ""
+
+#: functions.php:832
+msgid "Store Sidebar"
+msgstr ""
+
+#: functions.php:833
+msgid "Located in the sidebar woocommerce page."
+msgstr ""
+
+#: functions.php:981 functions.php:1023
+msgid "Recent discussions in: "
+msgstr "Discusiones recientes en:"
+
+#: functions.php:1328 functions.php:1343
+msgid "Login or Register with email, Facebook, Google or LinkedIn account"
+msgstr ""
+"Inicie sesión o regístrese mediante Facebook, LinkedIn, Google o correo"
+
+#: functions.php:1598 functions.php:1798
+msgid "ASIN EU"
+msgstr ""
+
+#: functions.php:1613 functions.php:1811
+msgid "ASIN USA"
+msgstr ""
+
+#: functions.php:1627 functions.php:1823
+msgid "UPC"
+msgstr ""
+
+#: functions.php:1631
+msgid "12 digits international standard Universal Product Code."
+msgstr "12 dígitos Código de Producto Universal, estándar internacional."
+
+#: functions.php:1671
+msgid "Review"
+msgstr "Valoración"
+
+#: functions.php:1689
+msgid "Amazon USA"
+msgstr ""
+
+#: functions.php:1691 functions.php:1698
+msgid "on"
+msgstr "en"
+
+#: functions.php:1713 functions.php:1845
+msgid "Product weight"
+msgstr "Peso Neto"
+
+#: functions.php:1715 functions.php:1718 functions.php:1847 functions.php:1850
+msgid "Unpacked net product weight."
+msgstr "Peso neto del producto desembalado."
+
+#: functions.php:1744 functions.php:1866
+msgid "Product size "
+msgstr "Tamaño del Producto"
+
+#: functions.php:1752 functions.php:1826 functions.php:1870
+msgid "Unpacked product size LxWxH in decimal form"
+msgstr "Tamaño del producto desembalado."
+
+#: content-gallery.php:22
+msgid "Leave a comment"
+msgstr "Añadir comentario"
+
+#: content-gallery.php:22
+msgid "1 Comment"
+msgstr "Un Comentario"
+
+#: content-gallery.php:22
+msgid "Comments: %"
+msgstr "Comentarios: %"
+
+#: content-gallery.php:25 content-home-main.php:26 content-single.php:33
+#: content-page.php:49 content.php:33 content-page-full.php:45 image.php:48
+#: woocommerce/myaccount/navigation.php:44
+msgid "Edit"
+msgstr "Editar"
+
+#. Name of the template
+msgid "FullPage"
+msgstr ""
+
+#. Name of the template
+msgid "commentspage"
+msgstr ""
+
+#: content-single.php:17 content-page.php:33 content.php:18
+#: content-page-full.php:30
+msgid "Pages:"
+msgstr "Paginas:"
+
+#. Name of the template
+msgid "PostTiles"
+msgstr ""
+
+#: no-results.php:14
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:18 functions2.php:710
+msgid "Search Inkston."
+msgstr "Buscar en Inkston."
+
+#: no-results.php:21
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Sentimos pero no hay nada para vuestra búsqueda. Por favor intenta otra vez "
+"con otras palabras."
+
+#: no-results.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Sentimos no encontramos lo que se ha solicitado.  Quizás una búsqueda "
+"ayudará."
+
+#. Name of the template
+msgid "PostTiles2"
+msgstr ""
+
+#: searchBAD.php:57
+msgid "Nothing Found"
+msgstr "No se encuentra resultados"
+
+#: comments.php:16
+msgid "Comments: "
+msgstr "Comentarios:"
+
+#: comments.php:16
+msgid "0"
+msgstr ""
+
+#: comments.php:16
+msgid "1"
+msgstr ""
+
+#: comments.php:16
+msgid "%"
+msgstr ""
+
+#: comments.php:21 comments.php:36
+msgid "Comment navigation"
+msgstr "Navegar comentarios"
+
+#: comments.php:22 comments.php:37
+msgid "&larr; Older Comments"
+msgstr "&larr; Mas"
+
+#: comments.php:23 comments.php:38
+msgid "Newer Comments &rarr;"
+msgstr "Volver&rarr;"
+
+#: comments.php:48
+msgid "Comments Closed"
+msgstr "Comentarios cerrados"
+
+#: comments.php:56
+msgid "https://www.inkston.com/deu/kontaktieren-sie-uns/"
+msgstr ""
+
+#: comments.php:57 comments.php:60
+msgid "Contact"
+msgstr "Contacto"
+
+#: comments.php:59
+msgid "https://www.inkston.com/inkston/contact-us/"
+msgstr "https://www.inkston.com/es/inkston-es/contacto/"
+
+#: comments.php:65
+msgid "Leave a Comment"
+msgstr "Dejar un comentario"
+
+#: comments.php:66
+msgid " or "
+msgstr "o"
+
+#: comments.php:71
+msgid "Post Comment"
+msgstr "Añadir comentario"
+
+#. Name of the template
+msgid "PostTiles3"
+msgstr ""
+
+#. Name of the template
+msgid "Puzzle-Pic"
+msgstr ""
+
+#: header.php:116
+msgid "Menu"
+msgstr ""
+
+#: footer.php:145
+msgid "View saved wishlist items"
+msgstr "Ver su lista de deseos guardados"
+
+#: functions2.php:486 woocommerce/single-product/product-attributes.php:117
+msgid "Product Weight"
+msgstr "Peso Neto"
+
+#: functions2.php:490 woocommerce/single-product/product-attributes.php:121
+msgid "Product Size"
+msgstr "Tamaño Neto"
+
+#: functions2.php:496 functions2.php:503
+#: woocommerce/single-product/product-attributes.php:127
+#: woocommerce/single-product/product-attributes.php:134
+msgid "[depending on variation]"
+msgstr "[dependiendo de variación]"
+
+#: functions2.php:662
+msgid "Congratulations, your order is now eligible for free shipping!"
+msgstr "¡Enhorabuena, su orden ahora es elegible para el envío gratis!"
+
+#: functions2.php:664
+msgid "Your order qualifies for free shipping!"
+msgstr "Su orden es elegible para el envío gratis"
+
+#: functions2.php:669
+#, php-format
+msgid "Add %s more to your order to qualify for free shipping!"
+msgstr "¡Añada %s más a su orden para calificar para el envío gratis!"
+
+#: functions2.php:714
+msgid "results"
+msgstr "resultados"
+
+#: functions2.php:786
+msgid ""
+"Your shopping cart includes customization options, you can tell us about "
+"these on the checkout page."
+msgstr ""
+"Su carro de la compra incluye una opción de diseño personalizado, usted "
+"puede incluir detalles cuando pasa por Caja."
+
+#: functions2.php:803
+msgid ""
+"Your order has a custom design option, if you like you can upload a file "
+"and/or make comments below. You may also skip this step and confirm details "
+"with us later."
+msgstr ""
+"Su pedido tiene una opción de diseño personalizado, si lo desea puede cargar "
+"un archivo y/o realizar comentarios a continuación. También puede omitir "
+"este paso y confirmar los detalles con nosotros más adelante."
+
+#: functions2.php:1063
+msgid "Login or register with Facebook, LinkedIn, Google"
+msgstr "Inicie sesión o regístrese con Facebook, LinkedIn, Google"
+
+#: functions2.php:1065
+msgid "Or use your Inkston login:"
+msgstr "O utilice su Inkston login:"
+
+#: functions2.php:1097
+msgid "Name"
+msgstr "Nombre"
+
+#: functions2.php:1098
+msgid "Category"
+msgstr "Categoria"
+
+#: functions2.php:1099
+msgid "Country"
+msgstr "País"
+
+#: functions2.php:1100
+msgid "Contact Email"
+msgstr "Email de contacto"
+
+#: functions2.php:1101
+msgid "Location"
+msgstr "Ubicación"
+
+#: functions2.php:1102
+msgid "About"
+msgstr "Acerca de"
+
+#: functions2.php:1103
+msgid "Summary"
+msgstr "Resumen"
+
+#: functions2.php:1104
+msgid "Website"
+msgstr "Sitio web"
+
+#: functions2.php:1110
+msgid "Artist or studio name "
+msgstr "Nombre del artista o del estudio"
+
+#: functions2.php:1111
+msgid "Select one or more categories for your listing"
+msgstr "Seleccione una o más categorías para su listado"
+
+#: functions2.php:1112
+msgid "Main country "
+msgstr "País principal"
+
+#: functions2.php:1113
+msgid "Please enter town or region to help visitors find you "
+msgstr "Introduzca la ciudad o región para ayudar a los visitantes a ubicarle"
+
+#: functions2.php:1114
+msgid ""
+"To avoid spam, Email address will never be shown, instead a contact form "
+"will be provided which is only available to genuine logged-on users. "
+msgstr ""
+"Para evitar el spam, nunca se mostrará la dirección de correo electrónico, "
+"sino que se proporcionará un formulario de contacto que sólo estará "
+"disponible para los usuarios registrados."
+
+#: functions2.php:1115
+msgid ""
+"How did you start with Oriental arts? What are your favourite techniques?  "
+"Do you sell your artwork, do you accept commissions?  Do you teach or can "
+"you recommend teachers? "
+msgstr ""
+"¿Cómo empezaste con las artes orientales? ¿Cuáles son tus técnicas favoritas?"
+" ¿Vende su obra de arte, acepta comisiones? ¿Enseña o puede recomendar "
+"maestros?"
+
+#: functions2.php:1116
+msgid ""
+"Here you can make a special short summary for search engines and search "
+"results.  Leave blank for an automatic summary. "
+msgstr ""
+"Aquí puede hacer un breve resumen especial para los motores de búsqueda y "
+"los resultados de búsqueda. Deje en blanco un resumen automático."
+
+#: functions2.php:1117
+msgid ""
+"Main website (can be any link including Facebook page if that is your main "
+"page) "
+msgstr ""
+"Sitio web principal (puede ser cualquier enlace incluyendo página de "
+"Facebook si esa es su página principal)"
+
+#: functions2.php:1118
+msgid ""
+"add optional tags separated by commas, to allow more classifications than "
+"available under categories "
+msgstr ""
+"Agregue etiquetas opcionales separadas por comas para permitir más "
+"clasificaciones que las disponibles en categorías"
+
+#: functions2.php:1182
+#, php-format
+msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
+msgstr "Nueva publicación en el foro \"%1$s\", tema \"%2$s\"."
+
+#: functions2.php:1185
+#, php-format
+msgid "Or visit your profile page to review all your subscriptions: %1$s"
+msgstr ""
+"O visite su página de perfil para revisar todas sus suscripciones:  %1$s"
+
+#: functions2.php:1187 functions2.php:1673
+msgid "Thankyou for participating in Inkston Community"
+msgstr "Gracias por participar en Inkston Community"
+
+#: functions2.php:1195
+msgid "forum-subscribers@inkston.com"
+msgstr ""
+
+#: functions2.php:1229 functions2.php:1768
+msgid "No badges yet"
+msgstr "Sin insignias aún"
+
+#: functions2.php:1248
+msgid "level"
+msgstr "Nivel"
+
+#: functions2.php:1282
+msgid "Current level: "
+msgstr "Nivel actual:"
+
+#: functions2.php:1284
+msgid "level "
+msgstr "nivel"
+
+#: functions2.php:1286
+#, php-format
+msgid "Current score: %1$s points."
+msgstr "Puntuación actual: %1$s puntos."
+
+#: functions2.php:1614
+msgid "Congratulations you have been awarded:"
+msgstr "Enhorabuena le han concedido:"
+
+#: functions2.php:1662
+msgid "your contribution has unlocked an award"
+msgstr "Su contribución ha desbloqueado un premio"
+
+#: functions2.php:1665
+#, php-format
+msgid ""
+"Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
+"and turn these notifications on or off."
+msgstr ""
+"Visita <a href=\"%1$s\"> tu página de perfil </a> para ver los detalles de "
+"tus premios y activar o desactivar estas notificaciones."
+
+#: functions2.php:1668
+msgid "You were awarded this badge for making contributions to "
+msgstr "Te otorgaron esta insignia para hacer contribuciones a"
+
+#: functions2.php:1669
+msgid "Inkston Oriental Art Comunity"
+msgstr "Peña de Arte Oriental de Inkston"
+
+#: functions2.php:1676
+msgid "rewards@inkston.com"
+msgstr ""
+
+#: functions2.php:1885
+msgid "If you like this, please share: "
+msgstr "Si le gusta, por favor comparta:"
+
+#: functions2.php:1922
+msgid "Please leave your reviews!"
+msgstr "Por favor deja tus valoraciones!"
+
+#: functions2.php:1958
+#, php-format
+msgid ""
+"The coupon %s will give you a discount of %s when your basket value reaches "
+"%s or more."
+msgstr ""
+"El cupón %s le dará un descuento de %s cuando el valor de su cesta alcance "
+"%s o más."
+
+#: functions2.php:2019
+msgid "click here to manage your subscription"
+msgstr "haga clic aquí para administrar su suscripción"
+
+#. Name of the template
+msgid "Subscribe To Comments"
+msgstr "Suscribirse a los comentarios"
+
+#: image.php:34
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\">%4$s &times; "
+"%5$s</a> in <a href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+"Publican <span class=\"entry-date\"><time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time></span> a <a href=\"%3$s\">%4$s &times; %5$s</a>"
+" in <a href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+
+#: searchform.php:20
+msgid "Showing results for:"
+msgstr "Mostrando resultados para:"
+
+#: searchform.php:22
+msgid "Search for:"
+msgstr "Búsqueda para:"
+
+#: searchform.php:25
+msgctxt "label"
+msgid "Search for:"
+msgstr "Búsqueda para:"
+
+#: searchform.php:26
+msgid "Search"
+msgstr "Busqueda"
+
+#: searchform.php:31
+#, php-format
+msgid ""
+" on inkston.com.  You can also <a href='https://www.inkston.com/community/?"
+"s=%s'>repeat the search on community site</a>."
+msgstr ""
+"En inkston.com. También puedes <a href='https://www.inkston.com/community/?"
+"update-user-locale=es_ES&s=%s'> repetir la búsqueda en el sitio de la "
+"comunidad inkston (Foros y Artistas)</a>."
+
+#: searchform.php:38
+#, php-format
+msgid ""
+"on inkston community.  You can also <a href='https://www.inkston.com/?s=%s'>"
+"repeat the search on the main site</a>."
+msgstr ""
+"en la comunidad inkston. También puedes <a href='https://www.inkston.com/es/?"
+"s=%s'> repetir la búsqueda en el sitio principal </a>."
+
+#: searchform.php:46
+msgctxt "submit button"
+msgid "Search"
+msgstr "Buscar"
+
+#. Name of the template
+msgid "Profile"
+msgstr "Perfil"
+
+#: inc/excerpts.php:15
+msgid "reading"
+msgstr "leyendo"
+
+#: inc/excerpts.php:15
+msgid "Read more"
+msgstr "Leer mas"
+
+#: inc/pagination.php:46
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/contextual-help.php:16 inc/welcome.php:47 inc/welcome.php:48
+msgid "inkston Theme"
+msgstr ""
+
+#: inc/contextual-help.php:17
+msgid "Thank you for choosing this Theme!"
+msgstr ""
+
+#: inc/contextual-help.php:17
+msgid ""
+"The Theme has a contextual help for some admin screens. More information, "
+"help and support you will find on the website inkston.net."
+msgstr ""
+
+#: inc/contextual-help.php:17
+msgid "Quick Start"
+msgstr "Inicio Rápido"
+
+#: inc/contextual-help.php:17
+msgid ""
+"Using Customizer set your color, upload a logo (avatar - for personal) image,"
+" upload a background image (or select any color), upload the image (or "
+"select any color) header and other settings."
+msgstr ""
+
+#: inc/contextual-help.php:17
+msgid ""
+"The theme has page templates for the Home Page. Home Mosaic Tiles and Home "
+"Square Tiles Templates show 4 (or more) posts image format. Into Home "
+"Tagline section can be used plugins shortcode."
+msgstr ""
+
+#: inc/contextual-help.php:17
+msgid "Note"
+msgstr "Nota"
+
+#: inc/contextual-help.php:17
+msgid ""
+"If you want to display the posts without the sidebar just leave blank "
+"Sidebar posts."
+msgstr ""
+
+#: inc/contextual-help.php:26 inc/contextual-help.php:27
+#: inc/contextual-help.php:40 inc/contextual-help.php:41
+msgid "Theme Features"
+msgstr ""
+
+#: inc/contextual-help.php:28 inc/contextual-help.php:41
+msgid "Use Featured image"
+msgstr ""
+
+#: inc/contextual-help.php:29
+msgid ""
+"Featured image used for the cover of the post formats. Upload the image that "
+"will be displayed header on single post formats standard and image."
+msgstr ""
+
+#: inc/contextual-help.php:30 inc/contextual-help.php:41
+msgid "Use Excerpt"
+msgstr ""
+
+#: inc/contextual-help.php:31 inc/contextual-help.php:41
+msgid "Enter text in field Excerpt to display announcement of the post."
+msgstr ""
+
+#: inc/contextual-help.php:41
+msgid "Upload the image that will be displayed header on page."
+msgstr ""
+
+#: inc/contextual-help.php:41
+msgid "Templates"
+msgstr ""
+
+#: inc/contextual-help.php:41
+msgid ""
+"The theme has several page templates. Use metabox Page Attributes > dropdown "
+"Template."
+msgstr ""
+
+#: inc/contextual-help.php:50
+msgid "Recommend"
+msgstr "Sugerir"
+
+#: inc/contextual-help.php:51
+msgid "Recommended plugins for inkston Theme"
+msgstr ""
+
+#: inc/contextual-help.php:51
+msgid "Jetpack By WordPress.com"
+msgstr ""
+
+#: inc/contextual-help.php:51
+msgid "Contact Form 7 By Takayuki Miyoshi"
+msgstr ""
+
+#: inc/contextual-help.php:51
+msgid "Shortcodes Ultimate By Vladimir Anokhin."
+msgstr ""
+
+#: inc/contextual-help.php:61
+msgid "Custom widgets"
+msgstr ""
+
+#: inc/contextual-help.php:61
+msgid ""
+"Menu icons social media is displayed in the footer. Included all popular "
+"icons of social media, and Feedburner. To create a menu item, use the tab "
+"Links (Edit Menus). And select Social Menu as Theme locations."
+msgstr ""
+
+#: inc/contextual-help.php:61
+msgid ""
+"Example:<br />tab <strong>Links</strong><br /><em>URL</em> http://twitter."
+"com/your<br /><em>Navigation Label</em> Twitter"
+msgstr ""
+
+#: inc/contextual-help.php:66
+msgid ""
+"<p><strong>Top Menu</strong></p><p>The theme has an additional top menu bar."
+"</p><p>If you create a menu item using Links tab (Edit Menus) and links will "
+"be http://tel: OR http://mailto: OR https://goo.gl (short link google map) "
+"it will be displayed icons Font Awesome.</p><p>Example:<br />tab <strong>"
+"Links</strong><br /><em>URL</em> http://tel:+1916000000<br /><em>Navigation "
+"Label</em> +1 916 00.00.00</p>"
+msgstr ""
+
+#: inc/breadcrumbs.php:28
+msgid "Home"
+msgstr "Portada"
+
+#: inc/breadcrumbs.php:29
+#, php-format
+msgid "Archive for %s"
+msgstr "Archivos para %s"
+
+#: inc/breadcrumbs.php:30
+#, php-format
+msgid "Search results for: %s"
+msgstr "Resultados de búsqueda para: %s"
+
+#: inc/breadcrumbs.php:31
+#, php-format
+msgid "Posts tagged %s"
+msgstr "Tag %s"
+
+#: inc/breadcrumbs.php:32
+#, php-format
+msgid "View all posts by %s"
+msgstr "Ver todo escrito por %s"
+
+#: inc/breadcrumbs.php:33
+msgid "Error 404"
+msgstr ""
+
+#: inc/breadcrumbs.php:180 inc/extras.php:76
+#, php-format
+msgid "Page %s"
+msgstr "Pagina %s"
+
+#: inc/customizer.php:156
+msgid "Main Color"
+msgstr ""
+
+#: inc/customizer.php:168
+msgid "Secondary Color"
+msgstr ""
+
+#: inc/customizer.php:180
+msgid "Header BG Color"
+msgstr ""
+
+#: inc/customizer.php:192
+msgid "Link Color"
+msgstr ""
+
+#: inc/customizer.php:204
+msgid "Hover Color"
+msgstr ""
+
+#: inc/customizer.php:216
+msgid "Hover Menu"
+msgstr ""
+
+#: inc/customizer.php:228
+msgid "Menu Bar Color"
+msgstr ""
+
+#: inc/customizer.php:240
+msgid "Menu Bar Current"
+msgstr ""
+
+#: inc/customizer.php:252
+msgid "Menu Link"
+msgstr ""
+
+#: inc/customizer.php:264
+msgid "Menu Link Hover"
+msgstr ""
+
+#: inc/customizer.php:276
+msgid "Border Bold"
+msgstr ""
+
+#: inc/customizer.php:288
+msgid "Border Thin"
+msgstr ""
+
+#: inc/customizer.php:300
+msgid "Additional Color"
+msgstr ""
+
+#: inc/customizer.php:312
+msgid "Footer Text"
+msgstr ""
+
+#: inc/customizer.php:324
+msgid "Footer BG"
+msgstr ""
+
+#: inc/customizer.php:338
+msgid "Logo Options"
+msgstr ""
+
+#: inc/customizer.php:339
+msgid ""
+"For the option of a round frame best suited a image square size is 400px and "
+"more."
+msgstr ""
+
+#: inc/customizer.php:354
+msgid "No Frame logo"
+msgstr ""
+
+#: inc/customizer.php:367
+msgid "Logo Image"
+msgstr ""
+
+#: inc/customizer.php:378
+msgid "Home Tagline"
+msgstr ""
+
+#: inc/customizer.php:379
+msgid ""
+"Located in the templates Home page: Home One, Home Mosaic and Home Square. "
+"Type the text or insert the shortcode."
+msgstr ""
+
+#: inc/customizer.php:414
+msgid "Tagline Text"
+msgstr ""
+
+#: inc/customizer.php:425
+msgid "Background Color"
+msgstr ""
+
+#: inc/customizer.php:432
+msgid "Background Image"
+msgstr ""
+
+#: inc/customizer.php:440
+msgid "Show header of front page"
+msgstr ""
+
+#: inc/customizer.php:441
+msgid "Show header of front page instead Home of Tagline."
+msgstr ""
+
+#: inc/customizer.php:452
+msgid "Footer Copyright"
+msgstr ""
+
+#: inc/customizer.php:469
+msgid "Copyright"
+msgstr "Derechos de autor"
+
+#: inc/customizer.php:479
+msgid "Display Options"
+msgstr ""
+
+#: inc/customizer.php:493
+msgid "Transparent menu bar"
+msgstr ""
+
+#: inc/customizer.php:507
+msgid "No border menu bar"
+msgstr ""
+
+#: inc/customizer.php:521
+msgid "Hide page header"
+msgstr ""
+
+#: inc/customizer.php:535
+msgid "Hide Submenu pages"
+msgstr ""
+
+#: inc/customizer.php:549
+msgid "Numbered navigation"
+msgstr ""
+
+#: inc/customizer.php:563
+msgid "Disable lightbox image"
+msgstr ""
+
+#: inc/customizer.php:578
+msgid "Post format image on Home"
+msgstr ""
+
+#: inc/template-tags.php:34
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:38
+msgctxt "Previous post link"
+msgid "<i class=\"fa fa-arrow-left\"></i>"
+msgstr ""
+
+#: inc/template-tags.php:39
+msgctxt "Next post link"
+msgid "<i class=\"fa fa-arrow-right\"></i>"
+msgstr ""
+
+#: inc/template-tags.php:44
+msgid "Back"
+msgstr "Volver"
+
+#: inc/template-tags.php:48
+msgid "More"
+msgstr "Mas"
+
+#: inc/template-tags.php:135
+#, php-format
+msgid ""
+"<span class=\"posted-on\">%1$s</span><span class=\"byline\"> <i>by</i> "
+"%2$s</span>"
+msgstr ""
+"<span class=\"posted-on\">%1$s</span><span class=\"byline\"> <i>por</i> "
+"%2$s</span>"
+
+#: inc/template-tags.php:154 inc/template-tags.php:155
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:159
+msgid "Category: "
+msgstr "Categoria:"
+
+#: inc/template-tags.php:164
+msgid "Tag: "
+msgstr "Etiqueta: "
+
+#: inc/template-tags.php:308
+#, php-format
+msgid "design %s"
+msgstr "diseño %s"
+
+#: inc/template-tags.php:418
+msgid "Checkout"
+msgstr "Caja"
+
+#: inc/back-compat.php:21 inc/back-compat.php:29 inc/back-compat.php:40
+#, php-format
+msgid ""
+"inkston requires at least WordPress version 4.1. You are running version %s. "
+"Please upgrade and try again."
+msgstr ""
+
+#: inc/welcome.php:34
+msgid "Thanks for choosing inkston!"
+msgstr "Gracias para confiar en nosotros!"
+
+#: inc/welcome.php:35
+msgid "This theme has built-in Contextual Help for most admin screens."
+msgstr ""
+
+#: inc/welcome.php:35
+msgid "To get Help right now, click on the tab Help on the top admin bar."
+msgstr ""
+
+#: inc/welcome.php:35
+#, php-format
+msgid "Get a brief setup instructions on the %swelcome screen%s."
+msgstr ""
+
+#: inc/welcome.php:36
+msgid "Welcome!"
+msgstr "Bienvenido!"
+
+#: inc/welcome.php:66
+msgid "Theme"
+msgstr ""
+
+#: inc/welcome.php:67
+msgid "Thank you for choosing inkston WordPress theme for your website!"
+msgstr ""
+
+#: inc/welcome.php:72
+msgid "Welcome to"
+msgstr "Benvenido a"
+
+#: inc/welcome.php:75
+msgid "Here are some links to get you started and optional theme-setup tasks:"
+msgstr ""
+
+#: inc/welcome.php:82
+msgid "Get Started"
+msgstr ""
+
+#: inc/welcome.php:85
+#, php-format
+msgid ""
+"inkston theme uses large tiles for post pages and a special post-tiles "
+"template for front page of small tiles showing both posts and products - "
+"%sfront page%s."
+msgstr ""
+
+#: inc/welcome.php:89 inc/welcome.php:97
+msgid "Set your Front page, go to"
+msgstr ""
+
+#: inc/welcome.php:89 inc/welcome.php:93 inc/welcome.php:97
+msgid "Front page displays"
+msgstr ""
+
+#: inc/welcome.php:93
+msgid "Set you Posts page, go to"
+msgstr ""
+
+#: inc/welcome.php:101
+msgid "To select page as Front page you will need to create a new page, go to "
+msgstr ""
+
+#: inc/welcome.php:101
+msgid "Add New Page"
+msgstr ""
+
+#: inc/welcome.php:105
+msgid "Set you "
+msgstr "Establecer "
+
+#: inc/welcome.php:105
+msgid "main Menu"
+msgstr "menu Principal"
+
+#: inc/welcome.php:112
+msgid "Next Steps"
+msgstr "Próximos pasos"
+
+#: inc/welcome.php:114
+msgid "inkston includes a custom widgets, go to "
+msgstr ""
+
+#: inc/welcome.php:114
+msgid "Manage widgets"
+msgstr ""
+
+#: inc/welcome.php:118
+msgid "Using the WordPress Customizer you can tweak appearance."
+msgstr ""
+
+#: inc/welcome.php:119
+msgid "Customize"
+msgstr "Customizar"
+
+#: inc/welcome.php:126
+msgid "Plugins"
+msgstr ""
+
+#: inc/welcome.php:128
+msgid ""
+"Below you will find links to plugins we recommend. None of these plugins are "
+"required for theme to work, they add additional functionality."
+msgstr ""
+
+#: bbpress/user-details.php:10
+msgid "My"
+msgstr "Mi"
+
+#: bbpress/user-details.php:23
+msgid "/my-account/"
+msgstr "/es/mi-cuenta/"
+
+#: bbpress/user-details.php:24
+msgid "Shop Account"
+msgstr "Cuenta de la Tienda"
+
+#: bbpress/user-details.php:27
+msgid "/my-account/orders/"
+msgstr "/es/mi-cuenta/pedidos/"
+
+#: bbpress/user-details.php:28
+msgid "Check your order status and shipment tracking codes,"
+msgstr ""
+"Verifique el estado de su pedido y los códigos de seguimiento de envío,"
+
+#: bbpress/user-details.php:31
+msgid "/my-account/edit-address/"
+msgstr "/es/mi-cuenta/editar-direccion/"
+
+#: bbpress/user-details.php:32
+msgid "Edit shipping/billing addresses for inkston shop"
+msgstr "Editar direcciones de envío / facturación para inkston shop"
+
+#: bbpress/user-details.php:35
+msgid "/my-account/edit-account/"
+msgstr "/es/editar-cuenta/"
+
+#: bbpress/user-details.php:36
+msgid "Update account name/email address/password"
+msgstr ""
+"Actualizar nombre de cuenta / dirección de correo electrónico / contraseña"
+
+#: bbpress/user-details.php:39
+msgid "/my-account/customer-logout/"
+msgstr "/es/editar-cuenta/desconectar/"
+
+#: bbpress/user-details.php:40
+msgid "Log out from inkston.com"
+msgstr "Salir de inkston.com"
+
+#: bbpress/user-details.php:48 woocommerce/myaccount/navigation.php:43
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+#: bbpress/user-details.php:60 woocommerce/myaccount/navigation.php:48
+msgid "Check your points in inkston rewards scheme"
+msgstr "Verifique sus puntos en el esquema de recompensas inkston"
+
+#: bbpress/user-details.php:61 woocommerce/myaccount/navigation.php:49
+msgid "My Rewards"
+msgstr "Mis Puntos"
+
+#: bbpress/user-details.php:67
+#, php-format
+msgid "%s's Posts"
+msgstr "%s's Entradas"
+
+#: bbpress/user-details.php:69
+msgid "Artist Listings"
+msgstr "Listados de Artistas"
+
+#: bbpress/user-details.php:89
+msgid "Forum Topics"
+msgstr "Temas del foro"
+
+#: bbpress/user-details.php:95
+msgid "Forum Replies"
+msgstr "Respuestas del Foro"
+
+#: bbpress/user-details.php:104
+msgid "Favorite Forum Posts"
+msgstr "Favoritas del foro"
+
+#: bbpress/user-details.php:112 woocommerce/myaccount/navigation.php:56
+msgid "My Forum Subscriptions"
+msgstr "Mis suscripciones al foro"
+
+#: bbpress/user-profile.php:16
+#, php-format
+msgid "%s's Profile"
+msgstr "Perfil de %s"
+
+#: bbpress/user-profile.php:31
+msgid "This user has not yet edited their profile."
+msgstr "Este usuario aún no ha editado su perfil."
+
+#: bbpress/user-profile.php:33
+msgid "Edit your profile"
+msgstr "Edite su perfil"
+
+#: bbpress/user-profile.php:34
+msgid "to add content to this section."
+msgstr "para agregar contenido a esta sección."
+
+#: bbpress/user-profile.php:40
+msgid "Forum Contributions"
+msgstr "Contribuciones al Foro"
+
+#: bbpress/user-profile.php:53
+msgid "Contributor badges"
+msgstr "insignias del contribuyente"
+
+#: bbpress/user-profile.php:58
+msgid ""
+"Points are awarded for making community contributions, as you earn more "
+"points you can win badges which get you prize coupons redeemable at the shop."
+"  <a href=\"https://www.inkston.com/community/my-awards/\">Click here</a> to "
+"see the levels and points scheme."
+msgstr ""
+"Se otorgan puntos por hacer contribuciones comunitarias, ya que ganas más "
+"puntos puedes ganar insignias que te dan cupones de premio redimibles en la "
+"tienda. <a href=\"https://www.inkston.com/community/my-awards/\"> Haga clic "
+"aquí </a> para ver los niveles y el esquema de puntos."
+
+#: woocommerce-auto-added-coupons/coupon-select-free-product.php:134
+msgid "None"
+msgstr "Ningún"
+
+#: woocommerce/order/order-details.php:35
+#: woocommerce/myaccount/my-orders.php:35
+msgid "Please help us to help you by reviewing your products!"
+msgstr "¡Por favor ayúdenos a ayudar mediante la revisión de sus productos!!"
+
+#: woocommerce/order/order-details.php:37
+#: woocommerce/myaccount/my-orders.php:37
+msgid ""
+"  All reviews earn points in inkston <a href=\"https://www.inkston."
+"com/community/my-awards/\">reward scheme</a>.  Your experience is highly "
+"valuable in helping us improve and helping others choose the most suitable "
+"products."
+msgstr ""
+"Todas las revisiones ganan puntos en <a href=\"https://www.inkston."
+"com/community/my-awards/\">el esquema de recompensa inkston</a>. Su "
+"experiencia es muy valiosa para ayudarnos a mejorar y ayudar a otros a "
+"elegir los productos más adecuados."
+
+#: woocommerce/myaccount/my-orders.php:32 woocommerce/myaccount/orders.php:30
+msgid ""
+"For any orders not received yet, please view status and delivery tracking "
+"codes below.<br />If your order has arrived, please leave your review!"
+msgstr ""
+"Para cualquier pedido que aún no haya recibido, consulte el estado y los "
+"códigos de seguimiento de entrega a continuación.\n"
+"Si su pedido ha llegado, ¡deje su comentario!"
+
+#: woocommerce/myaccount/navigation.php:51
+msgid "My Listings"
+msgstr "Mis Listados"
+
+#: woocommerce/myaccount/navigation.php:53
+msgid "My Forum Topics"
+msgstr "Mis temas del foro"
+
+#: woocommerce/myaccount/navigation.php:54
+msgid "My Forum Replies"
+msgstr "Mis respuestas del foro"
+
+#: woocommerce/myaccount/navigation.php:55
+msgid "My Favourite Forum Posts"
+msgstr "Mis favoritas del foro"
+
+#: woocommerce/myaccount/navigation.php:65
+msgid "My comments and reviews"
+msgstr "Mis comentarios y críticas"
+
+#: woocommerce/myaccount/navigation.php:66
+msgid "My Comments/Reviews"
+msgstr "Mis commentarios"
+
+#: woocommerce/myaccount/navigation.php:83
+msgid "Comment subscriptions"
+msgstr "Suscripciones de comentarios"
+
+#: woocommerce/myaccount/navigation.php:94
+msgid "Newsletter subscriptions"
+msgstr "Suscripciones a los boletines"
+
+#: woocommerce/emails/customer-on-hold-order.php:33
+msgid "pay for this order online"
+msgstr "Pagar este pedido en línea"
+
+#: woocommerce/checkout/terms.php:31
+#, php-format
+msgid ""
+"By placing your order, you agree to the inkston <a href=\"%s\" "
+"target=\"_blank\" class=\"woocommerce-terms-and-conditions-link\">terms &amp;"
+" conditions</a>"
+msgstr ""
+"Al realizar su pedido, acepta los <a href=\"%s\" class=\"woocommerce-terms-"
+"and-conditions-link\">terminos y condiciones de inkston.com</a>"
+
+#: woocommerce/single-product/product-attributes.php:219
+msgid "Shipping"
+msgstr "Envio"
+
+#: woocommerce/single-product/product-attributes.php:223
+msgid "Free"
+msgstr "Gratis"
+
+#: woocommerce/single-product/product-attributes.php:224
+msgid "Order including this product will qualify for free shipping."
+msgstr "El pedido con este producto tiene envío gratis"
+
+#: woocommerce/single-product/product-attributes.php:231
+msgid "Standard"
+msgstr "Normal"
+
+#: woocommerce/single-product/product-attributes.php:233
+msgid "Standard shipping."
+msgstr "Envio normal."
+
+#: woocommerce/single-product/review-meta.php:26
+msgid "Your comments are awaiting approval"
+msgstr "Su comentario queda a la espera de aprobación"
+
+#. Name of the theme
+msgid "Photoline Inkston"
+msgstr ""
+
+#. Description of the theme
+msgid "Minimalistic theme for rich image photo and shop based sites."
+msgstr ""
+
+#. URI of the theme
+msgid "https://www.inkston.com"
+msgstr ""
+
+#. Author of the theme
+msgid "MoQiao"
+msgstr "ingleno"
+
+#. Author URI of the theme
+msgid "https://jonmoblog.wordpress.com/"
+msgstr ""

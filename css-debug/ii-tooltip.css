@@ -1,0 +1,126 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility:hidden;
+    width: 520px;
+/* remove colours from plugin, control via theme    
+    background-color: #eeeeee;
+    color:#1a1919;
+*/
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+
+    /* Position the tooltip, this example bottom center, 
+		   eg: https://www.w3schools.com/css/css_tooltip.asp */
+    position: absolute;
+    top: 100px;
+		left: 50%; 
+    margin-left:-150px;
+    z-index: 99;
+		opacity:0;
+		transition:opacity 0.5s linear;
+		min-height: 300px;
+		min-width: 300px;
+		line-height: 1.5em;
+}
+/* cross-sells on large screens are always shown as two columns on the left
+   so just use the normal .first formatting for all items*/
+div.cross-sells li.last .tooltip .tooltiptext{
+	left: 50%; 
+	margin-left:-150px;
+}
+li.first .tooltip .tooltiptext{
+    left:0px; 	
+    margin-left:0px;
+}
+li.last .tooltip .tooltiptext{
+		left:-350px;
+    right:0px;
+    margin-left:inherit;
+    margin-right:0px;
+}
+.tooltiptext .imgwrap {
+	float:left; width:280px;
+}
+.tooltiptext .imgwrap img {
+	max-width:270px;
+}
+
+/* turn off completely on very small displays */
+@media (min-width:300px){
+	a:hover	.tooltip .tooltiptext,
+	.tooltip:hover .tooltiptext {
+			visibility: visible;
+			opacity:1;
+			border-width: 1px ;
+			border-style: solid;
+			border-radius: 6px;
+	}	
+}
+
+/* in smaller display:
+ - images wrap to 2 per row so use odd/even formatting instead of first/last
+ - no point showing zoom images, no room
+ */
+@media (max-width:760px){
+	.tooltip .tooltiptext,
+	li.last .tooltip .tooltiptext, 
+	li.first .tooltip .tooltiptext
+	{
+		width:200px;
+		min-height:100px;margin-left:0px;margin-right:0px;
+	}
+	ul.products li:nth-child(odd) a:hover	.tooltip .tooltiptext,
+	ul.products li:nth-child(odd) .tooltip:hover .tooltiptext {
+		right:0; 	
+		left:0px; 	
+    margin-left:0px;
+	}
+	ul.products li:nth-child(even) a:hover	.tooltip .tooltiptext,
+	ul.products li:nth-child(even) .tooltip:hover .tooltiptext {
+		left:0; 	
+		right:0; 	
+    margin-right:0;
+	}
+	.tooltiptext .imgwrap {width:0px;}
+	.woocommerce ul.products li.product a .tooltiptext .imgwrap img {width:0px;display:none;visibility:hidden;}
+}
+@media (max-width:500px){
+	ul.products li:nth-child(even) a:hover	.tooltip .tooltiptext,
+	ul.products li:nth-child(even) .tooltip:hover .tooltiptext {
+		left:-111px; 	
+		right:0; 	
+    margin-right:0px;
+	}
+}
+/*
+@media (max-width:400px){
+	ul.products li:nth-child(odd) a:hover	.tooltip .tooltiptext,
+	ul.products li:nth-child(odd) .tooltip:hover .tooltiptext {
+		right:0; 	
+		left:-20px; 	
+    margin-left:0px;
+	}
+}
+*/
+@media (min-width:1100px){
+	.tooltip .tooltiptext {top:150px}
+}
+div a:focus .tooltiptext .imgwrap img, 
+div a:hover .tooltiptext .imgwrap img, 
+div a:active .tooltiptext .imgwrap img {
+  transition:none;
+  transform:none;
+  filter:none;
+}
+
+/* now add to cart is not usable because of the tooltip popups, the buttons should be removed
+   (if anything the buttons should be placed on the popups)*/
+.psgal.woocommerce ul.products li a.button.add_to_cart_button, 
+.psgal.woocommerce ul.products li a.ajax_add_to_cart 
+.psgal.woocommerce ul.products {display:none;}
+.product-type-grouped .price{display:none;}
+.product-type-grouped .group_table .price{display:inline-block;}
+ 

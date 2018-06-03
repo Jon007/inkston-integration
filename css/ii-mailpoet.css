@@ -1,0 +1,17 @@
+.site-content .mailpoet_checkbox_label{
+color:#1a1919;
+}
+.mailpoet_paragraph{margin-bottom:1em;}
+.mailpoet_paragraph label{min-width:150px;}
+.mailpoet_paragraph label, 
+.mailpoet_paragraph input{
+display:inline-block;
+} 
+.mailpoet_form_widget .mailpoet_paragraph{display:inline-block;}
+.mailpoet_form_widget .mailpoet_paragraph input[type="submit"]{text-transform:none;}
+body.logged-in .mailpoet-subscription-section,
+body.logged-in .wpcf7-mailpoetsignup {display:none;}
+.mailpoet_segment_label{float:left;}
+.mailpoet_paragraph .mailpoet_checkbox_label{display:block;margin-left:150px;}
+.mailpoet_submit{margin-left:150px;}
+body.mailpoet_router .hide-if-logged-in{display:none!important;}
