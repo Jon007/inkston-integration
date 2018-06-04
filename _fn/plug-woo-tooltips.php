@@ -58,7 +58,8 @@ function inkston_product_tooltip() {
 	echo(inkston_get_excerpt( 60 ) . '<br/>');
 
 	$product = wc_get_product( $post );
-	woocommerce_template_loop_price();
+	//excerpt adds price html so don't repeat it here
+	//woocommerce_template_loop_price();
 	inkston_product_simple_attributes( $product, array_filter( $product->get_attributes(), 'wc_attributes_array_filter_visible' ), apply_filters( 'wc_product_enable_dimensions_display', $product->has_weight() || $product->has_dimensions() )
 	);
 	echo( '</span>');
