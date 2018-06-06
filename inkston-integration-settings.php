@@ -308,7 +308,7 @@ function bbpress_render( $s ) {
 }
 
 function bus_directory_render( $s ) {
-	ii_render_checkbox( 'bbPress', $s );
+	ii_render_checkbox( 'bus_directory', $s );
 }
 
 function mailpoet_render( $s ) {

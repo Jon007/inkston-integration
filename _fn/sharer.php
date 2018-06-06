@@ -55,5 +55,8 @@ add_action( 'twentysixteen_credits', 'ink_sharing' );
 /*
  * enqueue css if this is enabled
  */
-wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
+//font-awesome 5 breaks existing -o styles making it impossible to switch cleanly between themes
+//.. and storefront only partially includes v5
+wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+//wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 inkston_integration::get_instance()->ii_enqueue_script( 'ii-socialmenu' );

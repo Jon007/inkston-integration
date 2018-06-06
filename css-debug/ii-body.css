@@ -17,3 +17,16 @@ body .hide-if-logged-in{display:initial!important;}
 body.logged-in .hide-if-logged-in{display:none!important;}
 body .hide-if-logged-out{display:none!important;}
 body.logged-in .hide-if-logged-out{display:initial!important;}
+
+/* moved wishlist here as css needed when wishlist plugin is not active
+   in order to show icon, and stop it being broked by fontawesome 5 */
+.wishlist_products_counter .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.wishlist_products_counter.wishlist-counter-with-products .fa-heart-o:before {
+  content: "\f004";
+}

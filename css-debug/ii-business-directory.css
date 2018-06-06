@@ -9,11 +9,11 @@
 position:inherit;
 height: auto;
 }
-/*
+
 .wpbdp-listing a:not(.wpbdp-button) {
-    color: #39aa39;
+    color: #39aa39!important;
 }
-*/
+
 .wpbdp-listing .listing-title a, .wpbdp-listing .listing-title h2 {
     color: #1a1919;
 }
@@ -109,6 +109,6 @@ margin-left:0px;
 .wpbdp-plan-selection-wrapper{display:none;}
 .wpbdp-submit-listing-section-content .wpbdp-msg.tip{display:none;}
 .listing-actions a.button,
-.listing-actions a.button:hover{background-image:none;}
+.listing-actions a.button:hover{background-image:none!important;}
 /* Business directory don't float right submit button */
 #wpbdp-submit-listing .wpbdp-submit-listing-form-actions input[type="submit"] {float: none;}

@@ -27,9 +27,7 @@ body.tinvwl-theme-style .menu-share-container{display:none;}
 /* format wishlist heart link footer */
 .site-footer .wishlist_products_counter a .fa{color:#AF3632;font-size:16px;}
 .site-footer .wishlist_products_counter a .wishlist_products_counter_number{color:#AF3632;font-size:14px;}
-.wishlist_products_counter.wishlist-counter-with-products .fa-heart-o:before {
-  content: "\f004";
-}
+
 .wishlist_products_counter{margin-right:1em;}
 .wishlist_products_counter .wishlist_products_counter_number{display:none;}
 .wishlist_products_counter.wishlist-counter-with-products .wishlist_products_counter_number{display:inline-block;}

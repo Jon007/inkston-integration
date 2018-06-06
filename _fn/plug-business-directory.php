@@ -139,3 +139,11 @@ add_action( 'pre_get_posts', 'custom_post_author_archive', 1, 1 );
  * enqueue css if this is enabled
  */
 inkston_integration::get_instance()->ii_enqueue_script( 'ii-business-directory' );
+
+/* use customizer settings for style, if available..
+function ink_bd_customizer_style() {
+	ink_get_theme_mod()....
+}
+
+wp_add_inline_style( 'ii-business-directory', ink_bd_customizer_style() );
+*/

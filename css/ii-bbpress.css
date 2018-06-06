@@ -1,0 +1,49 @@
+#bbpress-forums #bbp-single-user-details #bbp-user-navigation li.current span.vcard a{opacity:1}
+.bbp-author-avatar img.avatar-14{width:40px!important;height:auto!important;border:0!important}
+.bbp-forum-info .bbp-forum-title{font-weight:700;font-size:larger}
+.bbp-topic-title .bbp-topic-permalink{font-size:larger}
+#bbpress-forums .bbp-forum-info .bbp-forum-content,body.bbpress .bbp-reply-content{font-size:15px;line-height:150%}
+body.bbpress #content h1{font-size:24px}
+.woocommerce-message a.button.wc-forward{margin:2px;min-width:143px;text-align:center}
+#content a.button:hover,.site-content a.button:hover{color:#fff;background-color:#4d914d}
+#bbpress-forums .button.acomment-translate{padding:3px 9px}
+#commentform .comment-form-mailpoet,#commentform .comment-form-subscriptions,#commentform .form-submit{margin:0}
+#bbpress-forums div.bbp-forum-content,#bbpress-forums div.bbp-topic-content,#bbpress-forums div.bbp-reply-content{margin-left:0}
+#bbpress-forums .favorite-toggle,#bbpress-forums .subscription-toggle{padding:5px 15px;font-size:larger;background-color:#39aa39;color:#fff;text-decoration:none;float:right;border-radius:5px}
+#bbpress-forums .bbp-reply-content .subscription-toggle{font-size:100%;color:#39aa39;text-decoration:underline}
+#bbpress-forums .favorite-toggle:hover,#bbpress-forums .subscription-toggle:hover{background-color:#4d914d;color:#fff}
+#bbpress-forums div.bbp-forum-content{font-size:larger;font-weight:bolder}
+#bbpress-forums .bbp-forum-info div.bbp-forum-content{font-size:14px;font-weight:400}
+#bbpress-forums .bbp-forums-list li{font-size:15px}
+.bbp-search-form .search-label{display:none}
+.bbp-search-form .search-submit{display:inline-block}
+.bbp-topic-title .bbp-topic-permalink{margin-left:50px}
+.brushlevel{white-space:nowrap}
+#bbpress-forums .bbp-topic-description img.avatar,#bbpress-forums .bbp-topic-revision-log img.avatar,#bbpress-forums .bbp-reply-revision-log img.avatar{max-width:22px;max-height:22px}
+#bbpress-forums .bbp-topic-description .brushlevel,#bbpress-forums .bbp-topic-revision-log .brushlevel,#bbpress-forums .bbp-reply-revision-log .brushlevel{display:none}
+#bbpress-forums .bbp-topic-freshness .avatar-container,#bbpress-forums .bbp-forum-freshness .avatar-container{float:right}
+#bbpress-forums .bbp-topic-freshness .avatar-container img.avatar,#bbpress-forums .bbp-forum-freshness .avatar-container img.avatar{max-width:44px;max-height:44px;margin-top:-25px;border:0;margin-right:0}
+#bbpress-forums .bbp-topic-freshness .avatar-container .brushlevel,#bbpress-forums .bbp-forum-freshness .avatar-container .brushlevel{margin-right:-44px;margin-top:15px;float:left}
+#bbpress-forums p.bbp-topic-meta .bbp-topic-freshness-author img.avatar{float:right;max-width:44px;max-height:44px;margin-top:-25px;border:0;margin-right:0}
+li.bbp-forum-freshness,li.bbp-topic-freshness{text-align:left}
+#bbpress-forums p.bbp-topic-meta img.avatar,#bbpress-forums ul.bbp-reply-revision-log img.avatar,#bbpress-forums ul.bbp-topic-revision-log img.avatar,#bbpress-forums div.bbp-template-notice img.avatar,#bbpress-forums .widget_display_topics img.avatar,#bbpress-forums .widget_display_replies img.avatar{border:0}
+#bbpress-forums .bbp-forum-description .bbp-author-avatar img.avatar,#bbpress-forums .bbp-topic-description .bbp-author-avatar img.avatar{border:0;max-width:44px;max-height:44px}
+#bbpress-forums .bbp-topic-started-by .bbp-author-avatar .brushlevel{float:left;margin-left:-54px;margin-top:15px}
+#bbpress-forums .bbp-topic-started-by .bbp-author-avatar img.avatar{border:0;max-width:44px;max-height:44px;float:left;margin-top:-25px}
+body.bbp-user-page .entry-meta{display:none}
+div.bbp-author-role,div.bbp-reply-ip{display:none}
+.bbp-template-notice .badgeos-item-attached,.bbp-template-notice .badgeos-achievement-earned{display:none}
+.inkpoints .badgeos-item-description{margin-top:1.5em}
+span.badgeos-item-title{font-weight:bolder;font-size:larger}
+#bbpress-forums #bbp-single-user-details #bbp-user-navigation a{padding:0}
+#bbpress-forums #bbp-single-user-details,.woocommerce-account .woocommerce-MyAccount-navigation,.woocommerce-account .woocommerce-MyAccount-navigation ul{margin:0;float:left;width:15%;min-width:150px;white-space:nowrap}
+.woocommerce-MyAccount-navigation li{background:none;margin:1px;list-style:none}
+#bbp-user-navigation a,#content .woocommerce-MyAccount-navigation a{display:inline-block;border:1px solid transparent;text-decoration:none;width:100%;white-space:nowrap}
+#bbp-user-navigation a:hover,#bbp-user-navigation a:active,#content .woocommerce-MyAccount-navigation a:hover,#content .woocommerce-MyAccount-navigation a:active{border:1px solid transparent;background-color:#ccc;text-decoration:none!important}
+#bbpress-forums #bbp-single-user-details #bbp-user-navigation a.inline,#content .woocommerce-MyAccount-navigation a.inline{display:inline-block;width:auto;white-space:nowrap}
+#content .woocommerce-MyAccount-navigation li.is-active a{background:#eee}
+#bbp-user-profile,#bbp-user-navigation{font-size:15px}
+#bbp-user-profile #bbp-user-avatar{float:right}
+@media (max-width: 768px) {
+.woocommerce-MyAccount-navigation .community-menu{display:none}
+}
