@@ -30,3 +30,9 @@ body.logged-in .hide-if-logged-out{display:initial!important;}
 .wishlist_products_counter.wishlist-counter-with-products .fa-heart-o:before {
   content: "\f004";
 }
+
+/* toggle won text within badge depending on earned status*/
+.user-has-earned .won{display:initial;}
+.user-has-not-earned .won{display:none;}
+.user-has-earned .win{display:none;}
+.user-has-not-earned .win{display:initial;}

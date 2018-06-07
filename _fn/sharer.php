@@ -23,7 +23,7 @@ function ink_sharing() {
 		}
 	}
 	?><div class="entry-content saleflash ink-share-container"><?php
-	_e( 'If you like this, please share: ', 'photoline-inkston' );
+	_e( 'If you like this, please share: ', 'inkston-integration' );
 	$current_url = "https://" . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
 	$encoded_url = urlencode( $current_url );
 	?> <ul id="menu-share" class="menu-social">

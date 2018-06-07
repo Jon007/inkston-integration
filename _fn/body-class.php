@@ -51,6 +51,9 @@ function inkston_body_class_filter( $classes ) {
 	if ( isset( $_COOKIE[ $cookie_name ] ) ) {
 		$classes[]	 = 'lang';
 		$classes[]	 = $_COOKIE[ $cookie_name ];
+	} else { /* default to english if no language set yet */
+		$classes[]	 = 'lang';
+		$classes[]	 = 'en';
 	}
 
 	if ( isset( $_GET[ 'mailpoet_router' ] ) ) {

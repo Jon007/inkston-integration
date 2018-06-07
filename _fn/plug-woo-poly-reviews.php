@@ -39,7 +39,7 @@ function inkston_merged_reviews() {
 		}
 	}
 	//get additional languages here after deciding which is the finally selected term
-	?><h2 class="woocommerce-Reviews-title category-reviews"><?php echo(__( 'Recent discussions in: ', 'photoline-inkston' ) . $term_name ); ?></h2><?php
+	?><h2 class="woocommerce-Reviews-title category-reviews"><?php echo(__( 'Recent discussions in: ', 'inkston-integration' ) . $term_name ); ?></h2><?php
 	// make action magic happen here...
 	//echo do_shortcode( '[decent_comments number="25" taxonomy="product_cat" terms="' . $term_slug . '" ]' );
 	$langs	 = pll_languages_list();

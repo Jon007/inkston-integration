@@ -44,7 +44,7 @@ function ink_gift_coupon_rules($coupon_meta, $id, $coupon_code)
      */
     $coupon_val .= 'USD';
     $coupon_meta['_wjecf_enqueue_message'] = sprintf(
-        __( 'The coupon %s will give you a discount of %s when your basket value reaches %s or more.', 'photoline-inkston')
+        __( 'The coupon %s will give you a discount of %s when your basket value reaches %s or more.', 'inkston-integration')
         , $coupon_code, $coupon_val, $coupon_val);
     return $coupon_meta;
 }
@@ -65,7 +65,7 @@ function ink_format_gift_coupon($formatted_coupon_code, $coupon_code, $coupon_am
     global $woocommerce;
     if ($woocommerce) {
 //        $cart_url = wc_get_cart_url();
-        //      $formatted_coupon_code = sprintf(__( 'Click to add %s saving to your shopping basket.', 'photoline-inkston'), $formatted_price );
+        //      $formatted_coupon_code = sprintf(__( 'Click to add %s saving to your shopping basket.', 'inkston-integration'), $formatted_price );
         $formatted_coupon_code = '<h2 style="text-align:center;"><a class="saleflash" href="' . wc_get_cart_url() .
             '?apply_coupon=' . $coupon_code . '">' . $coupon_code . '</a></h2>';
     }

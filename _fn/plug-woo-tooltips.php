@@ -134,24 +134,24 @@ function outputSimpleAttributes( $attrKeyValues, $type, $variable ) {
 			switch ( $key ) {
 				case "net_weight":
 					$cellclass	 = 'woocommerce-variation-custom-' . $key;
-					$key		 = __( 'Product Weight', 'photoline-inkston' );
+					$key		 = __( 'Product Weight', 'inkston-integration' );
 					break;
 				case "net_size":
 					$cellclass	 = 'woocommerce-variation-custom-' . $key;
-					$key		 = __( 'Product Size', 'photoline-inkston' );
+					$key		 = __( 'Product Size', 'inkston-integration' );
 					break;
 				case "product_weight":
 					$cellclass	 = $key;
 					$key		 = __( 'Weight', 'woocommerce' );
 					if ( ($value == __( 'N/A', 'woocommerce' )) && ( $product->get_type() == 'variable') ) {
-						$value = __( '[depending on variation]', 'photoline-inkston' );
+						$value = __( '[depending on variation]', 'inkston-integration' );
 					}
 					break;
 				case "product_dimensions":
 					$cellclass	 = $key;
 					$key		 = __( 'Dimensions', 'woocommerce' );
 					if ( ($value == __( 'N/A', 'woocommerce' )) && ( $product->get_type() == 'variable') ) {
-						$value = __( '[depending on variation]', 'photoline-inkston' );
+						$value = __( '[depending on variation]', 'inkston-integration' );
 					}
 					break;
 			}
@@ -209,7 +209,7 @@ function inkston_product_simple_attributes( $product, $attributes, $display_dime
 			$value = esc_html( wc_format_dimensions( $net_size ) );
 			if ( $value == __( 'N/A', 'woocommerce' ) ) {
 				if ( $product->get_type() == 'variable' ) {
-					//$value=__( '[depending on variation]', 'photoline-inkston');
+					//$value=__( '[depending on variation]', 'inkston-integration');
 					$dimensionattributes[ 'net_size' ] = ''; //$value;
 					unset( $dimensionattributes[ 'product_size' ] );
 				} else {

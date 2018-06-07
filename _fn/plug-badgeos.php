@@ -75,7 +75,7 @@ function ink_filter_avatar($avatar, $id_or_email, $size, $default, $alt, $args)
             'user_id' => $user_Id,
             'style' => 'imgurl'));
 
-        if ($badge != __( 'No badges yet', 'photoline-inkston')) {
+        if ($badge != __( 'No badges yet', 'inkston-integration')) {
             $levelname = get_user_level(array(
                 'user_id' => $user_Id,
                 'style' => 'text'));
@@ -136,7 +136,7 @@ function get_user_level($atts = array())
     if (function_exists( 'badgeos_get_user_achievements')) {
         $user_achievements = badgeos_get_user_achievements($a);
         if (!$user_achievements || sizeof($user_achievements) == 0) {
-            return __( 'No badges yet', 'photoline-inkston');
+            return __( 'No badges yet', 'inkston-integration');
         }
 
         $user_achievement_ids = wp_list_pluck($user_achievements, 'ID');
@@ -155,7 +155,7 @@ function get_user_level($atts = array())
             case 'brushes':
                 $level = intval($post->menu_order);
                 $output = '<span title="' . $post->post_title .
-                    ' ( ' . __( 'level', 'photoline-inkston') . $level . ')' .
+                    ' ( ' . __( 'level', 'inkston-integration') . $level . ')' .
                     '" class="brushlevel">';
                 for ($x = 1; $x <= $level; $x++) {
                     $output .= '<i class="fa fa-paint-brush"></i>';
@@ -189,11 +189,11 @@ function get_user_level($atts = array())
             case 'score':
                 $output = '<div class="inkpoints"><div class="badgeos-item-image"><a href="' . get_permalink($post) . '">' . get_the_post_thumbnail($post, $a['size']) . '</a></div>';
                 $output .= '<div class="badgeos-item-description"><p>' .
-                    __( 'Current level: ', 'photoline-inkston') .
+                    __( 'Current level: ', 'inkston-integration') .
                     ' <a href="' . get_permalink($post) . '">' . $post->post_title .
-                    ' ( ' . __( 'level ', 'photoline-inkston') . (intval($post->menu_order)) . ')</a>' .
+                    ' ( ' . __( 'level ', 'inkston-integration') . (intval($post->menu_order)) . ')</a>' .
                     '<br />' .
-                    sprintf(__( 'Current score: %1$s points.', 'photoline-inkston'), get_user_points()) .
+                    sprintf(__( 'Current score: %1$s points.', 'inkston-integration'), get_user_points()) .
                     '</p></div></div>';
                 break;
             case 'html':  //one block with badge and badge description (not award message)
@@ -325,7 +325,7 @@ if (class_exists( 'bbPress' )){
         $achievements = ink_get_achievements_to_notify($user_id);
         if (is_array($achievements) && count($achievements) > 0) {
 
-            ?><div class="bbp-template-notice"><p><?php _e( 'Congratulations you have been awarded:', 'photoline-inkston') ?></p><?php
+            ?><div class="bbp-template-notice"><p><?php _e( 'Congratulations you have been awarded:', 'inkston-integration') ?></p><?php
                 for ($i = 0, $size = count($achievements); $i < $size; ++$i) {
                     if (is_numeric($achievements[$i])) {
                         $achievement_type = get_post_type($achievements[$i]);
@@ -373,21 +373,21 @@ if (class_exists( 'bbPress' )){
               $to_email = get_userdata($user_id)->user_email;
 
               $blog_name = wp_specialchars_decode(get_option( 'blogname'), ENT_QUOTES);
-              $subject = $blog_name . ' ' . __( 'your contribution has unlocked an award', 'photoline-inkston');
+              $subject = $blog_name . ' ' . __( 'your contribution has unlocked an award', 'inkston-integration');
 
               $profilelink = network_site_url() . 'community/my-profile/';
-              $messagefooter = sprintf(__( 'Visit <a href="%1$s">your profile page</a> to see details of your awards and turn these notifications on or off.', 'photoline-inkston'), $profilelink
+              $messagefooter = sprintf(__( 'Visit <a href="%1$s">your profile page</a> to see details of your awards and turn these notifications on or off.', 'inkston-integration'), $profilelink
               );
 
-              $message = __( 'You were awarded this badge for making contributions to ', 'photoline-inkston');
-              $message .= ' ' . __( 'Inkston Oriental Art Comunity', 'photoline-inkston');
+              $message = __( 'You were awarded this badge for making contributions to ', 'inkston-integration');
+              $message .= ' ' . __( 'Inkston Oriental Art Comunity', 'inkston-integration');
               $message .= ' <br/>' . badgeos_render_achievement($achievement_id, $user_id);
               $message .= ' <br/>' . badgeos_render_earned_achievement_text($achievement_id, $user_id);
               $message .= ' <br/><br/>' . $messagefooter;
-              $message .= ' <br/><br/>' . __( 'Thankyou for participating in Inkston Community', 'photoline-inkston');
+              $message .= ' <br/><br/>' . __( 'Thankyou for participating in Inkston Community', 'inkston-integration');
 
               // Setup "From" email address
-              $from_email = __( 'rewards@inkston.com', 'photoline-inkston');
+              $from_email = __( 'rewards@inkston.com', 'inkston-integration');
               // Setup the From header
               $headers = array( 'From: ' . get_bloginfo( 'name') . ' <' . $from_email . '>',
                   'Content-Type: text/html; charset=UTF-8');
@@ -417,7 +417,7 @@ function ink_user_id()
 
 /* idea to issue points for creating directory listings, didn't quite seem to work..
   function ink_badge_triggers($triggers){
-  $triggers['badgeos_new_wpbdp_listing'] = __( 'Publish a new directory listing', 'photoline-inkston' );
+  $triggers['badgeos_new_wpbdp_listing'] = __( 'Publish a new directory listing', 'inkston-integration' );
   return $triggers;
   }
   add_filter( 'badgeos_activity_triggers', 'ink_badge_triggers', 10, 1);

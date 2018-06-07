@@ -92,7 +92,7 @@ function inkston_cart_link( $wrapper_class = 'header-cart' ) {
 
 		if ( (is_cart()) && (sizeof( WC()->cart->cart_contents ) > 0) ) {
 			$button_url		 = esc_url( wc_get_checkout_url() );
-			$button_title	 = __( 'Checkout', 'photoline-inkston' );
+			$button_title	 = __( 'Checkout', 'inkston-integration' );
 			$button_text	 = '<span class="cart-content">' . $button_title . '</span>';
 		} elseif ( is_checkout() ) {
 			$button_url	 = esc_url( wc_get_cart_url() );

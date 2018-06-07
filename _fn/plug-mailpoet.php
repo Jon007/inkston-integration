@@ -43,7 +43,7 @@ function ink_get_newsletter_subscribe_link() {
 			$manageurl = ink_get_newsletter_subscribe_url();
 			if ( $manageurl ) {
 				echo( '<a href="' . $manageurl . '" class="manageurl">');
-				_e( 'click here to manage your subscription', 'photoline-inkston' );
+				_e( 'click here to manage your subscription', 'inkston-integration' );
 				echo( '</a>');
 			}
 		}

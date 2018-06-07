@@ -29,12 +29,12 @@ if ( $customer_orders ) : ?>
 
 	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent orders', 'woocommerce' ) ); ?></h2>
 <p><?php  
-    _e( 'For any orders not received yet, please view status and delivery tracking codes below.<br />If your order has arrived, please leave your review!', 'photoline-inkston');
+    _e( 'For any orders not received yet, please view status and delivery tracking codes below.<br />If your order has arrived, please leave your review!', 'inkston-integration');
 ?></p>    
 <p><span class="saleflash"><?php  
-    _e( 'Please help us to help you by reviewing your products!', 'photoline-inkston');
+    _e( 'Please help us to help you by reviewing your products!', 'inkston-integration');
 ?></span><br /><?php
-    _e( '  All reviews earn points in inkston <a href="https://www.inkston.com/community/my-awards/">reward scheme</a>.  Your experience is highly valuable in helping us improve and helping others choose the most suitable products.', 'photoline-inkston');
+    _e( '  All reviews earn points in inkston <a href="https://www.inkston.com/community/my-awards/">reward scheme</a>.  Your experience is highly valuable in helping us improve and helping others choose the most suitable products.', 'inkston-integration');
 ?></p>
 
 	<table class="shop_table shop_table_responsive my_account_orders">

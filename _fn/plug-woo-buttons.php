@@ -30,28 +30,28 @@ function custom_woocommerce_product_add_to_cart_text( $text, $product ) {
     $product_type = $product->get_type();
     switch ( $product_type ) {
 	case 'external':
-	    return __( 'Buy', 'photoline-inkston' );
+	    return __( 'Buy', 'inkston-integration' );
 	    break;
 	case 'grouped':
-	    return __( 'View', 'photoline-inkston' );
+	    return __( 'View', 'inkston-integration' );
 	    break;
 	case 'simple':
 	case 'woosb':
 	    if ( $product->is_in_stock() ) {
-		return __( 'Add', 'photoline-inkston' );
+		return __( 'Add', 'inkston-integration' );
 	    } else {
-		return __( 'Read', 'photoline-inkston' );
+		return __( 'Read', 'inkston-integration' );
 	    }
 	    break;
 	case 'variable':
 	    if ( $product->is_in_stock() ) {
-		return __( 'Choose', 'photoline-inkston' );
+		return __( 'Choose', 'inkston-integration' );
 	    } else {
-		return __( 'Read', 'photoline-inkston' );
+		return __( 'Read', 'inkston-integration' );
 	    }
 	    break;
 	default:
-	    return __( 'Read', 'photoline-inkston' );
+	    return __( 'Read', 'inkston-integration' );
     }
 }
 

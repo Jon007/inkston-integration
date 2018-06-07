@@ -27,11 +27,11 @@ function inkston_title() {
 	$title = wp_title( '&raquo;', false, '' );
 	if ( is_search() ) {
 	    if ( get_search_query() == '' ) {
-		$title = __( 'Search Inkston.', 'photoline-inkston' );
+		$title = __( 'Search Inkston.', 'inkston-integration' );
 		;
 	    } else {
 		global $wp_query;
-		$title .= ' ( ' . $wp_query->found_posts . ' ' . __( 'results', 'photoline-inkston' ) . ')';
+		$title .= ' ( ' . $wp_query->found_posts . ' ' . __( 'results', 'inkston-integration' ) . ')';
 	    }
 	}
 	/**

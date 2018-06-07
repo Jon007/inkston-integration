@@ -242,7 +242,7 @@ function inkston_add_asin_upc() {
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'asin',
-		'label'			 => __( 'ASIN EU', 'photoline-inkston' ),
+		'label'			 => __( 'ASIN EU', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'value'			 => $value,
@@ -257,7 +257,7 @@ function inkston_add_asin_upc() {
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'asinusa',
-		'label'			 => __( 'ASIN USA', 'photoline-inkston' ),
+		'label'			 => __( 'ASIN USA', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'value'			 => $value,
@@ -273,11 +273,11 @@ function inkston_add_asin_upc() {
 	woocommerce_wp_text_input(
 	array(
 		'id'				 => 'upc',
-		'label'				 => __( 'UPC', 'photoline-inkston' ),
+		'label'				 => __( 'UPC', 'inkston-integration' ),
 		'placeholder'		 => '012345678901',
 		'desc_tip'			 => 'true',
 		'value'				 => $value,
-		'description'		 => __( '12 digits international standard Universal Product Code.', 'photoline-inkston' ),
+		'description'		 => __( '12 digits international standard Universal Product Code.', 'inkston-integration' ),
 		'type'				 => 'number',
 		'custom_attributes'	 => array(
 			'step'	 => 'any',
@@ -300,11 +300,11 @@ function inkston_net_dimensions() {
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'net_weight',
-		'label'			 => __( 'Product weight', 'photoline-inkston' ) .
+		'label'			 => __( 'Product weight', 'inkston-integration' ) .
 		' ( ' . get_option( 'woocommerce_weight_unit' ) . ')',
-		'placeholder'	 => __( 'Unpacked net product weight.', 'photoline-inkston' ),
+		'placeholder'	 => __( 'Unpacked net product weight.', 'inkston-integration' ),
 		'desc_tip'		 => 'true',
-		'description'	 => __( 'Unpacked net product weight.', 'photoline-inkston' ),
+		'description'	 => __( 'Unpacked net product weight.', 'inkston-integration' ),
 		'value'			 => $value,
 	/*
 	 * numeric type doesn't handle variation with multiple values..
@@ -332,7 +332,7 @@ function inkston_net_dimensions() {
 	?>
 	<p class="form-field dimensions_field net_size">
 		<label for="Product Size"><?php
-			echo __( 'Product size ', 'photoline-inkston' ) .
+			echo __( 'Product size ', 'inkston-integration' ) .
 			' ( ' . get_option( 'woocommerce_dimension_unit' ) . ')';
 			?></label>
 		<span class="wrap">
@@ -340,7 +340,7 @@ function inkston_net_dimensions() {
 			<input placeholder="<?php esc_attr_e( 'Width', 'woocommerce' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_netwidth" value="<?php echo esc_attr( wc_format_localized_decimal( $net_size[ 1 ] ) ); ?>" />
 			<input placeholder="<?php esc_attr_e( 'Height', 'woocommerce' ); ?>" class="input-text wc_input_decimal last" size="6" type="text" name="_netheight" value="<?php echo esc_attr( wc_format_localized_decimal( $net_size[ 2 ] ) ); ?>" />
 		</span>
-		<?php echo wc_help_tip( __( 'Unpacked product size LxWxH in decimal form', 'photoline-inkston' ) ); ?>
+		<?php echo wc_help_tip( __( 'Unpacked product size LxWxH in decimal form', 'inkston-integration' ) ); ?>
 	</p><?php
 }
 
@@ -354,7 +354,7 @@ function inkston_variation_asin_upc( $loop, $variation_data, $variation ) {
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'asin[' . $loop . ']',
-		'label'			 => __( 'ASIN EU', 'photoline-inkston' ),
+		'label'			 => __( 'ASIN EU', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'description'	 => __( 'Amazon alphanumeric 10 character inventory code.', 'woocommerce' ),
@@ -367,7 +367,7 @@ function inkston_variation_asin_upc( $loop, $variation_data, $variation ) {
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'asinusa[' . $loop . ']',
-		'label'			 => __( 'ASIN USA', 'photoline-inkston' ),
+		'label'			 => __( 'ASIN USA', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'description'	 => __( 'Amazon USA code if different from EU code..', 'woocommerce' ),
@@ -379,10 +379,10 @@ function inkston_variation_asin_upc( $loop, $variation_data, $variation ) {
 	woocommerce_wp_text_input(
 	array(
 		'id'				 => 'upc[' . $loop . ']',
-		'label'				 => __( 'UPC', 'photoline-inkston' ),
+		'label'				 => __( 'UPC', 'inkston-integration' ),
 		'placeholder'		 => '012345678901',
 		'desc_tip'			 => 'true',
-		'description'		 => __( 'Unpacked product size LxWxH in decimal form', 'photoline-inkston' ),
+		'description'		 => __( 'Unpacked product size LxWxH in decimal form', 'inkston-integration' ),
 		'type'				 => 'number',
 		'custom_attributes'	 => array(
 			'step'	 => 'any',
@@ -404,11 +404,11 @@ function inkston_variation_net_dimensions( $loop, $variation_data, $variation ) 
 	woocommerce_wp_text_input(
 	array(
 		'id'				 => 'net_weight[' . $loop . ']',
-		'label'				 => __( 'Product weight', 'photoline-inkston' ) .
+		'label'				 => __( 'Product weight', 'inkston-integration' ) .
 		' ( ' . get_option( 'woocommerce_weight_unit' ) . ')',
-		'placeholder'		 => __( 'Unpacked net product weight.', 'photoline-inkston' ),
+		'placeholder'		 => __( 'Unpacked net product weight.', 'inkston-integration' ),
 		'desc_tip'			 => 'true',
-		'description'		 => __( 'Unpacked net product weight.', 'photoline-inkston' ),
+		'description'		 => __( 'Unpacked net product weight.', 'inkston-integration' ),
 		'type'				 => 'number',
 		'custom_attributes'	 => array(
 			'step'	 => 'any',
@@ -423,11 +423,11 @@ function inkston_variation_net_dimensions( $loop, $variation_data, $variation ) 
 	woocommerce_wp_text_input(
 	array(
 		'id'			 => 'net_size[' . $loop . ']',
-		'label'			 => __( 'Product size ', 'photoline-inkston' ) .
+		'label'			 => __( 'Product size ', 'inkston-integration' ) .
 		' ( ' . get_option( 'woocommerce_dimension_unit' ) . ')',
 		'placeholder'	 => '0x0x0',
 		'desc_tip'		 => 'true',
-		'description'	 => __( 'Unpacked product size LxWxH in decimal form', 'photoline-inkston' ),
+		'description'	 => __( 'Unpacked product size LxWxH in decimal form', 'inkston-integration' ),
 		'value'			 => get_post_meta( $variation->ID, 'net_size', true ),
 		'wrapper_class'	 => 'form-row form-row-last'
 	)

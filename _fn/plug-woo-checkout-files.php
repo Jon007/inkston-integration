@@ -14,7 +14,7 @@ function inkston_customization_cart_message()
         global $AWCCF;
         //$awccf = new Alg_WC_Checkout_Files_Upload_Main;
         if ($AWCCF && $AWCCF->is_visible(1)) {
-            wc_print_notice(__( 'Your shopping cart includes customization options, you can tell us about these on the checkout page.', 'photoline-inkston'), 'notice');
+            wc_print_notice(__( 'Your shopping cart includes customization options, you can tell us about these on the checkout page.', 'inkston-integration'), 'notice');
         }
     }
 }
@@ -30,7 +30,7 @@ function inkston_customization_checkout_message()
         //$awccf = new Alg_WC_Checkout_Files_Upload_Main;
         global $AWCCF;
         if ($AWCCF && ( $AWCCF->is_visible(1))) {
-            wc_print_notice(__( 'Your order has a custom design option, if you like you can upload a file and/or make comments below. You may also skip this step and confirm details with us later.', 'photoline-inkston'), 'notice');
+            wc_print_notice(__( 'Your order has a custom design option, if you like you can upload a file and/or make comments below. You may also skip this step and confirm details with us later.', 'inkston-integration'), 'notice');
         }
     }
 }

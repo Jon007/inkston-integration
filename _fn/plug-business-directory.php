@@ -10,14 +10,14 @@
  */
 function get_directory_labels() {
 	static $tr_directory_label;
-	$tr_directory_label[ 'Name' ]			 = __( 'Name', 'photoline-inkston' );
-	$tr_directory_label[ 'Category' ]		 = __( 'Category', 'photoline-inkston' );
-	$tr_directory_label[ 'Country' ]		 = __( 'Country', 'photoline-inkston' );
-	$tr_directory_label[ 'Contact Email' ]	 = __( 'Contact Email', 'photoline-inkston' );
-	$tr_directory_label[ 'Location' ]		 = __( 'Location', 'photoline-inkston' );
-	$tr_directory_label[ 'About' ]			 = __( 'About', 'photoline-inkston' );
-	$tr_directory_label[ 'Summary' ]		 = __( 'Summary', 'photoline-inkston' );
-	$tr_directory_label[ 'Website' ]		 = __( 'Website', 'photoline-inkston' );
+	$tr_directory_label[ 'Name' ]			 = __( 'Name', 'inkston-integration' );
+	$tr_directory_label[ 'Category' ]		 = __( 'Category', 'inkston-integration' );
+	$tr_directory_label[ 'Country' ]		 = __( 'Country', 'inkston-integration' );
+	$tr_directory_label[ 'Contact Email' ]	 = __( 'Contact Email', 'inkston-integration' );
+	$tr_directory_label[ 'Location' ]		 = __( 'Location', 'inkston-integration' );
+	$tr_directory_label[ 'About' ]			 = __( 'About', 'inkston-integration' );
+	$tr_directory_label[ 'Summary' ]		 = __( 'Summary', 'inkston-integration' );
+	$tr_directory_label[ 'Website' ]		 = __( 'Website', 'inkston-integration' );
 	return $tr_directory_label;
 }
 
@@ -25,15 +25,15 @@ function get_directory_labels() {
  * This hack inserts directory field descriptions into the photoline-inkston text translation
  */
 function get_directory_descriptions() {
-	$tr_directory_description[ 'Artist or studio name' ]																																						 = __( 'Artist or studio name ', 'photoline-inkston' );
-	$tr_directory_description[ 'Select one or more categories for your listing' ]																																 = __( 'Select one or more categories for your listing', 'photoline-inkston' );
-	$tr_directory_description[ 'Main country' ]																																									 = __( 'Main country ', 'photoline-inkston' );
-	$tr_directory_description[ 'Please enter town or region to help visitors find you' ]																														 = __( 'Please enter town or region to help visitors find you ', 'photoline-inkston' );
-	$tr_directory_description[ 'To avoid spam, Email address will never be shown, instead a contact form will be provided which is only available to genuine logged-on users.' ]								 = __( 'To avoid spam, Email address will never be shown, instead a contact form will be provided which is only available to genuine logged-on users. ', 'photoline-inkston' );
-	$tr_directory_description[ 'How did you start with Oriental arts? What are your favourite techniques?  Do you sell your artwork, do you accept commissions?  Do you teach or can you recommend teachers?' ]	 = __( 'How did you start with Oriental arts? What are your favourite techniques?  Do you sell your artwork, do you accept commissions?  Do you teach or can you recommend teachers? ', 'photoline-inkston' );
-	$tr_directory_description[ 'Here you can make a special short summary for search engines and search results.  Leave blank for an automatic summary.' ]														 = __( 'Here you can make a special short summary for search engines and search results.  Leave blank for an automatic summary. ', 'photoline-inkston' );
-	$tr_directory_description[ 'Main website (can be any link including Facebook page if that is your main page)' ]																								 = __( 'Main website (can be any link including Facebook page if that is your main page) ', 'photoline-inkston' );
-	$tr_directory_description[ 'add optional tags separated by commas, to allow more classifications than available under categories ' ]																		 = __( 'add optional tags separated by commas, to allow more classifications than available under categories ', 'photoline-inkston' );
+	$tr_directory_description[ 'Artist or studio name' ]																																						 = __( 'Artist or studio name ', 'inkston-integration' );
+	$tr_directory_description[ 'Select one or more categories for your listing' ]																																 = __( 'Select one or more categories for your listing', 'inkston-integration' );
+	$tr_directory_description[ 'Main country' ]																																									 = __( 'Main country ', 'inkston-integration' );
+	$tr_directory_description[ 'Please enter town or region to help visitors find you' ]																														 = __( 'Please enter town or region to help visitors find you ', 'inkston-integration' );
+	$tr_directory_description[ 'To avoid spam, Email address will never be shown, instead a contact form will be provided which is only available to genuine logged-on users.' ]								 = __( 'To avoid spam, Email address will never be shown, instead a contact form will be provided which is only available to genuine logged-on users. ', 'inkston-integration' );
+	$tr_directory_description[ 'How did you start with Oriental arts? What are your favourite techniques?  Do you sell your artwork, do you accept commissions?  Do you teach or can you recommend teachers?' ]	 = __( 'How did you start with Oriental arts? What are your favourite techniques?  Do you sell your artwork, do you accept commissions?  Do you teach or can you recommend teachers? ', 'inkston-integration' );
+	$tr_directory_description[ 'Here you can make a special short summary for search engines and search results.  Leave blank for an automatic summary.' ]														 = __( 'Here you can make a special short summary for search engines and search results.  Leave blank for an automatic summary. ', 'inkston-integration' );
+	$tr_directory_description[ 'Main website (can be any link including Facebook page if that is your main page)' ]																								 = __( 'Main website (can be any link including Facebook page if that is your main page) ', 'inkston-integration' );
+	$tr_directory_description[ 'add optional tags separated by commas, to allow more classifications than available under categories ' ]																		 = __( 'add optional tags separated by commas, to allow more classifications than available under categories ', 'inkston-integration' );
 	return $tr_directory_description;
 }
 

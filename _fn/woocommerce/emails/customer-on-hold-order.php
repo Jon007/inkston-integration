@@ -30,7 +30,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <?php 
 //INKSTON: add payment link
 if (! $order->is_paid() ) : ?>
-	<p><?php printf( __( 'You may also : %2$s', 'woocommerce' ), get_bloginfo( 'name', 'display' ), '<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">' . __( 'pay for this order online', 'photoline-inkston' ) . '</a>' ); ?></p>
+	<p><?php printf( __( 'You may also : %2$s', 'woocommerce' ), get_bloginfo( 'name', 'display' ), '<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">' . __( 'pay for this order online', 'inkston-integration' ) . '</a>' ); ?></p>
 <?php endif;
 //END INKSTON
 

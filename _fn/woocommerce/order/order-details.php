@@ -32,9 +32,9 @@ $show_downloads        = false;  //$order->has_downloadable_item() && $order->is
 //INKSTON: if purchase is completed, allow review link
 if ($show_purchase_note) {
     ?><p><span class="saleflash"><?php  
-    _e( 'Please help us to help you by reviewing your products!', 'photoline-inkston');
+    _e( 'Please help us to help you by reviewing your products!', 'inkston-integration');
 ?></span><br /><?php
-    _e( '  All reviews earn points in inkston <a href="https://www.inkston.com/community/my-awards/">reward scheme</a>.  Your experience is highly valuable in helping us improve and helping others choose the most suitable products.', 'photoline-inkston');
+    _e( '  All reviews earn points in inkston <a href="https://www.inkston.com/community/my-awards/">reward scheme</a>.  Your experience is highly valuable in helping us improve and helping others choose the most suitable products.', 'inkston-integration');
 ?></p><?php
 }
 //INKSTON: END

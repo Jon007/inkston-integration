@@ -82,12 +82,12 @@ function ink_bbp_mail_alert( $message, $reply_id, $topic_id ) {
     $topic_title	 = strip_tags( bbp_get_topic_title( $topic_id ) );
     $forum_title	 = bbp_get_topic_forum_title( $topic_id );
 
-    $messageheader	 = sprintf( __( 'New post in Forum "%1$s", Topic "%2$s".', 'photoline-inkston' ), $forum_title, $topic_title
+	$messageheader	 = sprintf( __( 'New post in Forum "%1$s", Topic "%2$s".', 'inkston-integration' ), $forum_title, $topic_title
     );
     $profilelink	 = network_site_url() . 'community/my-profile/';
-    $messagefooter	 = sprintf( __( 'Or visit your profile page to review all your subscriptions: %1$s', 'photoline-inkston' ), $profilelink
+	$messagefooter	 = sprintf( __( 'Or visit your profile page to review all your subscriptions: %1$s', 'inkston-integration' ), $profilelink
     );
-    $messagefooter	 .= "\r\n" . "\r\n" . __( 'Thankyou for participating in Inkston Community', 'photoline-inkston' );
+	$messagefooter	 .= "\r\n" . "\r\n" . __( 'Thankyou for participating in Inkston Community', 'inkston-integration' );
 
     return $messageheader . "\r\n" . "\r\n" . $message . "\r\n" . $messagefooter;
 }
@@ -98,7 +98,7 @@ add_filter( 'bbp_subscription_mail_message', 'ink_bbp_mail_alert', 10, 3 );
  * filter forum email sending adress
  */
 function ink_bbp_distributionaddress( $address ) {
-    return __( 'forum-subscribers@inkston.com', 'photoline-inkston' );
+	return __( 'forum-subscribers@inkston.com', 'inkston-integration' );
 }
 
 add_filter( 'bbp_get_do_not_reply_address', 'ink_bbp_distributionaddress', 10, 1 );
@@ -234,7 +234,7 @@ function ink_new_reply_login() {
     if ( ! bbp_current_user_can_access_create_reply_form() && ! bbp_is_topic_closed() && ! bbp_is_forum_closed( bbp_get_topic_forum_id() ) ) {
 	?>
 	<div style="line-height:3em">
-	    <a class="bbp-login-prompt" href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login"><?php _e( 'Login or Register with email, Facebook, Google or LinkedIn account', 'photoline-inkston' ) ?></a>
+			<a class="bbp-login-prompt" href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login"><?php _e( 'Login or Register with email, Facebook, Google or LinkedIn account', 'inkston-integration' ) ?></a>
 	</div>
 	<?php
     }
@@ -249,7 +249,7 @@ function ink_new_topic_login() {
     if ( ! bbp_current_user_can_access_create_topic_form() && ! bbp_is_forum_closed() ) {
 	?>
 	<div style="line-height:3em">
-	    <a class="bbp-login-prompt" href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login"><?php _e( 'Login or Register with email, Facebook, Google or LinkedIn account', 'photoline-inkston' ) ?></a>
+			<a class="bbp-login-prompt" href="<?php echo wp_login_url( get_permalink() ); ?>" title="Login"><?php _e( 'Login or Register with email, Facebook, Google or LinkedIn account', 'inkston-integration' ) ?></a>
 	</div>
 	<?php
     }
@@ -261,3 +261,29 @@ add_action( 'bbp_template_after_single_forum', 'ink_new_topic_login' );
  * enqueue css if this is enabled
  */
 inkston_integration::get_instance()->ii_enqueue_script( 'ii-bbpress' );
+
+/*
+ * attempt to handle generic request for current user
+ *
+ * if the url is passed as forums/users/current/
+ * this function detects that the permalink has been set to bbp_user=current
+ * and
+ *  - if the user is logged on, the query is changed to the current user
+ *  - if the user is not logged on, the user is redirected to login screen
+ *
+ */
+function ink_bbp_request_current_user( $query_vars ) {
+	if ( isset( $query_vars[ 'bbp_user' ] ) ) {
+		switch ( $query_vars[ 'bbp_user' ] ) {
+			case 'current':
+				if ( get_current_user_id() ) {
+					$query_vars[ 'bbp_user' ] = bbp_get_current_user_name();
+				} else {
+					auth_redirect();
+				}
+		}
+	}
+	return $query_vars;
+}
+
+add_filter( 'bbp_request', 'ink_bbp_request_current_user', 10, 1 );

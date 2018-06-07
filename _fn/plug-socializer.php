@@ -16,9 +16,9 @@ function ink_login_form_add_socializer($content, $args)
     if (function_exists( 'the_champ_login_button')) {
         return $content . the_champ_login_shortcode(
                 array(
-                    'title' => __( 'Login or register with Facebook, LinkedIn, Google', 'photoline-inkston')
+                    'title' => __( 'Login or register with Facebook, LinkedIn, Google', 'inkston-integration')
             )) . '<div id="ink_login_message">' .
-            __( 'Or use your Inkston login:', 'photoline-inkston') .
+            __( 'Or use your Inkston login:', 'inkston-integration') .
             '</div>';
     } else {
         return $content;

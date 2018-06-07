@@ -40,20 +40,20 @@ do_action( 'woocommerce_before_account_navigation' );
         }
         if ($profileurl){
         ?><li class="">
-<a class="inline" href="<?php echo($profileurl); ?>"><?php echo(esc_html( __( 'My Profile', 'photoline-inkston') ));?></a>
- (<a class="inline" href="<?php echo($profileurl) . '/edit/'; ?>"><?php echo(esc_html( __( 'Edit', 'photoline-inkston') ));?></a>)
+<a class="inline" href="<?php echo($profileurl); ?>"><?php echo(esc_html( __( 'My Profile', 'inkston-integration') ));?></a>
+ (<a class="inline" href="<?php echo($profileurl) . '/edit/'; ?>"><?php echo(esc_html( __( 'Edit', 'inkston-integration') ));?></a>)
 </li>
 <?php } ?>
 <li><a href="/community/my-awards/" title="<?php 
-    _e( "Check your points in inkston rewards scheme", 'photoline-inkston' ); ?>"><?php 
-    _e( "My Rewards", 'photoline-inkston' ); ?></a></li>  
+    _e( "Check your points in inkston rewards scheme", 'inkston-integration' ); ?>"><?php 
+    _e( "My Rewards", 'inkston-integration' ); ?></a></li>  
 <li class="community-menu">
-<a href="/community/my-listings"><?php echo(esc_html( __( 'My Listings', 'photoline-inkston') ));?></a>
+<a href="/community/my-listings"><?php echo(esc_html( __( 'My Listings', 'inkston-integration') ));?></a>
 </li>
-<li class="community-menu"><a href="<?php echo($profileurl) ?>/topics/"><?php echo(esc_html( __( 'My Forum Topics', 'photoline-inkston') ));?></a></li>
-<li class="community-menu"><a href="<?php echo($profileurl) ?>/replies/"><?php echo(esc_html( __( 'My Forum Replies', 'photoline-inkston') ));?></a></li>
-<li class="community-menu"><a href="<?php echo($profileurl) ?>/favorites/"><?php echo(esc_html( __( 'My Favourite Forum Posts', 'photoline-inkston') ));?></a></li>
-<li class="community-menu"><a href="<?php echo($profileurl) ?>/subscriptions/"><?php echo(esc_html( __( 'My Forum Subscriptions', 'photoline-inkston') ));?></a></li>
+<li class="community-menu"><a href="<?php echo($profileurl) ?>/topics/"><?php echo(esc_html( __( 'My Forum Topics', 'inkston-integration') ));?></a></li>
+<li class="community-menu"><a href="<?php echo($profileurl) ?>/replies/"><?php echo(esc_html( __( 'My Forum Replies', 'inkston-integration') ));?></a></li>
+<li class="community-menu"><a href="<?php echo($profileurl) ?>/favorites/"><?php echo(esc_html( __( 'My Favourite Forum Posts', 'inkston-integration') ));?></a></li>
+<li class="community-menu"><a href="<?php echo($profileurl) ?>/subscriptions/"><?php echo(esc_html( __( 'My Forum Subscriptions', 'inkston-integration') ));?></a></li>
 <?php 
 $page_id = inkGetPageID( 'comments');  // get Comments page in the current language
 if ($page_id){
@@ -62,8 +62,8 @@ if ($page_id){
 ?><li class="">
     <span class="vcard user-comments">
         <a class="url fn n" href="<?php echo($comment_link);?>" title="<?php 
-            esc_attr__( "My comments and reviews", 'photoline-inkston'); 
-            ?>" rel="me"><?php _e("My Comments/Reviews", 'photoline-inkston'); ?></a>
+            esc_attr__( "My comments and reviews", 'inkston-integration'); 
+            ?>" rel="me"><?php _e("My Comments/Reviews", 'inkston-integration'); ?></a>
     </span>
 </li>
 <?php } 
@@ -80,7 +80,7 @@ if ($wp_subscribe_reloaded ){
         $manager_link .= "?srek=" . $wp_subscribe_reloaded->stcr->utils->get_subscriber_key($current_user_email) . "&srk=$subscriber_salt&amp;srsrc=e&post_permalink=";
         if ($manager_link){
         ?><li class=""><a href="<?php echo($manager_link); ?>"><?php echo(esc_html( 
-            __( 'Comment subscriptions', 'photoline-inkston') ));?></a></li><?php 
+            __( 'Comment subscriptions', 'inkston-integration') ));?></a></li><?php 
         }
     }
 }
@@ -92,7 +92,7 @@ if (function_exists('ink_get_newsletter_subscribe_url')){
   $mailpoet_link = ink_get_newsletter_subscribe_url();
   if ($mailpoet_link) {
       ?><li class=""><a href="<?php echo($mailpoet_link); ?>"><?php echo(esc_html( 
-          __( 'Newsletter subscriptions', 'photoline-inkston') ));?></a></li><?php 
+          __( 'Newsletter subscriptions', 'inkston-integration') ));?></a></li><?php 
   } 
 }
 ?>

@@ -21,7 +21,7 @@ function inkston_excerpt( $length = 30, $readmore = false ) {
 	$id		 = $post->ID;
 	$output	 = '<p class="inkston-excerpt">' . inkston_get_excerpt( inkston_excerpt_length( $length ) );
 	if ( $readmore == true ) {
-		$readmore_link	 = '<span class="inkston-readmore"><a href="' . get_permalink( $id ) . '" title="' . __( 'reading', 'photoline-inkston' ) . '" rel="bookmark">' . __( 'Read more', 'photoline-inkston' ) . '</a></span>';
+		$readmore_link	 = '<span class="inkston-readmore"><a href="' . get_permalink( $id ) . '" title="' . __( 'reading', 'inkston-integration' ) . '" rel="bookmark">' . __( 'Read more', 'inkston-integration' ) . '</a></span>';
 		$output			 .= apply_filters( 'inkston_readmore_link', $readmore_link );
 	}
 	$output .= '</p>';

@@ -1,14 +1,13 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Inkston Integration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 11:46+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"PO-Revision-Date: 2018-06-07 18:33+0000\n"
+"Last-Translator: moqiao <moqiao@inkston.com>\n"
+"Language-Team: French (France)\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -146,7 +145,7 @@ msgstr ""
 
 #: inkston-integration-settings.php:151
 msgid "Cart"
-msgstr ""
+msgstr "Panier"
 
 #: inkston-integration-settings.php:158
 msgid "Currencies"
@@ -221,51 +220,55 @@ msgstr ""
 #: _fn/plug-woo-offers.php:50
 msgid "Congratulations, your order is now eligible for free shipping!"
 msgstr ""
+"Félicitations, votre commande est maintenant admissible à la livraison "
+"gratuite!"
 
 #: _fn/plug-woo-offers.php:52
 msgid "Your order qualifies for free shipping!"
-msgstr ""
+msgstr "Votre commandes se qualifient pour des expeditions gratuites!"
 
 #: _fn/plug-woo-offers.php:57
 #, php-format
 msgid "Add %s more to your order to qualify for free shipping!"
 msgstr ""
+"Ajoutez %s plus à votre commande pour être admissible à la livraison "
+"gratuite!"
 
 #: _fn/plug-woo-poly-reviews.php:42
 msgid "Recent discussions in: "
-msgstr ""
+msgstr "Discussions récentes dans:"
 
 #: _fn/plug-woo-cart.php:95
 msgid "Checkout"
-msgstr ""
+msgstr "Caisse"
 
 #: _fn/plug-business-directory.php:13
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: _fn/plug-business-directory.php:14
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: _fn/plug-business-directory.php:15
 msgid "Country"
-msgstr ""
+msgstr "Pays"
 
 #: _fn/plug-business-directory.php:16
 msgid "Contact Email"
-msgstr ""
+msgstr "Email du contact"
 
 #: _fn/plug-business-directory.php:17
 msgid "Location"
-msgstr ""
+msgstr "Région"
 
 #: _fn/plug-business-directory.php:18
 msgid "About"
-msgstr ""
+msgstr "Autour de"
 
 #: _fn/plug-business-directory.php:19
 msgid "Summary"
-msgstr ""
+msgstr "Résumé"
 
 #: _fn/plug-business-directory.php:20
 msgid "Website"
@@ -273,25 +276,28 @@ msgstr ""
 
 #: _fn/plug-business-directory.php:28
 msgid "Artist or studio name "
-msgstr ""
+msgstr "Nom de l'artiste ou du studio"
 
 #: _fn/plug-business-directory.php:29
 msgid "Select one or more categories for your listing"
-msgstr ""
+msgstr "Sélectionnez une ou plusieurs catégories pour votre annonce"
 
 #: _fn/plug-business-directory.php:30
 msgid "Main country "
-msgstr ""
+msgstr "Pays principal"
 
 #: _fn/plug-business-directory.php:31
 msgid "Please enter town or region to help visitors find you "
-msgstr ""
+msgstr "Entrez la ville ou la région pour aider les visiteurs à vous trouver"
 
 #: _fn/plug-business-directory.php:32
 msgid ""
 "To avoid spam, Email address will never be shown, instead a contact form "
 "will be provided which is only available to genuine logged-on users. "
 msgstr ""
+"Pour éviter le courrier indésirable, l'adresse de courrier électronique ne "
+"sera jamais affichée, mais un formulaire de contact sera fourni qui n'est "
+"disponible que pour les utilisateurs authentiques connectés."
 
 #: _fn/plug-business-directory.php:33
 msgid ""
@@ -299,30 +305,41 @@ msgid ""
 "Do you sell your artwork, do you accept commissions?  Do you teach or can "
 "you recommend teachers? "
 msgstr ""
+"Comment avez-vous commencé avec les arts orientaux? Quelles sont vos "
+"techniques préférées? Vendez-vous votre œuvre d'art, acceptez-vous des "
+"commissions? Enseignez-vous ou pouvez-vous recommander des enseignants?"
 
 #: _fn/plug-business-directory.php:34
 msgid ""
 "Here you can make a special short summary for search engines and search "
 "results.  Leave blank for an automatic summary. "
 msgstr ""
+"Ici, vous pouvez faire un petit résumé spécial pour les moteurs de recherche "
+"et les résultats de recherche. Laissez vide pour un résumé automatique."
 
 #: _fn/plug-business-directory.php:35
 msgid ""
 "Main website (can be any link including Facebook page if that is your main "
 "page) "
 msgstr ""
+"Site principal (peut-être un lien incluant la page Facebook si c'est votre "
+"page principale)"
 
 #: _fn/plug-business-directory.php:36
 msgid ""
 "add optional tags separated by commas, to allow more classifications than "
 "available under categories "
 msgstr ""
+"Ajouter des balises facultatives séparées par des virgules, pour permettre "
+"plus de classifications que celles disponibles dans les catégories"
 
 #: _fn/plug-woo-checkout-files.php:17
 msgid ""
 "Your shopping cart includes customization options, you can tell us about "
 "these on the checkout page."
 msgstr ""
+"Votre panier comprend des options de personnalisation, vous pouvez nous en "
+"informer sur la page de caisse."
 
 #: _fn/plug-woo-checkout-files.php:33
 msgid ""
@@ -330,39 +347,43 @@ msgid ""
 "and/or make comments below. You may also skip this step and confirm details "
 "with us later."
 msgstr ""
+"Votre commande a une option de conception personnalisée, si vous le "
+"souhaitez, vous pouvez télécharger un fichier et / ou faire des commentaires "
+"ci-dessous. Vous pouvez également ignorer cette étape et confirmer les "
+"détails avec nous plus tard."
 
 #: _fn/plug-mailpoet.php:46
 msgid "click here to manage your subscription"
-msgstr ""
+msgstr "cliquez ici pour gérer votre abonnement"
 
 #: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
 msgid "No badges yet"
-msgstr ""
+msgstr "Pas encore de badges"
 
 #: _fn/plug-badgeos.php:158
 msgid "level"
-msgstr ""
+msgstr "niveau"
 
 #: _fn/plug-badgeos.php:192
 msgid "Current level: "
-msgstr ""
+msgstr "Niveau actuel:"
 
 #: _fn/plug-badgeos.php:194
 msgid "level "
-msgstr ""
+msgstr "niveau"
 
 #: _fn/plug-badgeos.php:196
 #, php-format
 msgid "Current score: %1$s points."
-msgstr ""
+msgstr "Score actuel: %1$s points."
 
 #: _fn/plug-badgeos.php:328
 msgid "Congratulations you have been awarded:"
-msgstr ""
+msgstr "Félicitations, vous avez reçu:"
 
 #: _fn/plug-badgeos.php:376
 msgid "your contribution has unlocked an award"
-msgstr ""
+msgstr "Votre contribution a débloqué un prix"
 
 #: _fn/plug-badgeos.php:379
 #, php-format
@@ -370,18 +391,20 @@ msgid ""
 "Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
 "and turn these notifications on or off."
 msgstr ""
+"Visitez <a href=\"%1$s\"> votre page de profil </a> pour voir les détails de "
+"vos récompenses et activer ou désactiver ces notifications."
 
 #: _fn/plug-badgeos.php:382
 msgid "You were awarded this badge for making contributions to "
-msgstr ""
+msgstr "Vous avez reçu ce badge pour avoir contribué à"
 
 #: _fn/plug-badgeos.php:383
 msgid "Inkston Oriental Art Comunity"
-msgstr ""
+msgstr "Communauté d'art oriental d'Inkston"
 
 #: _fn/plug-badgeos.php:387 _fn/plug-bbpress.php:90
 msgid "Thankyou for participating in Inkston Community"
-msgstr ""
+msgstr "Merci d'avoir participé à la communauté d'Inkston"
 
 #: _fn/plug-badgeos.php:390
 msgid "rewards@inkston.com"
@@ -393,37 +416,41 @@ msgid ""
 "The coupon %s will give you a discount of %s when your basket value reaches "
 "%s or more."
 msgstr ""
+"Le coupon %s vous donnera une réduction de %s lorsque la valeur de votre "
+"panier atteint %s ou plus."
 
 #: _fn/plug-woo-buttons.php:33
 msgid "Buy"
-msgstr ""
+msgstr "Acheter"
 
 #: _fn/plug-woo-buttons.php:36 _fn/plug-woo-amazon.php:91
 msgid "View"
-msgstr ""
+msgstr "Voir"
 
 #: _fn/plug-woo-buttons.php:41
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: _fn/plug-woo-buttons.php:43 _fn/plug-woo-buttons.php:50
 #: _fn/plug-woo-buttons.php:54
 msgid "Read"
-msgstr ""
+msgstr "Lire"
 
 #: _fn/plug-woo-buttons.php:48
 msgid "Choose"
-msgstr ""
+msgstr "Choisir"
 
 #: _fn/plug-bbpress.php:85
 #, php-format
 msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
-msgstr ""
+msgstr "Nouvelle publication dans Forum \"%1$s\", Sujet \"%2$s\"."
 
 #: _fn/plug-bbpress.php:88
 #, php-format
 msgid "Or visit your profile page to review all your subscriptions: %1$s"
 msgstr ""
+"Ou visitez votre page de profil pour passer en revue tous vos abonnements: "
+"%1$s"
 
 #: _fn/plug-bbpress.php:101
 msgid "forum-subscribers@inkston.com"
@@ -432,62 +459,63 @@ msgstr ""
 #: _fn/plug-bbpress.php:237 _fn/plug-bbpress.php:252
 msgid "Login or Register with email, Facebook, Google or LinkedIn account"
 msgstr ""
+"Connectez-vous ou inscrivez-vous sur Facebook, LinkedIn, Google ou Email"
 
 #: _fn/sharer.php:26
 msgid "If you like this, please share: "
-msgstr ""
+msgstr "Si vous aimez ceci, merci de partager:"
 
 #: _fn/plug-woo-tooltips.php:137
 #: _fn/woocommerce/single-product/product-attributes.php:120
 msgid "Product Weight"
-msgstr ""
+msgstr "Poids du produit"
 
 #: _fn/plug-woo-tooltips.php:141
 #: _fn/woocommerce/single-product/product-attributes.php:124
 msgid "Product Size"
-msgstr ""
+msgstr "Taille du produit"
 
 #: _fn/plug-woo-tooltips.php:147 _fn/plug-woo-tooltips.php:154
 #: _fn/woocommerce/single-product/product-attributes.php:130
 #: _fn/woocommerce/single-product/product-attributes.php:137
 msgid "[depending on variation]"
-msgstr ""
+msgstr "[En fonction de la variation]"
 
 #: _fn/plug-woo-amazon.php:33
 msgid "Please leave your reviews!"
-msgstr ""
+msgstr "s'il vous plaît laissez votre avis!"
 
 #: _fn/plug-woo-amazon.php:91
 msgid "Review"
-msgstr ""
+msgstr "Laissez votre avis"
 
 #: _fn/plug-woo-amazon.php:111 _fn/plug-woo-amazon.php:117
 msgid "on"
-msgstr ""
+msgstr "sur"
 
 #: _fn/plug-socializer.php:19
 msgid "Login or register with Facebook, LinkedIn, Google"
-msgstr ""
+msgstr "Connectez-vous ou inscrivez-vous sur Facebook, LinkedIn, Google"
 
 #: _fn/plug-socializer.php:21
 msgid "Or use your Inkston login:"
-msgstr ""
+msgstr "Ou utilisez votre login Inkston:"
 
 #: _fn/excerpts.php:24
 msgid "reading"
-msgstr ""
+msgstr "lisant"
 
 #: _fn/excerpts.php:24
 msgid "Read more"
-msgstr ""
+msgstr "En savoir plus"
 
 #: _fn/inkston.php:30
 msgid "Search Inkston."
-msgstr ""
+msgstr "Rechercher Inkston."
 
 #: _fn/inkston.php:34
 msgid "results"
-msgstr ""
+msgstr "résultats"
 
 #: _fn/plug-woo-asin-upc-net.php:245 _fn/plug-woo-asin-upc-net.php:357
 msgid "ASIN EU"
@@ -503,30 +531,30 @@ msgstr ""
 
 #: _fn/plug-woo-asin-upc-net.php:280
 msgid "12 digits international standard Universal Product Code."
-msgstr ""
+msgstr "Code numérique universel de 12 chiffres."
 
 #: _fn/plug-woo-asin-upc-net.php:303 _fn/plug-woo-asin-upc-net.php:407
 msgid "Product weight"
-msgstr ""
+msgstr "Poids du produit"
 
 #: _fn/plug-woo-asin-upc-net.php:305 _fn/plug-woo-asin-upc-net.php:307
 #: _fn/plug-woo-asin-upc-net.php:409 _fn/plug-woo-asin-upc-net.php:411
 msgid "Unpacked net product weight."
-msgstr ""
+msgstr "Poids net du produit non emballé."
 
 #: _fn/plug-woo-asin-upc-net.php:335 _fn/plug-woo-asin-upc-net.php:426
 msgid "Product size "
-msgstr ""
+msgstr "Taille du produit"
 
 #: _fn/plug-woo-asin-upc-net.php:343 _fn/plug-woo-asin-upc-net.php:385
 #: _fn/plug-woo-asin-upc-net.php:430
 msgid "Unpacked product size LxWxH in decimal form"
-msgstr ""
+msgstr "Taille du produit non emballé LxWxH en décimale"
 
 #: _fn/woocommerce/order/order-details.php:35
 #: _fn/woocommerce/myaccount/my-orders.php:35
 msgid "Please help us to help you by reviewing your products!"
-msgstr ""
+msgstr "S'il vous plaît nous aider à vous aider en examinant vos produits!"
 
 #: _fn/woocommerce/order/order-details.php:37
 #: _fn/woocommerce/myaccount/my-orders.php:37
@@ -536,22 +564,27 @@ msgid ""
 "valuable in helping us improve and helping others choose the most suitable "
 "products."
 msgstr ""
+"Toutes les critiques gagnent des points dans <a href=\"https://www.inkston."
+"com/community/my-awards/\">le système de récompense inkston</a>. Votre "
+"expérience est très précieuse pour nous aider à améliorer et à aider les "
+"autres à choisir les produits les plus adaptés."
 
 #: _fn/woocommerce/single-product/review-meta.php:26
 msgid "Your comments are awaiting approval"
-msgstr ""
+msgstr "Vos commentaires attendent l'approbation"
 
 #: _fn/woocommerce/single-product/product-attributes.php:225
 msgid "Shipping"
-msgstr ""
+msgstr "Livraison"
 
 #: _fn/woocommerce/single-product/product-attributes.php:229
 msgid "Free"
-msgstr ""
+msgstr "Gratuit"
 
 #: _fn/woocommerce/single-product/product-attributes.php:230
 msgid "Order including this product will qualify for free shipping."
 msgstr ""
+"La commande comprenant ce produit sera admissible à la livraison gratuite."
 
 #: _fn/woocommerce/single-product/product-attributes.php:237
 msgid "Standard"
@@ -559,63 +592,63 @@ msgstr ""
 
 #: _fn/woocommerce/single-product/product-attributes.php:239
 msgid "Standard shipping."
-msgstr ""
+msgstr "Expédition standard."
 
 #: _fn/woocommerce/emails/customer-on-hold-order.php:33
 msgid "pay for this order online"
-msgstr ""
+msgstr "Payer pour cette commande en ligne"
 
 #: _fn/woocommerce/myaccount/navigation.php:43
 msgid "My Profile"
-msgstr ""
+msgstr "Mon profil"
 
 #: _fn/woocommerce/myaccount/navigation.php:44
 msgid "Edit"
-msgstr ""
+msgstr "Editer"
 
 #: _fn/woocommerce/myaccount/navigation.php:48
 msgid "Check your points in inkston rewards scheme"
-msgstr ""
+msgstr "Vérifiez vos points dans le système de récompenses inkston"
 
 #: _fn/woocommerce/myaccount/navigation.php:49
 msgid "My Rewards"
-msgstr ""
+msgstr "Mis Points"
 
 #: _fn/woocommerce/myaccount/navigation.php:51
 msgid "My Listings"
-msgstr ""
+msgstr "Mes pages d'artiste"
 
 #: _fn/woocommerce/myaccount/navigation.php:53
 msgid "My Forum Topics"
-msgstr ""
+msgstr "Mes sujets de forum"
 
 #: _fn/woocommerce/myaccount/navigation.php:54
 msgid "My Forum Replies"
-msgstr ""
+msgstr "Mis Responses"
 
 #: _fn/woocommerce/myaccount/navigation.php:55
 msgid "My Favourite Forum Posts"
-msgstr ""
+msgstr "Mis messages de forum favoris"
 
 #: _fn/woocommerce/myaccount/navigation.php:56
 msgid "My Forum Subscriptions"
-msgstr ""
+msgstr "Mes abonnements au forum"
 
 #: _fn/woocommerce/myaccount/navigation.php:65
 msgid "My comments and reviews"
-msgstr ""
+msgstr "Mes commentaires et avis"
 
 #: _fn/woocommerce/myaccount/navigation.php:66
 msgid "My Comments/Reviews"
-msgstr ""
+msgstr "Mes Commentaires/Avis"
 
 #: _fn/woocommerce/myaccount/navigation.php:83
 msgid "Comment subscriptions"
-msgstr ""
+msgstr "Abonnement aux commentaires"
 
 #: _fn/woocommerce/myaccount/navigation.php:95
 msgid "Newsletter subscriptions"
-msgstr ""
+msgstr "Abonnement à la Newsletter"
 
 #: _fn/woocommerce/myaccount/my-orders.php:32
 #: _fn/woocommerce/myaccount/orders.php:30
@@ -623,6 +656,9 @@ msgid ""
 "For any orders not received yet, please view status and delivery tracking "
 "codes below.<br />If your order has arrived, please leave your review!"
 msgstr ""
+"Pour toute commande non encore reçue, s'il vous plaît voir l'état et les "
+"codes de suivi de livraison ci-dessous.<br />Si votre commande est arrivée, "
+"s'il vous plaît laissez votre avis!"
 
 #: _fn/woocommerce/checkout/terms.php:31
 #, php-format
@@ -631,6 +667,9 @@ msgid ""
 "target=\"_blank\" class=\"woocommerce-terms-and-conditions-link\">terms &amp;"
 " conditions</a>"
 msgstr ""
+"En passant votre commande, vous acceptez <a href=\"%s\"  target=\"_blank\" "
+"class=\"woocommerce-terms-and-conditions-link\">les conditions d'utilisation "
+"de inkston.com</a>"
 
 #. Name of the plugin
 msgid "Inkston Integration"

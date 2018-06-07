@@ -47,14 +47,14 @@ function inkston_get_cart_message( $valueadd ) {
     if ( $carttotal > $free_level ) {
 	//if new items have just pushed total into free shipping eligibility
 	if ( ($carttotal - $valueadd) < $free_level ) {
-	    $shippingnote = __( 'Congratulations, your order is now eligible for free shipping!', 'photoline-inkston' );
+	    $shippingnote = __( 'Congratulations, your order is now eligible for free shipping!', 'inkston-integration' );
 	} else {
-	    $shippingnote = __( 'Your order qualifies for free shipping!', 'photoline-inkston' );
+	    $shippingnote = __( 'Your order qualifies for free shipping!', 'inkston-integration' );
 	}
     } elseif ( $carttotal > $encouragement_level ) {
 	$shortfall	 = $free_level - $carttotal;
 	$shortfall	 = wc_price( $shortfall );
-	$shippingnote	 = sprintf( __( 'Add %s more to your order to qualify for free shipping!', 'photoline-inkston' ), $shortfall );
+	$shippingnote	 = sprintf( __( 'Add %s more to your order to qualify for free shipping!', 'inkston-integration' ), $shortfall );
     }
     return $shippingnote;
 }

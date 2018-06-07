@@ -12,8 +12,8 @@ function ink_comment_form_defaults( $defaults ) {
 	__( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink() . '#comment' ) )
 	) . ' ' .
 //login is now simplified so no need for this complex process...
-//        sprintf(__( 'If you do not have an account <a target="_blank" href="%s">please register</a> (will open in new window)', 'photoline-inkston'), wp_registration_url()) .
-//        sprintf(__( ' and then <a href="#comment" onclick="%s" ">click here</a>.', 'photoline-inkston'), "javascript:window.location.hash = '#comment';window.location.reload(true);") .
+//        sprintf(__( 'If you do not have an account <a target="_blank" href="%s">please register</a> (will open in new window)', 'inkston-integration'), wp_registration_url()) .
+//        sprintf(__( ' and then <a href="#comment" onclick="%s" ">click here</a>.', 'inkston-integration'), "javascript:window.location.hash = '#comment';window.location.reload(true);") .
 	'</p>';
 
 	$defaults[ 'must_log_in' ] = $must_login;

@@ -27,7 +27,7 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 <?php if ( $has_orders ) : ?>
 	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent orders', 'woocommerce' ) ); ?></h2>
 <p><?php  
-    _e( 'For any orders not received yet, please view status and delivery tracking codes below.<br />If your order has arrived, please leave your review!', 'photoline-inkston');
+    _e( 'For any orders not received yet, please view status and delivery tracking codes below.<br />If your order has arrived, please leave your review!', 'inkston-integration');
 ?></p>    
 	<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
 		<thead>

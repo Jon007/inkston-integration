@@ -23,7 +23,7 @@ $verified = wc_review_is_from_verified_owner( $comment->comment_ID );
 
 if ( '0' === $comment->comment_approved ) { ?>
 
-	<p class="meta"><em class="woocommerce-review__awaiting-approval"><?php esc_attr_e( 'Your comments are awaiting approval', 'photoline-inkston' ); ?></em></p>
+	<p class="meta"><em class="woocommerce-review__awaiting-approval"><?php esc_attr_e( 'Your comments are awaiting approval', 'inkston-integration' ); ?></em></p>
 
 <?php } else { ?>
 

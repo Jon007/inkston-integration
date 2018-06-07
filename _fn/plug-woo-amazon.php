@@ -30,7 +30,7 @@ function ink_output_please_leave_reviews() {
 			}
 			if ( $amazonEuLink || $amazonUsLink ) {
 				?><div class="reviews"><?php
-					_e( 'Please leave your reviews!', 'photoline-inkston' );
+					_e( 'Please leave your reviews!', 'inkston-integration' );
 					echo ( ' ');
 					?></div><?php
 				if ( $amazonEuLink && isset( $ii_options[ 'amazoneu' ] ) ) {
@@ -88,7 +88,7 @@ function _ink_amazon_link( $asin, $isEU, $isReview, $isVariation ) {
 		return;
 	}
 	$amazon_domain	 = '.com';
-	$amazon_verb	 = ($isReview) ? __( 'Review', 'photoline-inkston' ) : __( 'View', 'photoline-inkston' );
+	$amazon_verb	 = ($isReview) ? __( 'Review', 'inkston-integration' ) : __( 'View', 'inkston-integration' );
 	$amazon_site	 = '';
 	if ( $isEU ) {
 		$locale = get_locale();
@@ -106,14 +106,14 @@ function _ink_amazon_link( $asin, $isEU, $isReview, $isVariation ) {
 				$amazon_domain	 = '.co.uk';
 		}
 	} else {
-		$amazon_site = __( 'Amazon USA', 'photoline-inkston' );
+		$amazon_site = __( 'Amazon USA', 'inkston-integration' );
 	}
-	$amazon_title	 = $amazon_verb . ' ' . $asin . ' ' . __( 'on', 'photoline-inkston' ) . ' ' . $amazon_site;
+	$amazon_title	 = $amazon_verb . ' ' . $asin . ' ' . __( 'on', 'inkston-integration' ) . ' ' . $amazon_site;
 	$amazonurl		 = ($isReview) ? 'https://www.amazon' . $amazon_domain .
 	'/review/create-review/ref=cm_cr_dp_d_wr_but_btm?ie=UTF8&asin=' . $asin . '#' : 'https://www.amazon' . $amazon_domain . '/dp/' . $asin . '/';
 
 	return '<span class="amazon-link"><a title="' . $amazon_title . '" href="' .
 	$amazonurl . '" target="_blank">' .
-	( ($isVariation) ? $asin . ' ' . __( 'on', 'photoline-inkston' ) . ' ' : '')
+	( ($isVariation) ? $asin . ' ' . __( 'on', 'inkston-integration' ) . ' ' : '')
 	. $amazon_site . '</a></span>';
 }
