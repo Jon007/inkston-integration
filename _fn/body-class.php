@@ -48,7 +48,7 @@ function inkston_body_class_filter( $classes ) {
 	}
 
 	$cookie_name = 'pll_language';
-	if ( isset( $_COOKIE[ $cookie_name ] ) ) {
+	if ( isset( $_COOKIE[ $cookie_name ] ) && ( $_COOKIE[ $cookie_name ]) ) {
 		$classes[]	 = 'lang';
 		$classes[]	 = $_COOKIE[ $cookie_name ];
 	} else { /* default to english if no language set yet */

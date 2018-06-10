@@ -29,7 +29,8 @@ do_action( 'woocommerce_before_account_navigation' );
 			<li class="<?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
 				<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
 			</li>
-        <?php } 
+			<?php
+		}
         $profileurl = false;
         if (function_exists( 'bbp_get_user_profile_url')) {
             $profileurl = esc_url( bbp_get_user_profile_url(get_current_user_id()));
@@ -39,14 +40,9 @@ do_action( 'woocommerce_before_account_navigation' );
             $profileurl = '/community/forums/users/' . $nicename;
         }
         if ($profileurl){
-        ?><li class="">
-<a class="inline" href="<?php echo($profileurl); ?>"><?php echo(esc_html( __( 'My Profile', 'inkston-integration') ));?></a>
- (<a class="inline" href="<?php echo($profileurl) . '/edit/'; ?>"><?php echo(esc_html( __( 'Edit', 'inkston-integration') ));?></a>)
-</li>
+			?><li><a class="inline" href="<?php echo($profileurl); ?>"><?php echo(esc_html( __( 'My Profile', 'inkston-integration' ) )); ?></a></li><li><a class="inline" href="<?php echo($profileurl) . '/edit/'; ?>"><?php echo(esc_html( __( 'Edit Profile', 'inkston-integration' ) )); ?></a></li>
 <?php } ?>
-<li><a href="/community/my-awards/" title="<?php 
-    _e( "Check your points in inkston rewards scheme", 'inkston-integration' ); ?>"><?php 
-    _e( "My Rewards", 'inkston-integration' ); ?></a></li>  
+		<li><a href="/community/my-awards/" title="<?php _e( "Check your points in inkston rewards scheme", 'inkston-integration' ); ?>"><?php _e( "My Rewards", 'inkston-integration' ); ?></a></li>
 <li class="community-menu">
 <a href="/community/my-listings"><?php echo(esc_html( __( 'My Listings', 'inkston-integration') ));?></a>
 </li>
@@ -66,7 +62,8 @@ if ($page_id){
             ?>" rel="me"><?php _e("My Comments/Reviews", 'inkston-integration'); ?></a>
     </span>
 </li>
-<?php } 
+			<?php
+		}
 
 global $wp_subscribe_reloaded;
 if ($wp_subscribe_reloaded ){
@@ -79,8 +76,10 @@ if ($wp_subscribe_reloaded ){
 
         $manager_link .= "?srek=" . $wp_subscribe_reloaded->stcr->utils->get_subscriber_key($current_user_email) . "&srk=$subscriber_salt&amp;srsrc=e&post_permalink=";
         if ($manager_link){
-        ?><li class=""><a href="<?php echo($manager_link); ?>"><?php echo(esc_html( 
-            __( 'Comment subscriptions', 'inkston-integration') ));?></a></li><?php 
+					?><li class=""><a href="<?php echo($manager_link); ?>"><?php
+							echo(esc_html(
+							__( 'Comment subscriptions', 'inkston-integration' ) ));
+							?></a></li><?php
         }
     }
 }
@@ -91,8 +90,10 @@ if ($wp_subscribe_reloaded ){
 if (function_exists('ink_get_newsletter_subscribe_url')){
   $mailpoet_link = ink_get_newsletter_subscribe_url();
   if ($mailpoet_link) {
-      ?><li class=""><a href="<?php echo($mailpoet_link); ?>"><?php echo(esc_html( 
-          __( 'Newsletter subscriptions', 'inkston-integration') ));?></a></li><?php 
+				?><li class=""><a href="<?php echo($mailpoet_link); ?>"><?php
+								echo(esc_html(
+								__( 'Newsletter subscriptions', 'inkston-integration' ) ));
+								?></a></li><?php
   } 
 }
 ?>

@@ -17,6 +17,14 @@ text-rendering: auto;
 .wishlist_products_counter.wishlist-counter-with-products .fa-heart-o:before {
 content: "\f004";
 }
+#payment .payment_methods>.woocommerce-PaymentMethod>label::before, #payment .payment_methods>.wc_payment_method>label::before {
+    font-family: 'FontAwesome'!important;
+    content: "\F10C"!important;
+}
+#payment .payment_methods li.woocommerce-PaymentMethod>input[type="radio"]:first-child:checked+label::before, #payment .payment_methods li.wc_payment_method>input[type="radio"]:first-child:checked+label::before {
+    font-family: 'Font Awesome 5 Free'!important;
+    content: "\f192"!important;
+}
 .user-has-earned .won{display:initial;}
 .user-has-not-earned .won{display:none;}
 .user-has-earned .win{display:none;}

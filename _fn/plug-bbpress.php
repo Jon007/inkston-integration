@@ -1,6 +1,19 @@
 <?php
 /*
  * bbpress specific customisations
+ *
+ * NOTE ON IMAGE UPLOAD FOR BBPRESS
+ *  - since wp4.8, tinymce is no longer inserting sizes for images
+ *    this breaks photoswipe (separate issue perhaps)
+ *  - allowing Add Media on bbPress doesnt work by default because the
+ *  attach image permissions are checked before any draft post exists
+ *    - when adding new topic,  parent forum permissions are checked
+ *    - when adding new reply, parent topic permissions are checked
+ * the effect of this edit_others is required on forums and topics...
+ * .. they shouldnt actually be able to edit .. and an edit url will give
+ * Sorry, you are not allowed to edit posts in this post type.
+ * it is just this particular capability which is needed
+ *
  */
 /**
  * Filters the forum reply link in feeds to force unique link to stop caching.
@@ -287,3 +300,15 @@ function ink_bbp_request_current_user( $query_vars ) {
 }
 
 add_filter( 'bbp_request', 'ink_bbp_request_current_user', 10, 1 );
+
+/*
+ * enable media upload on topics and replies
+ * - SEE HEADER NOTES FOR IMPORTANT CONFIGURATION REQUIREMENTS
+ */
+function ii_bbpress_upload_media( $args ) {
+	$args[ 'media_buttons' ] = true;
+
+	return $args;
+}
+
+add_filter( 'bbp_after_get_the_content_parse_args', 'ii_bbpress_upload_media' );

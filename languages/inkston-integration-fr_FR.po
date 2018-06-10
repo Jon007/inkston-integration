@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inkston Integration\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 11:46+0000\n"
-"PO-Revision-Date: 2018-06-07 18:33+0000\n"
+"POT-Creation-Date: 2018-06-10 18:45+0000\n"
+"PO-Revision-Date: 2018-06-10 18:46+0000\n"
 "Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -356,36 +356,36 @@ msgstr ""
 msgid "click here to manage your subscription"
 msgstr "cliquez ici pour gérer votre abonnement"
 
-#: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
+#: _fn/plug-badgeos.php:76 _fn/plug-badgeos.php:137
 msgid "No badges yet"
 msgstr "Pas encore de badges"
 
-#: _fn/plug-badgeos.php:158
+#: _fn/plug-badgeos.php:156
 msgid "level"
 msgstr "niveau"
 
-#: _fn/plug-badgeos.php:192
+#: _fn/plug-badgeos.php:190
 msgid "Current level: "
 msgstr "Niveau actuel:"
 
-#: _fn/plug-badgeos.php:194
+#: _fn/plug-badgeos.php:192
 msgid "level "
 msgstr "niveau"
 
-#: _fn/plug-badgeos.php:196
+#: _fn/plug-badgeos.php:194
 #, php-format
 msgid "Current score: %1$s points."
 msgstr "Score actuel: %1$s points."
 
-#: _fn/plug-badgeos.php:328
+#: _fn/plug-badgeos.php:319
 msgid "Congratulations you have been awarded:"
 msgstr "Félicitations, vous avez reçu:"
 
-#: _fn/plug-badgeos.php:376
+#: _fn/plug-badgeos.php:365
 msgid "your contribution has unlocked an award"
 msgstr "Votre contribution a débloqué un prix"
 
-#: _fn/plug-badgeos.php:379
+#: _fn/plug-badgeos.php:368
 #, php-format
 msgid ""
 "Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
@@ -394,19 +394,19 @@ msgstr ""
 "Visitez <a href=\"%1$s\"> votre page de profil </a> pour voir les détails de "
 "vos récompenses et activer ou désactiver ces notifications."
 
-#: _fn/plug-badgeos.php:382
+#: _fn/plug-badgeos.php:371
 msgid "You were awarded this badge for making contributions to "
 msgstr "Vous avez reçu ce badge pour avoir contribué à"
 
-#: _fn/plug-badgeos.php:383
+#: _fn/plug-badgeos.php:372
 msgid "Inkston Oriental Art Comunity"
 msgstr "Communauté d'art oriental d'Inkston"
 
-#: _fn/plug-badgeos.php:387 _fn/plug-bbpress.php:90
+#: _fn/plug-badgeos.php:376 _fn/plug-bbpress.php:103
 msgid "Thankyou for participating in Inkston Community"
 msgstr "Merci d'avoir participé à la communauté d'Inkston"
 
-#: _fn/plug-badgeos.php:390
+#: _fn/plug-badgeos.php:379
 msgid "rewards@inkston.com"
 msgstr ""
 
@@ -440,23 +440,23 @@ msgstr "Lire"
 msgid "Choose"
 msgstr "Choisir"
 
-#: _fn/plug-bbpress.php:85
+#: _fn/plug-bbpress.php:98
 #, php-format
 msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
 msgstr "Nouvelle publication dans Forum \"%1$s\", Sujet \"%2$s\"."
 
-#: _fn/plug-bbpress.php:88
+#: _fn/plug-bbpress.php:101
 #, php-format
 msgid "Or visit your profile page to review all your subscriptions: %1$s"
 msgstr ""
 "Ou visitez votre page de profil pour passer en revue tous vos abonnements: "
 "%1$s"
 
-#: _fn/plug-bbpress.php:101
+#: _fn/plug-bbpress.php:114
 msgid "forum-subscribers@inkston.com"
 msgstr ""
 
-#: _fn/plug-bbpress.php:237 _fn/plug-bbpress.php:252
+#: _fn/plug-bbpress.php:250 _fn/plug-bbpress.php:265
 msgid "Login or Register with email, Facebook, Google or LinkedIn account"
 msgstr ""
 "Connectez-vous ou inscrivez-vous sur Facebook, LinkedIn, Google ou Email"
@@ -492,6 +492,14 @@ msgstr "Laissez votre avis"
 #: _fn/plug-woo-amazon.php:111 _fn/plug-woo-amazon.php:117
 msgid "on"
 msgstr "sur"
+
+#: _fn/plug-woo-pay-statuses.php:46
+msgid "Payment has not been received for this order - "
+msgstr "Le paiement n'a pas été reçu pour cette commande -"
+
+#: _fn/plug-woo-pay-statuses.php:48
+msgid "click here to pay for this order online now."
+msgstr "cliquez ici pour payer cette commande en ligne maintenant."
 
 #: _fn/plug-socializer.php:19
 msgid "Login or register with Facebook, LinkedIn, Google"
@@ -598,55 +606,55 @@ msgstr "Expédition standard."
 msgid "pay for this order online"
 msgstr "Payer pour cette commande en ligne"
 
-#: _fn/woocommerce/myaccount/navigation.php:43
+#: _fn/woocommerce/myaccount/navigation.php:42
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: _fn/woocommerce/myaccount/navigation.php:44
-msgid "Edit"
-msgstr "Editer"
+#: _fn/woocommerce/myaccount/navigation.php:42
+msgid "Edit Profile"
+msgstr "Modifier profil"
 
-#: _fn/woocommerce/myaccount/navigation.php:48
+#: _fn/woocommerce/myaccount/navigation.php:44
 msgid "Check your points in inkston rewards scheme"
 msgstr "Vérifiez vos points dans le système de récompenses inkston"
 
-#: _fn/woocommerce/myaccount/navigation.php:49
+#: _fn/woocommerce/myaccount/navigation.php:44
 msgid "My Rewards"
 msgstr "Mis Points"
 
-#: _fn/woocommerce/myaccount/navigation.php:51
+#: _fn/woocommerce/myaccount/navigation.php:46
 msgid "My Listings"
 msgstr "Mes pages d'artiste"
 
-#: _fn/woocommerce/myaccount/navigation.php:53
+#: _fn/woocommerce/myaccount/navigation.php:48
 msgid "My Forum Topics"
 msgstr "Mes sujets de forum"
 
-#: _fn/woocommerce/myaccount/navigation.php:54
+#: _fn/woocommerce/myaccount/navigation.php:49
 msgid "My Forum Replies"
 msgstr "Mis Responses"
 
-#: _fn/woocommerce/myaccount/navigation.php:55
+#: _fn/woocommerce/myaccount/navigation.php:50
 msgid "My Favourite Forum Posts"
 msgstr "Mis messages de forum favoris"
 
-#: _fn/woocommerce/myaccount/navigation.php:56
+#: _fn/woocommerce/myaccount/navigation.php:51
 msgid "My Forum Subscriptions"
 msgstr "Mes abonnements au forum"
 
-#: _fn/woocommerce/myaccount/navigation.php:65
+#: _fn/woocommerce/myaccount/navigation.php:60
 msgid "My comments and reviews"
 msgstr "Mes commentaires et avis"
 
-#: _fn/woocommerce/myaccount/navigation.php:66
+#: _fn/woocommerce/myaccount/navigation.php:61
 msgid "My Comments/Reviews"
 msgstr "Mes Commentaires/Avis"
 
-#: _fn/woocommerce/myaccount/navigation.php:83
+#: _fn/woocommerce/myaccount/navigation.php:80
 msgid "Comment subscriptions"
 msgstr "Abonnement aux commentaires"
 
-#: _fn/woocommerce/myaccount/navigation.php:95
+#: _fn/woocommerce/myaccount/navigation.php:94
 msgid "Newsletter subscriptions"
 msgstr "Abonnement à la Newsletter"
 
