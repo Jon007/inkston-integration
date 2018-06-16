@@ -51,8 +51,11 @@ function inkston_get_excerpt( $length = 25, $readmore = false ) {
 	if ( $output && $output != '' ) {
 		$output = wp_trim_words( strip_shortcodes( $output ), $length );
 	}
-//	if ( ( ! is_search()) && ($post->post_type == 'product') ) {
-	if ( $post->post_type == 'product' ) {
+
+	//if it is a search, can't use the price_html as this includes shortcodes which are not then interpreted
+	//TODO: optionally, do shortcodes in price html
+	if ( ( ! is_search()) && ($post->post_type == 'product') ) {
+//	if ( $post->post_type == 'product' ) {
 		if ( class_exists( 'woocommerce' ) ) {
 			$product = wc_get_product( $post );
 			//quick check for product with no description
