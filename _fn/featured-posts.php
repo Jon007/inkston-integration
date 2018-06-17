@@ -156,6 +156,7 @@ function tile_thumb() {
 	$class			 = "tile h-entry";
 	$beforelink		 = '';
 	$excerpt_length	 = 20;
+	global $post;
 	if ( $post->post_type == 'product' ) {
 		$product	 = wc_get_product( $post );
 		$beforelink	 .= wc_get_rating_html( $product->get_average_rating(), $product->get_rating_count() );
