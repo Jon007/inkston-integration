@@ -12,6 +12,26 @@
  */
 //functionality for inkston site family only
 function is_inkston() {
+	return is_inkstondotcom();
+}
+
+/* certain links such as user profile, login can only be set
+  if on the same domain as the main site */
+function is_inkstondotcom() {
+	if ( ! is_inkston_family() ) {
+		return false;
+	}
+
+	//if the current url is derivative of the parent url
+	//then can use the parent branding and site-wide links
+	$siteurl = get_site_url();
+	$rooturl = get_site_url( 1 );
+	$result	 = strpos( strtolower( $siteurl ), strtolower( $rooturl ) );
+	return ( $result !== false );
+}
+
+/* if is an inkston family site, can use inkston functionality */
+function is_inkston_family() {
 	$sitefamily = strtolower( (is_multisite() ) ? ( get_blog_option( 1, 'blogname' ) ) : (get_bloginfo( 'name' )) );
 	return ($sitefamily == 'inkston');
 }

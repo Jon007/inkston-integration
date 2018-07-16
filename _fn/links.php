@@ -120,6 +120,38 @@ function ink_login_url( $login_url, $redirect, $force_reauth ) {
 }
 
 add_filter( 'login_url', 'ink_login_url', 10, 3 );
+/**
+ * Filters the logout URL.
+ *
+ * @since 2.8.0
+ *
+ * @param string $logout_url The HTML-encoded logout URL.
+ * @param string $redirect   Path to redirect to on logout.
+ */
+function ink_logout_url( $logout_url, $redirect ) {
+	if ( class_exists( 'woocommerce' ) ) {
+		return wc_logout_url();
+		//return '/?customer-logout=true';
+	}
+	return $logout_url;
+}
+
+add_filter( 'logout_url', 'ink_logout_url', 10, 2 );
+/**
+ * Filters the user registration URL.
+ *
+ * @param string $register_url The user registration URL.
+ */
+function ink_register_url( $register_url ) {
+	if ( class_exists( 'woocommerce' ) &&
+	( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) ) {
+		return wc_get_page_permalink( 'myaccount' );
+	}
+	return $register_url;
+}
+
+add_filter( 'register_url', 'ink_register_url', 10, 1 );
+/* for child family sites, allow cart link to main site cart */
 function ink_cart_url() {
 	$url = '';
 	if ( class_exists( 'woocommerce' ) ) {
