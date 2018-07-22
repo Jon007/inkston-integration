@@ -1,9 +1,9 @@
-=== JM Polylang User Alerts  ===
+=== Inkston Integration  ===
 Contributors: jonathanmoorebcsorg
 Donate link: http://paypal.me/jonathanmoorebcsorg
 Tags: locale, language, translate, message, polylang, woocommerce
 Requires at least: 4.7
-Tested up to: 4.9
+Tested up to: 4.9.7
 Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
@@ -39,6 +39,9 @@ Just keep asking and I will do it.
 1. Illustration shows sample usage
 
 == Changelog ==
+
+= 1.1 =
+(2018/07/23) WooCommerce enhancements for Multisite Post Duplicator 
 
 = 1.0 =
 (2018/05/30) Initial release.

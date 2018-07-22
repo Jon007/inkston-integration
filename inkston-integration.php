@@ -13,12 +13,12 @@
  * Description: Integration options for inkston family sites
  * Tags: locale, language, translate, message, polylang, woocommerce
  * Contributors: jonathanmoorebcsorg
- * Version: 1.0
+ * Version: 1.1
  * Stable Tag: 1.0
  * Requires At Least: 4.7
- * Tested Up To: 4.9
+ * Tested Up To: 4.9.7
  * WC requires at least: 3.0.0
- * WC tested up to: 3.2.5
+ * WC tested up to: 3.4.3
  * Requires PHP: 5.3
  * Version Components: {major}.{minor}.{bugfix}-{stage}{level}
  *

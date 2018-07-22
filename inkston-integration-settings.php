@@ -227,6 +227,21 @@ function ii_options_init() {
 		__( 'User Inkston WooCommerce template overrides.' )
 	)
 	);
+	add_settings_field(
+	'sitepricefactor', __( 'Site price multiplier', 'inkston-integration' ), 'sitepricefactor_render', $section_group, $settings_section, array(
+		__( 'Factor to use when converting prices from main inkston site to this site: should take into account currency conversion plus local site taxation and pricing policies.' )
+	)
+	);
+	add_settings_field(
+	'sitepricesync', __( 'Synchronise prices', 'inkston-integration' ), 'sitepricesync_render', $section_group, $settings_section, array(
+		__( 'For linked posts, syncrhonise prices when updated in main site.' )
+	)
+	);
+	add_settings_field(
+	'sitesalesync', __( 'Synchronise sale prices and dates', 'inkston-integration' ), 'sitesalesync_render', $section_group, $settings_section, array(
+		__( 'For linked posts, syncrhonise prices when updated in main site.' )
+	)
+	);
 }
 
 /* Load or default the options, once */
@@ -268,6 +283,10 @@ function ii_get_options() {
 			$ii_options[ 'hovercat' ]		 = true;
 			$ii_options[ 'woocoupons' ]		 = true;
 			$ii_options[ 'wootemplates' ]	 = true;
+			$ii_options[ 'sitepricefactor' ] = 1;
+			$ii_options[ 'sitepricesync' ]	 = true;
+			$ii_options[ 'sitesalesync' ]	 = true;
+
 			//update_option('ii_options', $options);
 		}
 	}
@@ -393,6 +412,18 @@ function woocoupons_render( $s ) {
 
 function wootemplates_render( $s ) {
 	ii_render_checkbox( 'wootemplates', $s );
+}
+
+function sitepricefactor_render( $s ) {
+	ii_render_input( 'sitepricefactor', $s );
+}
+
+function sitepricesync_render( $s ) {
+	ii_render_checkbox( 'sitepricesync', $s );
+}
+
+function sitesalesync_render( $s ) {
+	ii_render_checkbox( 'sitesalesync', $s );
 }
 
 /* Option render controls - standard input box */
