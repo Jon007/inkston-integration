@@ -251,7 +251,7 @@ function ink_duplicate_variations( $source_post_id, $dest_post_id, $source_blog_
 		$dest_variation_id					 = 0;
 		switch ( count( $posts ) ) {
 			case 1:  // if update add meta filtered by persist filter
-				$dest_variation_id					 = $posts[ 0 ];
+				$dest_variation_id					 = $posts[ 0 ]->ID;
 				mpd_process_meta( $dest_variation_id, apply_filters( 'mpd_filter_persist_post_meta', $meta_values
 				, $from_variation_id, $dest_variation_id, $source_blog_id, $target_blog_id ) );
 				break;
@@ -274,7 +274,8 @@ function ink_duplicate_variations( $source_post_id, $dest_post_id, $source_blog_
 				unset( $data[ 'ID' ] );
 				//the parent is the parent variable product in the destination blog
 				$data[ 'post_parent' ]				 = $dest_post_id;
-				//inserted as a standard post
+				//inserted as a standard post, avoiding recursive calls
+				ink_avoid_duplicate_calls( false );
 				$dest_variation_id					 = wp_insert_post( $data );
 				//add meta filtered by standard mpd copy filter
 				mpd_process_meta( $dest_variation_id, apply_filters( 'mpd_filter_post_meta', $meta_values
@@ -282,6 +283,8 @@ function ink_duplicate_variations( $source_post_id, $dest_post_id, $source_blog_
 				break;
 			default:
 				// we can not handle , something wrong here
+				//TODO: actually handle this, extra variations previously created in error
+				error_log( 'ERROR: Duplicate variations detected, please check and delete extra variations ' . implode( ',', $default_meta ) . ' from product ' . $dest_post_id );
 				break;
 		}
 		if ( $featured_image && $dest_variation_id ) {
@@ -342,6 +345,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	$sitesaleesync	 = isset( $blog_ii_options[ 'sitesalesync' ] );
 
 	$filtered_meta = [];
+	$default_meta	 = [];
 	foreach ( $post_meta as $metakey => $metavalue ) {
 		switch ( $metakey ) {
 			//meta we can't reasonably process
@@ -429,19 +433,24 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 				break;
 			default:
 				//generally don't copy amazon, ebay and vendor specific meta between sites
-				if ( strpos( '_stcr', $metakey ) !== false ) {
+				if ( strpos( $metakey, '_stcr' ) !== false ) {
 					//subscribe to comments reloaded should be per-site
-				} elseif ( strpos( 'amazon', $metakey ) !== false ) {
+				} elseif ( strpos( $metakey, 'amazon' ) !== false ) {
 					//amazon meta different for each vendor
-				} elseif ( strpos( 'ebay', $metakey ) !== false ) {
+				} elseif ( strpos( $metakey, 'ebay' ) !== false ) {
 					//ebay meta different for each vendor
-				} elseif ( strpos( 'snap', $metakey ) !== false ) {
+				} elseif ( strpos( $metakey, 'snap' ) !== false ) {
 					//social media publication meta
 				} else {
+					//TODO: we could do an extra check that the metavalue isn't an array of 1 blank item and not copy it..
 					//everything else ok
 					$filtered_meta[ $metakey ] = $metavalue;
+					$default_meta[]				 = $metakey;
+				}
 				}
 		}
+	if ( count( $default_meta ) ) {
+		error_log( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
 	}
 	return $filtered_meta;
 }
@@ -467,3 +476,13 @@ function ink_filter_mpd_meta_update( $post_meta, $source_post_id, $dest_post_id,
 
 add_filter( 'mpd_filter_post_meta', 'ink_filter_mpd_meta_new', 10, 5 );
 add_filter( 'mpd_filter_persist_post_meta', 'ink_filter_mpd_meta_update', 10, 5 );
+function ink_avoid_duplicate_calls( $mpd_process_info ) {
+	add_filter( 'mpd_persist_post_args', 'skip_duplicate_calls', 10, 1 );
+}
+
+add_filter( 'mpd_before_core', 'ink_avoid_duplicate_calls', 10, 1 );
+function skip_duplicate_calls( $args ) {
+	$args[ 'skip_normal_persist' ] = true;
+	remove_filter( 'mpd_persist_post_args', 'skip_duplicate_calls', 10 );
+	return $args;
+}
