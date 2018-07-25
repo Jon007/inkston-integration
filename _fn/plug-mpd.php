@@ -323,7 +323,9 @@ add_action( 'mpd_end_of_core_before_return', 'ink_mpd_create_or_update_variation
 add_action( 'mpd_persist_end_of_core_before_return', 'ink_mpd_create_or_update_variations', 20, 4 );
 
 /*
- * filter post meta to be copied
+ * filter post meta to be copied.
+ * Note: as each meta is a separate insert in wordpress, there is performance benefit in skipping all unnecessary meta
+ * 		 so testing skipping all dubious and empty meta
  *
  * @param int $source_post_id The ID of the source  product
  * @param int $dest_post_id The ID of target product (may be zero for new product not created yet)
@@ -345,6 +347,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	$sitesaleesync	 = isset( $blog_ii_options[ 'sitesalesync' ] );
 
 	$filtered_meta = [];
+	$blank_meta		 = [];
 	$default_meta	 = [];
 	foreach ( $post_meta as $metakey => $metavalue ) {
 		switch ( $metakey ) {
@@ -355,9 +358,40 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 				//related product fields such as upsell and cross-sell will have to be managed directly on child site
 				//as the related products from parent site may not exist yet on the child site
 				break;
+			//unused download meta
+			case '_downloadable':
+			case '_downloadable_files':
+			case '_download_limit':
+			case '_download_expiry':
+			case '_download_type':
+			//let these variation price summary be recalculated
+			case '_min_variation_price':
+			case '_max_variation_price':
+			case '_min_price_variation_id':
+			case '_max_price_variation_id':
+			case '_min_variation_regular_price':
+			case '_max_variation_regular_price':
+			case '_min_regular_price_variation_id':
+			case '_max_regular_price_variation_id':
+			case '_min_variation_sale_price':
+			case '_max_variation_sale_price':
+			case '_min_sale_price_variation_id':
+			case '_max_sale_price_variation_id':
 			//other meta we know not to copy
+			case '_thumbnail_id':  //handled separately via this plugin
+			case '_point_to_variation': //handled separately via this plugin
 			case '_product_image_gallery': //converted by this plugin in later hook
-			case '_translation_porduct_type':
+			case '_source_variation': //handled by this plugin
+			case '_translation_porduct_type': //woopoly meta
+			case '_product_version':
+			case '_edit_lock':
+			case '_edit_last':
+			case '_no_shipping_required':
+			case '_paypal_billing_agreement':
+			case '_featured,_enable_sandbox_mode':
+			case '_enable_ec_button':
+			case '_visibility':
+			case '_the_champ_meta':
 				break;
 			//asin is specific to vendor so not copied
 			case 'asin':
@@ -387,6 +421,10 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 				if ( $sitesaleesync ) {
 					$filtered_meta[ $metakey ] = $metavalue;
 				}
+			//rating data from source site not really valid but maybe an indication on first copy
+			case '_wc_average_rating':
+			case '_wc_rating_count':
+			case '_wc_review_count':
 			//values only copied for first time creation of new posts, not synchronized
 			case 'menu_order':
 			case 'comment_status':
@@ -428,6 +466,9 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_sku':
 			case 'upc':
 			case '_variation_description':
+			case '_purchase_note':
+			case 'attribute_size':
+			case '_product_attributes':
 			case '_default_attributes':
 				$filtered_meta[ $metakey ] = $metavalue;
 				break;
@@ -441,6 +482,12 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 					//ebay meta different for each vendor
 				} elseif ( strpos( $metakey, 'snap' ) !== false ) {
 					//social media publication meta
+				} elseif ( strpos( $metakey, 'yoast' ) !== false ) {
+
+				} elseif ( strpos( $metakey, 'oasis' ) !== false ) {
+
+				} elseif ( strpos( $metakey, 'wpla' ) !== false ) {
+
 				} else {
 					//TODO: we could do an extra check that the metavalue isn't an array of 1 blank item and not copy it..
 					//everything else ok
@@ -454,14 +501,6 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	}
 	return $filtered_meta;
 }
-
-/* not specifically handled, as unused
-  '_downloadable',
-  '_downloadable_files',
-  '_download_limit',
-  '_download_expiry',
-  '_download_type',
- */
 
 /*
  * Hook mpd meta filters and route to ink_filter function

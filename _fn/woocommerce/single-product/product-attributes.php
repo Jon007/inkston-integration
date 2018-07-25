@@ -224,7 +224,8 @@ if ( $product->get_type() == 'simple' ) {
 	$shippingclassid	 = $product->get_shipping_class_id();
 	$shippingclassname	 = __( 'Shipping', 'inkston-integration' );
 	$shippingclasstext	 = '';
-	$shippinglink		 = get_permalink( pll_get_post( 7420 ) );
+
+	$shippinglink = ink_shipping_link();
 	if ( $product->get_price() > inkston_free_shipping_level() ) {
 		$shippingclassname	 .= ': ' . __( 'Free', 'inkston-integration' );
 		$shippingclasstext	 = __( 'Order including this product will qualify for free shipping.', 'inkston-integration' );

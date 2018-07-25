@@ -347,3 +347,17 @@ function ink_privacy_link( $input ) {
 	}
 	return ($url) ? $url : $input;
 }
+
+/*
+ * get link for shipping page:  if inkston.com family, return inkston.com shipping page,
+ * otherwise return terms and conditions link
+ * (and if woocommerce is not activated, it makes absolutely no sense to call this function....)
+ */
+function ink_shipping_link() {
+	if ( is_inkston() ) {
+		$shippingpage = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( 7420 ) : 7420;
+		return get_permalink( 7420 );
+	} else {
+		return ink_tandc_link( '' );
+	}
+}
