@@ -74,6 +74,7 @@ function ink_mpd_copy_product_image_gallery( $post_id, $mdp_post, $source_blog_i
 		update_post_meta( $post_id, '_product_image_gallery', implode( ',', $new_product_gallery ) );
 		return true;
 	} else {
+		switch_to_blog( $target_blog_id );
 		return false;
 	}
 }
@@ -392,6 +393,9 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_enable_ec_button':
 			case '_visibility':
 			case '_the_champ_meta':
+			case '_msrp_price':
+			case '_enable_sandbox_mode':
+			case 'subscribed_user_ids':
 				break;
 			//asin is specific to vendor so not copied
 			case 'asin':
@@ -488,14 +492,27 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 
 				} elseif ( strpos( $metakey, 'wpla' ) !== false ) {
 
+				} elseif ( strpos( $metakey, 'woosb_' ) !== false ) {
+
+				} elseif ( strpos( $metakey, '_oembed_' ) !== false ) {
+
 				} else {
-					//TODO: we could do an extra check that the metavalue isn't an array of 1 blank item and not copy it..
-					//everything else ok
-					$filtered_meta[ $metakey ] = $metavalue;
-					$default_meta[]				 = $metakey;
-				}
+					if ( $metavalue ) {
+						if (
+						(
+						(is_array( $metavalue )) &&
+						(isset( $metavalue[ 0 ] )) &&
+						($metavalue[ 0 ])
+						) || ($metavalue) ) {
+							//TODO: we could do an extra check that the metavalue isn't an array of 1 blank item and not copy it..
+							//everything else ok
+							$filtered_meta[ $metakey ]	 = $metavalue;
+							$default_meta[]				 = $metakey;
+						}
+					}
 				}
 		}
+	}
 	if ( count( $default_meta ) ) {
 		error_log( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
 	}
