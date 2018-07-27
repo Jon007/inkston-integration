@@ -8,25 +8,106 @@
 /* JM: add persist links on bulk copy: can't currently implement here as
  *    mpd_add_persist requires arguments below
  *    but mpd_batch_after only passes $results */
-//function ink_mpd_batch_add_links( $results ) {
-//
-//	/*
-//	 * 		'source_id' : The ID of the source site
-//	 * 		'destination_id' : The ID of the destination site
-//	 * 		'source_post_id' : The ID of the source post that was copied
-//	 * 		'destination_post_id' : The ID of the source post that was copied
-//	 */
-//	$args = array(
-//		'source_id'				 => get_current_blog_id(),
-//		'destination_id'		 => $get_site[ 0 ],
-//		'source_post_id'		 => $post_id,
-//		'destination_post_id'	 => $results[ $highest_index ][ 'id' ]
-//	);
-//	mpd_add_persist( $args );
-//}
-//
-//add_action( 'mpd_batch_after', 'ink_mpd_batch_add_links', 10, 1 );
+function ink_mpd_batch_add_links( $source_post_id, $source_blog_id, $destination_post_id, $destination_blog_id ) {
 
+	//get options from source or destination blog?
+	$options = get_blog_option( $source_blog_id, 'mdp_settings' );
+	//$options = get_option( 'mdp_settings' );
+	if ( ! $options || ( ! isset( $options[ 'allow_persist' ] ) ) ) {
+		return;
+	}
+
+	/*
+	 * 		'source_id' : The ID of the source site
+	 * 		'destination_id' : The ID of the destination site
+	 * 		'source_post_id' : The ID of the source post that was copied
+	 * 		'destination_post_id' : The ID of the source post that was copied
+	 */
+	$args = array(
+		'source_id'				 => $source_blog_id,
+		'destination_id'		 => $destination_blog_id,
+		'source_post_id'		 => $source_post_id,
+		'destination_post_id'	 => $destination_post_id
+	);
+	//if the post is already duplicated to target blog, update
+	//otherwise, add a new persistence link
+	//(only add the link here as we are running on mpd_single_batch_after
+	// when the copy has already been done..)
+	if ( ! ink_handle_already_copied_post( $args ) ) {
+		mpd_add_persist( $args );
+	}
+}
+
+add_action( 'mpd_single_batch_after', 'ink_mpd_batch_add_links', 10, 4 );
+/**
+ * Check to see if a persist request is made on a set of arguments
+ *
+ * @since 1.0
+ * @param $args Array
+ * 		Required Params
+ * 		'source_id' : The ID of the source site
+ * 		'destination_id' : The ID of the destination site
+ * 		'source_post_id' : The ID of the source post that was copied
+ * 		'destination_post_id' : the ID of the destination post
+ * @return int destination post id if already copied to destination blog or zero
+ */
+function ink_handle_already_copied_post( $args ) {
+
+	global $wpdb;
+
+	$tableName = $wpdb->base_prefix . "mpd_log";
+
+	$query = $wpdb->prepare( "SELECT *
+				FROM $tableName
+				WHERE
+				source_id = %d
+				AND destination_id = %d
+				AND source_post_id = %d
+				AND destination_post_id = %d", $args[ 'source_id' ], $args[ 'destination_id' ], $args[ 'source_post_id' ], $args[ 'destination_post_id' ] );
+
+	$persist_post = $wpdb->get_row( $query );
+
+	if ( $persist_post ) {
+		//if duplicated without persistence option, return early without doing any update
+		if ( ! $persist_post->persist_active ) {
+			return $args[ 'destination_post_id' ];
+		}
+
+		//logically copied from mpd_get_persists_for_post and mpd_persist_post
+		//for maximum compatibility with core code path
+		$wanted_post_statuses	 = array_keys( mpd_get_post_statuses() );
+		$the_post				 = get_blog_post( $persist_post->destination_id, $persist_post->destination_post_id );
+		//if the destination post no longer exists or isn't in the right status, just return the id
+		if ( ! $the_post || ! in_array( $the_post->post_status, $wanted_post_statuses ) ) {
+			return $persist_post->destination_post_id;
+		}
+
+		$args = apply_filters( 'mpd_persist_post_args', array(
+			'source_id'				 => intval( $persist_post->source_id ),
+			'destination_id'		 => intval( $persist_post->destination_id ),
+			'source_post_id'		 => intval( $persist_post->source_post_id ),
+			'destination_post_id'	 => intval( $persist_post->destination_post_id )
+		) );
+		//mpd_persist_post_args filter has the option to add 'skip_normal_persist'
+		//to abort further processing
+		if ( array_key_exists( 'skip_normal_persist', $args ) ) {
+			return $args[ 'destination_post_id' ];
+		}
+
+		//actually do the update
+		mpd_persist_over_multisite( $persist_post );
+
+		// Increment the count
+		mpd_set_persist_count( $args );
+
+		do_action( 'mpd_after_persist', $args );
+
+		return $persist_post->destination_post_id;
+	} else {
+		//no link, return false
+		return false;
+	}
+}
 
 /*
  * copy image attachments from _product_image_gallery meta, similar processing
@@ -396,6 +477,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_msrp_price':
 			case '_enable_sandbox_mode':
 			case 'subscribed_user_ids':
+			case '_wp_old_slug':
 				break;
 			//asin is specific to vendor so not copied
 			case 'asin':
