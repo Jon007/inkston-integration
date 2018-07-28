@@ -4,10 +4,63 @@
  * Extend Multisite Post Duplicator to better support WooCommerce cross-listings
  */
 
+/*
+ * Terms which are woocommerce categories have thumbnails
+ * 		copy these when copying category to another site
+ * Todo: consider ither possible meta:
+ * 		order - may not make sense in destination depending what terms already copied
+ * 		display_type - ok to leave default or let target site decide
+ *
+ * @param array $new_term array('term_id' => $term_id, 'term_taxonomy_id' => $taxid)
+ *    as previously returned by wp_insert_term
+ * @param int $old_term The Term object for the old term
+ * @param int $source_blog_id The ID of the source blog
+ * @param int $target_blog_id The ID of target blog
+ */
+function ink_add_cat_thumbnail( $new_term, $old_term, $source_blog_id ) {
+	//could use a before filter and woo function create_product_category
+	// - this uses update_woocommerce_term_meta internally
+	//woopoly also uses update_woocommerce_term_meta which uses update_term_meta
+	//update_woocommerce_term_meta is simply a wrapper handling earlier wp versions
+	//where update_term_meta does not exist.
+	//Get the ID of the target blog - at this point it is the current blog
+	$target_blog_id	 = get_current_blog_id();
+	switch_to_blog( $source_blog_id );
+	$imgid			 = get_term_meta( $old_term->term_id, 'thumbnail_id', true );
+	if ( $imgid ) {
 
-/* JM: add persist links on bulk copy: can't currently implement here as
- *    mpd_add_persist requires arguments below
- *    but mpd_batch_after only passes $results */
+		$image = wp_get_attachment_image_src( $imgid, 'full' );
+		if ( $image ) {
+			$image_details	 = array(
+				'id'			 => $imgid,
+				'url'			 => get_attached_file( $imgid ),
+				'alt'			 => get_post_meta( $imgid, '_wp_attachment_image_alt', true ),
+				'post_title'	 => get_post_field( 'post_title', $imgid ),
+				'description'	 => get_post_field( 'post_content', $imgid ),
+				'caption'		 => get_post_field( 'post_excerpt', $imgid ),
+				'post_name'		 => get_post_field( 'post_name', $imgid )
+			);
+			//may create attachment post with 0 as parent as there is no parent post
+			$new_image_id	 = ink_copy_image_to_destination( 0, $image_details, $source_blog_id, $target_blog_id );
+		}
+
+		//save the product gallery meta to the new post id in destination blog
+		switch_to_blog( $target_blog_id );
+		update_term_meta( $new_term[ 'term_id' ], 'thumbnail_id', $new_image_id );
+		return true;
+	}
+}
+
+add_action( 'mpd_after_insert_term', 'ink_add_cat_thumbnail', 10, 3 );
+
+/* add persist links on bulk copy:
+ *
+ * @param int $source_post_id The ID of the source post
+ * @param int $dest_post_id The ID of target post
+ * @param int $source_blog_id The ID of the source blog
+ * @param int $target_blog_id The ID of target blog
+ *
+ */
 function ink_mpd_batch_add_links( $source_post_id, $source_blog_id, $destination_post_id, $destination_blog_id ) {
 
 	//get options from source or destination blog?
@@ -40,9 +93,9 @@ function ink_mpd_batch_add_links( $source_post_id, $source_blog_id, $destination
 
 add_action( 'mpd_single_batch_after', 'ink_mpd_batch_add_links', 10, 4 );
 /**
- * Check to see if a persist request is made on a set of arguments
+ * if a post is already copied, [update it if option applies and]
+ * return true to avoid further processing
  *
- * @since 1.0
  * @param $args Array
  * 		Required Params
  * 		'source_id' : The ID of the source site
@@ -181,6 +234,7 @@ add_action( 'mpd_persist_end_of_core_before_return', 'ink_mpd_copy_product_image
  *
  */
 function ink_copy_image_to_destination( $destination_id, $image_details, $source_blog_id, $target_blog_id ) {
+	$previous_blog = get_current_blog_id();
 	switch_to_blog( $target_blog_id );
 
 	// Get the upload directory for the current site
@@ -264,7 +318,7 @@ function ink_copy_image_to_destination( $destination_id, $image_details, $source
 		// Assign metadata to attachment
 		wp_update_attachment_metadata( $attach_id, $attach_data );
 	}
-	switch_to_blog( $source_blog_id );
+	switch_to_blog( $previous_blog );
 	return $attach_id;
 }
 
@@ -409,6 +463,7 @@ add_action( 'mpd_persist_end_of_core_before_return', 'ink_mpd_create_or_update_v
  * Note: as each meta is a separate insert in wordpress, there is performance benefit in skipping all unnecessary meta
  * 		 so testing skipping all dubious and empty meta
  *
+ * @param array $post_meta array of meta values to filter.
  * @param int $source_post_id The ID of the source  product
  * @param int $dest_post_id The ID of target product (may be zero for new product not created yet)
  * @param int $source_blog_id The ID of the source blog
@@ -603,6 +658,12 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 
 /*
  * Hook mpd meta filters and route to ink_filter function
+ *
+ * @param array $post_meta array of meta values to filter.
+ * @param int $dest_post_id The ID of the newly created post
+ * @param int $source_blog_id The ID of the source blog
+ * @param int $target_blog_id The ID of target blog
+ *
  */
 function ink_filter_mpd_meta_new( $post_meta, $source_post_id, $dest_post_id, $source_blog_id, $target_blog_id ) {
 	return ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $source_blog_id, $target_blog_id, true );
