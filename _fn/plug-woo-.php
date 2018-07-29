@@ -69,5 +69,8 @@ if ( isset( $ii_options[ 'wootemplates' ] ) ) {
 	include_once( 'plug-woo-templates.php' );
 }
 
+include_once( 'plug-woo-variations.php' );
+
+
 // Ship to a different address closed by default
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
