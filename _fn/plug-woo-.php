@@ -65,6 +65,11 @@ if ( isset( $ii_options[ 'hovercat' ] ) ) {
 if ( class_exists( 'TInvWL_Activator' ) ) {
 	include_once( 'plug-woo-wishlist.php' );
 }
+
+if ( isset( $ii_options[ 'sku' ] ) ) {
+	include_once( 'plug-woo-sku.php' );
+}
+
 if ( isset( $ii_options[ 'wootemplates' ] ) ) {
 	include_once( 'plug-woo-templates.php' );
 }

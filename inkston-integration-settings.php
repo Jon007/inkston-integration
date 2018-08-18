@@ -228,6 +228,16 @@ function ii_options_init() {
 	)
 	);
 	add_settings_field(
+	'sku', __( 'Auto-generate sku', 'inkston-integration' ), 'sku_render', $section_group, $settings_section, array(
+		__( 'Generate sku automatically' )
+	)
+	);
+	add_settings_field(
+	'skuformat', __( 'Sku format', 'inkston-integration' ), 'skuformat_render', $section_group, $settings_section, array(
+		__( 'Use the following format for SKU, use literal text and supported tokens {initials} or {slug} and {id} or {variationid}: by default variations will use the id of the parent (which is what you normally use to look up the product) and extra code in the {initials} or {slug} for the child details' )
+	)
+	);
+	add_settings_field(
 	'sitepricefactor', __( 'Site price multiplier', 'inkston-integration' ), 'sitepricefactor_render', $section_group, $settings_section, array(
 		__( 'Factor to use when converting prices from main inkston site to this site: should take into account currency conversion plus local site taxation and pricing policies.' )
 	)
@@ -281,6 +291,8 @@ function ii_get_options() {
 			$ii_options[ 'wooseo' ]			 = true;
 			$ii_options[ 'stripe' ]			 = true;
 			$ii_options[ 'hovercat' ]		 = true;
+			$ii_options[ 'sku' ]			 = true;
+			$ii_options[ 'skuformat' ]		 = 'ink-{initials}-{id}';
 			$ii_options[ 'woocoupons' ]		 = true;
 			$ii_options[ 'wootemplates' ]	 = true;
 			$ii_options[ 'sitepricefactor' ] = 1;
@@ -404,6 +416,14 @@ function stripe_render( $s ) {
 
 function hovercat_render( $s ) {
 	ii_render_checkbox( 'hovercat', $s );
+}
+
+function sku_render( $s ) {
+	ii_render_checkbox( 'sku', $s );
+}
+
+function skuformat_render( $s ) {
+	ii_render_input( 'skuformat', $s );
 }
 
 function woocoupons_render( $s ) {
