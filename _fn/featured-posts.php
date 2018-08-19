@@ -117,7 +117,7 @@ function featured_post_tiles() {
 			"preloaded_amount"		 => "96",
 			"posts_per_page"		 => "96",
 			"max_pages"				 => "99",
-			"post__not_in"			 => "' . implode( ',', $final_posts ) . '",
+			"post__not_in"			 => "'" . implode( ',', $final_posts ) . "'",
 			"post_type"				 => "product",
 			"orderby"				 => "comment_count",
 			"progress_bar"			 => "true",
