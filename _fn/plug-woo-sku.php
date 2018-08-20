@@ -54,7 +54,7 @@ if ( skuformat() ) {
 		add_action( 'woocommerce_product_duplicate_before_save', 'ink_product_duplicate_before_save', 10, 2 );
 
 		//add_filter( 'woocommerce_duplicate_product_exclude_meta', 'ink_duplicate_product_exclude_meta', 10, 1 );
-		add_action( 'woocommerce_duplicate_product', 'ink_new_product_sku_on_duplicate', PHP_INT_MAX, 2 );
+		add_action( 'woocommerce_product_duplicate', 'ink_new_product_sku_on_duplicate', PHP_INT_MAX, 2 );
 	}
 }
 function post_is_translation( $post ) {
