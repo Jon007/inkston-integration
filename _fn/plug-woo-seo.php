@@ -64,8 +64,10 @@ function inkston_product_meta() {
 	//og:brand reported not valid for og type product
 	//ink_tag_from_tax( 'og:brand', 'pa_brand', $product);
 	ink_tag_from_tax( 'product:brand', 'pa_brand', $product );
-	echo ( '<meta property="product:price:amount" content="' . esc_attr( $product->get_price() ) . '"/>' . "\r\n");
-	echo ( '<meta property="product:price:currency" content="USD" />' . "\r\n");
+		//call get price with 'edit' to get unfiltered base currency price
+		echo ( '<meta property="product:price:amount" content="' . esc_attr( $product->get_price( 'edit' ) ) . '"/>' . "\r\n");
+		//get option for base currency: cannot use get_woocommerce_currency() as this may be filtered by currency switcher
+		echo ( '<meta property="product:price:currency" content="' . get_option( 'woocommerce_currency' ) . '" />' . "\r\n");
 	ink_tag_from_tax( 'product:category', 'product_cat', $product );
 	ink_tag_from_tax( 'product:material', 'pa_materials', $product );
 
