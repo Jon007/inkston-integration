@@ -42,12 +42,13 @@ function ink_add_cat_thumbnail( $new_term, $old_term, $source_blog_id ) {
 			);
 			//may create attachment post with 0 as parent as there is no parent post
 			$new_image_id	 = ink_copy_image_to_destination( 0, $image_details, $source_blog_id, $target_blog_id );
-		}
-
-		//save the product gallery meta to the new post id in destination blog
-		switch_to_blog( $target_blog_id );
-		update_term_meta( $new_term[ 'term_id' ], 'thumbnail_id', $new_image_id );
-		return true;
+			if ( $new_image_id ) {
+        //save the product gallery meta to the new post id in destination blog
+        switch_to_blog( $target_blog_id );
+        update_term_meta( $new_term[ 'term_id' ], 'thumbnail_id', $new_image_id );
+        return true;
+      }
+    }
 	}
 }
 
@@ -281,8 +282,14 @@ function ink_copy_image_to_destination( $destination_id, $image_details, $source
 	} else {
 
 		if ( $image_details[ 'url' ] && $file ) {
-
-			copy( $image_details[ 'url' ], $file );
+			//copy could commonly fail, so try to ensure clean exit..
+			try {
+			  copy( $image_details[ 'url' ], $file );
+			} catch ( Exception $e ) {
+				error_log( 'Unable to copy "' . $image_details[ 'url' ] . '" due to exception: ' . $e->getMessage() );
+				switch_to_blog( $previous_blog );
+				return false;
+			}
 		}
 
 		// Get the mime type of the new file extension
@@ -480,6 +487,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	$blog_ii_options = get_option( 'ii_options' );
 	switch_to_blog( $current_blog );
 	$sitepricefactor = ( isset( $blog_ii_options[ 'sitepricefactor' ] ) && is_numeric( $blog_ii_options[ 'sitepricefactor' ] ) ) ? $blog_ii_options[ 'sitepricefactor' ] : 1;
+	$sitepricedecimals	 = get_option( 'woocommerce_price_num_decimals', 2 );
 	$sitepricesync	 = isset( $blog_ii_options[ 'sitepricesync' ] );
 	$sitesaleesync	 = isset( $blog_ii_options[ 'sitesalesync' ] );
 
@@ -545,7 +553,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_regular_price':
 				if ( $is_first_time || $sitepricesync ) {
 					if ( is_numeric( $metavalue[ 0 ] ) ) {
-						$filtered_meta[ $metakey ] = array( $metavalue[ 0 ] * $sitepricefactor );
+						$filtered_meta[ $metakey ] = array( round( $metavalue[ 0 ] * $sitepricefactor, $sitepricedecimals ) );
 					}
 				}
 				break;
@@ -553,7 +561,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_sale_price':
 				if ( $is_first_time || $sitesaleesync ) {
 					if ( is_numeric( $metavalue [ 0 ] ) ) {
-						$filtered_meta[ $metakey ] = array( $metavalue[ 0 ] * $sitepricefactor );
+						$filtered_meta[ $metakey ] = array( round( $metavalue[ 0 ] * $sitepricefactor, $sitepricedecimals ) );
 					}
 				}
 				break;
