@@ -74,6 +74,10 @@ if ( isset( $ii_options[ 'wootemplates' ] ) ) {
 	include_once( 'plug-woo-templates.php' );
 }
 
+if ( isset( $ii_options[ 'allowbackorders' ] ) ) {
+	include_once( 'plug-woo-backorders.php' );
+}
+
 include_once( 'plug-woo-variations.php' );
 
 

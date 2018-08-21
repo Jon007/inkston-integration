@@ -252,6 +252,11 @@ function ii_options_init() {
 		__( 'For linked posts, syncrhonise prices when updated in main site.' )
 	)
 	);
+	add_settings_field(
+	'allowbackorders', __( 'Allow back orders', 'inkston-integration' ), 'allowbackorders_render', $section_group, $settings_section, array(
+		__( 'Globally allow back orders, setting mysteriously missing from woocommerce' )
+	)
+	);
 }
 
 /* Load or default the options, once */
@@ -298,6 +303,7 @@ function ii_get_options() {
 			$ii_options[ 'sitepricefactor' ] = 1;
 			$ii_options[ 'sitepricesync' ]	 = true;
 			$ii_options[ 'sitesalesync' ]	 = true;
+			$ii_options[ 'allowbackorders' ] = true;
 
 			//update_option('ii_options', $options);
 		}
@@ -444,6 +450,10 @@ function sitepricesync_render( $s ) {
 
 function sitesalesync_render( $s ) {
 	ii_render_checkbox( 'sitesalesync', $s );
+}
+
+function allowbackorders_render( $s ) {
+	ii_render_checkbox( 'allowbackorders', $s );
 }
 
 /* Option render controls - standard input box */
