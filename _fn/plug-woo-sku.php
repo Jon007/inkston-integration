@@ -218,11 +218,13 @@ function maybe_save_variation_sku( $variation_id, $parent, $parent_sku = null ) 
 	}
 	$parent_sku = $parent_sku ? $parent_sku : $parent->get_sku();
 	if ( $variation->is_type( 'variation' ) && ( ! empty( $parent_sku ) ) ) {
+		/* let woo continue to manage variation name for now
 		$variation_slug = ink_get_formatted_variation_slug( $variation, true );
 		if ( $variation_slug != '' ) {
 			$newname = $parent->get_name() . '-' . $variation_slug;
 			$variation->set_name( $newname );
 		}
+		 */
 		$oldsku = $variation->get_sku();
 		if ( $oldsku == '' || $oldsku == $parent_sku ) {
 			if ( $parent_sku == '' ) {
