@@ -125,7 +125,7 @@ function ink_handle_already_copied_post( $args ) {
 	if ( $persist_post ) {
 		//if duplicated without persistence option, return early without doing any update
 		if ( ! $persist_post->persist_active ) {
-			return $args[ 'destination_post_id' ];
+			return false; //return false, no link, so calling function will add it
 		}
 
 		//logically copied from mpd_get_persists_for_post and mpd_persist_post
@@ -655,7 +655,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 							//everything else ok
 							$filtered_meta[ $metakey ]	 = $metavalue;
 							//don't treat custom product level attributes as unknown
-							if ( strpos( $metakey, 'attribute_' ) == false ) {
+							if ( strpos( $metakey, 'attribute_' ) === false ) {
                 $default_meta[]				 = $metakey;
               }
             }
@@ -689,6 +689,9 @@ function ink_filter_mpd_meta_update( $post_meta, $source_post_id, $dest_post_id,
 add_filter( 'mpd_filter_post_meta', 'ink_filter_mpd_meta_new', 10, 5 );
 add_filter( 'mpd_filter_persist_post_meta', 'ink_filter_mpd_meta_update', 10, 5 );
 function ink_avoid_duplicate_calls( $mpd_process_info ) {
+	if ( ! defined( 'DOING_AUTOSAVE' ) ) {
+		define( 'DOING_AUTOSAVE', true );
+	}
 	add_filter( 'mpd_persist_post_args', 'skip_duplicate_calls', 10, 1 );
 }
 
