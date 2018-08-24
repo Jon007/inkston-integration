@@ -50,6 +50,7 @@ function ink_add_cat_thumbnail( $new_term, $old_term, $source_blog_id ) {
       }
     }
 	}
+	switch_to_blog( $target_blog_id );
 }
 
 add_action( 'mpd_after_insert_term', 'ink_add_cat_thumbnail', 10, 3 );
@@ -526,7 +527,6 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_thumbnail_id':  //handled separately via this plugin
 			case '_point_to_variation': //handled separately via this plugin
 			case '_product_image_gallery': //converted by this plugin in later hook
-			case '_source_variation': //handled by this plugin
 			case '_translation_porduct_type': //woopoly meta
 			case '_product_version':
 			case '_edit_lock':
@@ -604,6 +604,8 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 				}
 				break;
 			//meta we know we want!
+			case '_source_variation': //handled (added) by this plugin for variations
+			case '_featured':
 			case '_weight':
 			case 'net_weight':
 			case '_length':
@@ -652,11 +654,14 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 							//TODO: we could do an extra check that the metavalue isn't an array of 1 blank item and not copy it..
 							//everything else ok
 							$filtered_meta[ $metakey ]	 = $metavalue;
-							$default_meta[]				 = $metakey;
-						}
-					}
-				}
-		}
+							//don't treat custom product level attributes as unknown
+							if ( strpos( $metakey, 'attribute_' ) == false ) {
+                $default_meta[]				 = $metakey;
+              }
+            }
+          }
+      }
+    }
 	}
 	if ( count( $default_meta ) ) {
 		error_log( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
@@ -693,3 +698,34 @@ function skip_duplicate_calls( $args ) {
 	remove_filter( 'mpd_persist_post_args', 'skip_duplicate_calls', 10 );
 	return $args;
 }
+
+/*
+ * remove terms not wanted in site duplication such as post_translations, language
+ * also many attributes only used for a few products so avoid creating unnecessary
+ * blank attribute values where not used
+ *
+ * @param array $source_taxonomy_terms_object array of $tax => &$tax_data
+ * @param int $destination_id The ID of target blog
+ */
+function ink_skip_terms( $source_taxonomy_terms_object, $destination_id ) {
+	foreach ( $source_taxonomy_terms_object as $tax => &$tax_data ) {
+		switch ( $tax ) {
+			case 'language':
+			case 'post_translations':
+				unset( $source_taxonomy_terms_object[ $tax ] );
+				break;
+			default:
+				if (
+				( ! is_array( $tax_data ) ) ||
+				(count( $tax_data ) == 0) ||
+				( ! ( $tax_data[ 0 ] ) )
+				) {
+					unset( $source_taxonomy_terms_object[ $tax ] );
+				}
+		}
+	}
+
+	return $source_taxonomy_terms_object;
+}
+
+add_filter( 'mpd_post_taxonomy_terms', 'ink_skip_terms', 10, 2 );
