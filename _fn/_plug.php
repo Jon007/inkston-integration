@@ -81,7 +81,13 @@ if ( function_exists( 'mailpoet_wp_version_notice' ) && isset( $ii_options[ 'mai
 }
 if ( class_exists( 'Polylang' ) && isset( $ii_options[ 'polylang' ] ) ) {
 	include_once( 'plug-polylang.php' );
+} else {
+	//if not polylang, define cache salt as home url
+	if ( ! defined( 'WP_CACHE_KEY_SALT' ) ) {
+		define( 'WP_CACHE_KEY_SALT', $_SERVER[ 'HTTP_HOST' ] );
+  }
 }
+
 if ( function_exists( 'relevanssi_build_index' ) ) {
 	include_once( 'plug-relevanssi.php' );
 }

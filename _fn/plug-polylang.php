@@ -5,6 +5,23 @@
  */
 
 /*
+ * as soon as polylang detects language, set a cache key salt
+ * to avoid unwanted redis cache issues
+ * actually this code is run on init after polylang already chose language
+ * so the action is already called before hooking it here, so set the salt directly
+  function ink_lang_cache_key_salt( $slug, $lang ) {
+  if ( ! defined( 'WP_CACHE_KEY_SALT' ) ) {
+  define( 'WP_CACHE_KEY_SALT', get_home_url( 1, '', 'relative' ) . $slug );
+  }
+  }
+  add_action( 'pll_language_defined', 'ink_lang_cache_key_salt', 10, 2 );
+ */
+if ( ! defined( 'WP_CACHE_KEY_SALT' ) ) {
+	define( 'WP_CACHE_KEY_SALT', $_SERVER[ 'HTTP_HOST' ] . '/' . pll_current_language() );
+}
+
+
+/*
  *  Make sure Polylang copies the title when creating a translation
  */
 function hy_editor_title( $title ) {
