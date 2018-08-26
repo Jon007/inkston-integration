@@ -237,6 +237,16 @@ function ii_options_init() {
 		__( 'Use the following format for SKU, use literal text and supported tokens {initials} or {slug} and {id} or {variationid}: by default variations will use the id of the parent (which is what you normally use to look up the product) and extra code in the {initials} or {slug} for the child details' )
 	)
 	);
+
+	$settings_section	 = 'ii_woo_cloning_options';
+	//this would register a separate option, but was unable to get the settings to save into this option
+	//register_setting( $section_group, $settings_section );
+	$page				 = $section_group;
+	add_settings_section(
+	$settings_section, __( 'WooCommerce Product Cloning Options', 'inkston-integration' ), 'ii_woo_clone_section_callback', $page
+	);
+
+
 	add_settings_field(
 	'sitepricefactor', __( 'Site price multiplier', 'inkston-integration' ), 'sitepricefactor_render', $section_group, $settings_section, array(
 		__( 'Factor to use when converting prices from main inkston site to this site: should take into account currency conversion plus local site taxation and pricing policies.' )
@@ -254,7 +264,7 @@ function ii_options_init() {
 	);
 	add_settings_field(
 	'allowbackorders', __( 'Allow back orders', 'inkston-integration' ), 'allowbackorders_render', $section_group, $settings_section, array(
-		__( 'Globally allow back orders, setting mysteriously missing from woocommerce' )
+		__( 'Allow back orders by default, setting mysteriously missing from woocommerce' )
 	)
 	);
 }
@@ -503,6 +513,10 @@ function ii_render_checkbox( $optionName, $s ) {
 
 	   function ii_woo_section_callback() {
 		   _e( 'WooCommerce Integration Options:', 'inkston-integration' );
+	   }
+
+	   function ii_woo_clone_section_callback() {
+		   _e( 'These options apply where this site is a destination site for cloning:', 'inkston-integration' );
 	   }
 
 	   function ii_options_page() {

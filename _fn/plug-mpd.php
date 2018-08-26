@@ -491,6 +491,8 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	$sitepricedecimals	 = get_option( 'woocommerce_price_num_decimals', 2 );
 	$sitepricesync	 = isset( $blog_ii_options[ 'sitepricesync' ] );
 	$sitesaleesync	 = isset( $blog_ii_options[ 'sitesalesync' ] );
+	$sitebackorders		 = isset( $blog_ii_options[ 'allowbackorders' ] );
+
 
 	$filtered_meta = [];
 	$blank_meta		 = [];
@@ -579,23 +581,14 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case 'comment_status':
 			case '_tax_class':
 			case 'total_sales':
-			case '_backorders':
 			case '_sold_individually':
+			case '_manage_stock': //stock properties copied on creation only,
+			//modified by backorders later if backorders option set
+			case '_backorders':
+			case '_stock':
 			case '_stock_status':
 				if ( $is_first_time ) {
 					$filtered_meta[ $metakey ] = $metavalue;
-				}
-				break;
-			//special case, manage stock will be forced to true on creation only
-			case '_manage_stock':
-				if ( $is_first_time ) {
-					$filtered_meta[ $metakey ] = 'yes';
-				}
-				break;
-			//special case, stock itself will be set to zero, on creation only
-			case '_stock':
-				if ( $is_first_time ) {
-					$filtered_meta[ $metakey ] = 0;
 				}
 				break;
 			case '_tax_status':
@@ -666,6 +659,9 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 	if ( count( $default_meta ) ) {
 		error_log( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
 	}
+	if ( $sitebackorders ) {
+		$filtered_meta = ink_filter_mpd_stockstatus( $filtered_meta, $post_meta, $source_post_id, $dest_post_id, $source_blog_id, $target_blog_id, $is_first_time );
+	}
 	return $filtered_meta;
 }
 
@@ -732,3 +728,43 @@ function ink_skip_terms( $source_taxonomy_terms_object, $destination_id ) {
 }
 
 add_filter( 'mpd_post_taxonomy_terms', 'ink_skip_terms', 10, 2 );
+
+
+/*
+ * Events to consider:
+ * 		MPD clone of new product from other site
+ * 		MPD clone of existing product from other site
+ * 			ink_filter_mpd_stockstatus() - requires this module to be activated on the source site
+ */
+function ink_filter_mpd_stockstatus( $filtered_meta, $post_meta, $source_post_id, $dest_post_id, $source_blog_id, $target_blog_id, $is_first_time ) {
+	//firstly, if a variable product, ignore - stock will be managed on variation
+	$current_blog	 = get_current_blog_id();
+	switch_to_blog( $source_blog_id );
+	$source_product	 = wc_get_product( $source_post_id );
+	if ( $source_product ) {
+		if ( $is_first_time ) {
+			if ( $source_product->is_in_stock() ) {
+				/* in stock in source, first time copy, set to on backorder */
+				$filtered_meta[ '_manage_stock' ]	 = 'yes';
+				$filtered_meta[ '_stock_status' ]	 = 'onbackorder';
+				$filtered_meta[ '_stock' ]			 = 0;
+				$filtered_meta[ '_backorders' ]		 = 'notify';
+			} else {
+				/*  if source is out of stock, destination cannot backorder */
+				$filtered_meta[ '_manage_stock' ]	 = 'no';
+				$filtered_meta[ '_stock_status' ]	 = 'outofstock';
+				$filtered_meta[ '_stock' ]			 = 0;
+				$filtered_meta[ '_backorders' ]		 = 'no';
+			}
+		} else {
+			//update: if new value of '_stock_status' is 'outofstock',
+			//set '_backorders' to 'no', do not copy any other stock fields..
+			//(local stock could exist even if unavailable for backorder)
+			if ( ! $source_product->is_in_stock() ) {
+				$filtered_meta[ '_backorders' ] = 'no';
+			}
+		}
+	}
+	switch_to_blog( $current_blog );
+	return $filtered_meta;
+}
