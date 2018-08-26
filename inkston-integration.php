@@ -99,16 +99,11 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 			include_once( plugin_dir_path( __FILE__ ) . '_fn/_plug.php');
 
 			/* setup inkston polylang strings */
-			/*
-			  if ( function_exists( 'pll_register_string' ) ) {
-			  //pll_register_string($name, $string, $group, $multiline);
-			  pll_register_string( 'saleflash', 'saleflash', 'Polylang User Alerts', TRUE );
-			  pll_register_string( 'shippingnotice', 'shippingnotice', 'Polylang User Alerts', TRUE );
 
-			  self::register_extra_messages( 'xtra_messages' );
-			  self::register_extra_messages( 'country_messages' );
+			if ( ( function_exists( 'pll_register_string' ) ) &&
+			( isset( $ii_options[ 'woofreeshippingexcept' ] )) ) {
+				pll_register_string( 'woofreeshippingexcept', $ii_options[ 'woofreeshippingexcept' ], 'Inkston Integration', TRUE );
 			  }
-			 */
 		}
 
 		/**

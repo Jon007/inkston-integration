@@ -34,7 +34,9 @@ include_once( 'plug-woo-customizer.php' );
 if ( isset( $ii_options[ 'loginredir' ] ) ) {
 	include_once( 'plug-woo-login.php' );
 }
-include_once( 'plug-woo-offers.php' );
+if ( isset( $ii_options[ 'woofreeshippingoffer' ] ) ) {
+  include_once( 'plug-woo-offers.php' );
+}
 if ( isset( $ii_options[ 'paystatus' ] ) ) {
 	include_once( 'plug-woo-pay-statuses.php' );
 }

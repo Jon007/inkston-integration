@@ -238,6 +238,37 @@ function ii_options_init() {
 	)
 	);
 
+
+	$settings_section	 = 'ii_woo_freeshipping';
+	//this would register a separate option, but was unable to get the settings to save into this option
+	//register_setting( $section_group, $settings_section );
+	$page				 = $section_group;
+	add_settings_section(
+	$settings_section, __( 'WooCommerce Free Shipping Options', 'inkston-integration' ), 'ii_woo_freeshipping_callback', $page
+	);
+
+	add_settings_field(
+	'woofreeshippingoffer', __( 'Enable free shipping offer messages', 'inkston-integration' ), 'woofreeshippingoffer_render', $section_group, $settings_section, array(
+		__( 'Show free shipping qualification messages in the shopping cart.' )
+	)
+	);
+	add_settings_field(
+	'woofreeshippinglevel', __( 'Free shipping minimum order', 'inkston-integration' ), 'woofreeshippinglevel_render', $section_group, $settings_section, array(
+		__( 'Minimum order level to qualify for free shipping.' )
+	)
+	);
+	add_settings_field(
+	'woofreeshippingencourage', __( 'Free shipping encouragement level', 'inkston-integration' ), 'woofreeshippingencourage_render', $section_group, $settings_section, array(
+		__( 'If set, when order reaches this value, message will be shown encouraging user to add more for free shipping.' )
+	)
+	);
+	add_settings_field(
+	'woofreeshippingexcept', __( 'Free shipping exceptions', 'inkston-integration' ), 'woofreeshippingexcept_render', $section_group, $settings_section, array(
+		__( 'If set, exception message will be added to free shipping message, for example countries where this does not apply.' )
+	)
+	);
+
+
 	$settings_section	 = 'ii_woo_cloning_options';
 	//this would register a separate option, but was unable to get the settings to save into this option
 	//register_setting( $section_group, $settings_section );
@@ -310,6 +341,12 @@ function ii_get_options() {
 			$ii_options[ 'skuformat' ]		 = 'ink-{initials}-{id}';
 			$ii_options[ 'woocoupons' ]		 = true;
 			$ii_options[ 'wootemplates' ]	 = true;
+
+			$ii_options[ 'woofreeshippingoffer' ]		 = true;
+			$ii_options[ 'woofreeshippinglevel' ]		 = 150;
+			$ii_options[ 'woofreeshippingencourage' ]	 = 100;
+			$ii_options[ 'woofreeshippingexcept' ]		 = '';
+
 			$ii_options[ 'sitepricefactor' ] = 1;
 			$ii_options[ 'sitepricesync' ]	 = true;
 			$ii_options[ 'sitesalesync' ]	 = true;
@@ -466,6 +503,22 @@ function allowbackorders_render( $s ) {
 	ii_render_checkbox( 'allowbackorders', $s );
 }
 
+function woofreeshippingoffer_render( $s ) {
+	ii_render_checkbox( 'woofreeshippingoffer', $s );
+}
+
+function woofreeshippinglevel_render( $s ) {
+	ii_render_input( 'woofreeshippinglevel', $s );
+}
+
+function woofreeshippingencourage_render( $s ) {
+	ii_render_input( 'woofreeshippingencourage', $s );
+}
+
+function woofreeshippingexcept_render( $s ) {
+	ii_render_multiline( 'woofreeshippingexcept', $s );
+}
+
 /* Option render controls - standard input box */
 function ii_render_input( $optionName, $s ) {
 	$options = ii_get_options();
@@ -494,11 +547,15 @@ function ii_render_input( $optionName, $s ) {
 /* Option render controls - standard checkbox */
 function ii_render_checkbox( $optionName, $s ) {
 	$options = ii_get_options();
-	?>
-	<input type="checkbox" name="ii_options[<?php echo($optionName) ?>]" id="<?php echo($optionName) ?>" <?php
-		   checked( isset( $options[ $optionName ] ), true );
-		   ?> value="1">
-		   <?php
+	echo('<input type="checkbox" name="ii_options[');
+	echo($optionName);
+	echo (']" id="');
+	echo($optionName);
+	echo ('" ');
+	if ( isset( $options[ $optionName ] ) ) {
+		echo(' checked ');
+	}
+	echo('value="1">');
 		   echo(implode( ' ', $s ));
 	   }
 
@@ -519,7 +576,11 @@ function ii_render_checkbox( $optionName, $s ) {
 		   _e( 'These options apply where this site is a destination site for cloning:', 'inkston-integration' );
 	   }
 
-	   function ii_options_page() {
+function ii_woo_freeshipping_callback() {
+	_e( 'Free shipping offer notice options' );
+}
+
+ function ii_options_page() {
 		   // check user capabilities
 		   if ( ! current_user_can( 'manage_options' ) ) {
 			   return;
