@@ -63,14 +63,14 @@ function inkston_get_cart_message( $valueadd ) {
 	$shippingnote	 = sprintf( __( 'Add %s more to your order to qualify for free shipping!', 'inkston-integration' ), $shortfall );
     }
 	$ii_options = ii_get_options();
-	if ( isset( $ii_options[ 'woofreeshippingexcept' ] ) && $ii_options[ 'woofreeshippingexcept' ] != '' ) {
+	if ( $shippingnote && isset( $ii_options[ 'woofreeshippingexcept' ] ) && $ii_options[ 'woofreeshippingexcept' ] != '' ) {
 		$freeshippingexceptions = $ii_options[ 'woofreeshippingexcept' ];
 		if ( function_exists( 'pll__' ) ) {
 			$freeshippingexceptions = pll__( $freeshippingexceptions );
 		}
 		$shippingnote .= ' ' . $freeshippingexceptions;
 	}
-    return $shippingnote;
+  return $shippingnote;
 }
 
 /*
