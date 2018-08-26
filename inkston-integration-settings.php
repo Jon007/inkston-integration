@@ -254,7 +254,7 @@ function ii_options_init() {
 	);
 	add_settings_field(
 	'woofreeshippinglevel', __( 'Free shipping minimum order', 'inkston-integration' ), 'woofreeshippinglevel_render', $section_group, $settings_section, array(
-		__( 'Minimum order level to qualify for free shipping.' )
+		__( 'Minimum order level to qualify for free shipping: if set this will update related woocommerce shipping methods but does not update the shipping policy pages: please update shipping policy separately.' )
 	)
 	);
 	add_settings_field(
@@ -264,7 +264,7 @@ function ii_options_init() {
 	);
 	add_settings_field(
 	'woofreeshippingexcept', __( 'Free shipping exceptions', 'inkston-integration' ), 'woofreeshippingexcept_render', $section_group, $settings_section, array(
-		__( 'If set, exception message will be added to free shipping message, for example countries where this does not apply.' )
+		__( 'If set, exception message will be added to free shipping message, for example countries where this does not apply. This is a purely information message which is NOT checked against the WooCommerce shipping configuration or shipping policy pages - please check these separately.' )
 	)
 	);
 
@@ -610,3 +610,36 @@ function ii_woo_freeshipping_callback() {
 			Due to the huge number of api changes in version 3, earlier versions of WooCommerce will be ignored.</li>
 	</ul>	<?php
 }
+
+/*
+ * if the free shipping level is changed, update the woocommerce shipping methods
+ *
+ * @param $old_value array of old values for ii_options
+ * @param $new_value array of new values for ii_options
+ * @param $option string 'ii_options'
+ *
+ */
+function ii_woo_set_shipping( $old_value, $value, $option ) {
+	if ( ! class_exists( 'woocommerce' ) || ( ! function_exists( 'inkston_free_shipping_level' )) ) {
+		return;
+	}
+	$existing_zones		 = WC_Shipping_Zones::get_zones();
+	$free_shipping_level = (isset( $value[ 'woofreeshippinglevel' ] )) ? $value[ 'woofreeshippinglevel' ] : 0;
+	$old_shipping_level	 = (isset( $old_value[ 'woofreeshippinglevel' ] )) ? $old_value[ 'woofreeshippinglevel' ] : 0;
+	if ( $free_shipping_level && ( $free_shipping_level != $old_shipping_level) ) {
+		foreach ( $existing_zones as $existing_zone ) {
+			$shipping_methods = $existing_zone[ 'shipping_methods' ];
+			foreach ( $shipping_methods as $shipping_method ) {
+				if ( $shipping_method instanceof WC_Shipping_Free_Shipping ) {
+					$shipping_method->min_amount = $free_shipping_level;
+					$key						 = $shipping_method->get_instance_option_key();
+					$settings					 = $shipping_method->instance_settings;
+					$settings[ 'min_amount' ]		 = $free_shipping_level;
+					update_option( $key, $settings, 'yes' );
+				}
+			}
+		}
+	}
+}
+
+add_action( 'update_option_ii_options', 'ii_woo_set_shipping', 10, 3 );
