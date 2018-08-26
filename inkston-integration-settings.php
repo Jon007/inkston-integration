@@ -224,7 +224,7 @@ function ii_options_init() {
 	);
 	add_settings_field(
 	'wootemplates', __( 'WooCommerce Templates', 'inkston-integration' ), 'wootemplates_render', $section_group, $settings_section, array(
-		__( 'User Inkston WooCommerce template overrides.' )
+		__( 'Enable Inkston WooCommerce template overrides.' )
 	)
 	);
 	add_settings_field(
@@ -244,12 +244,12 @@ function ii_options_init() {
 	);
 	add_settings_field(
 	'sitepricesync', __( 'Synchronise prices', 'inkston-integration' ), 'sitepricesync_render', $section_group, $settings_section, array(
-		__( 'For linked posts, syncrhonise prices when updated in main site.' )
+		__( 'For linked posts, synchronise prices when updated in main site.' )
 	)
 	);
 	add_settings_field(
 	'sitesalesync', __( 'Synchronise sale prices and dates', 'inkston-integration' ), 'sitesalesync_render', $section_group, $settings_section, array(
-		__( 'For linked posts, syncrhonise prices when updated in main site.' )
+		__( 'For linked posts, synchronise prices when updated in main site.' )
 	)
 	);
 	add_settings_field(
