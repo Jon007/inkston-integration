@@ -542,6 +542,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
 			case '_msrp_price':
 			case '_enable_sandbox_mode':
 			case 'subscribed_user_ids':
+			case '_skuold':
 			case '_wp_old_slug':
 				break;
 			//asin is specific to vendor so not copied
