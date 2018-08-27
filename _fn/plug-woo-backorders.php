@@ -23,6 +23,46 @@
  *
  */
 
+/*
+ * replace text Back-ordered on orders
+ *
+ * @param $display_key string	meta key of order meta
+ * @param $meta array	order meta key and value
+ * @param $orderitem WC_Order_Item current order item
+ * @return string filtered $display_key
+ */
+function ink_backordered( $display_key, $meta, $orderitem ) {
+	if ( $display_key == 'Back-ordered' ) {
+		$ii_options			 = ii_get_options();
+		$backordermessage	 = ( isset( $ii_options[ 'backordered' ] )) ? $ii_options[ 'backordered' ] : '';
+		if ( $backordermessage ) {
+			$display_key = $backordermessage;
+		}
+	}
+	return $display_key;
+}
+
+add_filter( 'woocommerce_order_item_display_meta_key', 'ink_backordered', 10, 3 );
+
+/*
+ * replace backorder availability text on product pages
+ *
+ * @param $availability string	meta key of order meta
+ * @param $product WC_Product the current product
+ * @return string filtered $availability
+ */
+function ink_backorder_availability( $availability, $product ) {
+	if ( $product->managing_stock() && $product->is_on_backorder( 1 ) && $product->backorders_require_notification() ) {
+		$ii_options			 = ii_get_options();
+		$backordermessage	 = ( isset( $ii_options[ 'willbackorder' ] )) ? $ii_options[ 'willbackorder' ] : '';
+		if ( $backordermessage ) {
+			$availability = $backordermessage;
+		}
+	}
+	return $availability;
+}
+
+add_filter( 'woocommerce_get_availability_text', 'ink_backorder_availability', 10, 2 );
 
 /*
  * this could [conditionally] force allow back orders

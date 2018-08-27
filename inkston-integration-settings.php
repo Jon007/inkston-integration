@@ -293,9 +293,31 @@ function ii_options_init() {
 		__( 'For linked posts, synchronise prices when updated in main site.' )
 	)
 	);
+
+	$settings_section	 = 'ii_backorder_options';
+	//this would register a separate option, but was unable to get the settings to save into this option
+	//register_setting( $section_group, $settings_section );
+	$page				 = $section_group;
+	add_settings_section(
+	$settings_section, __( 'WooCommerce Backorder options', 'inkston-integration' ), 'ii_woo_backorder_section_callback', $page
+	);
+
+
 	add_settings_field(
 	'allowbackorders', __( 'Allow back orders', 'inkston-integration' ), 'allowbackorders_render', $section_group, $settings_section, array(
-		__( 'Allow back orders by default, setting mysteriously missing from woocommerce' )
+		__( 'Allow back orders by default, applies when copying items to this site' )
+	)
+	);
+
+	add_settings_field(
+	'backordered', __( 'Back-ordered message', 'inkston-integration' ), 'backordered_render', $section_group, $settings_section, array(
+		__( 'Message shown against backordered items on customer orders' )
+	)
+	);
+
+	add_settings_field(
+	'willbackorder', __( 'On back-order message', 'inkston-integration' ), 'willbackorder_render', $section_group, $settings_section, array(
+		__( 'Message shown on products not in stock locally (eg will be backordered from remote location or made fresh)' )
 	)
 	);
 }
@@ -351,6 +373,8 @@ function ii_get_options() {
 			$ii_options[ 'sitepricesync' ]	 = true;
 			$ii_options[ 'sitesalesync' ]	 = true;
 			$ii_options[ 'allowbackorders' ] = true;
+			$ii_options[ 'backordered' ]	 = '';
+			$ii_options[ 'willbackorder' ]	 = '';
 
 			//update_option('ii_options', $options);
 		}
@@ -503,6 +527,14 @@ function allowbackorders_render( $s ) {
 	ii_render_checkbox( 'allowbackorders', $s );
 }
 
+function backordered_render( $s ) {
+	ii_render_multiline( 'backordered', $s );
+}
+
+function willbackorder_render( $s ) {
+	ii_render_multiline( 'willbackorder', $s );
+}
+
 function woofreeshippingoffer_render( $s ) {
 	ii_render_checkbox( 'woofreeshippingoffer', $s );
 }
@@ -578,6 +610,10 @@ function ii_render_checkbox( $optionName, $s ) {
 
 function ii_woo_freeshipping_callback() {
 	_e( 'Free shipping offer notice options' );
+}
+
+function ii_woo_backorder_section_callback() {
+	_e( 'Options for allowing and displaying items which are not stocked locally (eg will be backordered from remote supplier.' );
 }
 
  function ii_options_page() {
