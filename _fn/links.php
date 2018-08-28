@@ -354,10 +354,37 @@ function ink_privacy_link( $input ) {
  * (and if woocommerce is not activated, it makes absolutely no sense to call this function....)
  */
 function ink_shipping_link() {
+	$link			 = '';
+	$currentblogid	 = get_current_blog_id();
+
 	if ( is_inkston() ) {
 		$shippingpage = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( 7420 ) : 7420;
-		return get_permalink( 7420 );
-	} else {
-		return ink_tandc_link( '' );
+		switch_to_blog( 1 );
+		$link			 = get_permalink( 7420 );
+		switch_to_blog( $currentblogid );
 	}
+
+	if ( ! $link ) {
+		$link = inkGetPageURL( 'shipping', $currentblogid );
+	}
+	if ( ! $link ) {
+		$link = ink_tandc_link( '' );
+	}
+	return $link;
+}
+
+/*
+ * add link to shipping page to input $text
+ *
+ * @param $text string any string
+ * @param string wrapped in link to shipping page
+ */
+function ink_add_shipping_link( $text ) {
+	$shipping_link = ink_shipping_link();
+	if ( $text && $shipping_link ) {
+		$text = '<a target="_blank" href="' .
+		$shipping_link . '">' .
+		$text . '</a>';
+	}
+	return $text;
 }

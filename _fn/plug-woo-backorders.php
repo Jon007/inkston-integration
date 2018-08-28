@@ -36,7 +36,7 @@ function ink_backordered( $display_key, $meta, $orderitem ) {
 		$ii_options			 = ii_get_options();
 		$backordermessage	 = ( isset( $ii_options[ 'backordered' ] )) ? $ii_options[ 'backordered' ] : '';
 		if ( $backordermessage ) {
-			$display_key = $backordermessage;
+			$display_key = ink_add_shipping_link( $backordermessage );
 		}
 	}
 	return $display_key;
@@ -56,7 +56,7 @@ function ink_backorder_availability( $availability, $product ) {
 		$ii_options			 = ii_get_options();
 		$backordermessage	 = ( isset( $ii_options[ 'willbackorder' ] )) ? $ii_options[ 'willbackorder' ] : '';
 		if ( $backordermessage ) {
-			$availability = $backordermessage;
+			$availability = ink_add_shipping_link( $backordermessage );
 		}
 	}
 	return $availability;
