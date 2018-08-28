@@ -36,7 +36,7 @@ function ink_backordered( $display_key, $meta, $orderitem ) {
 		$ii_options			 = ii_get_options();
 		$backordermessage	 = ( isset( $ii_options[ 'backordered' ] )) ? $ii_options[ 'backordered' ] : '';
 		if ( $backordermessage ) {
-			$display_key = ink_add_shipping_link( $backordermessage );
+			$display_key = ink_add_backorder_link( $backordermessage );
 		}
 	}
 	return $display_key;
@@ -53,16 +53,37 @@ add_filter( 'woocommerce_order_item_display_meta_key', 'ink_backordered', 10, 3 
  */
 function ink_backorder_availability( $availability, $product ) {
 	if ( $product->managing_stock() && $product->is_on_backorder( 1 ) && $product->backorders_require_notification() ) {
-		$ii_options			 = ii_get_options();
-		$backordermessage	 = ( isset( $ii_options[ 'willbackorder' ] )) ? $ii_options[ 'willbackorder' ] : '';
-		if ( $backordermessage ) {
-			$availability = ink_add_shipping_link( $backordermessage );
-		}
+		$availability = ink_backorder_availability_text( $availability );
 	}
 	return $availability;
 }
 
 add_filter( 'woocommerce_get_availability_text', 'ink_backorder_availability', 10, 2 );
+
+/*
+ * replace backorder availability text on cart pages
+ *
+ * @param $availability string	meta key of order meta
+ * @return string filtered $availability
+ */
+function ink_backorder_availability_text( $availability ) {
+		$ii_options			 = ii_get_options();
+		$backordermessage	 = ( isset( $ii_options[ 'willbackorder' ] )) ? $ii_options[ 'willbackorder' ] : '';
+		if ( $backordermessage ) {
+		$availability = $backordermessage;
+	}
+	return $availability;
+}
+
+function ink_backorder_availability_cart( $backorderhtml ) {
+	$availability = ink_backorder_availability_text( '' );
+	if ( $availability ) {
+		$backorderhtml = '<p class="backorder_notification">' . ink_add_backorder_link( $availability ) . '</p>';
+	}
+	return $backorderhtml;
+}
+
+add_filter( 'woocommerce_cart_item_backorder_notification', 'ink_backorder_availability_cart', 10, 1 );
 
 /*
  * this could [conditionally] force allow back orders

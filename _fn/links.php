@@ -353,7 +353,7 @@ function ink_privacy_link( $input ) {
  * otherwise return terms and conditions link
  * (and if woocommerce is not activated, it makes absolutely no sense to call this function....)
  */
-function ink_shipping_link() {
+function ink_shipping_link( $backorder = false ) {
 	$link			 = '';
 	$currentblogid	 = get_current_blog_id();
 
@@ -370,6 +370,9 @@ function ink_shipping_link() {
 	if ( ! $link ) {
 		$link = ink_tandc_link( '' );
 	}
+	if ( $link && $backorder ) {
+		$link .= '#backorder';
+	}
 	return $link;
 }
 
@@ -379,12 +382,16 @@ function ink_shipping_link() {
  * @param $text string any string
  * @param string wrapped in link to shipping page
  */
-function ink_add_shipping_link( $text ) {
-	$shipping_link = ink_shipping_link();
+function ink_add_shipping_link( $text, $backorder = false ) {
+	$shipping_link = ink_shipping_link( $backorder );
 	if ( $text && $shipping_link ) {
 		$text = '<a target="_blank" href="' .
 		$shipping_link . '">' .
 		$text . '</a>';
 	}
 	return $text;
+}
+
+function ink_add_backorder_link( $text ) {
+	return ink_add_shipping_link( $text, true );
 }
