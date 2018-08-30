@@ -71,6 +71,9 @@ if ( class_exists( 'TInvWL_Activator' ) ) {
 if ( isset( $ii_options[ 'sku' ] ) ) {
 	include_once( 'plug-woo-sku.php' );
 }
+if ( isset( $ii_options[ 'woopdf' ] ) ) {
+	include_once( 'plug-woo-pdf.php' );
+}
 
 if ( isset( $ii_options[ 'wootemplates' ] ) ) {
 	include_once( 'plug-woo-templates.php' );

@@ -217,6 +217,14 @@ function ii_options_init() {
 		__( 'Information popups in the shop catalogue, on categories and products.' )
 	)
 	);
+
+	add_settings_field(
+	'woopdf', __( 'WooCommerce Invoice enhancements', 'inkston-integration' ), 'woopdf_render', $section_group, $settings_section, array(
+		__( 'Allow Chinese characters in invoices, add correct VAT total lines if tax enabled.' )
+	)
+	);
+
+
 	add_settings_field(
 	'woocoupons', __( 'WooCommerce Coupons', 'inkston-integration' ), 'woocoupons_render', $section_group, $settings_section, array(
 		__( 'Provides description instead of 0.00 for free product coupons (if auto-added coupons is active).' )
@@ -363,6 +371,7 @@ function ii_get_options() {
 			$ii_options[ 'skuformat' ]		 = 'ink-{initials}-{id}';
 			$ii_options[ 'woocoupons' ]		 = true;
 			$ii_options[ 'wootemplates' ]	 = true;
+			$ii_options[ 'woopdf' ]			 = true;
 
 			$ii_options[ 'woofreeshippingoffer' ]		 = true;
 			$ii_options[ 'woofreeshippinglevel' ]		 = 150;
@@ -509,6 +518,10 @@ function woocoupons_render( $s ) {
 
 function wootemplates_render( $s ) {
 	ii_render_checkbox( 'wootemplates', $s );
+}
+
+function woopdf_render( $s ) {
+	ii_render_checkbox( 'woopdf', $s );
 }
 
 function sitepricefactor_render( $s ) {
