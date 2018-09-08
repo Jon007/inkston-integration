@@ -11,6 +11,7 @@
     font-weight: bold;
     src: local( 'ukai'), local( 'ukai'), url(<?php echo (ABSPATH); ?>fonts/ukai.ttf) format( 'truetype');
 }
+			.tax_label{display:none;}
 
     </style>	<style type="text/css"><?php $this->template_styles(); ?></style>
 	<style type="text/css"><?php do_action( 'wpo_wcpdf_custom_styles', $this->get_type(), $this ); ?></style>
