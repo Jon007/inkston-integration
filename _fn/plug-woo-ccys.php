@@ -19,6 +19,10 @@ add_action( 'woocommerce_checkout_order_review', 'output_ccy_switcher', 10 );
 add_filter( 'woocs_currency_description', 'localize_currency_description', 10, 2 );
 add_filter( 'woocs_currency_data_manipulation', 'localize_currency_switcher', 10, 1 );
 
+/* free shipping eligibility take into account currency */
+add_filter( 'woocommerce_shipping_free_shipping_is_available', 'free_shipping_is_available', 99, 3 );
+
+
 /*
  * Localise initialization parameters for WooCommerce Currency Switcher, if installed:
  *
@@ -149,4 +153,78 @@ function output_ccy_switcher_button() {
     echo do_shortcode( '[woocs]' );
     echo( '</li></ul>');
     //}
+}
+
+/**
+ * See if free shipping is available based on the package and cart.
+ * Updated multi-currency adaptation:  free shipping threshold is in USD
+ *
+ * @param bool $is_available calculated as available by wooCommerce
+ * @param array $package Shipping package.
+ * @param WC_Shipping_Free_Shipping $free_Shipping_Method
+ * @return bool
+ */
+function free_shipping_is_available( $is_available, $package, $free_Shipping_Method ) {
+	$has_coupon			 = false;
+	$has_met_min_amount	 = false;
+
+	if ( in_array( $free_Shipping_Method->requires, array( 'coupon', 'either', 'both' ), true ) ) {
+		$coupons = WC()->cart->get_coupons();
+
+		if ( $coupons ) {
+			foreach ( $coupons as $code => $coupon ) {
+				if ( $coupon->is_valid() && $coupon->get_free_shipping() ) {
+					$has_coupon = true;
+					break;
+				}
+			}
+		}
+	}
+
+	if ( in_array( $free_Shipping_Method->requires, array( 'min_amount', 'either', 'both' ), true ) ) {
+		$total = WC()->cart->get_displayed_subtotal();
+
+		if ( WC()->cart->display_prices_including_tax() ) {
+			$total = round( $total - ( WC()->cart->get_discount_total() + WC()->cart->get_discount_tax() ), wc_get_price_decimals() );
+		} else {
+			$total = round( $total - WC()->cart->get_discount_total(), wc_get_price_decimals() );
+		}
+
+		$minAmount = $free_Shipping_Method->min_amount;
+		if ( $minAmount ) {
+			if ( isWoocs() ) {
+				global $WOOCS;
+				$minAmount = $WOOCS->woocs_exchange_value( $minAmount );
+			}
+		}
+		if ( $total >= $minAmount ) {
+			$has_met_min_amount = true;
+		}
+		/* don't consider global free shipping level as filtering by region
+		  $inkMinAmount = inkston_free_shipping_level();
+		  if ( $total >= $inkMinAmount ) {
+		  $has_met_min_amount = true;
+		  }
+		 */
+	}
+
+	switch ( $free_Shipping_Method->requires ) {
+		case 'min_amount':
+			$is_available	 = $has_met_min_amount;
+			break;
+		case 'coupon':
+			$is_available	 = $has_coupon;
+			break;
+		case 'both':
+			$is_available	 = $has_met_min_amount && $has_coupon;
+			break;
+		case 'either':
+			$is_available	 = $has_met_min_amount || $has_coupon;
+			break;
+		default:
+			$is_available	 = true;
+			break;
+	}
+
+	return $is_available;
 }
