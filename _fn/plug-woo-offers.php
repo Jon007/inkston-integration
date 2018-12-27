@@ -15,12 +15,12 @@ function inkston_free_shipping_level() {
 	if ( is_numeric( $level ) ) {
 		//raw price is not filtered by currency switcher
 		$level = apply_filters( 'raw_woocommerce_price', $level );
-    if ( isWoocs() ) {
-      global $WOOCS;
-      $level = $WOOCS->woocs_exchange_value( $level );
-    }
+		if ( isWoocs() ) {
+			global $WOOCS;
+			$level = $WOOCS->woocs_exchange_value( $level );
+		}
 	}
-  return $level;
+	return $level;
 }
 
 /*
@@ -30,11 +30,11 @@ function inkston_free_shipping_encourage_level() {
 	$ii_options	 = ii_get_options();
 	$level		 = ( isset( $ii_options[ 'woofreeshippingencourage' ] )) ? $ii_options[ 'woofreeshippingencourage' ] : 150;
 	$level		 = apply_filters( 'raw_woocommerce_price', $level );
-  if ( isWoocs() ) {
-    global $WOOCS;
-    $level = $WOOCS->woocs_exchange_value( $level );
-  }
-  return $level;
+	if ( isWoocs() ) {
+		global $WOOCS;
+		$level = $WOOCS->woocs_exchange_value( $level );
+	}
+	return $level;
 }
 
 /*
@@ -45,10 +45,10 @@ function inkston_free_shipping_encourage_level() {
  * @return string formatted html message '... has been added..  continue shopping'
  */
 function inkston_get_cart_message( $valueadd ) {
-    //cart and barrier levels translated into current currency
-    $encouragement_level	 = inkston_free_shipping_encourage_level();
-    $free_level		 = inkston_free_shipping_level();
-    $carttotal		 = WC()->cart->cart_contents_total;
+	//cart and barrier levels translated into current currency
+	$encouragement_level = inkston_free_shipping_encourage_level();
+	$free_level			 = inkston_free_shipping_level();
+	$carttotal			 = WC()->cart->cart_contents_total;
 	$knownFreeRegion	 = false;
 
 	//if we already know customer is not in location eligible for free shipping,
@@ -57,6 +57,13 @@ function inkston_get_cart_message( $valueadd ) {
 	$packages = WC()->cart->get_shipping_packages();
 	if ( $packages ) {
 		$package = array_shift( $packages );
+		if ( ! isset( $package[ 'destination' ] ) || ! isset( $package[ 'destination' ][ 'country' ] ) || ( $package[ 'destination' ][ 'country' ] == '') ) {
+			$pd			 = WC_Geolocation::geolocate_ip();
+			$userCountry = $pd[ 'country' ];
+			if ( $userCountry ) {
+				$package[ 'destination' ] = array( 'country' => $userCountry, 'state' => '', 'postcode' => '' );
+			}
+		}
 		if ( isset( $package[ 'destination' ] ) && isset( $package[ 'destination' ][ 'country' ] ) && ( $package[ 'destination' ][ 'country' ] != '') ) {
 			$shipping_zone = WC_Shipping_Zones::get_zone_matching_package( $package );
 			if ( $shipping_zone ) {
@@ -65,17 +72,23 @@ function inkston_get_cart_message( $valueadd ) {
 					$couldBeFree = false;
 					foreach ( $shipping_methods as $shipping_method ) {
 						if ( get_class( $shipping_method ) == 'WC_Shipping_Free_Shipping' ) {
-							$couldBeFree			 = true;
-							$knownFreeRegion		 = true;
-							$shippingMethodFreeLevel = $shipping_method->min_amount;
-							if ( is_numeric( $shippingMethodFreeLevel ) ) {
-								if ( isWoocs() ) {
-									global $WOOCS;
-									$shippingMethodFreeLevel = $WOOCS->woocs_exchange_value( $shippingMethodFreeLevel );
+							$couldBeFree	 = true;
+							$knownFreeRegion = true;
+							//eg local free shipping with no special requirements
+							if ( $shipping_method->requires == '' ) {
+								$free_level			 = 0;
+								$encouragement_level = 0;
+							} elseif ( in_array( $shipping_method->requires, array( 'min_amount', 'either' ), true ) ) {
+								$shippingMethodFreeLevel = $shipping_method->min_amount;
+								if ( is_numeric( $shippingMethodFreeLevel ) ) {
+									if ( isWoocs() ) {
+										global $WOOCS;
+										$shippingMethodFreeLevel = $WOOCS->woocs_exchange_value( $shippingMethodFreeLevel );
+									}
+									//if we have a free shipping level for zone, use that rather than global setting
+									$free_level			 = $shippingMethodFreeLevel;
+									$encouragement_level = ( $free_level * 0.8 );
 								}
-								//if we have a free shipping level for zone, use that rather than global setting
-								$free_level			 = $shippingMethodFreeLevel;
-								$encouragement_level = ( $free_level * 0.8 );
 							}
 						}
 					}
@@ -88,19 +101,19 @@ function inkston_get_cart_message( $valueadd ) {
 	}
 
 
-    $shippingnote = '';
-    if ( $carttotal > $free_level ) {
-	//if new items have just pushed total into free shipping eligibility
-	if ( ($carttotal - $valueadd) < $free_level ) {
-	    $shippingnote = __( 'Congratulations, your order is now eligible for free shipping!', 'inkston-integration' );
-	} else {
-	    $shippingnote = __( 'Your order qualifies for free shipping!', 'inkston-integration' );
+	$shippingnote = '';
+	if ( $carttotal > $free_level ) {
+		//if new items have just pushed total into free shipping eligibility
+		if ( ($carttotal - $valueadd) < $free_level ) {
+			$shippingnote = __( 'Congratulations, your order is now eligible for free shipping!', 'inkston-integration' );
+		} else {
+			$shippingnote = __( 'Your order qualifies for free shipping!', 'inkston-integration' );
+		}
+	} elseif ( $carttotal > $encouragement_level ) {
+		$shortfall		 = $free_level - $carttotal;
+		$shortfall		 = wc_price( $shortfall );
+		$shippingnote	 = sprintf( __( 'Add %s more to your order to qualify for free shipping!', 'inkston-integration' ), $shortfall );
 	}
-    } elseif ( $carttotal > $encouragement_level ) {
-	$shortfall	 = $free_level - $carttotal;
-	$shortfall	 = wc_price( $shortfall );
-	$shippingnote	 = sprintf( __( 'Add %s more to your order to qualify for free shipping!', 'inkston-integration' ), $shortfall );
-    }
 	$ii_options = ii_get_options();
 	//if we are not in a known free shipping area, add exception message..
 	if ( $shippingnote && ( ! $knownFreeRegion) && isset( $ii_options[ 'woofreeshippingexcept' ] ) && $ii_options[ 'woofreeshippingexcept' ] != '' ) {
@@ -108,19 +121,20 @@ function inkston_get_cart_message( $valueadd ) {
 		if ( function_exists( 'pll__' ) ) {
 			$freeshippingexceptions = pll__( $freeshippingexceptions );
 		}
-		$shippingnote .= ' ' . $freeshippingexceptions;
+		$freeshippingexceptions	 = ink_add_shipping_link( $freeshippingexceptions );
+		$shippingnote			 .= ' ' . $freeshippingexceptions;
 	}
-  return $shippingnote;
+	return $shippingnote;
 }
 
 /*
  * show remaining amount necessary to qualify for free shipping
  */
 function inkston_show_free_shipping_qualifier() {
-    $shippingnote = inkston_get_cart_message( 0 );
-    if ( $shippingnote ) {
-	echo( '<span class="shipping-note">' . $shippingnote . '</span>');
-    }
+	$shippingnote = inkston_get_cart_message( 0 );
+	if ( $shippingnote ) {
+		echo( '<span class="shipping-note">' . $shippingnote . '</span>');
+	}
 }
 
 add_action( 'woocommerce_after_shipping_calculator', 'inkston_show_free_shipping_qualifier', 10, 0 );
@@ -132,19 +146,19 @@ add_action( 'woocommerce_after_shipping_calculator', 'inkston_show_free_shipping
  * @param array $products   array of product ids and quantities just added to basket
  */
 function inkston_cart_free_shipping_qualifier( $message, $products ) {
-    //get value just added
-    $valueadd = 0;
-    foreach ( $products as $product_id => $qty ) {
-	$product	 = wc_get_product( $product_id );
-	$valueadd	 += ($product->get_price() * $qty);
-    }
-    $carttotal	 = WC()->cart->cart_contents_total;
-    $shippingnote	 = inkston_get_cart_message( $valueadd );
+	//get value just added
+	$valueadd = 0;
+	foreach ( $products as $product_id => $qty ) {
+		$product	 = wc_get_product( $product_id );
+		$valueadd	 += ($product->get_price() * $qty);
+	}
+	$carttotal		 = WC()->cart->cart_contents_total;
+	$shippingnote	 = inkston_get_cart_message( $valueadd );
 
-    if ( $shippingnote ) {
-	$message .= '&#010;<br/>' . $shippingnote;
-    }
-    return $message;
+	if ( $shippingnote ) {
+		$message .= '&#010;<br/>' . $shippingnote;
+	}
+	return $message;
 }
 
 add_filter( 'wc_add_to_cart_message_html', 'inkston_cart_free_shipping_qualifier', 10, 2 );

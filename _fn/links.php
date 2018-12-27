@@ -358,9 +358,9 @@ function ink_shipping_link( $backorder = false ) {
 	$currentblogid	 = get_current_blog_id();
 
 	if ( is_inkston() ) {
-		$shippingpage = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( 7420 ) : 7420;
 		switch_to_blog( 1 );
-		$link			 = get_permalink( 7420 );
+		$shippingpage	 = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( 7420 ) : 7420;
+		$link			 = get_permalink( $shippingpage );
 		switch_to_blog( $currentblogid );
 	}
 
