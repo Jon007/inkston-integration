@@ -5,7 +5,14 @@
  */
 function ink_author_link( $link, $author_id, $author_nicename ) {
     if ( is_inkston() && strpos( $link, 'community' ) == 0 ) {
-	$link = network_site_url() . 'community/forums/users/' . $author_nicename . '/';
+      if ( $author_id ) {
+        $link = network_site_url() . 'community/forums/users/' . $author_nicename . '/';
+      } else {
+        //if wp generated an author link but no author is available, suppress it
+        if ( strpos( $link, 'author' ) ) {
+          return '';
+        }
+      }
     }
     return $link;
 }

@@ -35,10 +35,13 @@ do_action( 'woocommerce_before_account_navigation' );
         if (function_exists( 'bbp_get_user_profile_url')) {
             $profileurl = esc_url( bbp_get_user_profile_url(get_current_user_id()));
         } else {
+			    $userid = get_current_user_id();
+			    if ( $userid ) {
             $user     = get_userdata( get_current_user_id() );
             $nicename = $user->user_nicename;
             $profileurl = '/community/forums/users/' . $nicename;
-        }
+          }
+		    }
         if ($profileurl){
 			?><li><a class="inline" href="<?php echo($profileurl); ?>"><?php echo(esc_html( __( 'My Profile', 'inkston-integration' ) )); ?></a></li><li><a class="inline" href="<?php echo($profileurl) . '/edit/'; ?>"><?php echo(esc_html( __( 'Edit Profile', 'inkston-integration' ) )); ?></a></li>
 <?php } ?>

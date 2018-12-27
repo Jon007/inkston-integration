@@ -2,6 +2,7 @@
 /**
  * Checkout terms and conditions area.
  *
+ * @author  WooThemes mod J.Moore: checkbox removed in favour of info message
  * @package WooCommerce/Templates
  * @version 3.4.0
  */
@@ -18,7 +19,7 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 		 * Terms and conditions hook used to inject content.
 		 *
 		 * @since 3.4.0.
-		 * @hooked wc_privacy_policy_text() Shows custom privacy policy text. Priority 20.
+		 * @hooked wc_checkout_privacy_policy_text() Shows custom privacy policy text. Priority 20.
 		 * @hooked wc_terms_and_conditions_page_content() Shows t&c page content. Priority 30.
 		 */
 		do_action( 'woocommerce_checkout_terms_and_conditions' );
@@ -31,7 +32,7 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 			<span><?php printf( __( 'By placing your order, you agree to the inkston <a href="%s" target="_blank" class="woocommerce-terms-and-conditions-link">terms &amp; conditions</a>', 'inkston-integration' ), esc_url( wc_get_page_permalink( 'terms' ) ) ); ?></span>  
 		</label>
 		<input type="hidden" name="terms" value="1" />
-		<input type="hidden" name="terms-field" value="0" />
+		<input type="hidden" name="terms-field" value="1" />
 	</p>
 		<?php //END: INKSTON
 		endif; ?>

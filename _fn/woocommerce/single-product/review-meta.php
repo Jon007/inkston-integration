@@ -51,11 +51,11 @@ if ( '0' === $comment->comment_approved ) { ?>
         <time datetime="<?php comment_time( 'c' ); ?>">
           <?php
             /* translators: 1: comment date, 2: comment time */
-            printf( __( '%1$s at %2$s' ), get_comment_date( '', $comment ), get_comment_time() );
+            printf( __( '%1$s at %2$s', 'inkston-integration' ), get_comment_date( '', $comment ), get_comment_time() );
           ?>
         </time>
       </a>
-      <?php edit_comment_link( __( 'Edit' ), '<span class="edit-link">', '</span>' ); ?>
+      <?php edit_comment_link( __( 'Edit', 'inkston-integration' ), '<span class="edit-link">', '</span>' ); ?>
     </span><!-- .comment-metadata -->
 	</p>
 

@@ -11,11 +11,9 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
+ * @author  WooThemes mod J.Moore: Additional fields removed and added to checkout
  * @package WooCommerce/Templates
  * @version 3.0.9
- *
- * Additional fields removed and added to checkout
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

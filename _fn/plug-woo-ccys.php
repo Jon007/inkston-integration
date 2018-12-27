@@ -33,6 +33,13 @@ add_filter( 'woocs_currency_data_manipulation', 'localize_currency_switcher', 10
  * 		'flag' => '',
  */
 function localize_currency_switcher( $currencies ) {
+	//allow a per-language transient cache of currency info
+	$locale			 = (function_exists( 'pll_current_language' )) ? pll_current_language( 'locale' ) : get_locale();
+	$tKey			 = 'currencies-' . $locale;
+	$transcurrencies = get_transient( $tKey );
+	if ( $transcurrencies ) {
+		return $transcurrencies;
+	}
 
     if ( ! isset( $currencies[ 'GBP' ] ) ) {
 	$currencies[ 'GBP' ] = array(
@@ -88,8 +95,6 @@ function localize_currency_switcher( $currencies ) {
 	}
 
 	//localize position and hide_cents where possible
-	$locale = (function_exists( 'pll_current_language' )) ? pll_current_language( 'locale' ) : get_locale();
-
 	//added this because WP-CLI threw a wobbly over the NumberFormatter and
 	//refused to perfom any operations, even completely unrelated to theme..
 	$formatter = NULL;
@@ -114,6 +119,7 @@ function localize_currency_switcher( $currencies ) {
 	}
     }
 
+	set_transient( $tKey, $currencies, 3600 );
     return $currencies;
 }
 

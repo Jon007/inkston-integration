@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 21:19+0000\n"
+"POT-Creation-Date: 2018-12-24 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: inkston-integration.php:216
+#: inkston-integration.php:211
 #, php-format
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: inkston-integration.php:217
+#: inkston-integration.php:212
 #, php-format
 msgid "Please upgrade %1$s before trying to reactivate the %2$s plugin."
 msgstr ""
@@ -192,41 +192,109 @@ msgstr ""
 msgid "Catalogue popups"
 msgstr ""
 
-#: inkston-integration-settings.php:221
+#: inkston-integration-settings.php:222
+msgid "WooCommerce Invoice enhancements"
+msgstr ""
+
+#: inkston-integration-settings.php:229
 msgid "WooCommerce Coupons"
 msgstr ""
 
-#: inkston-integration-settings.php:226
+#: inkston-integration-settings.php:234
 msgid "WooCommerce Templates"
 msgstr ""
 
-#: inkston-integration-settings.php:436
+#: inkston-integration-settings.php:239
+msgid "Auto-generate sku"
+msgstr ""
+
+#: inkston-integration-settings.php:244
+msgid "Sku format"
+msgstr ""
+
+#: inkston-integration-settings.php:255
+msgid "WooCommerce Free Shipping Options"
+msgstr ""
+
+#: inkston-integration-settings.php:259
+msgid "Enable free shipping offer messages"
+msgstr ""
+
+#: inkston-integration-settings.php:264
+msgid "Free shipping minimum order"
+msgstr ""
+
+#: inkston-integration-settings.php:269
+msgid "Free shipping encouragement level"
+msgstr ""
+
+#: inkston-integration-settings.php:274
+msgid "Free shipping exceptions"
+msgstr ""
+
+#: inkston-integration-settings.php:285
+msgid "WooCommerce Product Cloning Options"
+msgstr ""
+
+#: inkston-integration-settings.php:290
+msgid "Site price multiplier"
+msgstr ""
+
+#: inkston-integration-settings.php:295
+msgid "Synchronise prices"
+msgstr ""
+
+#: inkston-integration-settings.php:300
+msgid "Synchronise sale prices and dates"
+msgstr ""
+
+#: inkston-integration-settings.php:310
+msgid "WooCommerce Backorder options"
+msgstr ""
+
+#: inkston-integration-settings.php:315
+msgid "Allow back orders"
+msgstr ""
+
+#: inkston-integration-settings.php:321
+msgid "Back-ordered message"
+msgstr ""
+
+#: inkston-integration-settings.php:327
+msgid "On back-order message"
+msgstr ""
+
+#: inkston-integration-settings.php:609
 msgid "General Options:"
 msgstr ""
 
-#: inkston-integration-settings.php:440
+#: inkston-integration-settings.php:613
 msgid ""
 "Options for integrated plugins (automatically deactivated if related plugin "
 "is not active):"
 msgstr ""
 
-#: inkston-integration-settings.php:444
+#: inkston-integration-settings.php:617
 msgid "WooCommerce Integration Options:"
 msgstr ""
 
-#: inkston-integration-settings.php:458
+#: inkston-integration-settings.php:621
+msgid "These options apply where this site is a destination site for cloning:"
+msgstr ""
+
+#: inkston-integration-settings.php:643
 msgid "is a plugin integration helper tool from"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:50
+#: _fn/plug-woo-offers.php:56
 msgid "Congratulations, your order is now eligible for free shipping!"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:52
+#: _fn/plug-woo-offers.php:58
 msgid "Your order qualifies for free shipping!"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:57
+#: _fn/plug-woo-offers.php:63
 #, php-format
 msgid "Add %s more to your order to qualify for free shipping!"
 msgstr ""
@@ -479,11 +547,11 @@ msgstr ""
 msgid "click here to pay for this order online now."
 msgstr ""
 
-#: _fn/plug-socializer.php:19
+#: _fn/plug-socializer.php:18
 msgid "Login or register with Facebook, LinkedIn, Google"
 msgstr ""
 
-#: _fn/plug-socializer.php:21
+#: _fn/plug-socializer.php:20
 msgid "Or use your Inkston login:"
 msgstr ""
 
@@ -495,11 +563,11 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: _fn/inkston.php:30
+#: _fn/inkston.php:37
 msgid "Search Inkston."
 msgstr ""
 
-#: _fn/inkston.php:34
+#: _fn/inkston.php:41
 msgid "results"
 msgstr ""
 
@@ -555,79 +623,89 @@ msgstr ""
 msgid "Your comments are awaiting approval"
 msgstr ""
 
+#. 1: comment date, 2: comment time
+#: _fn/woocommerce/single-product/review-meta.php:54
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: _fn/woocommerce/single-product/review-meta.php:58
+msgid "Edit"
+msgstr ""
+
 #: _fn/woocommerce/single-product/product-attributes.php:225
 msgid "Shipping"
 msgstr ""
 
-#: _fn/woocommerce/single-product/product-attributes.php:229
+#: _fn/woocommerce/single-product/product-attributes.php:230
 msgid "Free"
 msgstr ""
 
-#: _fn/woocommerce/single-product/product-attributes.php:230
+#: _fn/woocommerce/single-product/product-attributes.php:231
 msgid "Order including this product will qualify for free shipping."
 msgstr ""
 
-#: _fn/woocommerce/single-product/product-attributes.php:237
+#: _fn/woocommerce/single-product/product-attributes.php:238
 msgid "Standard"
 msgstr ""
 
-#: _fn/woocommerce/single-product/product-attributes.php:239
+#: _fn/woocommerce/single-product/product-attributes.php:240
 msgid "Standard shipping."
 msgstr ""
 
-#: _fn/woocommerce/emails/customer-on-hold-order.php:33
+#: _fn/woocommerce/emails/customer-on-hold-order.php:34
 msgid "pay for this order online"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:42
+#: _fn/woocommerce/myaccount/navigation.php:45
 msgid "My Profile"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:42
+#: _fn/woocommerce/myaccount/navigation.php:45
 msgid "Edit Profile"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:44
+#: _fn/woocommerce/myaccount/navigation.php:47
 msgid "Check your points in inkston rewards scheme"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:44
+#: _fn/woocommerce/myaccount/navigation.php:47
 msgid "My Rewards"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:46
+#: _fn/woocommerce/myaccount/navigation.php:49
 msgid "My Listings"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:48
+#: _fn/woocommerce/myaccount/navigation.php:51
 msgid "My Forum Topics"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:49
+#: _fn/woocommerce/myaccount/navigation.php:52
 msgid "My Forum Replies"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:50
+#: _fn/woocommerce/myaccount/navigation.php:53
 msgid "My Favourite Forum Posts"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:51
+#: _fn/woocommerce/myaccount/navigation.php:54
 msgid "My Forum Subscriptions"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:60
+#: _fn/woocommerce/myaccount/navigation.php:63
 msgid "My comments and reviews"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:61
+#: _fn/woocommerce/myaccount/navigation.php:64
 msgid "My Comments/Reviews"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:80
+#: _fn/woocommerce/myaccount/navigation.php:83
 msgid "Comment subscriptions"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/navigation.php:94
+#: _fn/woocommerce/myaccount/navigation.php:97
 msgid "Newsletter subscriptions"
 msgstr ""
 
@@ -638,7 +716,7 @@ msgid ""
 "codes below.<br />If your order has arrived, please leave your review!"
 msgstr ""
 
-#: _fn/woocommerce/checkout/terms.php:31
+#: _fn/woocommerce/checkout/terms.php:32
 #, php-format
 msgid ""
 "By placing your order, you agree to the inkston <a href=\"%s\" "

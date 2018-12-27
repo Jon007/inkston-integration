@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see 	https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes mod J.Moore
+ * @author  WooThemes mod J.Moore: on purchased items, link straight to comments section
  * @package WooCommerce/Templates
  * @version 3.0.0
  */
