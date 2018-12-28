@@ -47,7 +47,9 @@ function ink_filter_avatar( $avatar, $id_or_email, $size, $default, $alt, $args 
 		$user_Id = intval( $id_or_email );
 		if ( $user_Id ) {
 			$user	 = get_user_by( 'ID', $user_Id );
-			$title	 = $user->display_name;
+			if ( $user ) {
+        $title	 = $user->display_name;
+      }
 		}
 	} elseif ( is_string( $id_or_email ) ) {
 		$user = get_user_by( 'email', $id_or_email );

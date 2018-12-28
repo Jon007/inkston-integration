@@ -31,21 +31,28 @@ function inkston_excerpt( $length = 30, $readmore = false ) {
 /*
  * return excerpt text
  */
-function inkston_get_excerpt( $length = 25, $readmore = false ) {
+function inkston_get_excerpt( $length = 25, $readmore = false, $postid = 0 ) {
 	global $post;
-	$output = '';
+	$thisPost	 = $post;
+	$output		 = '';
 	if ( is_search() && 13 == $length ) {
 		$length = inkston_excerpt_length( $length );
 	}
-	$id = $post->ID;
+	if ( $postid ) {
+		$id			 = $postid;
+		$thisPost	 = get_post( $id );
+	} else {
+		$id = $post->ID;
+	}
 	if ( has_excerpt( $id ) ) {
 		$output = get_the_excerpt( $id );
 	}
 	if ( $output == '' ) {
 		if ( $post->post_type == 'wpbdp_listing' ) {
-			$output = $post->post_content;
+			$output = $thisPost->post_content;
 		} else {
-			$output = get_the_content();
+//			$output = get_the_content();
+			$output = $thisPost->post_content;
 		}
 	}
 	if ( $output && $output != '' ) {

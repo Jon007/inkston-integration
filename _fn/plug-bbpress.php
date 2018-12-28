@@ -54,6 +54,7 @@ function ink_bbp_canonical( $canonical ) {
 }
 
 add_filter( 'wpseo_canonical', 'ink_bbp_canonical', 10, 1 );
+add_filter( 'wpseo_opengraph_url', 'ink_bbp_canonical', 10, 1 );
 
 
 /*
@@ -312,3 +313,38 @@ function ii_bbpress_upload_media( $args ) {
 }
 
 add_filter( 'bbp_after_get_the_content_parse_args', 'ii_bbpress_upload_media' );
+
+/*
+ * filter SEO descriptions to catch current reply and get description of that
+ */
+function ink_seo_description( $description ) {
+	//check if we are on a bbPress forum post
+	global $post;
+	if ( $post ) {
+		switch ( $post->post_type ) {
+			case 'topic':
+			case 'reply':
+				//if the request is for a particular topic reply, add excerpt of the reply to the current description
+				global $wp;
+				$pageid = $wp->query_vars[ 'page' ];
+				//$pageid = bbp_get_paged_rewrite_id();
+				if ( $pageid ) {
+					$pageid = intval( $pageid );
+					if ( $pageid != $post->ID ) {
+						//$replypost	 = bbp_get_reply( $pageid );
+						$replydesc = inkston_get_excerpt( inkston_excerpt_length( 25 ), false, $pageid );
+						if ( $replydesc ) {
+							$description = $replydesc;
+						}
+					}
+				}
+				break;
+			default:
+		}
+	}
+	return $description;
+}
+
+add_filter( 'wpseo_opengraph_desc', 'ink_seo_description', 10, 1 );
+add_filter( 'wpseo_twitter_description', 'ink_seo_description', 10, 1 );
+add_filter( 'wpseo_metadesc', 'ink_seo_description', 10, 1 );
