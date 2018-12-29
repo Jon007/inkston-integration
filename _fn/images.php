@@ -179,8 +179,8 @@ function inkston_featured_img_tag( $content, $returntag, $fallback = true, $foru
 			 * NOTE: this gets the image sized as on the page, size not guaranteed,
 			 * may also get an external image so no guarantee thumbnail is available  */
 			foreach ( $imageTags as $imgtag ) {
-				$url = ($returntag) ? $imgtag->ownerDocument->saveXML( $imgtag ) : $imgtag->getAttribute( 'src' );
-				//$url = $imgtag->getAttribute( 'src');
+				//$url = ($returntag) ? $imgtag->ownerDocument->saveXML( $imgtag ) : $imgtag->getAttribute( 'src' );
+				$url = $imgtag->getAttribute( 'src' );
 				if ( (strpos( $url, 'cat-generator-avatars' ) === false) && (strpos( $url, 'badge' ) === false) && (strpos( $url, 'avatar' ) === false) ) {
 					$first_img = $url;
 					//for forums, continue to last image, otherwise get first non-avatar image
