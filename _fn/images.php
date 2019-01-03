@@ -134,17 +134,19 @@ function inkston_featured_img_tag( $content, $returntag, $fallback = true, $foru
 					 * meta info will get the reply specific picture if any
 					 */
 					global $wp;
-					$pageid = $wp->query_vars[ 'page' ];
-					if ( $pageid ) {
-						$replypost = get_post( $pageid );
-						if ( $replypost ) {
-							$replyimg = inkston_featured_img_tag( $replypost->post_content, false, false, $forum_id );
-							if ( $replyimg ) {
-								$first_img	 = $replyimg;
-								$content	 = '';
-								break;
-							}
-						}
+					if ( isset( $wp->query_vars[ 'page' ] ) ) {
+            $pageid = $wp->query_vars[ 'page' ];
+            if ( $pageid ) {
+              $replypost = get_post( $pageid );
+              if ( $replypost ) {
+                $replyimg = inkston_featured_img_tag( $replypost->post_content, false, false, $forum_id );
+                if ( $replyimg ) {
+                  $first_img	 = $replyimg;
+                  $content	 = '';
+                  break;
+                }
+              }
+            }
 					}
 
 					//then check all the replies from latest
