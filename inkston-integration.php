@@ -69,6 +69,7 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 
 			add_action( 'plugins_loaded', array( __CLASS__, 'load_textdomain' ) );
 			add_action( 'admin_init', array( __CLASS__, 'check_wp_version' ) );
+			add_action( 'admin_init', array( __CLASS__, 'admin_activate' ) );
 
 			//register scripts and elements to be available on both back and front end
 			add_action( 'admin_head', array( __CLASS__, 'ii_admin_head' ) );
@@ -88,6 +89,12 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 			  add_action( 'woocommerce_review_order_after_shipping', array( __CLASS__, 'shippingalert' ), 60 );
 			  }
 			 */
+		}
+
+		public static function admin_activate() {
+			//get options and load modules as appropriate
+			$ii_options = ii_get_options();
+			include_once( plugin_dir_path( __FILE__ ) . '_fn/admin.php');
 		}
 
 		/**
