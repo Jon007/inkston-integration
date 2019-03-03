@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inkston Integration\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 13:26+0000\n"
-"PO-Revision-Date: 2018-12-24 13:28+0000\n"
+"POT-Creation-Date: 2019-03-03 22:09+0000\n"
+"PO-Revision-Date: 2019-03-03 22:11+0000\n"
 "Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -12,14 +12,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.0.2"
+"X-Loco-Version: 2.2.0; wp-5.1"
 
-#: inkston-integration.php:211
+#: inkston-integration.php:218
 #, php-format
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: inkston-integration.php:212
+#: inkston-integration.php:219
 #, php-format
 msgid "Please upgrade %1$s before trying to reactivate the %2$s plugin."
 msgstr ""
@@ -286,15 +286,15 @@ msgstr ""
 msgid "is a plugin integration helper tool from"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:56
+#: _fn/plug-woo-offers.php:108
 msgid "Congratulations, your order is now eligible for free shipping!"
 msgstr "¡Enhorabuena, su orden ahora es elegible para el envío gratis!"
 
-#: _fn/plug-woo-offers.php:58
+#: _fn/plug-woo-offers.php:110
 msgid "Your order qualifies for free shipping!"
 msgstr "[dependiendo de variación]"
 
-#: _fn/plug-woo-offers.php:63
+#: _fn/plug-woo-offers.php:115
 #, php-format
 msgid "Add %s more to your order to qualify for free shipping!"
 msgstr "¡Añada %s más a su orden para calificar para el envío gratis!"
@@ -428,36 +428,36 @@ msgstr ""
 msgid "click here to manage your subscription"
 msgstr "haga clic aquí para administrar su suscripción"
 
-#: _fn/plug-badgeos.php:76 _fn/plug-badgeos.php:137
+#: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
 msgid "No badges yet"
 msgstr "Sin insignias aún"
 
-#: _fn/plug-badgeos.php:156
+#: _fn/plug-badgeos.php:158
 msgid "level"
 msgstr "nivel"
 
-#: _fn/plug-badgeos.php:190
+#: _fn/plug-badgeos.php:192
 msgid "Current level: "
 msgstr "Nivel Actual:"
 
-#: _fn/plug-badgeos.php:192
+#: _fn/plug-badgeos.php:194
 msgid "level "
 msgstr "nivel"
 
-#: _fn/plug-badgeos.php:194
+#: _fn/plug-badgeos.php:196
 #, php-format
 msgid "Current score: %1$s points."
 msgstr "Puntuación actual: %1$s puntos."
 
-#: _fn/plug-badgeos.php:319
+#: _fn/plug-badgeos.php:321
 msgid "Congratulations you have been awarded:"
 msgstr "Enhorabuena le han concedido:"
 
-#: _fn/plug-badgeos.php:365
+#: _fn/plug-badgeos.php:367
 msgid "your contribution has unlocked an award"
 msgstr "Su contribución ha desbloqueado un premio"
 
-#: _fn/plug-badgeos.php:368
+#: _fn/plug-badgeos.php:370
 #, php-format
 msgid ""
 "Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
@@ -466,19 +466,19 @@ msgstr ""
 "Visita <a href=\"%1$s\"> tu página de perfil </a> para ver los detalles de "
 "tus premios y activar o desactivar estas notificaciones."
 
-#: _fn/plug-badgeos.php:371
+#: _fn/plug-badgeos.php:373
 msgid "You were awarded this badge for making contributions to "
 msgstr "Te otorgaron esta insignia para hacer contribuciones a"
 
-#: _fn/plug-badgeos.php:372
+#: _fn/plug-badgeos.php:374
 msgid "Inkston Oriental Art Comunity"
 msgstr "Peña de Arte Oriental de Inkston"
 
-#: _fn/plug-badgeos.php:376 _fn/plug-bbpress.php:103
+#: _fn/plug-badgeos.php:378 _fn/plug-bbpress.php:104
 msgid "Thankyou for participating in Inkston Community"
 msgstr "Gracias por participar en Inkston Community"
 
-#: _fn/plug-badgeos.php:379
+#: _fn/plug-badgeos.php:381
 msgid "rewards@inkston.com"
 msgstr ""
 
@@ -512,22 +512,22 @@ msgstr "Leer"
 msgid "Choose"
 msgstr "Elegir"
 
-#: _fn/plug-bbpress.php:98
+#: _fn/plug-bbpress.php:99
 #, php-format
 msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
 msgstr "Nueva publicación en el foro \"%1$s\", tema \"%2$s\"."
 
-#: _fn/plug-bbpress.php:101
+#: _fn/plug-bbpress.php:102
 #, php-format
 msgid "Or visit your profile page to review all your subscriptions: %1$s"
 msgstr ""
 "O visite su página de perfil para revisar todas sus suscripciones:  %1$s"
 
-#: _fn/plug-bbpress.php:114
+#: _fn/plug-bbpress.php:115
 msgid "forum-subscribers@inkston.com"
 msgstr ""
 
-#: _fn/plug-bbpress.php:250 _fn/plug-bbpress.php:265
+#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
 msgid "Login or Register with email, Facebook, Google or LinkedIn account"
 msgstr ""
 "Inicie sesión o regístrese mediante Facebook, LinkedIn, Google o correo"
@@ -564,11 +564,11 @@ msgstr "Valoración"
 msgid "on"
 msgstr "en"
 
-#: _fn/plug-woo-pay-statuses.php:46
+#: _fn/plug-woo-pay-statuses.php:57
 msgid "Payment has not been received for this order - "
 msgstr "El pago no ha sido recibido por este pedido -"
 
-#: _fn/plug-woo-pay-statuses.php:48
+#: _fn/plug-woo-pay-statuses.php:59
 msgid "click here to pay for this order online now."
 msgstr "haga clic aquí para pagar en línea ahora."
 
@@ -682,6 +682,14 @@ msgstr "Normal"
 msgid "Standard shipping."
 msgstr "Envio normal."
 
+#: _fn/woocommerce/emails/customer-on-hold-order.php:28
+msgid ""
+"Your order is on-hold until we confirm payment has been received. In the "
+"meantime, here is a reminder of what you ordered:"
+msgstr ""
+"Su pedido está en espera hasta que confirmemos que se ha recibido el pago. "
+"Mientras tanto, aquí hay un recordatorio de lo que ordenó:"
+
 #: _fn/woocommerce/emails/customer-on-hold-order.php:34
 msgid "pay for this order online"
 msgstr "Pagar este pedido en línea"
@@ -737,6 +745,22 @@ msgstr "Suscripciones de comentarios"
 #: _fn/woocommerce/myaccount/navigation.php:97
 msgid "Newsletter subscriptions"
 msgstr "Suscripciones a los boletines"
+
+#: _fn/woocommerce/myaccount/dashboard.php:34
+#, php-format
+msgid ""
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
+msgstr ""
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Revisar órdenes para "
+"procesar</a>"
+
+#. 1: review posts link 2: new post link
+#: _fn/woocommerce/myaccount/dashboard.php:46
+#, php-format
+msgid ""
+"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
+"href=\"%1$s\">写文章 Add New Post</a>"
+msgstr ""
 
 #: _fn/woocommerce/myaccount/my-orders.php:32
 #: _fn/woocommerce/myaccount/orders.php:30

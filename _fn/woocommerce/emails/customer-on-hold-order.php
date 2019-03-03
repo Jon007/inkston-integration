@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_email_header', $email_heading, $email );
 ?>
 
-<p><?php _e( "Your order is on-hold until we confirm payment has been received. In the meantime, here is a reminder of what you ordered:", 'woocommerce' ); ?></p>
+<p><?php _e( "Your order is on-hold until we confirm payment has been received. In the meantime, here is a reminder of what you ordered:", 'inkston-integration' ); ?></p>
 
 <?php 
 //INKSTON: add payment link

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-24 13:26+0000\n"
+"POT-Creation-Date: 2019-03-03 22:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: inkston-integration.php:211
+#: inkston-integration.php:218
 #, php-format
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: inkston-integration.php:212
+#: inkston-integration.php:219
 #, php-format
 msgid "Please upgrade %1$s before trying to reactivate the %2$s plugin."
 msgstr ""
@@ -286,15 +286,15 @@ msgstr ""
 msgid "is a plugin integration helper tool from"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:56
+#: _fn/plug-woo-offers.php:108
 msgid "Congratulations, your order is now eligible for free shipping!"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:58
+#: _fn/plug-woo-offers.php:110
 msgid "Your order qualifies for free shipping!"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:63
+#: _fn/plug-woo-offers.php:115
 #, php-format
 msgid "Add %s more to your order to qualify for free shipping!"
 msgstr ""
@@ -409,55 +409,55 @@ msgstr ""
 msgid "click here to manage your subscription"
 msgstr ""
 
-#: _fn/plug-badgeos.php:76 _fn/plug-badgeos.php:137
+#: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
 msgid "No badges yet"
 msgstr ""
 
-#: _fn/plug-badgeos.php:156
+#: _fn/plug-badgeos.php:158
 msgid "level"
 msgstr ""
 
-#: _fn/plug-badgeos.php:190
+#: _fn/plug-badgeos.php:192
 msgid "Current level: "
 msgstr ""
 
-#: _fn/plug-badgeos.php:192
+#: _fn/plug-badgeos.php:194
 msgid "level "
 msgstr ""
 
-#: _fn/plug-badgeos.php:194
+#: _fn/plug-badgeos.php:196
 #, php-format
 msgid "Current score: %1$s points."
 msgstr ""
 
-#: _fn/plug-badgeos.php:319
+#: _fn/plug-badgeos.php:321
 msgid "Congratulations you have been awarded:"
 msgstr ""
 
-#: _fn/plug-badgeos.php:365
+#: _fn/plug-badgeos.php:367
 msgid "your contribution has unlocked an award"
 msgstr ""
 
-#: _fn/plug-badgeos.php:368
+#: _fn/plug-badgeos.php:370
 #, php-format
 msgid ""
 "Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
 "and turn these notifications on or off."
 msgstr ""
 
-#: _fn/plug-badgeos.php:371
+#: _fn/plug-badgeos.php:373
 msgid "You were awarded this badge for making contributions to "
 msgstr ""
 
-#: _fn/plug-badgeos.php:372
+#: _fn/plug-badgeos.php:374
 msgid "Inkston Oriental Art Comunity"
 msgstr ""
 
-#: _fn/plug-badgeos.php:376 _fn/plug-bbpress.php:103
+#: _fn/plug-badgeos.php:378 _fn/plug-bbpress.php:104
 msgid "Thankyou for participating in Inkston Community"
 msgstr ""
 
-#: _fn/plug-badgeos.php:379
+#: _fn/plug-badgeos.php:381
 msgid "rewards@inkston.com"
 msgstr ""
 
@@ -489,21 +489,21 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: _fn/plug-bbpress.php:98
+#: _fn/plug-bbpress.php:99
 #, php-format
 msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
 msgstr ""
 
-#: _fn/plug-bbpress.php:101
+#: _fn/plug-bbpress.php:102
 #, php-format
 msgid "Or visit your profile page to review all your subscriptions: %1$s"
 msgstr ""
 
-#: _fn/plug-bbpress.php:114
+#: _fn/plug-bbpress.php:115
 msgid "forum-subscribers@inkston.com"
 msgstr ""
 
-#: _fn/plug-bbpress.php:250 _fn/plug-bbpress.php:265
+#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
 msgid "Login or Register with email, Facebook, Google or LinkedIn account"
 msgstr ""
 
@@ -539,11 +539,11 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: _fn/plug-woo-pay-statuses.php:46
+#: _fn/plug-woo-pay-statuses.php:57
 msgid "Payment has not been received for this order - "
 msgstr ""
 
-#: _fn/plug-woo-pay-statuses.php:48
+#: _fn/plug-woo-pay-statuses.php:59
 msgid "click here to pay for this order online now."
 msgstr ""
 
@@ -653,6 +653,12 @@ msgstr ""
 msgid "Standard shipping."
 msgstr ""
 
+#: _fn/woocommerce/emails/customer-on-hold-order.php:28
+msgid ""
+"Your order is on-hold until we confirm payment has been received. In the "
+"meantime, here is a reminder of what you ordered:"
+msgstr ""
+
 #: _fn/woocommerce/emails/customer-on-hold-order.php:34
 msgid "pay for this order online"
 msgstr ""
@@ -707,6 +713,20 @@ msgstr ""
 
 #: _fn/woocommerce/myaccount/navigation.php:97
 msgid "Newsletter subscriptions"
+msgstr ""
+
+#: _fn/woocommerce/myaccount/dashboard.php:34
+#, php-format
+msgid ""
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
+msgstr ""
+
+#. 1: review posts link 2: new post link
+#: _fn/woocommerce/myaccount/dashboard.php:46
+#, php-format
+msgid ""
+"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
+"href=\"%1$s\">写文章 Add New Post</a>"
 msgstr ""
 
 #: _fn/woocommerce/myaccount/my-orders.php:32
