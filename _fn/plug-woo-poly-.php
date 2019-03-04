@@ -111,3 +111,16 @@ function ii_load_email_textdomains() {
 }
 
 add_action( 'woo-poly.Emails.afterSwitchLanguage', 'ii_load_email_textdomains' );
+function ii_shipping_provider_url_template( $provider_url, $provider_name ) {
+	$localePos = strpos( $provider_url, '/en' );
+	if ( $localePos ) {
+		$localeCode = pll_current_language();
+		if ( $localeCode != 'en' ) {
+			$replaceWith	 = '/' . $localeCode;
+			$provider_url	 = str_replace( '/en', $replaceWith, $provider_url );
+		}
+	}
+	return $provider_url;
+}
+
+add_filter( 'shipping_provider_url_template', 'ii_shipping_provider_url_template', 10, 2 );
