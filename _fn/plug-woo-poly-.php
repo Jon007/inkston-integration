@@ -10,6 +10,8 @@ if ( class_exists( 'WPcleverWoosb' ) && isset( $ii_options[ 'bundletrans' ] ) ) 
 if ( isset( $ii_options[ 'merge_comments' ] ) ) {
 	include_once( 'plug-woo-poly-reviews.php' );
 }
+
+include_once( 'plug-woo-poly-emails.php' );
 /**
  * Polylang meta filter, if true meta item will not be synchronized.
  *
@@ -96,21 +98,9 @@ function get_translated_variation( $product_id, $lang ) {
 	}
 }
 
-function ii_unload_email_textdomains() {
-	unload_textdomain( 'inkston-integration' );
-	unload_textdomain( 'woo-advanced-shipment-tracking' );
-}
-
-add_action( 'woo-poly.Emails.switchLanguage', 'ii_unload_email_textdomains' );
-function ii_load_email_textdomains() {
-	inkston_integration::load_textdomain();
-	global $WC_advanced_Shipment_Tracking;
-	if ( $WC_advanced_Shipment_Tracking ) {
-		$WC_advanced_Shipment_Tracking->wst_load_textdomain();
-	}
-}
-
-add_action( 'woo-poly.Emails.afterSwitchLanguage', 'ii_load_email_textdomains' );
+/*
+ * translate language code in shipping tracking links
+ */
 function ii_shipping_provider_url_template( $provider_url, $provider_name ) {
 	$localePos = strpos( $provider_url, '/en' );
 	if ( $localePos ) {

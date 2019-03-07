@@ -85,6 +85,7 @@ if ( isset( $ii_options[ 'allowbackorders' ] ) ) {
 
 include_once( 'plug-woo-variations.php' );
 
+include_once( 'plug-woo-emails.php' );
 
 // Ship to a different address closed by default
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
