@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inkston Integration\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-03 22:09+0000\n"
-"PO-Revision-Date: 2019-03-03 22:12+0000\n"
+"POT-Creation-Date: 2019-03-07 00:32+0000\n"
+"PO-Revision-Date: 2019-03-07 00:41+0000\n"
 "Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -571,6 +571,20 @@ msgstr "Laissez votre avis"
 msgid "on"
 msgstr "sur"
 
+#: _fn/plug-woo-poly-emails.php:38
+msgid "Your {site_title} order from {order_date} is Shipped"
+msgstr "Votre commande de {site_title} de {order_date} est expédiée"
+
+#: _fn/plug-woo-poly-emails.php:39
+msgid "Your order is Shipped"
+msgstr "Votre commande est expédiée"
+
+#. %1s: state, %2s country
+#: _fn/plug-woo-poly-emails.php:241
+#, php-format
+msgid "$1s, %2s"
+msgstr ""
+
 #: _fn/plug-woo-pay-statuses.php:57
 msgid "Payment has not been received for this order - "
 msgstr "Le paiement n'a pas été reçu pour cette commande -"
@@ -637,6 +651,24 @@ msgstr "Taille du produit"
 msgid "Unpacked product size LxWxH in decimal form"
 msgstr "Taille du produit non emballé LxWxH en décimale"
 
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:110
+msgid "Your {site_title} order is now shipped"
+msgstr "Votre commande de {site_title} est maintenant expédiée"
+
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:120
+msgid "Thanks for shopping with us"
+msgstr "Merci d'avoir acheté chez nous"
+
+#: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:19
+msgid "New order fulfilment"
+msgstr ""
+
+#: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:20
+msgid ""
+"New order fulfilment emails are sent to chosen recipient(s) when a new order "
+"is received."
+msgstr ""
+
 #: _fn/woocommerce/order/order-details.php:35
 #: _fn/woocommerce/myaccount/my-orders.php:35
 msgid "Please help us to help you by reviewing your products!"
@@ -690,6 +722,20 @@ msgstr ""
 msgid "Standard shipping."
 msgstr "Expédition standard."
 
+#. %s: Customer billing full name, country, state
+#: _fn/woocommerce/emails/admin-new-order-fulfilment.php:29
+#, php-format
+msgid "Please prepare the following shipment for %s in %s"
+msgstr ""
+
+#: _fn/woocommerce/emails/email-address-shipping.php:26
+msgid "Shipping From:"
+msgstr "Origine d'expédition:"
+
+#: _fn/woocommerce/emails/email-address-shipping.php:47
+msgid "Shipping To:"
+msgstr "Pour la livraison à"
+
 #: _fn/woocommerce/emails/customer-on-hold-order.php:28
 msgid ""
 "Your order is on-hold until we confirm payment has been received. In the "
@@ -701,6 +747,12 @@ msgstr ""
 #: _fn/woocommerce/emails/customer-on-hold-order.php:34
 msgid "pay for this order online"
 msgstr "Payer pour cette commande en ligne"
+
+#. %s: Site title
+#: _fn/woocommerce/emails/customer-shipped-order.php:30
+#, php-format
+msgid "Your %s order has been shipped."
+msgstr "Votre commande %s a été expédiée."
 
 #: _fn/woocommerce/myaccount/navigation.php:45
 msgid "My Profile"
