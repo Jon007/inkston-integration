@@ -37,6 +37,7 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
 	remove_menu_page( 'tools.php' );
 	remove_menu_page( 'options-general.php' );
+	remove_submenu_page( 'woocommerce', 'wc-order-export' );
 }
 
 //admin_init is already called when admin.php is executed
