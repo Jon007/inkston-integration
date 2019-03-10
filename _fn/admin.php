@@ -26,3 +26,23 @@ function ii_mce_button_filter( $buttons ) {
 }
 
 add_filter( 'mce_buttons', 'ii_mce_button_filter', 99, 1 );
+
+
+
+/*
+ * remove admin menus for non-admin users
+ */
+if ( ! current_user_can( 'manage_options' ) ) {
+	remove_menu_page( 'wpcf7' );
+	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
+	remove_menu_page( 'tools.php' );
+	remove_menu_page( 'options-general.php' );
+}
+
+//admin_init is already called when admin.php is executed
+//add_action( 'admin_init', 'ii_debug_admin_menu' );
+
+//to find ids of menus to hide, debug menu information
+//echo '<div class="admin-debug"><h1>admin menu debug</h1>';
+//echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
+//echo '</div>';
