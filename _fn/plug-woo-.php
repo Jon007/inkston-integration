@@ -89,3 +89,16 @@ include_once( 'plug-woo-emails.php' );
 
 // Ship to a different address closed by default
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
+
+/*
+ * include account name in the payment details information as this has to be exactly correct for chinese banks
+ */
+function ii_bacs_add_account_name( $account_fields ) {
+	$account_fields[ 'account_name' ] = array(
+		'label'	 => __( 'Account name', 'woocommerce' ),
+		'value'	 => wp_kses_post( wp_unslash( $bacs_account->account_name ) ),
+	);
+	return $account_fields;
+}
+
+add_filter( 'woocommerce_bacs_account_fields', 'ii_bacs_add_account_name' );

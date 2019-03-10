@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-07 00:32+0000\n"
+"POT-Creation-Date: 2019-03-10 00:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -286,27 +286,6 @@ msgstr ""
 msgid "is a plugin integration helper tool from"
 msgstr ""
 
-#: _fn/plug-woo-offers.php:108
-msgid "Congratulations, your order is now eligible for free shipping!"
-msgstr ""
-
-#: _fn/plug-woo-offers.php:110
-msgid "Your order qualifies for free shipping!"
-msgstr ""
-
-#: _fn/plug-woo-offers.php:115
-#, php-format
-msgid "Add %s more to your order to qualify for free shipping!"
-msgstr ""
-
-#: _fn/plug-woo-poly-reviews.php:42
-msgid "Recent discussions in: "
-msgstr ""
-
-#: _fn/plug-woo-cart.php:95
-msgid "Checkout"
-msgstr ""
-
 #: _fn/plug-business-directory.php:13
 msgid "Name"
 msgstr ""
@@ -386,6 +365,189 @@ msgid ""
 "available under categories "
 msgstr ""
 
+#: _fn/sharer.php:26
+msgid "If you like this, please share: "
+msgstr ""
+
+#: _fn/plug-woo-buttons.php:33
+msgid "Buy"
+msgstr ""
+
+#: _fn/plug-woo-buttons.php:36 _fn/plug-woo-amazon.php:91
+msgid "View"
+msgstr ""
+
+#: _fn/plug-woo-buttons.php:41
+msgid "Add"
+msgstr ""
+
+#: _fn/plug-woo-buttons.php:43 _fn/plug-woo-buttons.php:50
+#: _fn/plug-woo-buttons.php:54
+msgid "Read"
+msgstr ""
+
+#: _fn/plug-woo-buttons.php:48
+msgid "Choose"
+msgstr ""
+
+#: _fn/plug-woo-tooltips.php:137
+#: _fn/woocommerce/single-product/product-attributes.php:120
+msgid "Product Weight"
+msgstr ""
+
+#: _fn/plug-woo-tooltips.php:141
+#: _fn/woocommerce/single-product/product-attributes.php:124
+msgid "Product Size"
+msgstr ""
+
+#: _fn/plug-woo-tooltips.php:147 _fn/plug-woo-tooltips.php:154
+#: _fn/woocommerce/single-product/product-attributes.php:130
+#: _fn/woocommerce/single-product/product-attributes.php:137
+msgid "[depending on variation]"
+msgstr ""
+
+#: _fn/inkston.php:37
+msgid "Search Inkston."
+msgstr ""
+
+#: _fn/inkston.php:41
+msgid "results"
+msgstr ""
+
+#: _fn/excerpts.php:24
+msgid "reading"
+msgstr ""
+
+#: _fn/excerpts.php:24
+msgid "Read more"
+msgstr ""
+
+#: _fn/plug-woo-pay-statuses.php:57
+msgid "Payment has not been received for this order - "
+msgstr ""
+
+#: _fn/plug-woo-pay-statuses.php:59
+msgid "click here to pay for this order online now."
+msgstr ""
+
+#: _fn/plug-woo-poly-reviews.php:42
+msgid "Recent discussions in: "
+msgstr ""
+
+#: _fn/plug-woo-amazon.php:33
+msgid "Please leave your reviews!"
+msgstr ""
+
+#: _fn/plug-woo-amazon.php:91
+msgid "Review"
+msgstr ""
+
+#: _fn/plug-woo-amazon.php:111 _fn/plug-woo-amazon.php:117
+msgid "on"
+msgstr ""
+
+#: _fn/plug-woo-offers.php:108
+msgid "Congratulations, your order is now eligible for free shipping!"
+msgstr ""
+
+#: _fn/plug-woo-offers.php:110
+msgid "Your order qualifies for free shipping!"
+msgstr ""
+
+#: _fn/plug-woo-offers.php:115
+#, php-format
+msgid "Add %s more to your order to qualify for free shipping!"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:245 _fn/plug-woo-asin-upc-net.php:357
+msgid "ASIN EU"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:249 _fn/plug-woo-asin-upc-net.php:360
+msgid "Amazon alphanumeric 10 character inventory code."
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:260 _fn/plug-woo-asin-upc-net.php:370
+msgid "ASIN USA"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:264
+msgid ""
+"Amazon USA code if different from EU code. Use NONE if not available in USA."
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:276 _fn/plug-woo-asin-upc-net.php:382
+msgid "UPC"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:280
+msgid "12 digits international standard Universal Product Code."
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:303 _fn/plug-woo-asin-upc-net.php:407
+msgid "Product weight"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:305 _fn/plug-woo-asin-upc-net.php:307
+#: _fn/plug-woo-asin-upc-net.php:409 _fn/plug-woo-asin-upc-net.php:411
+msgid "Unpacked net product weight."
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:335 _fn/plug-woo-asin-upc-net.php:426
+msgid "Product size "
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:343 _fn/plug-woo-asin-upc-net.php:385
+#: _fn/plug-woo-asin-upc-net.php:430
+msgid "Unpacked product size LxWxH in decimal form"
+msgstr ""
+
+#: _fn/plug-woo-asin-upc-net.php:373
+msgid "Amazon USA code if different from EU code.."
+msgstr ""
+
+#: _fn/plug-woo-poly-emails.php:39 _fn/plug-woo-poly-emails.php:40
+#: _fn/plug-woo-poly-emails.php:113
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:110
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:120
+msgid "Your {site_title} order {order_number} is Shipped"
+msgstr ""
+
+#. %1s: state, %2s country
+#: _fn/plug-woo-poly-emails.php:248
+#, php-format
+msgid "$1s, %2s"
+msgstr ""
+
+#: _fn/plug-bbpress.php:99
+#, php-format
+msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
+msgstr ""
+
+#: _fn/plug-bbpress.php:102
+#, php-format
+msgid "Or visit your profile page to review all your subscriptions: %1$s"
+msgstr ""
+
+#: _fn/plug-bbpress.php:104 _fn/plug-badgeos.php:378
+msgid "Thankyou for participating in Inkston Community"
+msgstr ""
+
+#: _fn/plug-bbpress.php:115
+msgid "forum-subscribers@inkston.com"
+msgstr ""
+
+#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
+msgid "Login or Register with email, Facebook, Google or LinkedIn account"
+msgstr ""
+
+#: _fn/plug-woo-product-gift.php:47
+#, php-format
+msgid ""
+"The coupon %s will give you a discount of %s when your basket value reaches "
+"%s or more."
+msgstr ""
+
 #: _fn/plug-woo-checkout-files.php:17
 msgid ""
 "Your shopping cart includes customization options, you can tell us about "
@@ -407,6 +569,10 @@ msgstr ""
 
 #: _fn/plug-mailpoet.php:46
 msgid "click here to manage your subscription"
+msgstr ""
+
+#: _fn/plug-woo-cart.php:95
+msgid "Checkout"
 msgstr ""
 
 #: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
@@ -453,112 +619,8 @@ msgstr ""
 msgid "Inkston Oriental Art Comunity"
 msgstr ""
 
-#: _fn/plug-badgeos.php:378 _fn/plug-bbpress.php:104
-msgid "Thankyou for participating in Inkston Community"
-msgstr ""
-
 #: _fn/plug-badgeos.php:381
 msgid "rewards@inkston.com"
-msgstr ""
-
-#: _fn/plug-woo-product-gift.php:47
-#, php-format
-msgid ""
-"The coupon %s will give you a discount of %s when your basket value reaches "
-"%s or more."
-msgstr ""
-
-#: _fn/plug-woo-buttons.php:33
-msgid "Buy"
-msgstr ""
-
-#: _fn/plug-woo-buttons.php:36 _fn/plug-woo-amazon.php:91
-msgid "View"
-msgstr ""
-
-#: _fn/plug-woo-buttons.php:41
-msgid "Add"
-msgstr ""
-
-#: _fn/plug-woo-buttons.php:43 _fn/plug-woo-buttons.php:50
-#: _fn/plug-woo-buttons.php:54
-msgid "Read"
-msgstr ""
-
-#: _fn/plug-woo-buttons.php:48
-msgid "Choose"
-msgstr ""
-
-#: _fn/plug-bbpress.php:99
-#, php-format
-msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
-msgstr ""
-
-#: _fn/plug-bbpress.php:102
-#, php-format
-msgid "Or visit your profile page to review all your subscriptions: %1$s"
-msgstr ""
-
-#: _fn/plug-bbpress.php:115
-msgid "forum-subscribers@inkston.com"
-msgstr ""
-
-#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
-msgid "Login or Register with email, Facebook, Google or LinkedIn account"
-msgstr ""
-
-#: _fn/sharer.php:26
-msgid "If you like this, please share: "
-msgstr ""
-
-#: _fn/plug-woo-tooltips.php:137
-#: _fn/woocommerce/single-product/product-attributes.php:120
-msgid "Product Weight"
-msgstr ""
-
-#: _fn/plug-woo-tooltips.php:141
-#: _fn/woocommerce/single-product/product-attributes.php:124
-msgid "Product Size"
-msgstr ""
-
-#: _fn/plug-woo-tooltips.php:147 _fn/plug-woo-tooltips.php:154
-#: _fn/woocommerce/single-product/product-attributes.php:130
-#: _fn/woocommerce/single-product/product-attributes.php:137
-msgid "[depending on variation]"
-msgstr ""
-
-#: _fn/plug-woo-amazon.php:33
-msgid "Please leave your reviews!"
-msgstr ""
-
-#: _fn/plug-woo-amazon.php:91
-msgid "Review"
-msgstr ""
-
-#: _fn/plug-woo-amazon.php:111 _fn/plug-woo-amazon.php:117
-msgid "on"
-msgstr ""
-
-#: _fn/plug-woo-poly-emails.php:38
-msgid "Your {site_title} order from {order_date} is Shipped"
-msgstr ""
-
-#: _fn/plug-woo-poly-emails.php:39
-msgid "Your order is Shipped"
-msgstr ""
-
-#. %1s: state, %2s country
-#: _fn/plug-woo-poly-emails.php:241
-#, php-format
-msgid "$1s, %2s"
-msgstr ""
-
-#: _fn/plug-woo-pay-statuses.php:57
-msgid "Payment has not been received for this order - "
-msgstr ""
-
-#: _fn/plug-woo-pay-statuses.php:59
-msgid "click here to pay for this order online now."
 msgstr ""
 
 #: _fn/plug-socializer.php:18
@@ -569,64 +631,6 @@ msgstr ""
 msgid "Or use your Inkston login:"
 msgstr ""
 
-#: _fn/excerpts.php:24
-msgid "reading"
-msgstr ""
-
-#: _fn/excerpts.php:24
-msgid "Read more"
-msgstr ""
-
-#: _fn/inkston.php:37
-msgid "Search Inkston."
-msgstr ""
-
-#: _fn/inkston.php:41
-msgid "results"
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:245 _fn/plug-woo-asin-upc-net.php:357
-msgid "ASIN EU"
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:260 _fn/plug-woo-asin-upc-net.php:370
-msgid "ASIN USA"
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:276 _fn/plug-woo-asin-upc-net.php:382
-msgid "UPC"
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:280
-msgid "12 digits international standard Universal Product Code."
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:303 _fn/plug-woo-asin-upc-net.php:407
-msgid "Product weight"
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:305 _fn/plug-woo-asin-upc-net.php:307
-#: _fn/plug-woo-asin-upc-net.php:409 _fn/plug-woo-asin-upc-net.php:411
-msgid "Unpacked net product weight."
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:335 _fn/plug-woo-asin-upc-net.php:426
-msgid "Product size "
-msgstr ""
-
-#: _fn/plug-woo-asin-upc-net.php:343 _fn/plug-woo-asin-upc-net.php:385
-#: _fn/plug-woo-asin-upc-net.php:430
-msgid "Unpacked product size LxWxH in decimal form"
-msgstr ""
-
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:110
-msgid "Your {site_title} order is now shipped"
-msgstr ""
-
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:120
-msgid "Thanks for shopping with us"
-msgstr ""
-
 #: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:19
 msgid "New order fulfilment"
 msgstr ""
@@ -635,6 +639,21 @@ msgstr ""
 msgid ""
 "New order fulfilment emails are sent to chosen recipient(s) when a new order "
 "is received."
+msgstr ""
+
+#: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:57
+#: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:67
+msgid "[{site_title}]: New order #{order_number} for {dest}"
+msgstr ""
+
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:31
+msgid "Shipped order"
+msgstr ""
+
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:32
+msgid ""
+"Order shipped emails are sent to customers when their orders are marked "
+"shipped and usually indicate that their orders have been shipped."
 msgstr ""
 
 #: _fn/woocommerce/order/order-details.php:35
@@ -651,68 +670,25 @@ msgid ""
 "products."
 msgstr ""
 
-#: _fn/woocommerce/single-product/review-meta.php:26
-msgid "Your comments are awaiting approval"
-msgstr ""
-
-#. 1: comment date, 2: comment time
-#: _fn/woocommerce/single-product/review-meta.php:54
+#: _fn/woocommerce/myaccount/dashboard.php:34
 #, php-format
-msgid "%1$s at %2$s"
-msgstr ""
-
-#: _fn/woocommerce/single-product/review-meta.php:58
-msgid "Edit"
-msgstr ""
-
-#: _fn/woocommerce/single-product/product-attributes.php:225
-msgid "Shipping"
-msgstr ""
-
-#: _fn/woocommerce/single-product/product-attributes.php:230
-msgid "Free"
-msgstr ""
-
-#: _fn/woocommerce/single-product/product-attributes.php:231
-msgid "Order including this product will qualify for free shipping."
-msgstr ""
-
-#: _fn/woocommerce/single-product/product-attributes.php:238
-msgid "Standard"
-msgstr ""
-
-#: _fn/woocommerce/single-product/product-attributes.php:240
-msgid "Standard shipping."
-msgstr ""
-
-#. %s: Customer billing full name, country, state
-#: _fn/woocommerce/emails/admin-new-order-fulfilment.php:29
-#, php-format
-msgid "Please prepare the following shipment for %s in %s"
-msgstr ""
-
-#: _fn/woocommerce/emails/email-address-shipping.php:26
-msgid "Shipping From:"
-msgstr ""
-
-#: _fn/woocommerce/emails/email-address-shipping.php:47
-msgid "Shipping To:"
-msgstr ""
-
-#: _fn/woocommerce/emails/customer-on-hold-order.php:28
 msgid ""
-"Your order is on-hold until we confirm payment has been received. In the "
-"meantime, here is a reminder of what you ordered:"
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
 msgstr ""
 
-#: _fn/woocommerce/emails/customer-on-hold-order.php:34
-msgid "pay for this order online"
-msgstr ""
-
-#. %s: Site title
-#: _fn/woocommerce/emails/customer-shipped-order.php:30
+#. 1: review posts link 2: new post link
+#: _fn/woocommerce/myaccount/dashboard.php:46
 #, php-format
-msgid "Your %s order has been shipped."
+msgid ""
+"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
+"href=\"%1$s\">写文章 Add New Post</a>"
+msgstr ""
+
+#: _fn/woocommerce/myaccount/my-orders.php:32
+#: _fn/woocommerce/myaccount/orders.php:30
+msgid ""
+"For any orders not received yet, please view status and delivery tracking "
+"codes below.<br />If your order has arrived, please leave your review!"
 msgstr ""
 
 #: _fn/woocommerce/myaccount/navigation.php:45
@@ -767,25 +743,48 @@ msgstr ""
 msgid "Newsletter subscriptions"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/dashboard.php:34
-#, php-format
-msgid ""
-"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
+#: _fn/woocommerce/emails/email-address-shipping.php:26
+msgid "Shipping From:"
 msgstr ""
 
-#. 1: review posts link 2: new post link
-#: _fn/woocommerce/myaccount/dashboard.php:46
-#, php-format
-msgid ""
-"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
-"href=\"%1$s\">写文章 Add New Post</a>"
+#: _fn/woocommerce/emails/email-address-shipping.php:47
+msgid "Shipping To:"
 msgstr ""
 
-#: _fn/woocommerce/myaccount/my-orders.php:32
-#: _fn/woocommerce/myaccount/orders.php:30
+#: _fn/woocommerce/emails/customer-on-hold-order.php:28
 msgid ""
-"For any orders not received yet, please view status and delivery tracking "
-"codes below.<br />If your order has arrived, please leave your review!"
+"Good day, thanks for your order! At the moment your order is on-hold until "
+"we confirm payment has been received. In the meantime, here is a reminder of "
+"what you ordered:"
+msgstr ""
+
+#: _fn/woocommerce/emails/customer-on-hold-order.php:34
+#, php-format
+msgid "You may also : %2$s"
+msgstr ""
+
+#: _fn/woocommerce/emails/customer-on-hold-order.php:34
+msgid "pay for this order online"
+msgstr ""
+
+#. %s: Customer billing full name, country, state
+#: _fn/woocommerce/emails/admin-new-order-fulfilment.php:29
+#, php-format
+msgid "Please prepare the following shipment for %1$s in %2$s"
+msgstr ""
+
+#: _fn/woocommerce/emails/customer-shipped-order.php:30
+#: _fn/woocommerce/emails/plain/customer-shipped-order.php:27
+msgid ""
+"Good day! Thank you for shopping with us! We would like to tell you that "
+"your order has been dispatched."
+msgstr ""
+
+#: _fn/woocommerce/emails/customer-shipped-order.php:35
+msgid ""
+"Please see tracking codes below to check the progress of your shipment. "
+"(Note: for some shipping providers and destinations the shipment may not "
+"appear in the tracker until 1 or 2 days after shipment.)"
 msgstr ""
 
 #: _fn/woocommerce/checkout/terms.php:32
@@ -794,6 +793,40 @@ msgid ""
 "By placing your order, you agree to the inkston <a href=\"%s\" "
 "target=\"_blank\" class=\"woocommerce-terms-and-conditions-link\">terms &amp;"
 " conditions</a>"
+msgstr ""
+
+#: _fn/woocommerce/single-product/product-attributes.php:225
+msgid "Shipping"
+msgstr ""
+
+#: _fn/woocommerce/single-product/product-attributes.php:230
+msgid "Free"
+msgstr ""
+
+#: _fn/woocommerce/single-product/product-attributes.php:231
+msgid "Order including this product will qualify for free shipping."
+msgstr ""
+
+#: _fn/woocommerce/single-product/product-attributes.php:238
+msgid "Standard"
+msgstr ""
+
+#: _fn/woocommerce/single-product/product-attributes.php:240
+msgid "Standard shipping."
+msgstr ""
+
+#: _fn/woocommerce/single-product/review-meta.php:26
+msgid "Your comments are awaiting approval"
+msgstr ""
+
+#. 1: comment date, 2: comment time
+#: _fn/woocommerce/single-product/review-meta.php:54
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: _fn/woocommerce/single-product/review-meta.php:58
+msgid "Edit"
 msgstr ""
 
 #. Name of the plugin

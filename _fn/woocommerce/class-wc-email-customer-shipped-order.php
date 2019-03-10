@@ -28,8 +28,8 @@ if ( ! class_exists( 'WC_Email_Customer_Shipped_Order', false ) ) :
 		public function __construct() {
 			$this->id				 = 'customer_shipped_order';
 			$this->customer_email	 = true;
-			$this->title			 = __( 'Shipped order', 'woocommerce' );
-			$this->description		 = __( 'Order shipped emails are sent to customers when their orders are marked shipped and usually indicate that their orders have been shipped.', 'woocommerce' );
+			$this->title			 = __( 'Shipped order', 'inkston-integration' );
+			$this->description		 = __( 'Order shipped emails are sent to customers when their orders are marked shipped and usually indicate that their orders have been shipped.', 'inkston-integration' );
 			$this->template_html	 = 'emails/customer-shipped-order.php';
 			$this->template_plain	 = 'emails/plain/customer-shipped-order.php';
 			$this->placeholders		 = array(
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WC_Email_Customer_Shipped_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order is now shipped', 'inkston-integration' );
+			return __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
 		}
 
 		/**
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WC_Email_Customer_Shipped_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Thanks for shopping with us', 'inkston-integration' );
+			return __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
 		}
 
 		/**
@@ -134,12 +134,11 @@ if ( ! class_exists( 'WC_Email_Customer_Shipped_Order', false ) ) :
 		 * Get email heading.
 		 *
 		 * @return string
-		 */
 		public function get_heading() {
 			$heading = (function_exists( 'pll__' )) ? pll__( 'customer_shipped_order_subject' ) : $this->get_option( 'subject', $this->get_default_subject() );
 			return apply_filters( 'woocommerce_email_heading_' . $this->id, $this->format_string( $heading ), $this->object );
 		}
-
+		 */
 		/**
 		 * Get content html.
 		 *

@@ -54,7 +54,7 @@ class WC_Email_New_Order_Fulfilment extends WC_Email {
 	 * @return string
 	 */
 	public function get_default_subject() {
-		return __( '[{site_title}]: New order #{order_number} for {dest}', 'woocommerce' );
+		return __( '[{site_title}]: New order #{order_number} for {dest}', 'inkston-integration' );
 	}
 
 	/**
@@ -64,7 +64,7 @@ class WC_Email_New_Order_Fulfilment extends WC_Email {
 	 * @return string
 	 */
 	public function get_default_heading() {
-		return __( 'New Order: #{order_number} for {dest}', 'woocommerce' );
+		return __( '[{site_title}]: New order #{order_number} for {dest}', 'inkston-integration' );
 	}
 
 	/**
@@ -155,7 +155,7 @@ class WC_Email_New_Order_Fulfilment extends WC_Email {
 				'type'			 => 'text',
 				'desc_tip'		 => true,
 				/* translators: %s: list of placeholders */
-				'description'	 => sprintf( __( 'Available placeholders: %s', 'woocommerce' ), '<code>{site_title}, {order_date}, {order_number}</code>' ),
+				'description'	 => sprintf( __( 'Available placeholders: %s', 'woocommerce' ), '<code>{site_title}, {order_date}, {order_number}, {dest}</code>' ),
 				'placeholder'	 => $this->get_default_subject(),
 				'default'		 => '',
 			),

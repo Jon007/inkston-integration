@@ -26,9 +26,15 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 
 <?php /* translators: %s: Customer first name */ ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
-<?php /* translators: %s: Site title */ ?>
-<p><?php printf( esc_html__( 'Your %s order has been shipped.', 'inkston-integration' ), esc_html( wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) ); ?></p>
-<?php
+<p><?php
+	echo (esc_html__( 'Good day! Thank you for shopping with us! We would like to tell you that your order has been dispatched.', 'inkston-integration' ) );
+
+	$hastracking = $order->get_meta( '_wc_shipment_tracking_items', true );
+	if ( $hastracking ) {
+		echo ('<br />');
+		echo (esc_html__( 'Please see tracking codes below to check the progress of your shipment. (Note: for some shipping providers and destinations the shipment may not appear in the tracker until 1 or 2 days after shipment.)', 'inkston-integration' ) );
+	}
+	?></p><?php
 /*
  * @hooked email_address_shipping instead of WC_Emails::email_address() Shows customer shipping detail only
  */

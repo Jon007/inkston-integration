@@ -246,7 +246,7 @@ function inkston_add_asin_upc() {
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'value'			 => $value,
-		'description'	 => __( 'Amazon alphanumeric 10 character inventory code.', 'woocommerce' )
+		'description'	 => __( 'Amazon alphanumeric 10 character inventory code.', 'inkston-integration' )
 	)
 	);
 
@@ -261,7 +261,7 @@ function inkston_add_asin_upc() {
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
 		'value'			 => $value,
-		'description'	 => __( 'Amazon USA code if different from EU code. Use NONE if not available in USA.', 'woocommerce' )
+		'description'	 => __( 'Amazon USA code if different from EU code. Use NONE if not available in USA.', 'inkston-integration' )
 	)
 	);
 
@@ -357,7 +357,7 @@ function inkston_variation_asin_upc( $loop, $variation_data, $variation ) {
 		'label'			 => __( 'ASIN EU', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
-		'description'	 => __( 'Amazon alphanumeric 10 character inventory code.', 'woocommerce' ),
+		'description'	 => __( 'Amazon alphanumeric 10 character inventory code.', 'inkston-integration' ),
 		'value'			 => get_post_meta( $variation->ID, 'asin', true ),
 		'wrapper_class'	 => 'form-row form-row-first'
 	)
@@ -370,7 +370,7 @@ function inkston_variation_asin_upc( $loop, $variation_data, $variation ) {
 		'label'			 => __( 'ASIN USA', 'inkston-integration' ),
 		'placeholder'	 => 'A01MA02ZON',
 		'desc_tip'		 => 'true',
-		'description'	 => __( 'Amazon USA code if different from EU code..', 'woocommerce' ),
+		'description'	 => __( 'Amazon USA code if different from EU code..', 'inkston-integration' ),
 		'value'			 => get_post_meta( $variation->ID, 'asinusa', true ),
 		'wrapper_class'	 => 'form-row form-row-first'
 	)

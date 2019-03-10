@@ -25,7 +25,7 @@ add_action( 'woo-poly.Emails.afterSwitchLanguage', 'ii_load_email_textdomains' )
  * add shipped mail to translatable emails
  */
 function ii_translatable_emails_available( $emails ) {
-	$emails[] = 'customer_shipped_order';
+	$emails[]	 = 'customer_shipped_order';
 	return $emails;
 }
 
@@ -35,8 +35,8 @@ add_filter( 'woo-poly.Emails.translatableEmails', 'ii_translatable_emails_availa
  * add default strings
  */
 function ii_translatable_emails_default_settings( $translatableStrings ) {
-	$translatableStrings[ 'customer_shipped_order_subject' ] = __( 'Your {site_title} order from {order_date} is Shipped', 'inkston-integration' );
-	$translatableStrings[ 'customer_shipped_order_heading' ] = __( 'Your order is Shipped', 'inkston-integration' );
+	$translatableStrings[ 'customer_shipped_order_subject' ] = __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
+	$translatableStrings[ 'customer_shipped_order_heading' ] = __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
 	return $translatableStrings;
 }
 
@@ -84,10 +84,9 @@ function translateEmailStringToOrderLanguage( $string, $order, $string_type, $em
 	$order_language = ($order) ? pll_get_post_language( $order->get_id(), 'locale' ) : '';
 	if ( $order_language == '' ) {
 		$order_language = pll_current_language( 'locale' );
-		if ( ! ($order_language) ) {
-			return $string;
-		}
 	}
+	$locale		 = get_locale();
+	$baseLocale	 = get_option( 'WPLANG' );
 
 	// Get setting used to register string in the Polylang strings translation table
 	$_string = $string; // Store original string to return in case of error
@@ -97,14 +96,21 @@ function translateEmailStringToOrderLanguage( $string, $order, $string_type, $em
 	}
 
 	// Switch language - this should already be done by previous calls...
-	switchLanguage( $order_language );
+	if ( $order_language != $locale ) {
+		switchLanguage( $order_language );
+	}
 
-	if ( $string ) {
-		// Retrieve translation from Polylang Strings Translations table
-		$string = pll_translate_string( $string, $order_language );
-	} else {
+	// Retrieve translation from Polylang Strings Translations table
+	if ( $order_language )
+		$test = pll_translate_string( $string, $order_language );
+	if ( $test != $string ) {
+		$string = $test;
+	} elseif ( $order_language != $baseLocale ) {
 		// If no user translation found in Polylang Strings Translations table, use default translation
-		//$string = __( $this->default_settings[ $email_type . '_' . $string_type ], 'inkston-integration' );
+		switch ( $email_type ) {
+			case 'customer_shipped_order':
+				$string = __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
+		}
 	}
 
 	if ( $order ) {

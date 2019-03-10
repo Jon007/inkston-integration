@@ -31,6 +31,8 @@ add_filter( 'woocommerce_email_actions', 'ii_filter_woocommerce_email_actions' )
 function ii_woocommerce_resend_order_emails_available( $emails ) {
 	$emails[]	 = 'customer_shipped_order';
 	$emails[]	 = 'new_order_fulfilment';
+	$emails[]	 = 'customer_on_hold_order';
+	$emails[]	 = 'customer_refunded_order';
 	return $emails;
 }
 

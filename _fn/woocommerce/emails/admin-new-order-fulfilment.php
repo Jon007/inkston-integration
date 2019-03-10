@@ -26,7 +26,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email );
 
 <?php /* translators: %s: Customer billing full name, country, state */ ?>
 <p><?php
-	printf( __( 'Please prepare the following shipment for %s in %s', 'inkston-integration' ), $order->get_formatted_billing_full_name(), ii_order_destination( $order ) );
+	printf( __( 'Please prepare the following shipment for %1$s in %2$s', 'inkston-integration' ), $order->get_formatted_billing_full_name(), ii_order_destination( $order ) );
 	?></p><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped  ?>
 <?php
 /*
