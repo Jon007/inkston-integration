@@ -164,7 +164,7 @@ class WC_Email_New_Order_Fulfilment extends WC_Email {
 				'type'			 => 'text',
 				'desc_tip'		 => true,
 				/* translators: %s: list of placeholders */
-				'description'	 => sprintf( __( 'Available placeholders: %s', 'woocommerce' ), '<code>{site_title}, {order_date}, {order_number}</code>' ),
+				'description'	 => sprintf( __( 'Available placeholders: %s', 'woocommerce' ), '<code>{site_title}, {order_date}, {order_number}, {dest}</code>' ),
 				'placeholder'	 => $this->get_default_heading(),
 				'default'		 => '',
 			),
