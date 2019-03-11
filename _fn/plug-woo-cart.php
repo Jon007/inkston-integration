@@ -9,11 +9,20 @@
 /*
  * Ensure cart contents update when products are added to the cart
  * called via AJAX on standard pages even if ajax add to cart is not used
+ * also attempts to suppress button refresh on cart page in favour of checkout button
  */
 function woocommerce_header_add_to_cart_fragment( $fragments ) {
-	if ( ! is_cart() && ( ! is_checkout()) ) {
-		$fragments[ 'span.cart-content' ] = inkston_cart_fragment();
+	if ( isset( $_SERVER[ 'HTTP_REFERER' ] ) ) {
+		$url = $_SERVER[ 'HTTP_REFERER' ];
+		if ( strpos( $url, '/cart/' ) || strpos( $url, 'es/cesta' ) || strpos( $url, 'fr/panier' ) ) {
+			return;
+		}
 	}
+
+	//woocommerce 3 used to append the wc ajax request to the current url so we could tell
+	//which page is being requested.  This is no longer the case!
+	//if ( ! is_cart() && ( ! is_checkout()) ) {
+	$fragments[ 'span.cart-content' ] = inkston_cart_fragment();
 	return $fragments;
 }
 
