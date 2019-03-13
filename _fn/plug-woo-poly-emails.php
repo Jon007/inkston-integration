@@ -243,8 +243,11 @@ function ii_order_destination( WC_Order $order ) {
 		$state	 = ! empty( $states[ $stateCode ] ) ? $states[ $stateCode ] : '';
 	}
 	if ( $state ) {
+		$state		 = __( $state, 'woocommerce' );
 		/* translators: %1s: state, %2s country */
-		return printf( __( '$1s, %2s', 'inkston-integration' ), __( $state, 'woocommerce' ), $country );
+		$template	 = __( '%1$s, %2$s', 'inkston-integration' );
+		$location	 = sprintf( $template, __( $state, 'woocommerce' ), $country );
+		return $location;
 	} else {
 		return $country;
 	}
