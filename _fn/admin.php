@@ -37,7 +37,15 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
 	remove_menu_page( 'tools.php' );
 	remove_menu_page( 'options-general.php' );
+	if ( class_exists( 'woocommerce' ) ) {
 	remove_submenu_page( 'woocommerce', 'wc-order-export' );
+		remove_submenu_page( 'woocommerce', 'wc-reports' );
+		remove_submenu_page( 'woocommerce', 'wc-settings' );
+		remove_submenu_page( 'woocommerce', 'wc-status' );
+		remove_submenu_page( 'woocommerce', 'wc-addons' );
+		remove_submenu_page( 'woocommerce', 'wpo_wcpdf_options_page' );
+		remove_submenu_page( 'woocommerce', 'alg-custom-order-statuses-tool' );
+	}
 }
 
 //admin_init is already called when admin.php is executed
