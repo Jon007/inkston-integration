@@ -53,11 +53,25 @@ add_filter( 'woocommerce_valid_order_statuses_for_cancel', 'inkston_allow_cancel
  */
 function ii_show_order_payment_link( $order ) {
 	if ( ! $order->is_paid() ) {
-		echo('<p class="saleflash">');
-		_e( 'Payment has not been received for this order - ', 'inkston-integration' );
-		echo('<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">');
-		_e( 'click here to pay for this order online now.', 'inkston-integration' );
-		echo ('</a></p>');
+		$payMethod	 = $order->get_payment_method();
+		$isBacs		 = ($payMethod == 'bacs');
+		if ( $isBacs ) {
+			echo('<p class="saleflash">');
+			_e( 'We have not confirmed receipt of payment for this order - ', 'inkston-integration' );
+			_e( 'This order is currently set to be paid by bank transfer: if you have already paid then please let us know, otherwise you can make the transfer using the details below or ', 'inkston-integration' );
+			echo('<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">');
+			_e( 'click here to pay for this order online now.', 'inkston-integration' );
+			echo ('</a></p>');
+			$available_payment_methods	 = WC()->payment_gateways->get_available_payment_gateways();
+			$gatewayBacs				 = $available_payment_methods[ 'bacs' ];
+			$gatewayBacs->thankyou_page( $order->get_id() );
+		} else {
+			echo('<p class="saleflash">');
+			_e( 'Payment has not been received for this order - ', 'inkston-integration' );
+			echo('<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">');
+			_e( 'click here to pay for this order online now.', 'inkston-integration' );
+			echo ('</a></p>');
+		}
 	}
 }
 

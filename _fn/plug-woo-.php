@@ -94,10 +94,31 @@ add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
  * include account name in the payment details information as this has to be exactly correct for chinese banks
  */
 function ii_bacs_add_account_name( $account_fields ) {
+	$available_payment_methods	 = WC()->payment_gateways->get_available_payment_gateways();
+	$gatewayBacs				 = $available_payment_methods[ 'bacs' ];
+	$bacs_accounts				 = $gatewayBacs->account_details;
+	if ( ! empty( $bacs_accounts ) ) {
+		$accountNumber	 = $account_fields[ 'account_number' ][ 'value' ];
+		$bankName		 = $account_fields[ 'bank_name' ][ 'value' ];
+		foreach ( $bacs_accounts as $bacs_account ) {
+			$bacsBankName		 = $bacs_account[ 'bank_name' ];
+			$bacsAccountNumber	 = $bacs_account[ 'account_number' ];
+			if ( $bacsBankName == $bankName && $bacsAccountNumber == $accountNumber ) {
 	$account_fields[ 'account_name' ] = array(
 		'label'	 => __( 'Account name', 'woocommerce' ),
-		'value'	 => wp_kses_post( wp_unslash( $bacs_account->account_name ) ),
+					'value'	 => wp_kses_post( wp_unslash( $bacs_account[ 'account_name' ] ) ),
 	);
+				break;
+			}
+		}
+	}
+	$order_id	 = (isset( $GLOBALS[ 'view-order' ] )) ? $GLOBALS[ 'view-order' ] : WC()->order_factory->get_order_id( false );
+	if ( $order_id ) {
+		$account_fields[ 'payment_ref' ] = array(
+			'label'	 => __( 'Payment reference', 'inkston-integration' ),
+			'value'	 => 'INK' . $order_id,
+		);
+	}
 	return $account_fields;
 }
 

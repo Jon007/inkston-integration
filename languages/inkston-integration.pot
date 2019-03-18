@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-13 22:19+0000\n"
+"POT-Creation-Date: 2019-03-18 20:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -409,6 +409,10 @@ msgstr ""
 msgid "click here to manage your subscription"
 msgstr ""
 
+#: _fn/plug-woo-.php:116
+msgid "Payment reference"
+msgstr ""
+
 #: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
 msgid "No badges yet"
 msgstr ""
@@ -552,12 +556,23 @@ msgstr ""
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: _fn/plug-woo-pay-statuses.php:57
-msgid "Payment has not been received for this order - "
+#: _fn/plug-woo-pay-statuses.php:60
+msgid "We have not confirmed receipt of payment for this order - "
 msgstr ""
 
-#: _fn/plug-woo-pay-statuses.php:59
+#: _fn/plug-woo-pay-statuses.php:61
+msgid ""
+"This order is currently set to be paid by bank transfer: if you have already "
+"paid then please let us know, otherwise you can make the transfer using the "
+"details below or "
+msgstr ""
+
+#: _fn/plug-woo-pay-statuses.php:63 _fn/plug-woo-pay-statuses.php:72
 msgid "click here to pay for this order online now."
+msgstr ""
+
+#: _fn/plug-woo-pay-statuses.php:70
+msgid "Payment has not been received for this order - "
 msgstr ""
 
 #: _fn/plug-socializer.php:18
@@ -732,6 +747,12 @@ msgstr ""
 
 #: _fn/woocommerce/emails/customer-on-hold-order.php:34
 msgid "pay for this order online"
+msgstr ""
+
+#. %s Auto generated password
+#: _fn/woocommerce/emails/customer-new-account.php:31
+#, php-format
+msgid "Your password has been set to: %s"
 msgstr ""
 
 #: _fn/woocommerce/emails/customer-shipped-order.php:30

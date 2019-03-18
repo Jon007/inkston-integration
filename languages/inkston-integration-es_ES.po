@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Inkston Integration\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 00:06+0000\n"
-"PO-Revision-Date: 2019-03-10 00:17+0000\n"
-"Last-Translator: moqiao <moqiao@jpmpro.local>\n"
+"POT-Creation-Date: 2019-03-18 20:19+0000\n"
+"PO-Revision-Date: 2019-03-18 20:22+0000\n"
+"Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.1"
+"X-Loco-Version: 2.2.1; wp-5.1.1"
 
 #: inkston-integration.php:218
 #, php-format
@@ -286,6 +286,27 @@ msgstr ""
 msgid "is a plugin integration helper tool from"
 msgstr ""
 
+#: _fn/plug-woo-offers.php:108
+msgid "Congratulations, your order is now eligible for free shipping!"
+msgstr "¡Enhorabuena, su orden ahora es elegible para el envío gratis!"
+
+#: _fn/plug-woo-offers.php:110
+msgid "Your order qualifies for free shipping!"
+msgstr "[dependiendo de variación]"
+
+#: _fn/plug-woo-offers.php:115
+#, php-format
+msgid "Add %s more to your order to qualify for free shipping!"
+msgstr "¡Añada %s más a su orden para calificar para el envío gratis!"
+
+#: _fn/plug-woo-poly-reviews.php:42
+msgid "Recent discussions in: "
+msgstr "Discusiones recientes en:"
+
+#: _fn/plug-woo-cart.php:104
+msgid "Checkout"
+msgstr "Caja"
+
 #: _fn/plug-business-directory.php:13
 msgid "Name"
 msgstr "Nombre"
@@ -377,9 +398,102 @@ msgstr ""
 "Agregue etiquetas opcionales separadas por comas para permitir más "
 "clasificaciones que las disponibles en categorías"
 
-#: _fn/sharer.php:26
-msgid "If you like this, please share: "
-msgstr "Si le gusta, por favor comparta:"
+#: _fn/plug-woo-checkout-files.php:17
+msgid ""
+"Your shopping cart includes customization options, you can tell us about "
+"these on the checkout page."
+msgstr ""
+"Su carro de la compra incluye una opción de diseño personalizado, usted "
+"puede incluir detalles cuando pasa por Caja."
+
+#: _fn/plug-woo-checkout-files.php:33
+msgid ""
+"Your order has a custom design option, if you like you can upload a file "
+"and/or make comments below. You may also skip this step and confirm details "
+"with us later."
+msgstr ""
+"Su pedido tiene una opción de diseño personalizado, si lo desea puede cargar "
+"un archivo y/o realizar comentarios a continuación. También puede omitir "
+"este paso y confirmar los detalles con nosotros más adelante."
+
+#: _fn/plug-woo-checkout-files.php:44
+msgid ""
+"If you want to upload a file related to your order, press 'Choose file', "
+"select a file, then press 'upload'"
+msgstr ""
+"Si desea cargar un archivo relacionado con su pedido, presione 'Choose file',"
+" seleccione un archivo, luego presione 'Subir'"
+
+#: _fn/plug-mailpoet.php:46
+msgid "click here to manage your subscription"
+msgstr "haga clic aquí para administrar su suscripción"
+
+#: _fn/plug-woo-.php:116
+msgid "Payment reference"
+msgstr "Referencia de pago"
+
+#: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
+msgid "No badges yet"
+msgstr "Sin insignias aún"
+
+#: _fn/plug-badgeos.php:158
+msgid "level"
+msgstr "nivel"
+
+#: _fn/plug-badgeos.php:192
+msgid "Current level: "
+msgstr "Nivel Actual:"
+
+#: _fn/plug-badgeos.php:194
+msgid "level "
+msgstr "nivel"
+
+#: _fn/plug-badgeos.php:196
+#, php-format
+msgid "Current score: %1$s points."
+msgstr "Puntuación actual: %1$s puntos."
+
+#: _fn/plug-badgeos.php:321
+msgid "Congratulations you have been awarded:"
+msgstr "Enhorabuena le han concedido:"
+
+#: _fn/plug-badgeos.php:367
+msgid "your contribution has unlocked an award"
+msgstr "Su contribución ha desbloqueado un premio"
+
+#: _fn/plug-badgeos.php:370
+#, php-format
+msgid ""
+"Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
+"and turn these notifications on or off."
+msgstr ""
+"Visita <a href=\"%1$s\"> tu página de perfil </a> para ver los detalles de "
+"tus premios y activar o desactivar estas notificaciones."
+
+#: _fn/plug-badgeos.php:373
+msgid "You were awarded this badge for making contributions to "
+msgstr "Te otorgaron esta insignia para hacer contribuciones a"
+
+#: _fn/plug-badgeos.php:374
+msgid "Inkston Oriental Art Comunity"
+msgstr "Peña de Arte Oriental de Inkston"
+
+#: _fn/plug-badgeos.php:378 _fn/plug-bbpress.php:104
+msgid "Thankyou for participating in Inkston Community"
+msgstr "Gracias por participar en Inkston Community"
+
+#: _fn/plug-badgeos.php:381
+msgid "rewards@inkston.com"
+msgstr ""
+
+#: _fn/plug-woo-product-gift.php:47
+#, php-format
+msgid ""
+"The coupon %s will give you a discount of %s when your basket value reaches "
+"%s or more."
+msgstr ""
+"El cupón %s le dará un descuento de %s cuando el valor de su cesta alcance "
+"%s o más."
 
 #: _fn/plug-woo-buttons.php:33
 msgid "Buy"
@@ -402,6 +516,30 @@ msgstr "Leer"
 msgid "Choose"
 msgstr "Elegir"
 
+#: _fn/plug-bbpress.php:99
+#, php-format
+msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
+msgstr "Nueva publicación en el foro \"%1$s\", tema \"%2$s\"."
+
+#: _fn/plug-bbpress.php:102
+#, php-format
+msgid "Or visit your profile page to review all your subscriptions: %1$s"
+msgstr ""
+"O visite su página de perfil para revisar todas sus suscripciones:  %1$s"
+
+#: _fn/plug-bbpress.php:115
+msgid "forum-subscribers@inkston.com"
+msgstr ""
+
+#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
+msgid "Login or Register with email, Facebook, Google or LinkedIn account"
+msgstr ""
+"Inicie sesión o regístrese mediante Facebook, LinkedIn, Google o correo"
+
+#: _fn/sharer.php:26
+msgid "If you like this, please share: "
+msgstr "Si le gusta, por favor comparta:"
+
 #: _fn/plug-woo-tooltips.php:137
 #: _fn/woocommerce/single-product/product-attributes.php:120
 msgid "Product Weight"
@@ -418,34 +556,6 @@ msgstr "Tamaño Neto"
 msgid "[depending on variation]"
 msgstr "[dependiendo de la variación]"
 
-#: _fn/inkston.php:37
-msgid "Search Inkston."
-msgstr "Buscar"
-
-#: _fn/inkston.php:41
-msgid "results"
-msgstr "resultados"
-
-#: _fn/excerpts.php:24
-msgid "reading"
-msgstr "leyendo"
-
-#: _fn/excerpts.php:24
-msgid "Read more"
-msgstr "Leer mas"
-
-#: _fn/plug-woo-pay-statuses.php:57
-msgid "Payment has not been received for this order - "
-msgstr "El pago no ha sido recibido por este pedido -"
-
-#: _fn/plug-woo-pay-statuses.php:59
-msgid "click here to pay for this order online now."
-msgstr "haga clic aquí para pagar en línea ahora."
-
-#: _fn/plug-woo-poly-reviews.php:42
-msgid "Recent discussions in: "
-msgstr "Discusiones recientes en:"
-
 #: _fn/plug-woo-amazon.php:33
 msgid "Please leave your reviews!"
 msgstr "Por favor deja tus valoraciones!"
@@ -458,18 +568,64 @@ msgstr "Valoración"
 msgid "on"
 msgstr "en"
 
-#: _fn/plug-woo-offers.php:108
-msgid "Congratulations, your order is now eligible for free shipping!"
-msgstr "¡Enhorabuena, su orden ahora es elegible para el envío gratis!"
+#: _fn/plug-woo-poly-emails.php:38 _fn/plug-woo-poly-emails.php:39
+#: _fn/plug-woo-poly-emails.php:112
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:110
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:120
+msgid "Your {site_title} order {order_number} is Shipped"
+msgstr "Su pedido {order_number} de {site_title} ya está enviado"
 
-#: _fn/plug-woo-offers.php:110
-msgid "Your order qualifies for free shipping!"
-msgstr "[dependiendo de variación]"
-
-#: _fn/plug-woo-offers.php:115
+#. %1s: state, %2s country
+#: _fn/plug-woo-poly-emails.php:248
 #, php-format
-msgid "Add %s more to your order to qualify for free shipping!"
-msgstr "¡Añada %s más a su orden para calificar para el envío gratis!"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: _fn/plug-woo-pay-statuses.php:60
+msgid "We have not confirmed receipt of payment for this order - "
+msgstr "No hemos confirmado el recibo de pago por este pedido -"
+
+#: _fn/plug-woo-pay-statuses.php:61
+msgid ""
+"This order is currently set to be paid by bank transfer: if you have already "
+"paid then please let us know, otherwise you can make the transfer using the "
+"details below or "
+msgstr ""
+"Este pedido está actualmente configurado para ser pagado por transferencia "
+"bancaria: si ya lo ha pagado, háganoslo saber, de lo contrario, puede hacer "
+"la transferencia utilizando los detalles a continuación o"
+
+#: _fn/plug-woo-pay-statuses.php:63 _fn/plug-woo-pay-statuses.php:72
+msgid "click here to pay for this order online now."
+msgstr "haga clic aquí para pagar en línea ahora."
+
+#: _fn/plug-woo-pay-statuses.php:70
+msgid "Payment has not been received for this order - "
+msgstr "El pago no ha sido recibido por este pedido -"
+
+#: _fn/plug-socializer.php:18
+msgid "Login or register with Facebook, LinkedIn, Google"
+msgstr "Inicie sesión o regístrese con Facebook, LinkedIn, Google"
+
+#: _fn/plug-socializer.php:20
+msgid "Or use your Inkston login:"
+msgstr "O utilice su Inkston login:"
+
+#: _fn/excerpts.php:24
+msgid "reading"
+msgstr "leyendo"
+
+#: _fn/excerpts.php:24
+msgid "Read more"
+msgstr "Leer mas"
+
+#: _fn/inkston.php:37
+msgid "Search Inkston."
+msgstr "Buscar"
+
+#: _fn/inkston.php:41
+msgid "results"
+msgstr "resultados"
 
 #: _fn/plug-woo-asin-upc-net.php:245 _fn/plug-woo-asin-upc-net.php:357
 msgid "ASIN EU"
@@ -518,143 +674,15 @@ msgstr "Tamaño del producto desembalado."
 msgid "Amazon USA code if different from EU code.."
 msgstr ""
 
-#: _fn/plug-woo-poly-emails.php:39 _fn/plug-woo-poly-emails.php:40
-#: _fn/plug-woo-poly-emails.php:113
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:110
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:120
-msgid "Your {site_title} order {order_number} is Shipped"
-msgstr "Su pedido {order_number} de {site_title} ya está enviado"
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:31
+msgid "Shipped order"
+msgstr "Pedido enviado"
 
-#. %1s: state, %2s country
-#: _fn/plug-woo-poly-emails.php:248
-#, php-format
-msgid "$1s, %2s"
-msgstr ""
-
-#: _fn/plug-bbpress.php:99
-#, php-format
-msgid "New post in Forum \"%1$s\", Topic \"%2$s\"."
-msgstr "Nueva publicación en el foro \"%1$s\", tema \"%2$s\"."
-
-#: _fn/plug-bbpress.php:102
-#, php-format
-msgid "Or visit your profile page to review all your subscriptions: %1$s"
-msgstr ""
-"O visite su página de perfil para revisar todas sus suscripciones:  %1$s"
-
-#: _fn/plug-bbpress.php:104 _fn/plug-badgeos.php:378
-msgid "Thankyou for participating in Inkston Community"
-msgstr "Gracias por participar en Inkston Community"
-
-#: _fn/plug-bbpress.php:115
-msgid "forum-subscribers@inkston.com"
-msgstr ""
-
-#: _fn/plug-bbpress.php:251 _fn/plug-bbpress.php:266
-msgid "Login or Register with email, Facebook, Google or LinkedIn account"
-msgstr ""
-"Inicie sesión o regístrese mediante Facebook, LinkedIn, Google o correo"
-
-#: _fn/plug-woo-product-gift.php:47
-#, php-format
+#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:32
 msgid ""
-"The coupon %s will give you a discount of %s when your basket value reaches "
-"%s or more."
+"Order shipped emails are sent to customers when their orders are marked "
+"shipped and usually indicate that their orders have been shipped."
 msgstr ""
-"El cupón %s le dará un descuento de %s cuando el valor de su cesta alcance "
-"%s o más."
-
-#: _fn/plug-woo-checkout-files.php:17
-msgid ""
-"Your shopping cart includes customization options, you can tell us about "
-"these on the checkout page."
-msgstr ""
-"Su carro de la compra incluye una opción de diseño personalizado, usted "
-"puede incluir detalles cuando pasa por Caja."
-
-#: _fn/plug-woo-checkout-files.php:33
-msgid ""
-"Your order has a custom design option, if you like you can upload a file "
-"and/or make comments below. You may also skip this step and confirm details "
-"with us later."
-msgstr ""
-"Su pedido tiene una opción de diseño personalizado, si lo desea puede cargar "
-"un archivo y/o realizar comentarios a continuación. También puede omitir "
-"este paso y confirmar los detalles con nosotros más adelante."
-
-#: _fn/plug-woo-checkout-files.php:44
-msgid ""
-"If you want to upload a file related to your order, press 'Choose file', "
-"select a file, then press 'upload'"
-msgstr ""
-"Si desea cargar un archivo relacionado con su pedido, presione 'Choose file',"
-" seleccione un archivo, luego presione 'Subir'"
-
-#: _fn/plug-mailpoet.php:46
-msgid "click here to manage your subscription"
-msgstr "haga clic aquí para administrar su suscripción"
-
-#: _fn/plug-woo-cart.php:95
-msgid "Checkout"
-msgstr "Caja"
-
-#: _fn/plug-badgeos.php:78 _fn/plug-badgeos.php:139
-msgid "No badges yet"
-msgstr "Sin insignias aún"
-
-#: _fn/plug-badgeos.php:158
-msgid "level"
-msgstr "nivel"
-
-#: _fn/plug-badgeos.php:192
-msgid "Current level: "
-msgstr "Nivel Actual:"
-
-#: _fn/plug-badgeos.php:194
-msgid "level "
-msgstr "nivel"
-
-#: _fn/plug-badgeos.php:196
-#, php-format
-msgid "Current score: %1$s points."
-msgstr "Puntuación actual: %1$s puntos."
-
-#: _fn/plug-badgeos.php:321
-msgid "Congratulations you have been awarded:"
-msgstr "Enhorabuena le han concedido:"
-
-#: _fn/plug-badgeos.php:367
-msgid "your contribution has unlocked an award"
-msgstr "Su contribución ha desbloqueado un premio"
-
-#: _fn/plug-badgeos.php:370
-#, php-format
-msgid ""
-"Visit <a href=\"%1$s\">your profile page</a> to see details of your awards "
-"and turn these notifications on or off."
-msgstr ""
-"Visita <a href=\"%1$s\"> tu página de perfil </a> para ver los detalles de "
-"tus premios y activar o desactivar estas notificaciones."
-
-#: _fn/plug-badgeos.php:373
-msgid "You were awarded this badge for making contributions to "
-msgstr "Te otorgaron esta insignia para hacer contribuciones a"
-
-#: _fn/plug-badgeos.php:374
-msgid "Inkston Oriental Art Comunity"
-msgstr "Peña de Arte Oriental de Inkston"
-
-#: _fn/plug-badgeos.php:381
-msgid "rewards@inkston.com"
-msgstr ""
-
-#: _fn/plug-socializer.php:18
-msgid "Login or register with Facebook, LinkedIn, Google"
-msgstr "Inicie sesión o regístrese con Facebook, LinkedIn, Google"
-
-#: _fn/plug-socializer.php:20
-msgid "Or use your Inkston login:"
-msgstr "O utilice su Inkston login:"
 
 #: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:19
 msgid "New order fulfilment"
@@ -670,16 +698,6 @@ msgstr ""
 #: _fn/woocommerce/class-wc-email-new-order-fulfilment.php:67
 msgid "[{site_title}]: New order #{order_number} for {dest}"
 msgstr "[{site_title}]: Nuevo Pedido #{order_number} para {dest}"
-
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:31
-msgid "Shipped order"
-msgstr ""
-
-#: _fn/woocommerce/class-wc-email-customer-shipped-order.php:32
-msgid ""
-"Order shipped emails are sent to customers when their orders are marked "
-"shipped and usually indicate that their orders have been shipped."
-msgstr ""
 
 #: _fn/woocommerce/order/order-details.php:35
 #: _fn/woocommerce/myaccount/my-orders.php:35
@@ -699,33 +717,98 @@ msgstr ""
 "experiencia es muy valiosa para ayudarnos a mejorar y ayudar a otros a "
 "elegir los productos más adecuados."
 
-#: _fn/woocommerce/myaccount/dashboard.php:34
-#, php-format
-msgid ""
-"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
-msgstr ""
-"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Revisar órdenes para "
-"procesar</a>"
+#: _fn/woocommerce/single-product/review-meta.php:26
+msgid "Your comments are awaiting approval"
+msgstr "Su comentario queda a la espera de aprobación"
 
-#. 1: review posts link 2: new post link
-#: _fn/woocommerce/myaccount/dashboard.php:46
+#. 1: comment date, 2: comment time
+#: _fn/woocommerce/single-product/review-meta.php:54
 #, php-format
-msgid ""
-"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
-"href=\"%1$s\">写文章 Add New Post</a>"
-msgstr ""
-"<a href=\"%1$s\">Revisar articulos</a> - <a class=\"saleflash\" "
-"href=\"%1$s\">Escribir nuevo articulo</a>"
+msgid "%1$s at %2$s"
+msgstr "%1$s %2$s"
 
-#: _fn/woocommerce/myaccount/my-orders.php:32
-#: _fn/woocommerce/myaccount/orders.php:30
+#: _fn/woocommerce/single-product/review-meta.php:58
+msgid "Edit"
+msgstr "Editar"
+
+#: _fn/woocommerce/single-product/product-attributes.php:225
+msgid "Shipping"
+msgstr "Envio"
+
+#: _fn/woocommerce/single-product/product-attributes.php:230
+msgid "Free"
+msgstr "Gratis"
+
+#: _fn/woocommerce/single-product/product-attributes.php:231
+msgid "Order including this product will qualify for free shipping."
+msgstr "El pedido con este producto tiene envío gratis"
+
+#: _fn/woocommerce/single-product/product-attributes.php:238
+msgid "Standard"
+msgstr "Normal"
+
+#: _fn/woocommerce/single-product/product-attributes.php:240
+msgid "Standard shipping."
+msgstr "Envio normal."
+
+#. %s: Customer billing full name, country, state
+#: _fn/woocommerce/emails/admin-new-order-fulfilment.php:29
+#, php-format
+msgid "Please prepare the following shipment for %1$s in %2$s"
+msgstr "Por favor preparar el siguiente envío para %1$s en %2$s"
+
+#: _fn/woocommerce/emails/email-address-shipping.php:26
+msgid "Shipping From:"
+msgstr "Envio desde:"
+
+#: _fn/woocommerce/emails/email-address-shipping.php:47
+msgid "Shipping To:"
+msgstr "Enviando a:"
+
+#: _fn/woocommerce/emails/customer-on-hold-order.php:28
 msgid ""
-"For any orders not received yet, please view status and delivery tracking "
-"codes below.<br />If your order has arrived, please leave your review!"
+"Good day, thanks for your order! At the moment your order is on-hold until "
+"we confirm payment has been received. In the meantime, here is a reminder of "
+"what you ordered:"
 msgstr ""
-"Para cualquier pedido que aún no haya recibido, consulte el estado y los "
-"códigos de seguimiento de entrega a continuación.\n"
-"Si su pedido ha llegado, ¡deje su comentario!"
+"Buenos días, gracias por su pedido! Por el momento su pedido está en espera "
+"hasta que confirmemos el pago ha sido recibido. Mientras tanto, aquí hay un "
+"recordatorio de lo que ordenó:"
+
+#: _fn/woocommerce/emails/customer-on-hold-order.php:34
+#, php-format
+msgid "You may also : %2$s"
+msgstr "Se puede también : %2$s"
+
+#: _fn/woocommerce/emails/customer-on-hold-order.php:34
+msgid "pay for this order online"
+msgstr "Pagar este pedido en línea"
+
+#. %s Auto generated password
+#: _fn/woocommerce/emails/customer-new-account.php:31
+#, php-format
+msgid "Your password has been set to: %s"
+msgstr "Su contraseña se ha establecido en: %s"
+
+#: _fn/woocommerce/emails/customer-shipped-order.php:30
+#: _fn/woocommerce/emails/plain/customer-shipped-order.php:27
+msgid ""
+"Good day! Thank you for shopping with us! We would like to tell you that "
+"your order has been dispatched."
+msgstr ""
+"¡Buenos días! ¡Gracias por comprar con nosotros! Nos gustaría informarle que "
+"su pedido ha sido enviado."
+
+#: _fn/woocommerce/emails/customer-shipped-order.php:35
+msgid ""
+"Please see tracking codes below to check the progress of your shipment. "
+"(Note: for some shipping providers and destinations the shipment may not "
+"appear in the tracker until 1 or 2 days after shipment.)"
+msgstr ""
+"Consulte los códigos de seguimiento a continuación para verificar el "
+"progreso de su envío. (Nota: para algunos proveedores de envío y destinos, "
+"es posible que el envío no aparezca en el rastreador hasta 1 o 2 días "
+"después del envío)."
 
 #: _fn/woocommerce/myaccount/navigation.php:45
 msgid "My Profile"
@@ -779,58 +862,33 @@ msgstr "Suscripciones de comentarios"
 msgid "Newsletter subscriptions"
 msgstr "Suscripciones a los boletines"
 
-#: _fn/woocommerce/emails/email-address-shipping.php:26
-msgid "Shipping From:"
-msgstr "Envio desde:"
-
-#: _fn/woocommerce/emails/email-address-shipping.php:47
-msgid "Shipping To:"
-msgstr "Enviando a:"
-
-#: _fn/woocommerce/emails/customer-on-hold-order.php:28
-msgid ""
-"Good day, thanks for your order! At the moment your order is on-hold until "
-"we confirm payment has been received. In the meantime, here is a reminder of "
-"what you ordered:"
-msgstr ""
-"Buenos días, gracias por su pedido! Por el momento su pedido está en espera "
-"hasta que confirmemos el pago ha sido recibido. Mientras tanto, aquí hay un "
-"recordatorio de lo que ordenó:"
-
-#: _fn/woocommerce/emails/customer-on-hold-order.php:34
+#: _fn/woocommerce/myaccount/dashboard.php:34
 #, php-format
-msgid "You may also : %2$s"
-msgstr "Se puede también : %2$s"
+msgid ""
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Review Orders to Process</a>"
+msgstr ""
+"<a class=\"saleflash\" href=\"%1$s\">订单 正在处理 - Revisar órdenes para "
+"procesar</a>"
 
-#: _fn/woocommerce/emails/customer-on-hold-order.php:34
-msgid "pay for this order online"
-msgstr "Pagar este pedido en línea"
-
-#. %s: Customer billing full name, country, state
-#: _fn/woocommerce/emails/admin-new-order-fulfilment.php:29
+#. 1: review posts link 2: new post link
+#: _fn/woocommerce/myaccount/dashboard.php:46
 #, php-format
-msgid "Please prepare the following shipment for %1$s in %2$s"
-msgstr "Por favor preparar el siguiente envío para %1$s en %2$s"
-
-#: _fn/woocommerce/emails/customer-shipped-order.php:30
-#: _fn/woocommerce/emails/plain/customer-shipped-order.php:27
 msgid ""
-"Good day! Thank you for shopping with us! We would like to tell you that "
-"your order has been dispatched."
+"<a href=\"%1$s\">所有文章 Review Posts</a> - <a class=\"saleflash\" "
+"href=\"%1$s\">写文章 Add New Post</a>"
 msgstr ""
-"¡Buenos días! ¡Gracias por comprar con nosotros! Nos gustaría informarle que "
-"su pedido ha sido enviado."
+"<a href=\"%1$s\">Revisar articulos</a> - <a class=\"saleflash\" "
+"href=\"%1$s\">Escribir nuevo articulo</a>"
 
-#: _fn/woocommerce/emails/customer-shipped-order.php:35
+#: _fn/woocommerce/myaccount/my-orders.php:32
+#: _fn/woocommerce/myaccount/orders.php:30
 msgid ""
-"Please see tracking codes below to check the progress of your shipment. "
-"(Note: for some shipping providers and destinations the shipment may not "
-"appear in the tracker until 1 or 2 days after shipment.)"
+"For any orders not received yet, please view status and delivery tracking "
+"codes below.<br />If your order has arrived, please leave your review!"
 msgstr ""
-"Consulte los códigos de seguimiento a continuación para verificar el "
-"progreso de su envío. (Nota: para algunos proveedores de envío y destinos, "
-"es posible que el envío no aparezca en el rastreador hasta 1 o 2 días "
-"después del envío)."
+"Para cualquier pedido que aún no haya recibido, consulte el estado y los "
+"códigos de seguimiento de entrega a continuación.\n"
+"Si su pedido ha llegado, ¡deje su comentario!"
 
 #: _fn/woocommerce/checkout/terms.php:32
 #, php-format
@@ -841,40 +899,6 @@ msgid ""
 msgstr ""
 "Al realizar su pedido, acepta los <a href=\"%s\" class=\"woocommerce-terms-"
 "and-conditions-link\">terminos y condiciones de inkston.com</a>"
-
-#: _fn/woocommerce/single-product/product-attributes.php:225
-msgid "Shipping"
-msgstr "Envio"
-
-#: _fn/woocommerce/single-product/product-attributes.php:230
-msgid "Free"
-msgstr "Gratis"
-
-#: _fn/woocommerce/single-product/product-attributes.php:231
-msgid "Order including this product will qualify for free shipping."
-msgstr "El pedido con este producto tiene envío gratis"
-
-#: _fn/woocommerce/single-product/product-attributes.php:238
-msgid "Standard"
-msgstr "Normal"
-
-#: _fn/woocommerce/single-product/product-attributes.php:240
-msgid "Standard shipping."
-msgstr "Envio normal."
-
-#: _fn/woocommerce/single-product/review-meta.php:26
-msgid "Your comments are awaiting approval"
-msgstr "Su comentario queda a la espera de aprobación"
-
-#. 1: comment date, 2: comment time
-#: _fn/woocommerce/single-product/review-meta.php:54
-#, php-format
-msgid "%1$s at %2$s"
-msgstr "%1$s %2$s"
-
-#: _fn/woocommerce/single-product/review-meta.php:58
-msgid "Edit"
-msgstr "Editar"
 
 #. Name of the plugin
 msgid "Inkston Integration"
