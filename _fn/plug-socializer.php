@@ -11,8 +11,7 @@
  * 
  * @return  string Content to display
  */
-function ink_login_form_add_socializer($content, $args)
-{
+function ink_login_form_add_socializer( $content, $args ) {
     if (function_exists( 'the_champ_login_button')) {
         return $content . the_champ_login_shortcode(
                 array(
@@ -32,7 +31,7 @@ add_filter( 'login_form_top', 'ink_login_form_add_socializer', 10, 2);
  * 	the_champ_get_valid_url() doesn't allow redirect to the login page,
  * this means my-account redirects to home page after login instead of returning to account
  *   the_champ_get_login_redirection_url() doesn't handle full range of redirection urls
- */
+ * this is no longer correct..
 function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $twitterRedirect, $register ) {
 	$url = '';
 	if ( isset( $_REQUEST[ 'redirect' ] ) ) {
@@ -67,3 +66,4 @@ function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $
 }
 
 add_filter( 'heateor_ss_login_redirection_url_filter', 'ink_ss_redirecturl', 10, 5 );
+ */

@@ -326,17 +326,19 @@ function ink_seo_description( $description ) {
 			case 'reply':
 				//if the request is for a particular topic reply, add excerpt of the reply to the current description
 				global $wp;
-				$pageid = $wp->query_vars[ 'page' ];
-				//$pageid = bbp_get_paged_rewrite_id();
-				if ( $pageid ) {
-					$pageid = intval( $pageid );
-					if ( $pageid != $post->ID ) {
-						//$replypost	 = bbp_get_reply( $pageid );
-						$replydesc = inkston_get_excerpt( inkston_excerpt_length( 25 ), false, $pageid );
-						if ( $replydesc ) {
-							$description = $replydesc;
-						}
-					}
+				if ( isset( $wp->query_vars[ 'page' ] ) ) {
+          $pageid = $wp->query_vars[ 'page' ];
+          //$pageid = bbp_get_paged_rewrite_id();
+          if ( $pageid ) {
+            $pageid = intval( $pageid );
+            if ( $pageid != $post->ID ) {
+              //$replypost	 = bbp_get_reply( $pageid );
+              $replydesc = inkston_get_excerpt( inkston_excerpt_length( 25 ), false, $pageid );
+              if ( $replydesc ) {
+                $description = $replydesc;
+              }
+            }
+          }
 				}
 				break;
 			default:
