@@ -1,69 +1,92 @@
 <?php
-/* 
+
+/*
  * super-socializer customization
  */
-
 /**
- * Force add super socializer to login form 
- * 
+ * Force add super socializer to login form
+ *
  * @param string $content Content to display. Default empty.
  * @param array  $args    Array of login form arguments.
- * 
+ *
  * @return  string Content to display
  */
 function ink_login_form_add_socializer( $content, $args ) {
-    if (function_exists( 'the_champ_login_button')) {
-        return $content . the_champ_login_shortcode(
-                array(
-                    'title' => __( 'Login or register with Facebook, LinkedIn, Google', 'inkston-integration')
-            )) . '<div id="ink_login_message">' .
-            __( 'Or use your Inkston login:', 'inkston-integration') .
-            '</div>';
-    } else {
-        return $content;
-    }
+	if ( function_exists( 'the_champ_login_button' ) ) {
+		return $content . the_champ_login_shortcode(
+		array(
+			'title' => __( 'Login or register with Facebook, LinkedIn, Google', 'inkston-integration' )
+		) ) . '<div id="ink_login_message">' .
+		__( 'Or use your Inkston login:', 'inkston-integration' ) .
+		'</div>';
+	} else {
+		return $content;
+	}
 }
-add_filter( 'login_form_top', 'ink_login_form_add_socializer', 10, 2);
+
+add_filter( 'login_form_top', 'ink_login_form_add_socializer', 10, 2 );
 
 /*
  * Override Supersocializer redirection urls
  * Supersocializer redirections have following problems:
  * 	the_champ_get_valid_url() doesn't allow redirect to the login page,
  * this means my-account redirects to home page after login instead of returning to account
- *   the_champ_get_login_redirection_url() doesn't handle full range of redirection urls
- * this is no longer correct..
+ *  the_champ_get_login_redirection_url() doesn't handle full range of redirection urls
+ */
 function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $twitterRedirect, $register ) {
+//	error_log( 'in ink_ss_redirecturl' );
+//	if ( isset( $theChampLoginOptions[ $option . '_redirection' ] ) ) {
+//		if ( $theChampLoginOptions[ $option . '_redirection' ] == 'same' ) {
+
 	$url = '';
+	//CHANGE:JM:ALLOW REFERER URL
 	if ( isset( $_REQUEST[ 'redirect' ] ) ) {
 		$url = $_REQUEST[ 'redirect' ];
+		//error_log( 'used redirect' );
 	}
 	if ( isset( $_REQUEST[ 'redirect_to' ] ) ) {
 		$url = $_REQUEST[ 'redirect_to' ];
-	}
-	if ( ! $url ) {
-		$url = get_permalink();
-	}
-	if ( ! $url ) {
-		if ( isset( $_SESSION[ 'super_socializer_facebook_redirect' ] ) ) {
-			$url = $_SESSION[ 'super_socializer_facebook_redirect' ];
-		}
+		//error_log( 'used redirect_to' );
 	}
 	if ( ! $url ) {
 		$url = wp_get_referer();
+		//error_log( 'used wp_get_referer' );
+		if ( strpos( $url, 'redirect' ) ) {
+			$url = getQueryParameter( $url, 'redirect' );
+			//error_log( 'extracted redirect from wp_get_referer' );
+		} else {
+			//error_log( 'used wp_get_referer' );
+		}
 	}
 	if ( ! $url ) {
-		$scheme	 = ( ! isset( $_SERVER[ 'HTTPS' ] ) || $_SERVER[ 'HTTPS' ] != "on") ? 'http' : 'https';
-		$url	 = html_entity_decode( esc_url( $scheme . $_SERVER[ "HTTP_HOST" ] . $_SERVER[ "REQUEST_URI" ] ) );
+		if ( class_exists( 'woocommerce' ) ) {
+			$url = wc_get_page_permalink( 'myaccount' );
+		} else {
+			$url = html_entity_decode( esc_url( $http . $_SERVER[ "HTTP_HOST" ] . $_SERVER[ "REQUEST_URI" ] ) );
+		}
 	}
-
-	//error_log( sprintf( "supersocializer redirection url %s changed to %s", $redirectionUrl, $url ) );
-
-	if ( $url ) {
-		$_SESSION[ 'super_socializer_facebook_redirect' ] = $url;
-		return $url;
-	}
+	//error_log( sprintf( "inkston changed supersocializer redirection url %s to %s", $redirectionUrl, $url ) );
+	$redirectionUrl = $url;
+	/* the validation function resets url back to home page .. ..
+	  $redirectionUrl = the_champ_get_valid_url( $url );
+	  if ( $redirectionUrl != $url ) {
+	  error_log( sprintf( "the_champ_get_valid_url changed redirection url %s to %s", $url, $redirectionUrl ) );
+	  }
+	 */
 	return $redirectionUrl;
 }
 
 add_filter( 'heateor_ss_login_redirection_url_filter', 'ink_ss_redirecturl', 10, 5 );
+
+/*
+ * used to get redirection query parameter
  */
+function getQueryParameter( $url, $param ) {
+	$parsedUrl = parse_url( $url );
+	if ( array_key_exists( 'query', $parsedUrl ) ) {
+		parse_str( $parsedUrl[ 'query' ], $queryParameters );
+		if ( array_key_exists( $param, $queryParameters ) ) {
+			return $queryParameters[ $param ];
+		}
+	}
+}
