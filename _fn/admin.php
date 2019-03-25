@@ -37,7 +37,8 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
 	remove_menu_page( 'tools.php' );
 	remove_menu_page( 'options-general.php' );
-	if ( class_exists( 'woocommerce' ) ) {
+	//if woocommerce is activated and user has right to manage woocommerce but is not a site admin
+	if ( class_exists( 'woocommerce' ) && current_user_can( 'manage_woocommerce' ) ) {
 	remove_submenu_page( 'woocommerce', 'wc-order-export' );
 		remove_submenu_page( 'woocommerce', 'wc-reports' );
 		remove_submenu_page( 'woocommerce', 'wc-settings' );
@@ -55,3 +56,5 @@ if ( ! current_user_can( 'manage_options' ) ) {
 //echo '<div class="admin-debug"><h1>admin menu debug</h1>';
 //echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
 //echo '</div>';
+
+include_once('admin_users.php');

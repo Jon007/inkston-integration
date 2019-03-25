@@ -395,3 +395,7 @@ function ink_add_shipping_link( $text, $backorder = false ) {
 function ink_add_backorder_link( $text ) {
 	return ink_add_shipping_link( $text, true );
 }
+
+function ii_admin_customer_orders_link( $userID ) {
+	return network_site_url( '/wp-admin/edit.php?post_status=all&post_type=shop_order&_customer_user=' . $userID );
+}
