@@ -157,7 +157,7 @@ function ii_community_posts( $userid, $post_type = 'wpbdp_listing' ) {
  */
 function ii_abandoned_carts( $userId ) {
 	$query	 = "Select id, abandoned_cart_time, abandoned_cart_info, 0 as total "
-	. "FROM `wp_ac_abandoned_cart_history_lite` WHERE recovered_cart=0 and user_id = " . $userId
+	. "FROM `wp_ac_abandoned_cart_history_lite` WHERE recovered_cart=0 and user_type = 'registered' and user_id = " . $userId
 	;
 	global $wpdb;
 	$result	 = $wpdb->get_results(
@@ -177,7 +177,7 @@ function ii_abandoned_carts( $userId ) {
 						foreach ( $cart_info as $k => $v ) {
 							$total += $v->line_total;
 						}
-						$cart_details->total = wc_price( $total );
+						$cart_details->total = (function_exists( 'wc_price' )) ? wc_price( $total ) : $total;
 					}
 				}
 			} catch ( Exception $e ) {
@@ -192,7 +192,7 @@ function ii_abandoned_carts( $userId ) {
 
 function ii_comment_count( $userId ) {
 	global $wpdb;
-	return $wpdb->get_var( 'SELECT COUNT(comment_ID) FROM ' . $wpdb->comments . ' WHERE user_id = ' . $userId );
+	return $wpdb->get_var( 'SELECT COUNT(comment_ID) FROM wp_comments WHERE user_id = ' . $userId );
 }
 
 /**
@@ -242,20 +242,24 @@ function ii_user_profile_info( WP_User $user ) {
 	$userinfofields	 = ii_user_info( $user );
 
 	//carts section moved out of ii_user_info to save processing time
-	$userinfofields[ '_woocommerce_persistent_cart' ]	 = array( 'caption' => __( 'Last Cart', 'inkston-integration' ), 'data' => $user->get( '_woocommerce_persistent_cart' ) );
-	$carts												 = ii_abandoned_carts( $userId );
-	$userinfofields[ 'abandoned_carts' ]				 = array( 'caption'	 => __( 'Abandoned Carts', 'inkston-integration' )
-		, 'data'		 => $carts );
+	$userinfofields[ '_woocommerce_persistent_cart' ] = array( 'caption' => __( 'Last Cart', 'inkston-integration' ), 'data' => $user->get( '_woocommerce_persistent_cart' ) );
+	try {
+		$carts								 = ii_abandoned_carts( $userId );
+		$userinfofields[ 'abandoned_carts' ] = array( 'caption'	 => __( 'Abandoned Carts', 'inkston-integration' )
+			, 'data'		 => $carts );
 
-	//abandoned cart formats
-	if ( $carts ) {
-		$cart_display = '<div class="admin compact">';
-		foreach ( $carts as $cart ) {
-			$cart_display .= '<span style="min-width:200px;display:inline-block"><a href="' . network_site_url( '/wp-admin/admin.php?page=woocommerce_ac_page&action=orderdetails&id=' . $cart->id ) . '">' .
-			date_i18n( $date_format, $cart->abandoned_cart_time ) . '</a></span><span> ' . $cart->total . '</span><br />';
+		//abandoned cart formats
+		if ( $carts ) {
+			$cart_display = '<div class="admin compact">';
+			foreach ( $carts as $cart ) {
+				$cart_display .= '<span style="min-width:200px;display:inline-block"><a href="' . network_site_url( '/wp-admin/admin.php?page=woocommerce_ac_page&action=orderdetails&id=' . $cart->id ) . '">' .
+				date_i18n( $date_format, $cart->abandoned_cart_time ) . '</a></span><span> ' . $cart->total . '</span><br />';
+			}
+			$cart_display										 .= '</div>';
+			$userinfofields[ 'abandoned_carts' ][ 'display' ]	 = $cart_display;
 		}
-		$cart_display										 .= '</div>';
-		$userinfofields[ 'abandoned_carts' ][ 'display' ]	 = $cart_display;
+	} catch ( Exception $e ) {
+		error_log( $e->getMessage() );
 	}
 	?><h2><?php _e( 'Additional information', 'inkston-integration' ); ?></h2>
 
@@ -317,9 +321,8 @@ function ii_user_info( WP_User $user ) {
 		if ( $socialLogin ) {
 			$user_score += 1;
 		}
-		$userinfofields = array(
-			'thechamp_provider' => array( 'caption'	 => __( 'Social Login', 'inkston-integration' ),
-				'data'		 => $socialLogin )
+		$userinfofields[ 'thechamp_provider' ] = array( 'caption'	 => __( 'Social Login', 'inkston-integration' ),
+			'data'		 => $socialLogin
 		);
 
 		$last_update					 = get_user_option( 'last_update', $userId );
@@ -393,19 +396,19 @@ function ii_user_info( WP_User $user ) {
 		);
 
 		if ( $paying_customer ) {
-			$money_spent		 = ( class_exists( 'woocommerce' ) ) ? wc_get_customer_total_spent( $userId ) : $user->get( '_money_spent' );
-			$money_spent_display = ( class_exists( 'woocommerce' ) && $money_spent) ? wc_price( $money_spent ) : '-';
+			$money_spent = ( class_exists( 'woocommerce' ) ) ? wc_get_customer_total_spent( $userId ) : $user->get( '_money_spent' );
 			if ( $money_spent ) {
-				$user_score += intval( $money_spent / 100 );
+				$user_score							 += intval( $money_spent / 100 );
+				$money_spent_display				 = ( class_exists( 'woocommerce' ) && $money_spent) ? wc_price( $money_spent ) : $money_spent;
+				$userinfofields[ '_money_spent' ]	 = array( 'caption'	 => __( 'Money Spent', 'inkston-integration' )
+					, 'data'		 => $money_spent
+					, 'link'		 => $user_orders_link
+					, 'display'	 => $money_spent_display
+				);
+				$userinfofields[ '_order_count' ]	 = array( 'caption'	 => __( 'Orders', 'inkston-integration' )
+					, 'data'		 => $user->get( '_order_count' )
+					, 'link'		 => $user_orders_link );
 			}
-			$userinfofields[ '_money_spent' ]	 = array( 'caption'	 => __( 'Money Spent', 'inkston-integration' )
-				, 'data'		 => $money_spent
-				, 'link'		 => $user_orders_link
-				, 'display'	 => $money_spent_display
-			);
-			$userinfofields[ '_order_count' ]	 = array( 'caption'	 => __( 'Orders', 'inkston-integration' )
-				, 'data'		 => $user->get( '_order_count' )
-				, 'link'		 => $user_orders_link );
 		}
 
 		$commment_count = ii_comment_count( $userId );
@@ -439,8 +442,14 @@ function ii_user_info( WP_User $user ) {
 		$userinfofields[ 'wp_2__bbp_subscriptions' ] = array( 'caption'	 => __( 'Subscriptions', 'inkston-integration' )
 			, 'data'		 => $user->get( 'wp_2__bbp_subscriptions' )
 			, 'link'		 => network_site_url( '/community/forums/users/' . $user->user_nicename . '/subscriptions/' ) );
-		$userinfofields[ 'wp_2__bbp_last_posted' ]	 = array( 'caption' => __( 'Last Forum post', 'inkston-integration' ), 'data' => $user->get( 'wp_2__bbp_last_posted' ) );
-		$userinfofields[ 'wp_user_level' ]			 = array( 'caption' => __( 'wp_user_level', 'inkston-integration' ), 'data' => $user->get( 'wp_user_level' ) );
+
+		$wp_2__bbp_last_posted = $user->get( 'wp_2__bbp_last_posted' );
+		if ( $wp_2__bbp_last_posted ) {
+			$userinfofields[ 'wp_2__bbp_last_posted' ] = array( 'caption'	 => __( 'Last Forum post', 'inkston-integration' ),
+				'data'		 => $wp_2__bbp_last_posted,
+				'display'	 => date_i18n( $date_format, $wp_2__bbp_last_posted ) );
+		}
+		$userinfofields[ 'wp_user_level' ] = array( 'caption' => __( 'wp_user_level', 'inkston-integration' ), 'data' => $user->get( 'wp_user_level' ) );
 
 		$userinfofields[ 'user_score' ]	 = array( 'caption' => __( 'User Score', 'inkston-integration' ), 'data' => $user_score );
 		$oldScore						 = $user->get( 'user_score' );
