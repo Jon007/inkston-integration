@@ -357,12 +357,19 @@ function ii_user_audit( $user, $userinfofields ) {
 	}
 
 	switch_to_blog( 1 );
+	$order_statuses	 = array(
+		'wc-pending',
+		'wc-processing',
+		'wc-on-hold',
+		'wc-completed',
+		'wc-shipped'
+	);
 	$userOrders = get_posts( array(
 		'numberposts'	 => -1,
 		'meta_key'		 => '_customer_user',
 		'meta_value'	 => $userId,
 		'post_type'		 => array( 'shop_order' ),
-		'post_status'	 => array_keys( wc_get_order_statuses() ) // ['wc-completed'],
+		'post_status'	 => $order_statuses // ['wc-completed'],
 	) );
 
 	foreach ( $userOrders as $userOrder ) {
