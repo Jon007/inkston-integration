@@ -240,27 +240,7 @@ function ii_user_profile_info( WP_User $user ) {
 	$userId			 = $user->ID;
 	$date_format	 = get_option( 'date_format' ) . ' H:i:s';
 	$userinfofields	 = ii_user_info( $user );
-
-	//carts section moved out of ii_user_info to save processing time
-	$userinfofields[ '_woocommerce_persistent_cart' ] = array( 'caption' => __( 'Last Cart', 'inkston-integration' ), 'data' => $user->get( '_woocommerce_persistent_cart' ) );
-	try {
-		$carts								 = ii_abandoned_carts( $userId );
-		$userinfofields[ 'abandoned_carts' ] = array( 'caption'	 => __( 'Abandoned Carts', 'inkston-integration' )
-			, 'data'		 => $carts );
-
-		//abandoned cart formats
-		if ( $carts ) {
-			$cart_display = '<div class="admin compact">';
-			foreach ( $carts as $cart ) {
-				$cart_display .= '<span style="min-width:200px;display:inline-block"><a href="' . network_site_url( '/wp-admin/admin.php?page=woocommerce_ac_page&action=orderdetails&id=' . $cart->id ) . '">' .
-				date_i18n( $date_format, $cart->abandoned_cart_time ) . '</a></span><span> ' . $cart->total . '</span><br />';
-			}
-			$cart_display										 .= '</div>';
-			$userinfofields[ 'abandoned_carts' ][ 'display' ]	 = $cart_display;
-		}
-	} catch ( Exception $e ) {
-		error_log( $e->getMessage() );
-	}
+	$ii_user_audit	 = ii_user_audit( $user, $userinfofields );
 	?><h2><?php _e( 'Additional information', 'inkston-integration' ); ?></h2>
 
 	<table class="form-table">
@@ -286,14 +266,201 @@ function ii_user_profile_info( WP_User $user ) {
 						}
 						?>
 					</td>
-				</tr><?php
-			}
-			?></tbody>
+				</tr><?php } ?><tr>
+				<th><label><?php _e( 'User Audit', 'inkston-integration' ); ?></label></th>
+				<td>
+					<?php
+					echo ii_user_audit_html( $ii_user_audit );
+					?>
+				</td>
+			</tr><?php
+					?></tbody>
 	</table><?php
 }
 
 add_action( 'show_user_profile', 'ii_user_profile_info', 20 );
 add_action( 'edit_user_profile', 'ii_user_profile_info', 20 );
+function ii_user_audit_html( $ii_user_audit ) {
+	$date_format = 'Y-m-d H:i'; //get_option( 'date_format' ) . ' H:i:s';
+	$output		 = '';
+	foreach ( $ii_user_audit as $key => $value ) {
+
+		$output .= '<span style="min-width:140px;display:inline-block">' . (( is_numeric( $key )) ? date_i18n( $date_format, $key ) : $key) . '</span>';
+		if ( isset( $value[ 'link' ] ) ) {
+			$output .= '<a href="' . $value[ 'link' ] . '">';
+		}
+		$output .= $value[ 'type' ];
+		/*
+		  if ( isset( $value[ 'data' ] ) ) {
+		  $output .= ' ' . $value[ 'data' ];
+		  }
+		 */
+		if ( isset( $value[ 'link' ] ) ) {
+			$output .= '</a>';
+		}
+		$output .= '<br />';
+	}
+	return $output;
+}
+
+/**
+ * get detailed info about user which is too expensive to show in listing view..
+ *
+ * @param WP_User $user
+ *
+ * @return array of additional user information
+ */
+function ii_user_audit( $user, $userinfofields ) {
+	$userId				 = $user->ID;
+	$date_format		 = 'Y-m-d H:i'; //get_option( 'date_format' ) . ' H:i:s';
+	//$userinfofields	 = ii_user_info( $user );
+	$network_site_url	 = network_site_url();
+
+	$userAudit													 = array();
+	$userAudit[ $userinfofields[ 'registered' ][ 'data' ] ]		 = array( 'type' => $userinfofields[ 'registered' ][ 'caption' ] );
+	$userAudit[ $userinfofields[ 'last_update' ][ 'data' ] ]	 = array( 'type' => $userinfofields[ 'last_update' ][ 'caption' ] );
+	$userAudit[ $userinfofields[ 'wc_last_active' ][ 'data' ] ]	 = array( 'type' => $userinfofields[ 'wc_last_active' ][ 'caption' ] );
+	//interpret session dates
+	if ( isset( $userinfofields[ 'session_tokens' ][ 'data' ] ) && $userinfofields[ 'session_tokens' ][ 'data' ] ) {
+		$tokens				 = $userinfofields[ 'session_tokens' ][ 'data' ];
+		$sessionDateString	 = '';
+		if ( sizeof( $tokens ) > 0 ) {
+			foreach ( $tokens as $key => $value ) {
+				if ( isset( $value[ 'login' ] ) && $value[ 'login' ] ) {
+					$userAudit[ $value[ 'login' ] ] = array( 'type' => __( 'Session start', 'inkston-integration' ) );
+				}
+				if ( isset( $value[ 'expiration' ] ) && $value[ 'expiration' ] ) {
+					$userAudit[ $value[ 'expiration' ] ] = array( 'type' => __( 'Session end', 'inkston-integration' ) );
+				}
+			}
+		}
+	}
+
+
+	//carts section moved out of ii_user_info to save processing time
+	try {
+		$carts = ii_abandoned_carts( $userId );
+
+		//abandoned cart formats
+		if ( $carts ) {
+			$cart_display = '<div class="admin compact">';
+			foreach ( $carts as $cart ) {
+				$userAudit[ $cart->abandoned_cart_time ] = array( 'type'	 => __( 'Abandoned cart', 'inkston-integration' ),
+					'link'	 => $network_site_url . '/wp-admin/admin.php?page=woocommerce_ac_page&action=orderdetails&id='
+					. $cart->id,
+					'data'	 => $cart->total );
+			}
+			$userinfofields[ 'abandoned_carts' ][ 'display' ] = $cart_display;
+		}
+	} catch ( Exception $e ) {
+		error_log( $e->getMessage() );
+	}
+
+	switch_to_blog( 1 );
+	$userOrders = get_posts( array(
+		'numberposts'	 => -1,
+		'meta_key'		 => '_customer_user',
+		'meta_value'	 => $userId,
+		'post_type'		 => array( 'shop_order' ),
+		'post_status'	 => array_keys( wc_get_order_statuses() ) // ['wc-completed'],
+	) );
+
+	foreach ( $userOrders as $userOrder ) {
+		$order_total	 = get_post_meta( $userOrder->ID, '_order_total', true );
+		$order_currency	 = get_post_meta( $userOrder->ID, '_order_currency', true );
+		$order_status	 = $userOrder->post_status;
+		$order_status	 = str_replace( 'wc-', '', $order_status );
+		$order_date		 = strtotime( $userOrder->post_date_gmt );
+
+		$userAudit[ $order_date ] = array( 'type'	 => __( 'Order', 'inkston-integration' ) . ' ' . $userOrder->ID . ' ' . $order_total . $order_currency . ' (' . $order_status . ')',
+			'link'	 => $network_site_url . '/wp-admin/post.php?post=' . $userOrder->ID . '&action=edit',
+			'data'	 => $order_total . $order_currency );
+	}
+
+	//get user comments and reviews
+	$args = array(
+		'user_id'	 => $userId,
+		'number'	 => 50 // how many comments to retrieve
+	//, 'status'	 => get_comment_statuses()
+	);
+
+	$comments = get_comments( $args );
+	if ( $comments ) {
+		foreach ( $comments as $c ) {
+			$commentLink	 = get_comment_link( $c->comment_ID );
+			$commentCaption	 = wp_trim_words( strip_shortcodes( $c->comment_content ), 10 );
+			$commentType	 = $c->comment_type;
+			if ( ! $commentType ) {
+				if ( $c->comment_parent ) {
+					$commentType = __( 'Comment Reply', 'inkston-integration' );
+				} else {
+					$commentType = __( 'Comment', 'inkston-integration' );
+				}
+			} elseif ( $commentType == 'review' ) {
+				if ( $c->comment_parent ) {
+					$commentType = __( 'Review Reply', 'inkston-integration' );
+				} else {
+					$commentType = __( 'Product Review', 'inkston-integration' );
+					$rating		 = get_comment_meta( $c->comment_ID, 'rating' );
+					if ( $rating ) {
+						if ( is_array( $rating ) && sizeof( $rating ) > 0 ) {
+							$commentCaption .= ' ( ' . $rating[ 0 ] . ' stars )';
+						}
+					}
+				}
+			}
+			$commentStatus									 = ($c->comment_approved) ? '' : ' (' . __( 'pending', 'inkston-integration' ) . ')';
+			$userAudit[ strtotime( $c->comment_date_gmt ) ]	 = array( 'type'	 => $commentType . ' ' . $commentCaption . $commentStatus,
+				'link'	 => $commentLink );
+		}
+	}
+	restore_current_blog();
+
+
+	switch_to_blog( 2 );
+	$communityPosts = get_posts( array(
+		'numberposts'	 => -1,
+		'author'		 => $userId,
+		'post_type'		 => array( 'topic', 'reply', 'wpbdp_listing', 'ai1ec_event' ),
+		'post_status'	 => array( 'publish', 'pending', 'spam' )
+	) );
+
+	foreach ( $communityPosts as $communityPost ) {
+		$post_status = $communityPost->post_status;
+		if ( $post_status == 'publish' ) {
+			$post_status == __( 'published', 'inkston-integration' );
+		}
+		$post_date	 = strtotime( $communityPost->post_date_gmt );
+		$post_type	 = $communityPost->post_type;
+		$caption	 = $communityPost->post_title;
+		$link		 = $communityPost->guid;
+		switch ( $post_type ) {
+			case 'wpbdp_listing':
+				$post_type	 = __( 'Listing', 'inkston-integration' );
+				break;
+			case 'ai1ec_event':
+				$post_type	 = __( 'Event', 'inkston-integration' );
+				break;
+			case 'topic':
+				$post_type	 = __( 'Topic', 'inkston-integration' );
+				break;
+			case 'reply':
+				$post_type	 = __( 'Reply', 'inkston-integration' );
+				$caption	 = wp_trim_words( strip_shortcodes( $communityPost->post_content ), 10 );
+				break;
+		}
+
+		$userAudit[ $post_date ] = array( 'type'	 => $post_type . ' ' . $caption . '  (' . $post_status . ')',
+			'link'	 => $link );
+	}
+	restore_current_blog();
+
+
+
+	ksort( $userAudit );
+	return $userAudit;
+}
+
 /**
  * get additional interesting information about user..
  *
@@ -304,10 +471,11 @@ add_action( 'edit_user_profile', 'ii_user_profile_info', 20 );
 function ii_user_info( WP_User $user ) {
 	$userId			 = $user->ID;
 	$tKey			 = 'iiuser' . $userId;
-	$date_format	 = get_option( 'date_format' ) . ' H:i:s';
+	$date_format	 = 'Y-m-d H:i'; //get_option( 'date_format' ) . ' H:i:s';
 	$user_score		 = 0;
 	$userinfofields	 = get_transient( $tKey );
-	//DEBUG: $userinfofields	 = 0;
+	//DEBUG:
+	//$userinfofields	 = 0;
 	if ( ! $userinfofields ) {
 
 		$registered		 = strtotime( $user->user_registered );
@@ -353,10 +521,10 @@ function ii_user_info( WP_User $user ) {
 			if ( sizeof( $tokens ) > 0 ) {
 				foreach ( $tokens as $key => $value ) {
 					if ( isset( $value[ 'login' ] ) && $value[ 'login' ] ) {
-						$sessionDateString .= date_i18n( $date_format, $value[ 'login' ] ) . ' ' . date( 'H:i:s', $value[ 'login' ] ) . ' - ';
+						$sessionDateString .= date_i18n( $date_format, $value[ 'login' ] ) . ' - ';
 					}
 					if ( isset( $value[ 'expiration' ] ) && $value[ 'expiration' ] ) {
-						$sessionDateString .= date_i18n( $date_format, $value[ 'expiration' ] ) . ' ' . date( 'H:i:s', $value[ 'expiration' ] ) . ' ';
+						$sessionDateString .= date_i18n( $date_format, $value[ 'expiration' ] ) . ' ';
 					}
 					$sessionDateString .= $key . ':' . recursive_filter_implode( ',', $value, true );
 				}
@@ -399,7 +567,7 @@ function ii_user_info( WP_User $user ) {
 			$money_spent = ( class_exists( 'woocommerce' ) ) ? wc_get_customer_total_spent( $userId ) : $user->get( '_money_spent' );
 			if ( $money_spent ) {
 				$user_score							 += intval( $money_spent / 100 );
-				$money_spent_display				 = ( class_exists( 'woocommerce' ) && $money_spent) ? wc_price( $money_spent ) : $money_spent;
+				$money_spent_display				 = ( class_exists( 'woocommerce' ) && $money_spent) ? wc_price( $money_spent ) : number_format( $money_spent, 2 );
 				$userinfofields[ '_money_spent' ]	 = array( 'caption'	 => __( 'Money Spent', 'inkston-integration' )
 					, 'data'		 => $money_spent
 					, 'link'		 => $user_orders_link
@@ -456,6 +624,9 @@ function ii_user_info( WP_User $user ) {
 		if ( $oldScore != $user_score ) {
 			update_user_meta( $userId, 'user_score', $user_score );
 		}
+
+		$userinfofields[ '_woocommerce_persistent_cart' ] = array( 'caption' => __( 'Last Cart', 'inkston-integration' ), 'data' => $user->get( '_woocommerce_persistent_cart' ) );
+
 		set_transient( $tKey, $userinfofields, 36000 );
 	}
 	return $userinfofields;
