@@ -362,6 +362,9 @@ function ii_user_audit( $user, $userinfofields ) {
 		'wc-processing',
 		'wc-on-hold',
 		'wc-completed',
+		'wc-cancelled',
+		'wc-refunded',
+		'wc-failed',
 		'wc-shipped'
 	);
 	$userOrders = get_posts( array(
