@@ -291,7 +291,8 @@ function ink_bbp_request_current_user( $query_vars ) {
 		switch ( $query_vars[ 'bbp_user' ] ) {
 			case 'current':
 				if ( get_current_user_id() ) {
-					$query_vars[ 'bbp_user' ] = bbp_get_current_user_name();
+					global $user_login;
+					$query_vars[ 'bbp_user' ] = $user_login;
 				} else {
 					auth_redirect();
 				}
