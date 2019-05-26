@@ -32,7 +32,7 @@ add_filter( 'mce_buttons', 'ii_mce_button_filter', 99, 1 );
 /*
  * remove admin menus for non-admin users
  */
-if ( ! current_user_can( 'manage_options' ) ) {
+if ( (! current_user_can( 'manage_options' )) && (! is_ajax() ) ) {
 	remove_menu_page( 'wpcf7' );
 	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
 	remove_menu_page( 'tools.php' );

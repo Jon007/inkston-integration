@@ -16,9 +16,9 @@
  * Version: 1.2
  * Stable Tag: 1.0
  * Requires At Least: 4.7
- * Tested Up To: 5.0.2
+ * Tested Up To: 5.2.1
  * WC requires at least: 3.0.0
- * WC tested up to: 3.5.3
+ * WC tested up to: 3.6.3
  * Requires PHP: 7.0
  * Version Components: {major}.{minor}.{bugfix}-{stage}{level}
  *
