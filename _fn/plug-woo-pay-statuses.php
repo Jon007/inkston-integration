@@ -19,8 +19,21 @@ function inkston_allow_pay_onhold( $valid_order_statuses, $order ) {
 	$valid_order_statuses[] = 'on-hold';
 	return $valid_order_statuses;
 }
-
+/*
+ * woocommerce_order_is_pending_statuses is similar to woocommerce_valid_order_statuses_for_payment
+ * but only used for rechecking stock before accepting payment: payment may be refused if 
+ * stock is no longer available
+ *
+ * @param Array $valid_order_statuses   order statuses which count as pending..
+ *
+ * @return Array                array of valid order status strings
+ */
+function skip_stockcheck_pay_onhold( $valid_order_statuses ) {
+	$valid_order_statuses[] = 'on-hold';
+	return $valid_order_statuses;
+}
 add_filter( 'woocommerce_valid_order_statuses_for_payment', 'inkston_allow_pay_onhold', 10, 2 );
+add_filter( 'woocommerce_order_is_pending_statuses', 'inkston_allow_pay_onhold', 10, 1 );
 
 /*
  * custom statuses for shipped are not perceived as paid by woocommerce due to this filter
