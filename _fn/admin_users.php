@@ -515,7 +515,7 @@ function ii_user_info( WP_User $user ) {
 		if ( $wc_last_active ) {
 			$wc_last_active_display	 = date_i18n( $date_format, ( $wc_last_active ) );
 			$interval				 = date_diff( new \DateTime( '@' . $wc_last_active ), new \DateTime( '@' . time() ) );
-			$months					 = intval( $interval->format( '%m' ) );
+			$months					 = intval( $interval->format( '%m' ) ) + (12 * intval( $interval->format( '%y' ) ) );
 			$user_score				 += (12 - $months);
 		}
 		$userinfofields[ 'wc_last_active' ] = array( 'caption'	 => __( 'Last Active', 'inkston-integration' ),
