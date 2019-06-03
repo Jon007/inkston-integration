@@ -37,6 +37,8 @@ if ( (! current_user_can( 'manage_options' )) && (! is_ajax() ) ) {
 	remove_menu_page( 'edit.php?post_type=robo_gallery_table' );
 	remove_menu_page( 'tools.php' );
 	remove_menu_page( 'options-general.php' );
+	remove_menu_page( 'edit-comments.php' );
+
 	//if woocommerce is activated and user has right to manage woocommerce but is not a site admin
 	if ( class_exists( 'woocommerce' ) && current_user_can( 'manage_woocommerce' ) ) {
 	remove_submenu_page( 'woocommerce', 'wc-order-export' );
@@ -44,6 +46,7 @@ if ( (! current_user_can( 'manage_options' )) && (! is_ajax() ) ) {
 		remove_submenu_page( 'woocommerce', 'wc-settings' );
 		remove_submenu_page( 'woocommerce', 'wc-status' );
 		remove_submenu_page( 'woocommerce', 'wc-addons' );
+		remove_submenu_page( 'woocommerce', 'woocommerce_ac_page' );
 		remove_submenu_page( 'woocommerce', 'wpo_wcpdf_options_page' );
 		remove_submenu_page( 'woocommerce', 'alg-custom-order-statuses-tool' );
 	}
