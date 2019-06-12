@@ -58,17 +58,21 @@ function inkGetPageID( $page ) {
  */
 function inkGetPageURL( $post, $blogid ) {
 	//switch blog if necessary
-	$currentblogid = get_current_blog_id();
-	if ( $currentblogid != $blogid ) {
-		switch_to_blog( $blogid );
+	if ( is_multisite() ) {
+    $currentblogid = get_current_blog_id();
+    if ( $currentblogid != $blogid ) {
+      switch_to_blog( $blogid );
+    }
 	}
 
 	$post	 = inkGetPageID( $post );
 	$url	 = ($post) ? get_page_link( $post ) : '';
 
-	//restore blog if necessary
-	if ( $currentblogid != $blogid ) {
-		restore_current_blog();
+	if ( is_multisite() ) {
+    //restore blog if necessary
+    if ( $currentblogid != $blogid ) {
+      restore_current_blog();
+    }
 	}
 
 	return $url;
@@ -357,7 +361,7 @@ function ink_shipping_link( $backorder = false ) {
 	$link			 = '';
 	$currentblogid	 = get_current_blog_id();
 
-	if ( is_inkston() ) {
+	if ( is_inkston() && is_multisite() ) {
 		switch_to_blog( 1 );
 		$shippingpage	 = ( function_exists( 'pll_get_post' ) ) ? pll_get_post( 7420 ) : 7420;
 		$link			 = get_permalink( $shippingpage );

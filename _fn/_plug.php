@@ -61,8 +61,11 @@ if ( isset( $ii_options[ 'hashtags' ] ) ) {
 include_once( 'links.php');
 include_once( 'login.php');
 
-//always included though improvements mainly target woocommerce
-include_once( 'plug-mpd.php');
+if ( is_multisite() ) {
+	//multisite post duplicator enhancements always included though should test for activation
+	//and improvements mainly target only where woocommerce activated
+  include_once( 'plug-mpd.php');
+}
 
 //plugin customisations: avoid even loading/parsing file if plugin is not activated
 if ( class_exists( 'BadgeOS' ) && isset( $ii_options[ 'badgeos_levels' ] ) ) {

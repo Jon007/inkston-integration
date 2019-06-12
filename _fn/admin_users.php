@@ -356,7 +356,9 @@ function ii_user_audit( $user, $userinfofields ) {
 		error_log( $e->getMessage() );
 	}
 
-	switch_to_blog( 1 );
+	if ( is_multisite() ) {
+	  switch_to_blog( 1 );
+	}
 	$order_statuses	 = array(
 		'wc-pending',
 		'wc-processing',
@@ -424,10 +426,10 @@ function ii_user_audit( $user, $userinfofields ) {
 				'link'	 => $commentLink );
 		}
 	}
-	restore_current_blog();
-
-
-	switch_to_blog( 2 );
+	if ( is_multisite() ) {
+    restore_current_blog();
+    switch_to_blog( 2 );
+	}
 	$communityPosts = get_posts( array(
 		'numberposts'	 => -1,
 		'author'		 => $userId,
@@ -463,8 +465,9 @@ function ii_user_audit( $user, $userinfofields ) {
 		$userAudit[ $post_date ] = array( 'type'	 => $post_type . ' ' . $caption . '  (' . $post_status . ')',
 			'link'	 => $link );
 	}
-	restore_current_blog();
-
+	if ( is_multisite() ) {
+	  restore_current_blog();
+	}
 
 
 	ksort( $userAudit );
