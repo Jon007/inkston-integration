@@ -42,6 +42,23 @@ function ii_translatable_emails_default_settings( $translatableStrings ) {
 
 add_filter( 'woo-poly.Emails.defaultSettings', 'ii_translatable_emails_default_settings' );
 
+
+/*
+ * add default strings
+ */
+function ii_translatable_emails_default_setting( $default, $stringType ) {
+	switch ( $stringType ) {
+		case 'customer_shipped_order_subject':
+			return __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
+		case 'customer_shipped_order_heading':
+			return __( 'Your {site_title} order {order_number} is Shipped', 'inkston-integration' );
+	}
+	return $default;
+}
+
+add_filter( 'woo-poly.Emails.defaultSetting', 'ii_translatable_emails_default_setting', 10, 2 );
+
+
 // shipped order
 add_filter( 'woocommerce_email_subject_customer_shipped_order', 'translateEmailSubjectCustomerShippedOrder', 10, 2 );
 add_filter( 'woocommerce_email_heading_customer_shipped_order', 'translateEmailHeadingCustomerShippedOrder', 10, 2 );
