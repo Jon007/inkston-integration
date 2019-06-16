@@ -2,6 +2,9 @@
 
 add_action( 'rss2_item', 'ii_rss_insert' );
 add_action( 'rss2_ns', 'ii_rss_ns_insert' );
+add_action( 'bbp_feed', 'ii_rss_ns_insert' );
+add_action( 'bbp_feed_item', 'ii_rss_insert' );
+
 
 //reset RSS cache more often while debugging
 if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
@@ -42,11 +45,19 @@ function ii_rss_insert() {
 		}
 	}
 	//fallback to first image from content
-	$image = inkston_catch_image();
-	//$image =  get_the_post_thumbnail_url( $post->ID, $size );
-	if ( ! empty( $image ) ) {
+	$image_url = inkston_catch_image();
+	//$image_url =  get_the_post_thumbnail_url( $post->ID, $size );
+	if ( ! empty( $image_url ) ) {
+		$mime = ii_mime_from_name( $image_url );
+		//$width = get_option( "{$size}_size_w" );
+		//enclosure tag
+		if ( isset( $ii_options[ 'rss_enclosure' ] ) ) {
+			$defaultfilesize = 200000;
+			$enclosuretag	 = sprintf( '<enclosure length="%s" type="%s" url="%s" />', $defaultfilesize, $mime, $image_url );
+			echo $enclosuretag . "\n";
+		}
 		if ( isset( $ii_options[ 'rss_media' ] ) ) {
-			echo "	" . '<media:content url="' . esc_url( $image ) . '" medium="image" />' . "\n";
+			echo "	" . '<media:content url="' . esc_url( $image_url ) . '" medium="image" type="' . $mime . '" />' . "\n";
 		}
 	}
 }
