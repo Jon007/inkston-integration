@@ -55,6 +55,9 @@ if ( isset( $ii_options[ 'featured_posts' ] ) ) {
 	include_once( 'featured-posts.php');
 }
 include_once( 'images.php');
+if ( isset( $ii_options[ 'rss_enclosure' ] ) || isset( $ii_options[ 'rss_media' ] ) ) {
+	include_once( 'images-rss.php');
+}
 if ( isset( $ii_options[ 'hashtags' ] ) ) {
 	include_once( 'keywords.php');
 }

@@ -64,6 +64,26 @@ function ii_options_init() {
 	)
 	);
 
+	$settings_section	 = 'ii_rss_options';
+	//this would register a separate option, but was unable to get the settings to save into this option
+	//register_setting( $section_group, $settings_section );
+	$page				 = $section_group;
+	add_settings_section(
+	$settings_section, __( 'RSS Integration Options', 'inkston-integration' ), 'ii_rss_section_callback', $page
+	);
+
+	add_settings_field(
+	'rss_enclosure', __( 'enclosure tag', 'inkston-integration' ), 'rss_enclosure_render', $section_group, $settings_section, array(
+		__( 'include enclosure tag for featured image (appears to be required by IFTT)', 'inkston-integration' )
+	)
+	);
+	add_settings_field(
+	'rss_media', __( 'media tag', 'inkston-integration' ), 'rss_media_render', $section_group, $settings_section, array(
+		__( 'include media tag for featured image (supported by Zapier and others)', 'inkston-integration' )
+	)
+	);
+
+
 	$settings_section	 = 'ii_plugin_options';
 	//this would register a separate option, but was unable to get the settings to save into this option
 	//register_setting( $section_group, $settings_section );
@@ -75,7 +95,7 @@ function ii_options_init() {
 
 	add_settings_field(
 	'relevanssi', __( 'Relevanssi exclude shortcodes', 'inkston-integration' ), 'relevanssi_render', $section_group, $settings_section, array(
-		__( 'exclude these shortcodes from search parsing [plug-relevanssi.php]' )
+		__( 'exclude these shortcodes from search parsing [plug-relevanssi.php]', 'inkston-integration' )
 	)
 	);
 
@@ -412,6 +432,14 @@ function hashtags_render( $s ) {
 	ii_render_checkbox( 'hashtags', $s );
 }
 
+function rss_enclosure_render( $s ) {
+	ii_render_checkbox( 'rss_enclosure', $s );
+}
+
+function rss_media_render( $s ) {
+	ii_render_checkbox( 'rss_media', $s );
+}
+
 function badgeos_levels_render( $s ) {
 	ii_render_checkbox( 'badgeos_levels', $s );
 }
@@ -609,6 +637,10 @@ function ii_render_checkbox( $optionName, $s ) {
 		   _e( 'General Options:', 'inkston-integration' );
 	   }
 
+function ii_rss_section_callback() {
+	_e( 'Options for rss images:', 'inkston-integration' );
+}
+
 	   function ii_plugins_section_callback() {
 		   _e( 'Options for integrated plugins (automatically deactivated if related plugin is not active):', 'inkston-integration' );
 	   }
@@ -640,7 +672,8 @@ function ii_woo_backorder_section_callback() {
 	<form action='options.php' method='post'>
 
 		<h2>Inkston Integration</h2>
-		<p><a target="_blank" href="https://github.com/Jon007/inkston-integration/">inkston-integration</a> <?php _e( 'is a plugin integration helper tool from', 'inkston-integration' ) ?> <a target="_blank" href="https://jonmoblog.wordpress.com/">Jonathan Moore</a>. It allows consistent behaviour and plugin integration across multiple sites and different themes.</p>
+		<p><a target="_blank" href="https://github.com/Jon007/inkston-integration/">inkston-integration</a> <?php _e( 'is a plugin integration helper tool from', 'inkston-integration' ) ?> <a target="_blank" href="https://jonmoblog.wordpress.com/">Jonathan Moore</a>. It allows consistent behaviour and plugin integration across multiple sites and different themes.
+			Crucially, almost every feature can be turned off individually to facilitate compatibility debugging (features also auto switch-off when dependency functionality is not enabled)</p>
 
 		<?php
 		settings_fields( 'ii_options' );
@@ -653,7 +686,7 @@ function ii_woo_backorder_section_callback() {
 	<p>Set the options and save them.</p>
 	<p>Please see <a href="https://github.com/Jon007/inkston-integration/">inkston-integration on Github</a> for more details.</p>
 	<h2>Notes</h2>
-	<p>This tool is provided free as-is, use and modify as you like.</p>
+	<p>This tool is provided free as-is, use and modify as you like, and at your own risk.</p>
 	<p>WooCommerce is recommended:
 	<ul><li>if used without WooCommerce 3 then WooCommerce related settings will have no effect.
 			Due to the huge number of api changes in version 3, earlier versions of WooCommerce will be ignored.</li>
