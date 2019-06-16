@@ -15,6 +15,26 @@
  * it is just this particular capability which is needed
  *
  */
+
+/*
+ * attempt to ensure featured images are set to avoid repeated deductions later..
+ */
+function ii_bbp_set_featured_image( $post_id ) {
+	$post				 = get_post( $post_id );
+	$post_thumbnail_id	 = get_post_thumbnail_id( $post );
+	if ( ! $post_thumbnail_id ) {
+		$image_url = inkston_catch_image( $post_id );
+		if ( $image_url && $image_url != get_noimage() ) {
+			ii_set_featured_image( $post_id, $image_url );
+		}
+	}
+}
+
+add_action( 'bbp_new_topic', 'ii_bbp_set_featured_image', 10, 1 );
+add_action( 'bbp_edit_topic', 'ii_bbp_set_featured_image', 10, 1 );
+add_action( 'bbp_new_reply', 'ii_bbp_set_featured_image', 10, 1 );
+add_action( 'bbp_edit_reply', 'ii_bbp_set_featured_image', 10, 1 );
+//do_action( 'bbp_edit_topic', $topic_id, $forum_id, $anonymous_data, $topic_author , true /* Is edit */ );
 /**
  * Filters the forum reply link in feeds to force unique link to stop caching.
  *    otherwise Facebook, Twitter etc cache previous image on same url

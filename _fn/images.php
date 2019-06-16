@@ -93,13 +93,16 @@ add_action( 'init', 'add_medium_large' );
 /**
  * Extracting the first image of post as fallback if no featured image
  */
-function inkston_catch_image() {
-	global $post, $posts;
+function inkston_catch_image( $post_id = 0 ) {
+	global $post;
+	$thisPost	 = ($post_id) ? get_post( $post_id ) : $post;
 	$first_img = '';
+	if ( $thisPost ) {
 	if ( function_exists( 'bbp_is_single_user' ) && bbp_is_single_user() ) {
 		$first_img = inkston_featured_img_tag( get_avatar( bbp_get_displayed_user_field( 'user_email', 'raw' ) ), false );
-	} elseif ( is_single() || ($post && $post->ID) ) {
-		$first_img = inkston_featured_img_tag( $post->post_content, false );
+		} elseif ( is_single() || ($thisPost && $thisPost->ID) ) {
+			$first_img = inkston_featured_img_tag( $thisPost->post_content, false );
+		}
 	}
 	if ( empty( $first_img ) ) {
 		$first_img = get_noimage();
@@ -321,4 +324,54 @@ function tile_thumb() {
 	}
 	?><div class="<?php echo($class); ?>" id="post-<?php the_ID(); ?>" style="background-image:url( '<?php echo $thumbnail; ?>');"><?php echo($beforelink); ?><a href="<?php the_permalink(); ?>" rel="bookmark"><h3><?php echo($title); ?></h3><p class="p-summary"><?php echo(inkston_get_excerpt( $excerpt_length )); ?></p></a></div>
 	<?php
+}
+
+/*
+ * set featured image in a post to a url
+ * based on remicorson
+ *
+ * @param string $post_id   The post whose featured image should be updated.
+ * @param string $image_url The new url to use.
+ */
+function ii_set_featured_image( $post_id, $image_url ) {
+	$image_name			 = strrchr( $image_url, '/' );
+	$upload_dir			 = wp_upload_dir(); // Set upload folder
+	$image_data			 = file_get_contents( $image_url ); // Get image data
+	$unique_file_name	 = wp_unique_filename( $upload_dir[ 'path' ], $image_name ); // Generate unique name
+	$filename			 = basename( $unique_file_name ); // Create image file name
+// Check folder permission and define file location
+	if ( wp_mkdir_p( $upload_dir[ 'path' ] ) ) {
+		$file = $upload_dir[ 'path' ] . '/' . $filename;
+	} else {
+		$file = $upload_dir[ 'basedir' ] . '/' . $filename;
+	}
+
+// Create the image  file on the server
+	file_put_contents( $file, $image_data );
+
+// Check image file type
+	$wp_filetype = wp_check_filetype( $filename, null );
+
+// Set attachment data
+	$attachment = array(
+		'post_mime_type' => $wp_filetype[ 'type' ],
+		'post_title'	 => sanitize_file_name( $filename ),
+		'post_content'	 => '',
+		'post_status'	 => 'inherit'
+	);
+
+// Create the attachment
+	$attach_id = wp_insert_attachment( $attachment, $file, $post_id );
+
+// Include image.php
+	require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+// Define attachment metadata
+	$attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+
+// Assign metadata to attachment
+	wp_update_attachment_metadata( $attach_id, $attach_data );
+
+// And finally assign featured image to post
+	set_post_thumbnail( $post_id, $attach_id );
 }
