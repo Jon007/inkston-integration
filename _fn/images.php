@@ -282,6 +282,7 @@ function inkston_featured_img_tag_regex( $content, $tag, $fallback = true, $foru
 
 /**
  * Filter: 'wpseo_pre_analysis_post_content' - Allow filtering the content before analysis
+ * this is only used to get images to output meta so this filter forces it to see our preferred images
  *
  * @param string $content - post content
  * @param WP_Post $post - post
@@ -332,6 +333,8 @@ function tile_thumb() {
  *
  * @param string $post_id   The post whose featured image should be updated.
  * @param string $image_url The new url to use.
+ *
+ * @return int id of attachment post for saved image
  */
 function ii_set_featured_image( $post_id, $image_url ) {
 	$image_name			 = strrchr( $image_url, '/' );
@@ -374,4 +377,6 @@ function ii_set_featured_image( $post_id, $image_url ) {
 
 // And finally assign featured image to post
 	set_post_thumbnail( $post_id, $attach_id );
+
+	return $attach_id;
 }

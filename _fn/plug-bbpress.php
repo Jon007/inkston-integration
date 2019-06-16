@@ -25,7 +25,10 @@ function ii_bbp_set_featured_image( $post_id ) {
 	if ( ! $post_thumbnail_id ) {
 		$image_url = inkston_catch_image( $post_id );
 		if ( $image_url && $image_url != get_noimage() ) {
-			ii_set_featured_image( $post_id, $image_url );
+			$post_thumbnail_id = ii_set_featured_image( $post_id, $image_url );
+			if ( bbp_is_reply( $post_id ) ) {
+				set_post_thumbnail( bbp_get_reply_topic_id( $post_id ), $post_thumbnail_id );
+			}
 		}
 	}
 }
