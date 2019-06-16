@@ -1,30 +1,42 @@
 <?php
 
 add_action( 'rss2_item', 'ii_rss_insert' );
+add_action( 'bbp_feed_item', 'ii_rss_insert' );
+/* add media namespace if this option selected */
+if ( isset( $ii_options[ 'rss_media' ] ) ) {
 add_action( 'rss2_ns', 'ii_rss_ns_insert' );
 add_action( 'bbp_feed', 'ii_rss_ns_insert' );
-add_action( 'bbp_feed_item', 'ii_rss_insert' );
-
+}
 
 //reset RSS cache more often while debugging
 if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-	add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 0;' ) );
+	/*
+	 * try not to cache feed when debugging
+	 */
+	function ii_feed_cache_transient_lifetime( $lifetime, $filename ) {
+		return 0;
+	}
+
+	add_filter( 'wp_feed_cache_transient_lifetime', 'ii_feed_cache_transient_lifetime', 10, 2 );
+
+	/*
+	 * try not to cache feed when debugging
+	 */
 	function ii_turn_off_feed_caching( $feed ) {
 		$feed->enable_cache( false );
 	}
 
 	add_action( 'wp_feed_options', 'ii_turn_off_feed_caching' );
 }
+/*
+ * add namespace for media tag
+ */
 function ii_rss_ns_insert() {
 	echo 'xmlns:media="http://search.yahoo.com/mrss/"' . "\n";
 }
 
 /**
- * add media and/or enclosure tag to RSS entry
- *
- * @param string $comments          id or slug of page to find
- *
- * @return int                  page id or false if no page found
+ * add media and/or enclosure tag to RSS entry according to selected options
  */
 function ii_rss_insert() {
 	global $post;
@@ -44,18 +56,20 @@ function ii_rss_insert() {
 			return;
 		}
 	}
-	//fallback to first image from content
+	//fallback to first image from content (which could reference an external site)
 	$image_url = inkston_catch_image();
-	//$image_url =  get_the_post_thumbnail_url( $post->ID, $size );
 	if ( ! empty( $image_url ) ) {
+		$filepath	 = ii_file_from_url( $image_url );
+		$mime		 = ($filepath) ? ii_mime_from_file( $filepath ) : ii_mime_from_name( $image_url );
 		$mime = ii_mime_from_name( $image_url );
+		$filesize	 = ($filepath) ? filesize( $filepath ) : 200000;
 		//$width = get_option( "{$size}_size_w" );
 		//enclosure tag
 		if ( isset( $ii_options[ 'rss_enclosure' ] ) ) {
-			$defaultfilesize = 200000;
-			$enclosuretag	 = sprintf( '<enclosure length="%s" type="%s" url="%s" />', $defaultfilesize, $mime, $image_url );
+			$enclosuretag = sprintf( '<enclosure length="%s" type="%s" url="%s" />', $filesize, $mime, $image_url );
 			echo $enclosuretag . "\n";
 		}
+		//media tag
 		if ( isset( $ii_options[ 'rss_media' ] ) ) {
 			echo "	" . '<media:content url="' . esc_url( $image_url ) . '" medium="image" type="' . $mime . '" />' . "\n";
 		}
@@ -68,6 +82,7 @@ function ii_rss_insert() {
  *
  * @param array $image	 wordpress attachment image information
  * @param string $size	 wordpress image size string
+ * @param string $defaultfilesize	 a default used for enclosure tag where a length is mandatory
  */
 function ii_rss_img_from_attachment( $image, $size = 'large', $defaultfilesize = 200000 ) {
 	$ii_options	 = ii_get_options();
@@ -98,7 +113,7 @@ function ii_rss_img_from_attachment( $image, $size = 'large', $defaultfilesize =
 }
 
 /**
- * return the file path for a url
+ * return the file path for a url (if possible)
  *
  * @param string $source_url	 source url
  * @return mixed               filepath or false
@@ -108,21 +123,44 @@ function ii_file_from_url( $source_url ) {
 	$url	 = parse_url( $source_url );
 	$urlpath = $url[ 'path' ];
 
-	//normally, will be in uploads directory
+	//normally, we are looking for an attachment image (post featured image)
+	//which will normally be in uploads directory
 	$testurl = strtolower( $source_url );
 	$testpos = strpos( $testurl, 'uploads' );
-	if ( strpos( $testurl, 'uploads' ) !== FALSE ) {
+	if ( $testpos !== FALSE ) {
+		//if it is in uploads start search with wp upload dir function since
+		//uploads may have moved from a simple wp subdirectory
 		$uploads = wp_upload_dir();
-		$path	 = $uploads[ 'basedir' ] . preg_replace( '/.*uploads(.*)/', '${1}', $url[ 'path' ] );
+		$baseuploaddir	 = $uploads[ 'basedir' ];
+
+		//basedir could include subsite upload directory eg:
+		//  "/whateverpath/wp-content/uploads/sites/2"
+		//this sites/2 is also included in the url path so will need to be trimmed out
+		$trimmedUploadDir = stristr( $baseuploaddir, 'uploads', true );
+		if ( $trimmedUploadDir ) {
+			$baseuploaddir = $trimmedUploadDir . 'uploads';
+		}
+		$path = $baseuploaddir . preg_replace( '/.*uploads(.*)/', '${1}', $url[ 'path' ] );
 		if ( file_exists( $path ) ) {
 			return $path;
 		}
 	}
-	//if not found in uploads directory test path as literal subdirectory of root
+
+	//if not found in uploads directory test path, but is part of site,
+	//try as literal subdirectory of site root
 	$networksiteurl	 = strtolower( network_site_url() );
+	$path			 = get_home_path();
 	$testpos		 = strpos( $testurl, $networksiteurl );
-	if ( strpos( $testurl, strtolower( network_site_url() ) !== FALSE ) ) {
-		$path = get_home_path() . $url[ 'path' ];
+	if ( $testpos !== FALSE ) {
+		$siteurl	 = parse_url( $networksiteurl );
+		$sitepath	 = $siteurl[ 'path' ];
+		if ( $sitepath ) {
+			$trimmedPath = stristr( $path, $sitepath, true );
+			if ( $trimmedPath ) {
+				$path = $trimmedPath;
+			}
+		}
+		$path .= $url[ 'path' ];
 		if ( file_exists( $path ) ) {
 			return $path;
 		}
@@ -130,15 +168,11 @@ function ii_file_from_url( $source_url ) {
 	return false;
 }
 
-/*
- * disused: for performance do not attempt to get images over http to assess size etc
-  $ary_header	 = get_headers( str_replace( 'https', 'http', $image_url ), 1 );
-  $filesize	 = $ary_header[ 'Content-Length' ];
- */
 /**
  * add media and/or enclosure tag to RSS entry
  *
  * @param string $filepath	  full file path which should already exist
+ * @param string $default		default type changed from 'application/octet-stream' to 'image/jpg'
  *
  * @return string               mime type string default 'image/jpg'
  */
@@ -155,8 +189,13 @@ function ii_mime_from_file( $filepath, $default = 'image/jpg' ) {
 }
 
 /*
- * fairly standard function, changing default from 'application/octet-stream'
- * to 'image/jpg'
+ * fairly standard function, assuming file type from url or path string
+ * without attempting to examine file or get headers
+ *
+ * @param string $filename	any string which might be url or file related
+ * @param string $default		default type changed from 'application/octet-stream' to 'image/jpg'
+ *
+ * @return string             mime type string default 'image/jpg'
  */
 function ii_mime_from_name( $filename, $default = 'image/jpg' ) {
 
@@ -209,14 +248,15 @@ function ii_mime_from_name( $filename, $default = 'image/jpg' ) {
 		'ods'	 => 'application/vnd.oasis.opendocument.spreadsheet',
 	);
 
-	$ext = strtolower( array_pop( explode( '.', $filename ) ) );
+	//get the extension
+	$ext = strrchr( $filename, "." );
+	if ( ! $ext ) {
+		return $default;
+	}
+	//strip the . and make it lowercase to use as key in array
+	$ext = strtolower( str_replace( ".", '', $ext ) );
 	if ( array_key_exists( $ext, $mime_types ) ) {
 		return $mime_types[ $ext ];
-	} elseif ( function_exists( 'finfo_open' ) ) {
-		$finfo		 = finfo_open( FILEINFO_MIME );
-		$mimetype	 = finfo_file( $finfo, $filename );
-		finfo_close( $finfo );
-		return $mimetype;
 	} else {
 		return $default;
 	}
