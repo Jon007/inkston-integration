@@ -123,3 +123,42 @@ function ii_bacs_add_account_name( $account_fields ) {
 }
 
 add_filter( 'woocommerce_bacs_account_fields', 'ii_bacs_add_account_name' );
+
+/*
+ * woocommerce integration for BanHammer spam control from
+ * https://github.com/Ipstenu/ban-hammer/wiki#woocommerce
+ */
+add_filter( 'woocommerce_registration_errors', 'woocommerce_banhammer_validation', 10, 3 );
+function woocommerce_banhammer_validation( $validation_errors, $username, $email ) {
+	//use condition to skip checks on checkout - is_account_page() does not work
+	//because account is actually created on ajax
+	if ( ! is_ajax() ) {
+		if ( class_exists( 'BanHammer' ) ) {
+			if ( (new BanHammer )->banhammer_drop( $username, $email, $validation_errors ) ) {
+				error_log( sprintf(
+				__( 'Registration email %1$s for user %1$s blocked by BanHammer rule', 'inkston-integration' ), $email, $username ) );
+				return new WP_Error( 'registration-error-bad-email', (new BanHammer)->options[ 'message' ] );
+			}
+		}
+		if ( isset( $_REQUEST[ 'password2' ] ) ) {
+			if ( $_REQUEST[ 'password2' ] != 'oldpassword' ) {
+				error_log( sprintf(
+				__( 'Registration email %1$s for user %1$s blocked due to password2 honeypot', 'inkston-integration' ), $email, $username ) );
+				return new WP_Error( 'registration-error-bad-email', (new BanHammer)->options[ 'message' ] );
+			}
+		} else {
+			error_log( sprintf(
+			__( 'Registration email %1$s for user %1$s blocked due to missing password2 ', 'inkston-integration' ), $email, $username ) );
+			return new WP_Error( 'registration-error-bad-email', (new BanHammer)->options[ 'message' ] );
+		}
+		if ( isset( $_REQUEST[ 'password' ] ) ) {
+			if ( $_REQUEST[ 'password' ] == '' ) {
+				return new WP_Error( 'registration-error-blank-password', __( 'Please enter a password!', 'inkston-integration' ) );
+			}
+		}
+	} else {
+		error_log( sprintf(
+		__( 'Registration email %1$s for user %1$s accepted without further checks as registration is in ajax (not a registration page submission)', 'inkston-integration' ), $email, $username ) );
+	}
+	return $validation_errors;
+}

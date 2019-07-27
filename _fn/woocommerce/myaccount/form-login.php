@@ -101,6 +101,10 @@ if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) :
 						<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
 					</p>
 
+					<p style="display:none" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+						<label for="reg_password2"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+						<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password2" id="reg_password2" value="oldpassword" />
+					</p>
 				<?php endif; ?>
 
 				<?php do_action( 'woocommerce_register_form' ); ?>
