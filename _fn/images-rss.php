@@ -261,3 +261,56 @@ function ii_mime_from_name( $filename, $default = 'image/jpg' ) {
 		return $default;
 	}
 }
+
+/*
+ * if there is a featured image, add it to the content
+ * (content images will be in the content anyway so do not bother to scan for those)
+ */
+function ii_rss_img_in_content( $content ) {
+	global $post;
+	$ii_options	 = ii_get_options();
+	$size		 = apply_filters( 'ii_rss_image_size', 'large' );
+	$image		 = '';
+	if ( $post ) {
+		$post_thumbnail_id = get_post_thumbnail_id( $post );
+		if ( $post_thumbnail_id ) {
+			$imageSrc = wp_get_attachment_image_src( $post_thumbnail_id, $size, false );
+			if ( $imageSrc ) {
+				$image_url	 = $imageSrc[ 0 ];
+				$width		 = $imageSrc[ 1 ];
+				if ( ! $width ) {
+					$width = get_option( "{$size}_size_w" );
+				}
+				$height		 = $imageSrc[ 2 ];
+				$heightattr	 = ($height) ? ' height="' . $height . '" ' : '';
+
+				//TODO: is plain http needed for the rss reader?
+				$image_url	 = str_replace( 'https', 'http', $image_url );
+				$image		 = '<img width="' . $width . '" ' . $heightattr .
+				' src="' . $image_url . '" style="float:left;margin-right:5px;">';
+			}
+		} else {
+			$image_url = inkston_featured_img_tag( $content, false );
+			if ( ! $image_url ) {
+				$image_url = get_noimage();
+			}
+			$image = '<img src="' . $image_url . '" style="float:left;margin-right:5px;">';
+		}
+	}
+	return $image . $content;
+}
+
+//note, filters do not apply to bbpress..
+add_filter( 'the_excerpt_rss', 'ii_rss_img_in_content', 50, 1 );
+add_filter( 'the_content_feed', 'ii_rss_img_in_content', 50, 1 );
+/*
+ * extension for bbpress, filter add image to content only when feed
+ */
+function ii_rss_bbp_content( $content, $topic_id ) {
+	if ( ( is_feed() ) || ( stripos( $_SERVER[ 'REQUEST_URI' ], '/feed' ) ) ) {
+		return ii_rss_img_in_content( $content );
+	}
+}
+
+add_filter( 'bbp_get_topic_content', 'ii_rss_bbp_content', 10, 2 );
+add_filter( 'bbp_get_reply_content', 'ii_rss_bbp_content', 10, 2 );
