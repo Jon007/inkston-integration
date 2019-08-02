@@ -309,6 +309,8 @@ add_filter( 'the_content_feed', 'ii_rss_img_in_content', 50, 1 );
 function ii_rss_bbp_content( $content, $topic_id ) {
 	if ( ( is_feed() ) || ( stripos( $_SERVER[ 'REQUEST_URI' ], '/feed' ) ) ) {
 		return ii_rss_img_in_content( $content );
+	} else {
+		return $content;
 	}
 }
 
