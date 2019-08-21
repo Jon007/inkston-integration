@@ -289,7 +289,7 @@ function ink_set_achievements_to_notify( $user_id, $achievement_id ) {
 				array_push( $achievements, $achievement_id );
 			}
 		} else {
-			$achievements[] = $achievement_id;
+			$achievements = array( $achievement_id );
 		}
 		return update_user_meta( $user_id, '_ink_badge_pending', $achievements );
 	} else {

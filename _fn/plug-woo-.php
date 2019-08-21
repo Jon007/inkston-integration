@@ -142,8 +142,10 @@ function woocommerce_banhammer_validation( $validation_errors, $username, $email
 		}
 		if ( isset( $_REQUEST[ 'password2' ] ) ) {
 			if ( $_REQUEST[ 'password2' ] != 'oldpassword' ) {
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 				error_log( sprintf(
 				__( 'Registration email %1$s for user %1$s blocked due to password2 honeypot', 'inkston-integration' ), $email, $username ) );
+				}
 				return new WP_Error( 'registration-error-bad-email', (new BanHammer)->options[ 'message' ] );
 			}
 		} else {
