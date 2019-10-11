@@ -11,7 +11,7 @@
  * ?mailpoet_page=subscriptions&mailpoet_router&endpoint=subscription&action=manage
  * &data=eyJ0b2tlbiI6IjE3ZmI2MCIsImVtYWlsIjoiaW5nbGVub0BpY2xvdWQuY29tIn0
  */
-use MailPoet\Subscription\Url;
+use MailPoet\Subscription\SubscriptionUrlFactory;
 use MailPoet\Models\Subscriber;
 
 /*
@@ -23,7 +23,7 @@ function ink_get_newsletter_subscribe_url() {
 	if ( $thisuser ) {
 		global $mailpoet_plugin;
 		if ( $mailpoet_plugin ) {
-			$managelink = Url::getManageUrl( Subscriber::getCurrentWPUser() );
+			$managelink = SubscriptionUrlFactory::getInstance()->getManageUrl( Subscriber::getCurrentWPUser() );
 		}
 	}
 	return $managelink;
