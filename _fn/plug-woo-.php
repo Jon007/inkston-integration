@@ -164,3 +164,13 @@ function woocommerce_banhammer_validation( $validation_errors, $username, $email
 	}
 	return $validation_errors;
 }
+
+/*
+ * allow order thankyou screen header to contain html provided by loco translate translation files.
+ * woocommerce currently puts esc_html__ around the text
+ */
+function ii_allow_html_thankyou( $text ) {
+	return __( 'Thank you. Your order has been received.', 'woocommerce' );
+}
+
+add_filter( 'woocommerce_thankyou_order_received_text', 'ii_allow_html_thankyou' );
