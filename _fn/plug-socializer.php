@@ -50,7 +50,7 @@ function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $
 		$referurl = wp_get_referer();
 		if ( $referurl ) {
 			if ( strpos( $referurl, 'redirect' ) ) {
-			$url = getQueryParameter( $url, 'redirect' );
+				$url = getQueryParameter( $referurl, 'redirect' );
 				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 					error_log( 'extracted redirect from wp_get_referer ' . $referurl . ' as "' . $url . '"' );
 				}
