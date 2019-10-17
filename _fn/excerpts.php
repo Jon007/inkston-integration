@@ -69,8 +69,7 @@ function inkston_get_excerpt( $length = 25, $readmore = false, $postid = 0 ) {
 			if ( $output == '' ) {
 				$output = $product->get_name();
 			}
-			$price = $product->get_price();
-			if ( ( $price != '' ) && ( $price != 0 ) ) {
+			if ( ! empty( $product->get_price() ) ) {
 			    $output .= $product->get_price_html();
 		    }
 	    }
