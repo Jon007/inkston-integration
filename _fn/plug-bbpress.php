@@ -314,9 +314,15 @@ function ink_bbp_request_current_user( $query_vars ) {
 		switch ( $query_vars[ 'bbp_user' ] ) {
 			case 'current':
 				if ( get_current_user_id() ) {
-					global $user_login;
-					$query_vars[ 'bbp_user' ] = $user_login;
+					$currentuser				 = wp_get_current_user();
+					$query_vars[ 'bbp_user' ]	 = $currentuser->user_nicename;  //nicename is the wp_users field which is used as slug
+					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+						error_log( 'bbpress current profile set current user to ' . $currentuser->user_login . ' nicename ' . $currentuser->user_nicename );
+					}
 				} else {
+					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+						error_log( 'bbpress current profile page called with no user logged in, calling auth_redirect ' );
+					}
 					auth_redirect();
 				}
 		}
