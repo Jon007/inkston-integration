@@ -42,31 +42,31 @@ function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $
 	//CHANGE:JM:ALLOW REFERER URL
 	if ( isset( $_REQUEST[ 'redirect' ] ) ) {
 		$url = $_REQUEST[ 'redirect' ];
-		//error_log( 'used redirect' );
 	}
 	if ( isset( $_REQUEST[ 'redirect_to' ] ) ) {
 		$url = $_REQUEST[ 'redirect_to' ];
-		//error_log( 'used redirect_to' );
 	}
 	if ( ! $url ) {
-		$url = wp_get_referer();
-		//error_log( 'used wp_get_referer' );
-		if ( strpos( $url, 'redirect' ) ) {
+		$referurl = wp_get_referer();
+		if ( $referurl ) {
+			if ( strpos( $referurl, 'redirect' ) ) {
 			$url = getQueryParameter( $url, 'redirect' );
-			//error_log( 'extracted redirect from wp_get_referer' );
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( 'extracted redirect from wp_get_referer ' . $referurl . ' as "' . $url . '"' );
+				}
 		} else {
-			//error_log( 'used wp_get_referer' );
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( 'discarded wp_get_referer ' . $referurl );
+				}
+			}
 		}
 	}
-	if ( ! $url ) {
-		if ( class_exists( 'woocommerce' ) ) {
-			$url = wc_get_page_permalink( 'myaccount' );
-		} else {
-			$url = html_entity_decode( esc_url( $http . $_SERVER[ "HTTP_HOST" ] . $_SERVER[ "REQUEST_URI" ] ) );
+	if ( $redirectionUrl != $url && $url != '' ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( sprintf( "inkston changed supersocializer redirection url %s to %s", $redirectionUrl, $url ) );
 		}
+	    $redirectionUrl = $url;
 	}
-	//error_log( sprintf( "inkston changed supersocializer redirection url %s to %s", $redirectionUrl, $url ) );
-	$redirectionUrl = $url;
 	/* the validation function resets url back to home page .. ..
 	  $redirectionUrl = the_champ_get_valid_url( $url );
 	  if ( $redirectionUrl != $url ) {
