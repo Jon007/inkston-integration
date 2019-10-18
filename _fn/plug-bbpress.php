@@ -22,7 +22,7 @@
  */
 function ii_bbp_new_topic_redirect_to( $redirect_url, $redirect_to, $topic_id ) {
 	$topic_status	 = get_post_field( 'post_status', $topic_id );
-	if ( $topic_status	 = bbp_get_pending_status_id() ) {
+	if ( $topic_status == bbp_get_pending_status_id() ) {
 		/* bbp uses WP_Error information which is lost in redirect
 		  bbp_add_error( 'bbp_topic_content', __( '<strong>MODERATION</strong>: thanks for your post, it has been saved correctly and will become visible when approved by a moderator.', 'inkston-integration' ) );
 		 */
