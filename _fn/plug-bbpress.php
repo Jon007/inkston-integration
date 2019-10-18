@@ -17,6 +17,62 @@
  */
 
 /*
+ * when redirecting after a new topic, first check the topic has not been
+ * set to pending
+ */
+function ii_bbp_new_topic_redirect_to( $redirect_url, $redirect_to, $topic_id ) {
+	$topic_status	 = get_post_field( 'post_status', $topic_id );
+	if ( $topic_status	 = bbp_get_pending_status_id() ) {
+		/* bbp uses WP_Error information which is lost in redirect
+		  bbp_add_error( 'bbp_topic_content', __( '<strong>MODERATION</strong>: thanks for your post, it has been saved correctly and will become visible when approved by a moderator.', 'inkston-integration' ) );
+		 */
+		$forum_id		 = bbp_topic_forum_id( $topic_id );
+		$redirect_url	 = bbp_get_forum_permalink( $forum_id ) . '?iimod=' . $topic_id;
+	}
+	return $redirect_url;
+}
+
+add_filter( 'bbp_new_topic_redirect_to', 'ii_bbp_new_topic_redirect_to', 10, 3 );
+add_filter( 'bbp_new_reply_redirect_to', 'ii_bbp_new_topic_redirect_to', 10, 3 );
+
+/*
+ * if redirected from a pending post, show an admin notice
+ */
+function ii_bb_admin_notice__info() {
+	error_log( 'entered ii_bb_admin_notice__info' );
+	if ( isset( $_GET[ 'iimod' ] ) ) {
+		$post_id	 = $_GET[ 'iimod' ]; //optionally, check the post to customise the message further
+		$post_status = get_post_field( 'post_status', $post_id );
+		switch ( $post_status ) {
+			case bbp_get_pending_status_id():
+				?>
+				<div class="notice notice-success is-dismissible">
+					<div class="bbp-template-notice info">
+						<p><?php _e( 'Thanks for your post!<br />Your writing has been saved correctly and will become visible as soon as it is checked by a moderator.', 'inkston-integration' ); ?></p>
+					</div>
+				</div>
+				<?php
+				return;
+			case bbp_get_public_status_id():
+				$post_link = get_permalink( $post_id );
+				?>
+				<div class="notice notice-success is-dismissible">
+					<div class="bbp-template-notice info">
+						<p><?php _e( 'This post is now published and visible', 'inkston-integration' ); ?>
+							<a href="<?php echo $post_link; ?>"> <?php _e( 'here', 'inkston-integration' ); ?> </a>
+							.</p>
+					</div>
+				</div>
+				<?php
+				return;
+		}
+	}
+}
+
+add_action( 'bbp_template_before_single_forum', 'ii_bb_admin_notice__info' );
+//add_action( 'admin_notices', 'ii_bb_admin_notice__info' );
+
+/*
  * attempt to ensure featured images are set to avoid repeated deductions later..
  */
 function ii_bbp_set_featured_image( $post_id ) {
