@@ -73,7 +73,7 @@ add_filter( 'woocommerce_valid_order_statuses_for_cancel', 'inkston_allow_cancel
  * add payment link if order is not paid...
  */
 function ii_show_order_payment_link( $order ) {
-	if ( ! $order->is_paid() ) {
+	if ( ! $order->is_paid() && ! $order->has_status( 'refunded' ) ) {
 		$payMethod	 = $order->get_payment_method();
 		$isBacs		 = ($payMethod == 'bacs');
 		if ( $isBacs ) {
@@ -101,7 +101,7 @@ function ii_show_order_payment_link( $order ) {
  * ... it's crazy that you have to exit the order details screen and go back to the order list to be able to pay...
  */
 function ii_show_pay_button( $order ) {
-	if ( ! $order->is_paid() ) {
+	if ( ! $order->is_paid() && ! $order->has_status( 'refunded' ) ) {
 		echo ('<a href="' . esc_url( $order->get_checkout_payment_url() ) . '" class="woocommerce-button button pay">' .
 		esc_html( __( 'Pay', 'woocommerce' ) ) . '</a>');
 	}
