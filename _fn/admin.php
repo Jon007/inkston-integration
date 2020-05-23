@@ -28,6 +28,20 @@ function ii_mce_button_filter( $buttons ) {
 add_filter( 'mce_buttons', 'ii_mce_button_filter', 99, 1 );
 
 
+/*
+ * function normally defined by woocommerce
+ */
+if ( ! function_exists( 'is_ajax' ) ) {
+
+	/**
+	 * Is_ajax - Returns true when the page is loaded via ajax.
+	 *
+	 * @return bool
+	 */
+	function is_ajax() {
+		return function_exists( 'wp_doing_ajax' ) ? wp_doing_ajax() : defined( 'DOING_AJAX' );
+	}
+}
 
 /*
  * remove admin menus for non-admin users
