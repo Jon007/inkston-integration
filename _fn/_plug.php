@@ -50,6 +50,9 @@ include_once( 'customizer.php');
 if ( isset( $ii_options[ 'disable_emoji' ] ) ) {
 	include_once( 'disable-emoji.php');
 }
+if ( isset( $ii_options[ 'embeds' ] ) ) {
+	include_once( 'embed.php');
+}
 include_once( 'excerpts.php');
 if ( isset( $ii_options[ 'featured_posts' ] ) ) {
 	include_once( 'featured-posts.php');

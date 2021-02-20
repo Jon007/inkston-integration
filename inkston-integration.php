@@ -159,9 +159,15 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 			//use standard or debug css directory
 			$csspath = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? 'css-debug/' : 'css/';
 			//register the style with wordpress
-			wp_register_style( $csname, plugin_dir_url( __FILE__ ) . $csspath . $csfile, false, filemtime( plugin_dir_path( __FILE__ ) . $csspath . $csfile ), 'all' );
+			//wp_register_style( $csname, plugin_dir_url( __FILE__ ) . $csspath . $csfile, false, filemtime( plugin_dir_path( __FILE__ ) . $csspath . $csfile ), 'all' );
 			//and queue it
-			wp_enqueue_style( $csname );
+			//wp_enqueue_style( $csname );
+      $script_path = plugin_dir_path( __FILE__ ) . $csspath . $csfile; 
+      add_action('wp_head', function() use ($script_path){ 
+          echo "<style>";
+          readfile($script_path);
+          echo "</style>";                         
+      }, 100);                      
 		}
 
 		/**

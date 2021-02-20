@@ -85,6 +85,8 @@ function inkston_product_meta() {
 }
 
 //add_action( 'wp_head', 'inkston_product_meta' );
+//TODO: wpseo_opengraph deprecated in v14, use Presenter instead see https://developer.yoast.com/blog/yoast-seo-14-0-adding-metadata/
+//as of 20/2/2021 still working
 add_action( 'wpseo_opengraph', 'inkston_product_meta', 40 );
 
 /*

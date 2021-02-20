@@ -42,6 +42,11 @@ function ii_options_init() {
 	)
 	);
 	add_settings_field(
+	'embed', __( 'Embed', 'inkston-integration' ), 'embed_render', $section_group, $settings_section, array(
+		__( 'Fix embeds compatibility issues.', 'inkston-integration' )
+	)
+	);
+	add_settings_field(
 	'merge_comments', __( 'Merge Comments', 'inkston-integration' ), 'merge_comments_render', $section_group, $settings_section, array(
 		__( 'merge comments/reviews across languages, affects comments and plug-woo-poly-reviews.', 'inkston-integration' )
 	)
@@ -362,6 +367,7 @@ function ii_get_options() {
 			$ii_options[ 'badgeos_levels' ]	 = true;
 			$ii_options[ 'relevanssi' ]		 = implode( ',', array( 'inkpoints', 'inklevel', 'badgeos_achievements_list', 'robo-gallery', 'maxmegamenu' ) );
 			$ii_options[ 'bbpress' ]		 = true;
+			$ii_options[ 'embed' ]	 = true;
 			$ii_options[ 'excerpt_length' ]	 = 35;
 			$ii_options[ 'merge_comments' ]	 = true;
 			$ii_options[ 'disable_emoji' ]	 = true;
@@ -416,6 +422,9 @@ function excerpt_length_render( $s ) {
 	ii_render_input( 'excerpt_length', $s );
 }
 
+function embed_render( $s ) {
+	ii_render_checkbox( 'embed', $s );
+}
 function merge_comments_render( $s ) {
 	ii_render_checkbox( 'merge_comments', $s );
 }

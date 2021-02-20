@@ -173,7 +173,7 @@ function ii_abandoned_carts( $userId ) {
 					$cart_info	 = $cart_data->cart;
 					$total		 = 0;
 
-					if ( count( $cart_info ) > 0 ) {
+					if ( $cart_info && count( $cart_info ) > 0 ) {
 						foreach ( $cart_info as $k => $v ) {
 							$total += $v->line_total;
 						}

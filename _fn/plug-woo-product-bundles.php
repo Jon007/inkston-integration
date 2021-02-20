@@ -57,4 +57,9 @@ function custom_product_sale_flash($output, $post, $product)
 }
 add_filter( 'woocommerce_sale_flash', 'custom_product_sale_flash', 11, 3);
 
-
+//standardise smart bundle button
+function bundle_add_to_cart_text($text, $product){
+    $text = $product->is_purchasable() && $product->is_in_stock() ? __( 'Add to cart', 'woocommerce' ) : __( 'Read more', 'woocommerce' );
+    return $text;
+}
+add_filter( 'woosb_product_single_add_to_cart_text', 'bundle_add_to_cart_text', 10, 2);

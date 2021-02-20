@@ -20,6 +20,13 @@ if ( ! defined( 'WP_CACHE_KEY_SALT' ) ) {
 	define( 'WP_CACHE_KEY_SALT', $_SERVER[ 'HTTP_HOST' ] . '/' . pll_current_language() );
 }
 
+/*Polylang class PLL_Cache_Compat add_cookie_script() since 2.3 lacks js error handling and causes errors on embedded iframes etc
+apply_filters( 'pll_is_cache_active', ( defined( 'WP_CACHE' ) && WP_CACHE ) || defined( 'WPFC_MAIN_PATH' ) );
+*/
+function ii_pll_is_cache_active($active){
+    return false;
+}
+add_filter('pll_is_cache_active','ii_pll_is_cache_active',10,1);
 
 /*
  *  Make sure Polylang copies the title when creating a translation

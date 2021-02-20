@@ -39,7 +39,6 @@ add_filter( 'bbp_new_reply_redirect_to', 'ii_bbp_new_topic_redirect_to', 10, 3 )
  * if redirected from a pending post, show an admin notice
  */
 function ii_bb_admin_notice__info() {
-	error_log( 'entered ii_bb_admin_notice__info' );
 	if ( isset( $_GET[ 'iimod' ] ) ) {
 		$post_id	 = $_GET[ 'iimod' ]; //optionally, check the post to customise the message further
 		$post_status = get_post_field( 'post_status', $post_id );
@@ -387,6 +386,25 @@ function ink_bbp_request_current_user( $query_vars ) {
 }
 
 add_filter( 'bbp_request', 'ink_bbp_request_current_user', 10, 1 );
+
+/*
+ * bbp_user_has_profile() causes notfound page to be shown if user is not considered to have profile
+ * but, if it is the current user, force profile to be shown
+ *  - not applicable, not least because not correctly detecting 'current' since bbp_user already set by this stage
+  function ii_currentuser_has_profile( $retval, $user_id ) {
+  if ( ! $retval ) {
+  if ( isset( $query_vars[ 'bbp_user' ] ) ) {
+  switch ( $query_vars[ 'bbp_user' ] ) {
+  case 'current':
+  $retval = true;
+  error_log( 'force profile availability to true as we are on current user page' );
+  }
+  }
+  }
+  return $retval;
+  }
+  apply_filters( 'bbp_show_user_profile', 'ii_currentuser_has_profile', 10, 2 );
+ */
 
 /*
  * enable media upload on topics and replies

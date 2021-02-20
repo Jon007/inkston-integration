@@ -59,6 +59,8 @@ function inkston_cart_fragment() {
 		}
 		if ( isset( $_COOKIE[ 'wc_disp' ] ) ) {
 			$display_value = stripslashes( $_COOKIE[ 'wc_disp' ] );
+		} else {
+		    $display_value = $cart_value;
 		}
 		//if cart not USD, convert into USD to get base amount for any other conversions
 		//if ( $woocs_current_currency != $cart_ccy ) {
@@ -70,7 +72,6 @@ function inkston_cart_fragment() {
 					$rate = $WOOCS->get_currencies()[ $woocs_current_currency ][ 'rate' ] / $WOOCS->get_currencies()[ $cart_ccy ][ 'rate' ];
 					if ( $rate ) {
 						$display_value	 = $cart_value * $rate;
-						$display_value	 = wp_kses_data( wc_price( $display_value ) );
 					}
 				}
 				//base value must always be USD
@@ -82,6 +83,7 @@ function inkston_cart_fragment() {
 				}
 			}
 		}
+    $display_value	 = wc_price( $display_value );
 		$result = '<span data-price="' . $cart_value . '" class="woocs_price_code cart-content">' .
 		'<span class="cart-total">' . $woocommerce_items_in_cart . '</span>' .
 		'<span class="woocommerce-Price-amount amount">' . $display_value . '</span></span>';
