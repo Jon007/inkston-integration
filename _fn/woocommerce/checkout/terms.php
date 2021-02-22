@@ -3,7 +3,7 @@
  * Checkout terms and conditions area.
  *
  * @author  WooThemes mod J.Moore: checkbox removed in favour of info message
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 3.4.0
  */
 

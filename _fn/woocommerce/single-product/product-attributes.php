@@ -13,9 +13,8 @@
  * the readme will list any important changes.
  *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     3.1.0
+ * @package WooCommerce\Templates
+ * @version 3.6.0
  * @note        rewritten for inkston: 3.1 change is only make_clickable()
  */
 if ( ! defined( 'ABSPATH' ) ) {

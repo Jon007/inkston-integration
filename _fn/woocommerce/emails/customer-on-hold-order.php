@@ -12,19 +12,16 @@
  *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes mod J.Moore add payment link if not paid
- * @package 	WooCommerce/Templates/Emails
- * @version 3.5.0
+ * @package WooCommerce\Templates\Emails
+ * @version 3.7.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /*
  * @hooked WC_Emails::email_header() Output the email header
  */
-do_action( 'woocommerce_email_header', $email_heading, $email );
-?>
+do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p><?php _e( "Good day, thanks for your order! At the moment your order is on-hold until we confirm payment has been received. In the meantime, here is a reminder of what you ordered:", 'inkston-integration' ); ?></p>
 
@@ -55,11 +52,14 @@ do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, 
  * @hooked WC_Emails::email_address() Shows email address
  */
 do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email );
-?>
-<p>
-<?php _e( 'We look forward to fulfilling your order soon.', 'woocommerce' ); // phpcs:ignore WordPress.XSS.EscapeOutput  ?>
-</p>
-<?php
+
+/**
+ * Show user-defined additional content - this is set in each email's settings.
+ */
+if ( $additional_content ) {
+	echo wp_kses_post( wpautop( wptexturize( $additional_content ) ) );
+}
+
 /*
  * @hooked WC_Emails::email_footer() Output the email footer
  */

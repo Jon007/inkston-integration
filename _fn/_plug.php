@@ -110,3 +110,12 @@ if ( class_exists( 'woocommerce' ) ) {
 
 include_once( 'sharer.php' );
 include_once( 'terms.php');
+
+function ii_head() {
+    if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+        ?><script type="text/javascript">var SCRIPT_DEBUG=true;</script><?php
+    } else {
+        ?><script type="text/javascript">var SCRIPT_DEBUG=false;</script><?php
+    }
+}
+add_action( 'wp_head', 'ii_head', 90 );

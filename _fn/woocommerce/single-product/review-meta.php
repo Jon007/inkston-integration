@@ -10,9 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
+ * Inkston: custom author links
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 3.4.0
  */
 
@@ -23,7 +23,11 @@ $verified = wc_review_is_from_verified_owner( $comment->comment_ID );
 
 if ( '0' === $comment->comment_approved ) { ?>
 
-	<p class="meta"><em class="woocommerce-review__awaiting-approval"><?php esc_attr_e( 'Your comments are awaiting approval', 'inkston-integration' ); ?></em></p>
+	<p class="meta">
+		<em class="woocommerce-review__awaiting-approval">
+			<?php esc_attr_e( 'Your comments are awaiting approval', 'inkston-integration' ); ?>
+		</em>
+	</p>
 
 <?php } else { ?>
 
@@ -59,4 +63,5 @@ if ( '0' === $comment->comment_approved ) { ?>
     </span><!-- .comment-metadata -->
 	</p>
 
-<?php }
+	<?php
+}

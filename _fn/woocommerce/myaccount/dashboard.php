@@ -13,47 +13,47 @@
  * the readme will list any important changes.
  *
  * @see         https://docs.woocommerce.com/document/template-structure/
- * @author      WooThemes
- * @package     WooCommerce/Templates
- * @version     2.6.0
+ * @package WooCommerce\Templates
+ * @version 4.4.0
  */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
+
+$allowed_html = array(
+	'a' => array(
+		'href' => array(),
+	),
+);
 ?>
 
-<p><?php
-	/* translators: 1: user display name 2: logout url */
-	printf(
-	__( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ), '<strong>' . esc_html( $current_user->display_name ) . '</strong>', esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) )
-	);
-	?></p>
+<p>
 <?php
-if ( current_user_can( 'edit_shop_orders' ) ) {
 	printf(
-	__( '<a class="saleflash" href="%1$s">订单 正在处理 - Review Orders to Process</a>', 'inkston-integration' ), esc_url( admin_url( 'edit.php?post_status=wc-processing&post_type=shop_order' ) )
+		/* translators: 1: user display name 2: logout url */
+		wp_kses( __( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ), $allowed_html ),
+		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
+		esc_url( wc_logout_url() )
 	);
 	?>
-	<p><?php
-	?></p>
+</p>
+
+<p>
 	<?php
+	/* translators: 1: Orders URL 2: Address URL 3: Account URL. */
+	$dashboard_desc = __( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">billing address</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' );
+	if ( wc_shipping_enabled() ) {
+		/* translators: 1: Orders URL 2: Addresses URL 3: Account URL. */
+		$dashboard_desc = __( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' );
 }
-if ( current_user_can( 'edit_posts' ) ) {
-	?>
-	<p><?php
-		/* translators: 1: review posts link 2: new post link */
 		printf(
-		__( '<a href="%1$s">所有文章 Review Posts</a> - <a class="saleflash" href="%1$s">写文章 Add New Post</a>', 'inkston-integration' ), esc_url( admin_url( 'edit.php' ) ), esc_url( admin_url( 'post-new.php' ) )
+		wp_kses( $dashboard_desc, $allowed_html ),
+		esc_url( wc_get_endpoint_url( 'orders' ) ),
+		esc_url( wc_get_endpoint_url( 'edit-address' ) ),
+		esc_url( wc_get_endpoint_url( 'edit-account' ) )
 		);
-		?></p>
-	<?php
-}
 ?>
-<p><?php
-	printf(
-	__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ), esc_url( wc_get_endpoint_url( 'orders' ) ), esc_url( wc_get_endpoint_url( 'edit-address' ) ), esc_url( wc_get_endpoint_url( 'edit-account' ) )
-	);
-	?></p>
+</p>
 
 <?php
 /**
