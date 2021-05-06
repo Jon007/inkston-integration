@@ -74,6 +74,10 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 			//register scripts and elements to be available on both back and front end
 			add_action( 'admin_head', array( __CLASS__, 'ii_admin_head' ) );
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'ii_enqueue_scripts' ) );
+            //wp_print_scripts is itself hooked to head but woocs hooks  with higher priority, adding script after it is removed..
+            //add_action( 'wp_print_scripts', array( __CLASS__, 'ii_dequeue_scripts'), 1000 );
+            add_action( 'wp_head', array( __CLASS__, 'ii_dequeue_scripts'), 1000 );
+
 
 			/*
 			  if ( isset( $options[ 'saleflash_cart' ] ) ) {
@@ -121,47 +125,32 @@ if ( ! class_exists( 'inkston_integration' ) ) {
 		}
 
 		/**
-		 * adds .min versions of scripts unless SCRIPT_DEBUG defined
-		 * also uses file timestamp as version to force update when changed
+         * NB: avoid adding scripts to payload unless absolutely necessary
 		 */
 		public static function ii_enqueue_scripts() {
-//          avoid adding scripts to payload unless absolutely necessary
-//			$suffix	 = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-//			$csfile	 = 'css/body' . $suffix . '.css';
-//			$csname	 = 'ii-body-css';
-//			wp_register_style( $csname, plugin_dir_url( __FILE__ ) . $csfile, false, filemtime( plugin_dir_path( __FILE__ ) . $csfile ), 'all' );
-//			wp_enqueue_style( $csname );
-
-			/*
-			  $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-			  $csfile='css/inkston-integration' . $suffix . '.css' ;
-			  wp_register_style('inkston_integration-css',	plugin_dir_url(__FILE__) . $csfile , false,
-			  filemtime( plugin_dir_path(__FILE__) . $csfile), 'all' );
-			  wp_enqueue_style( 'inkston_integration-css');
-
-			  $jsfile='js/inkston-integration' . $suffix . '.js' ;
-			  wp_enqueue_script( 'inkston_integration', plugin_dir_url(__FILE__) . $jsfile , array( 'jquery' ),
-			  filemtime( plugin_dir_path(__FILE__) . $jsfile ), true);
-			 *
-			 */
+            //self::ii_enqueue_js('ii-ccy');    //ccy switcher
+		}
+		public static function ii_dequeue_scripts() {
+            //wp_dequeue_script( 'woocommerce-currency-switcher' );  //ccy switcher                                       
 		}
 
 		/**
 		 * adds .min versions of scripts unless SCRIPT_DEBUG defined
 		 * also uses file timestamp as version to force update when changed
 		 */
-		public static function ii_enqueue_script( $csname, $csfile = '' ) {
+		public static function ii_enqueue_css( $csname, $csfile = '' ) {
 			//default filename to script name plus .css
 			if ( ! $csfile ) {
 				$csfile = $csname . '.css';
 			}
 			//use standard or debug css directory
 			$csspath = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? 'css-debug/' : 'css/';
+            /* switched to inline css
 			//register the style with wordpress
 			//wp_register_style( $csname, plugin_dir_url( __FILE__ ) . $csspath . $csfile, false, filemtime( plugin_dir_path( __FILE__ ) . $csspath . $csfile ), 'all' );
 			//and queue it
 			//wp_enqueue_style( $csname );
+             */
       $script_path = plugin_dir_path( __FILE__ ) . $csspath . $csfile; 
       add_action('wp_head', function() use ($script_path){ 
           echo "<style>";
@@ -169,6 +158,17 @@ if ( ! class_exists( 'inkston_integration' ) ) {
           echo "</style>";                         
       }, 100);                      
 		}
+		public static function ii_enqueue_js( $jsname, $jsfile = '' ) {
+			//default filename to script name plus .css
+			if ( ! $jsfile ) {
+				$jsfile = $jsname . '.js';
+			}
+			//use standard or debug js directory
+			//$jspath = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? 'js-debug/' : 'js/';
+            $jspath = 'js/';
+            wp_enqueue_script( 'inkston-main', plugin_dir_url( __FILE__ ) . $jspath . $jsfile, array(), 
+                filemtime( plugin_dir_path( __FILE__ ) . $jspath . $jsfile ), true );
+        }
 
 		/**
 		 * Get the value of a settings field.

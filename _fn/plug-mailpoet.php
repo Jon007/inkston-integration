@@ -55,4 +55,4 @@ add_shortcode( 'ink_get_newsletter_subscribe_link', 'ink_get_newsletter_subscrib
 /*
  * enqueue css if this is enabled
  */
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-mailpoet' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-mailpoet' );

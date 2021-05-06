@@ -352,7 +352,7 @@ add_action( 'bbp_template_after_single_forum', 'ink_new_topic_login' );
 /*
  * enqueue css if this is enabled
  */
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-bbpress' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-bbpress' );
 
 /*
  * attempt to handle generic request for current user

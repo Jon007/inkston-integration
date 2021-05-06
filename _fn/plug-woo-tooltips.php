@@ -265,4 +265,4 @@ function inkston_product_simple_attributes( $product, $attributes, $display_dime
 /*
  * enqueue css if this is enabled
  */
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-tooltip' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-tooltip' );

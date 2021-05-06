@@ -59,4 +59,4 @@ add_action( 'twentysixteen_credits', 'ink_sharing' );
 //.. and storefront only partially includes v5
 wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
 //wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-socialmenu' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-socialmenu' );

@@ -3,7 +3,7 @@
 /*
  * when this plugin is enabled, add css modifier to tax display
  */
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-tx' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-tx' );
 
 /*
  * overrides total display only for pdf invoices

@@ -73,4 +73,4 @@ add_filter( 'body_class', 'inkston_body_class_filter' );
 /*
  * enqueue css if this is enabled
  */
-inkston_integration::get_instance()->ii_enqueue_script( 'ii-body' );
+inkston_integration::get_instance()->ii_enqueue_css( 'ii-body' );

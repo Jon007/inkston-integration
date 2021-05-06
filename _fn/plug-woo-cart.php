@@ -36,7 +36,8 @@ function inkston_cart_fragment() {
 	$cart_ccy					 = $woocs_current_currency		 = 'USD';
 	$display_value				 = $result						 = '';
 
-	//err on the side of never showing cart when woocommerce hasn't set the cart cooke
+	//err on the side of never showing cart when woocommerce hasn't set the cart cookie
+    //note that woocommerce_items_in_cart is binary, not the actual number of items
 	if ( isset( $_COOKIE[ 'woocommerce_cart_hash' ] ) &&
 	isset( $_COOKIE[ 'woocommerce_items_in_cart' ] ) &&
 	1 == $_COOKIE[ 'woocommerce_items_in_cart' ] ) {
@@ -57,11 +58,17 @@ function inkston_cart_fragment() {
 		if ( isset( $_COOKIE[ 'wc_val' ] ) ) {
 			$cart_value = $_COOKIE[ 'wc_val' ];
 		}
+        /*
+        //Note: wc_disp could contains already formatted amount depending on version of ccy switcher and woo
 		if ( isset( $_COOKIE[ 'wc_disp' ] ) ) {
 			$display_value = stripslashes( $_COOKIE[ 'wc_disp' ] );
+            //php Bug #79174 spaces dont round trip properly
+            $display_value = str_replace('+', ' ', $display_value);
 		} else {
+         * 
+         */
 		    $display_value = $cart_value;
-		}
+        //}
 		//if cart not USD, convert into USD to get base amount for any other conversions
 		//if ( $woocs_current_currency != $cart_ccy ) {
 		if ( $cart_ccy != 'USD' || $woocs_current_currency != $cart_ccy ) {
@@ -78,7 +85,7 @@ function inkston_cart_fragment() {
 				if ( $cart_ccy != 'USD' ) {
 					$rate = $WOOCS->get_currencies()[ $cart_ccy ][ 'rate' ];
 					if ( $rate ) {
-						$cart_value = $cart_value / $rate;
+						$cart_value = round($cart_value / $rate, 2, PHP_ROUND_HALF_UP);
 					}
 				}
 			}
