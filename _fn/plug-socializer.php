@@ -34,7 +34,7 @@ add_filter( 'login_form_top', 'ink_login_form_add_socializer', 10, 2 );
  *  the_champ_get_login_redirection_url() doesn't handle full range of redirection urls
  */
 function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $twitterRedirect, $register ) {
-//	error_log( 'in ink_ss_redirecturl' );
+//	ink_debug( 'in ink_ss_redirecturl' );
 //	if ( isset( $theChampLoginOptions[ $option . '_redirection' ] ) ) {
 //		if ( $theChampLoginOptions[ $option . '_redirection' ] == 'same' ) {
 
@@ -47,30 +47,30 @@ function ink_ss_redirecturl( $redirectionUrl, $theChampLoginOptions, $user_ID, $
 		$url = $_REQUEST[ 'redirect_to' ];
 	}
 	if ( ! $url ) {
-		$referurl = wp_get_referer();
+		$referurl = wp_get_referer();        
 		if ( $referurl ) {
 			if ( strpos( $referurl, 'redirect' ) ) {
 				$url = getQueryParameter( $referurl, 'redirect' );
-				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-					error_log( 'extracted redirect from wp_get_referer ' . $referurl . ' as "' . $url . '"' );
-				}
-		} else {
-				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-					error_log( 'discarded wp_get_referer ' . $referurl );
-				}
+                ink_debug( 'extracted redirect from wp_get_referer ' . $referurl . ' as "' . $url . '"');
+			} else {
+                ink_debug( 'discarded wp_get_referer ' . $referurl );
 			}
-		}
+		}        
 	}
+    if ( ! $url ) {
+        if ( strpos( $redirectionUrl, 'redirect' ) ) {
+            $url = getQueryParameter( $redirectionUrl, 'redirect' );
+            ink_debug( 'extracted redirect from $redirectionUrl ' . $redirectionUrl . ' as "' . $url . '"');
+        } 
+    }
 	if ( $redirectionUrl != $url && $url != '' ) {
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( sprintf( "inkston changed supersocializer redirection url %s to %s", $redirectionUrl, $url ) );
-		}
-	    $redirectionUrl = $url;
+        ink_debug( sprintf( "inkston changed supersocializer redirection url %s to %s", $redirectionUrl, $url ) );
+		$redirectionUrl = $url;
 	}
 	/* the validation function resets url back to home page .. ..
 	  $redirectionUrl = the_champ_get_valid_url( $url );
 	  if ( $redirectionUrl != $url ) {
-	  error_log( sprintf( "the_champ_get_valid_url changed redirection url %s to %s", $url, $redirectionUrl ) );
+	  ink_debug( sprintf( "the_champ_get_valid_url changed redirection url %s to %s", $url, $redirectionUrl ) );
 	  }
 	 */
 	return $redirectionUrl;

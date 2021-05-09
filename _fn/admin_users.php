@@ -23,7 +23,7 @@ function ii_recalculate_users() {
 		if ( $user ) {
 			ii_user_info( $user );
 		} else {
-			error_log( 'user may not be valid:' . $userId );
+			ink_debug( 'user may not be valid:' . $userId );
 		}
 	}
 	return count( $users );
@@ -126,21 +126,37 @@ add_action( 'pre_get_users', 'ii_users_sort' );
  * get mailpoet subscription status from mailpoet table
  */
 function ii_mailpoet_status( $userId ) {
-	$query	 = "SELECT status
-			FROM wp_mailpoet_subscribers
-			WHERE wp_user_id = " . $userId
-	;
-	global $wpdb;
-	$result	 = $wpdb->get_var(
-	// phpcs:disable WordPress.WP.PreparedSQL.NotPrepared
-	$query
-	// phpcs:enable
-	);
-	if ( $result ) {
-		return $result;
-	} else {
-		return 'Not found';
-	}
+    static $mailpoetfail;
+    global $wpdb;
+    if (! $mailpoetfail){
+        try{        
+            $query	 = "SELECT status
+                    FROM wp_mailpoet_subscribers
+                    WHERE wp_user_id = " . $userId
+            ;
+            global $wpdb;
+            $result	 = $wpdb->get_var(
+            // phpcs:disable WordPress.WP.PreparedSQL.NotPrepared
+            $query
+            // phpcs:enable
+            );
+            if ( $result ) {
+                return $result;
+            } else {
+                $dberror = $wpdb->last_error;
+                if (strpos($dberror, 'wp_mailpoet_subscribers')){
+                    $mailpoetfail = true;
+                    ink_debug('inkston-integration skipping mailpoet status due to ' . $dberror);
+                }
+                return 'Not found';
+            }
+        } catch (Exception $ex) {
+            $mailpoetfail = true;
+            return 'No mailpoet';
+        }
+    } else {
+        return 'Mailpoet failed';
+    }
 }
 
 /*
@@ -173,7 +189,7 @@ function ii_abandoned_carts( $userId ) {
 					$cart_info	 = $cart_data->cart;
 					$total		 = 0;
 
-					if ( $cart_info && count( $cart_info ) > 0 ) {
+					if ($cart_info && count( $cart_info ) > 0 ) {
 						foreach ( $cart_info as $k => $v ) {
 							$total += $v->line_total;
 						}
@@ -181,7 +197,7 @@ function ii_abandoned_carts( $userId ) {
 					}
 				}
 			} catch ( Exception $e ) {
-				error_log( $e->getMessage() );
+				ink_debug( $e->getMessage() );
 			}
 		}
 		return $result;
@@ -353,11 +369,11 @@ function ii_user_audit( $user, $userinfofields ) {
 			$userinfofields[ 'abandoned_carts' ][ 'display' ] = $cart_display;
 		}
 	} catch ( Exception $e ) {
-		error_log( $e->getMessage() );
+		ink_debug( $e->getMessage() );
 	}
 
 	if ( is_multisite() ) {
-	  switch_to_blog( 1 );
+	switch_to_blog( 1 );
 	}
 	$order_statuses	 = array(
 		'wc-pending',
@@ -369,7 +385,7 @@ function ii_user_audit( $user, $userinfofields ) {
 		'wc-failed',
 		'wc-shipped'
 	);
-	$userOrders = get_posts( array(
+	$userOrders		 = get_posts( array(
 		'numberposts'	 => -1,
 		'meta_key'		 => '_customer_user',
 		'meta_value'	 => $userId,
@@ -427,8 +443,10 @@ function ii_user_audit( $user, $userinfofields ) {
 		}
 	}
 	if ( is_multisite() ) {
-    restore_current_blog();
-    switch_to_blog( 2 );
+	restore_current_blog();
+
+
+	switch_to_blog( 2 );
 	}
 	$communityPosts = get_posts( array(
 		'numberposts'	 => -1,
@@ -466,7 +484,7 @@ function ii_user_audit( $user, $userinfofields ) {
 			'link'	 => $link );
 	}
 	if ( is_multisite() ) {
-	  restore_current_blog();
+	restore_current_blog();
 	}
 
 
@@ -645,5 +663,3 @@ function ii_user_info( WP_User $user ) {
 	return $userinfofields;
 }
 
-//add_filter( 'pre_get_users', array( $this, 'useFilters' ) );
-//add_action( 'manage_users_extra_tablenav', array( $this, 'renderFilters' ) );

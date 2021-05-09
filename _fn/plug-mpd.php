@@ -287,7 +287,7 @@ function ink_copy_image_to_destination( $destination_id, $image_details, $source
 			try {
 			  copy( $image_details[ 'url' ], $file );
 			} catch ( Exception $e ) {
-				error_log( 'Unable to copy "' . $image_details[ 'url' ] . '" due to exception: ' . $e->getMessage() );
+				ink_debug( 'Unable to copy "' . $image_details[ 'url' ] . '" due to exception: ' . $e->getMessage() );
 				switch_to_blog( $previous_blog );
 				return false;
 			}
@@ -359,7 +359,7 @@ function ink_duplicate_variations( $source_post_id, $dest_post_id, $source_blog_
 	}
 
 	if ( ! class_exists( 'woocommerce' ) ) {
-		error_log( 'Warning: woocommerce not active, unable to copy variations for variable product ' .
+		ink_debug( 'Warning: woocommerce not active, unable to copy variations for variable product ' .
 		$source_post_id . ' blog:' . $source_blog_id );
 		return false;
 	}
@@ -428,7 +428,7 @@ function ink_duplicate_variations( $source_post_id, $dest_post_id, $source_blog_
 			default:
 				// we can not handle , something wrong here
 				//TODO: actually handle this, extra variations previously created in error
-				error_log( 'ERROR: Duplicate variations detected, please check and delete extra variations ' . implode( ',', $default_meta ) . ' from product ' . $dest_post_id );
+				ink_debug( 'ERROR: Duplicate variations detected, please check and delete extra variations ' . implode( ',', $default_meta ) . ' from product ' . $dest_post_id );
 				break;
 		}
 		if ( $featured_image && $dest_variation_id ) {
@@ -658,7 +658,7 @@ function ink_filter_mpd_meta( $post_meta, $source_post_id, $dest_post_id, $sourc
     }
 	}
 	if ( count( $default_meta ) ) {
-		error_log( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
+		ink_debug( 'The following meta have no special handling and were copied by default: ' . implode( ',', $default_meta ) );
 	}
 	if ( $sitebackorders ) {
 		$filtered_meta = ink_filter_mpd_stockstatus( $filtered_meta, $post_meta, $source_post_id, $dest_post_id, $source_blog_id, $target_blog_id, $is_first_time );

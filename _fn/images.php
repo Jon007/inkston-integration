@@ -20,7 +20,7 @@ function get_logo() {
 	} elseif ( file_exists( ABSPATH . 'logo.png' ) ) {
 		return network_site_url( 'logo.png' );
 	} else {
-		error_log( 'warning, logo not set for this theme and no default logo.png found' );
+		ink_debug( 'warning, logo not set for this theme and no default logo.png found' );
 		return 'https://www.inkston.com/logo.png';
 	}
 }
@@ -33,7 +33,7 @@ function get_noimage() {
 	if ( file_exists( ABSPATH . 'no-image.png' ) ) {
 		return network_site_url( 'no-image.png' );
 	} else {
-		error_log( 'warning, logo not set for this theme and no default logo.png found' );
+        ink_debug( 'warning, no-image.png not found for this site' );
 		return 'https://www.inkston.com/no-image.png';
 	}
 }

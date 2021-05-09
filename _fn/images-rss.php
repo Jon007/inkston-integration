@@ -183,7 +183,7 @@ function ii_mime_from_file( $filepath, $default = 'image/jpg' ) {
 			return ($type);
 		}
 	} catch ( Exception $ex ) {
-		error_log( 'rss mime_from_file exception caught: ' . $ex->getMessage() );
+		ink_debug( 'rss mime_from_file exception caught: ' . $ex->getMessage() );
 	}
 	return ii_mime_from_name( $filepath, $default );
 }

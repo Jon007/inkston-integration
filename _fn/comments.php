@@ -34,7 +34,7 @@ if ( class_exists( 'Polylang' ) ) {
 		if ( $polylang ) {
 			remove_filter( 'comments_clauses', array( &$polylang->filters, 'comments_clauses' ) );
 		} else {
-			error_log( 'ERROR: POLYLANG NOT DETECTED AND FILTER NOT REMOVED' );
+			ink_debug( 'ERROR: POLYLANG NOT DETECTED AND FILTER NOT REMOVED' );
 		}
 	}
 

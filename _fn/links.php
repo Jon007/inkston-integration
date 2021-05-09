@@ -173,7 +173,7 @@ function ink_cart_url() {
 				$url = 'https://www.inkston.com/cart/';
 		}
 	} else {
-		error_log( 'Warning: cart url called on non-inkston site while woocommerce is not activated, no default provided.' );
+		ink_debug( 'Warning: cart url called on non-inkston site while woocommerce is not activated, no default provided.' );
 	}
 }
 

@@ -10,6 +10,13 @@
  *    the file is only loaded if the relevant plugins are available
  *  - plugin references in other files must do the check
  */
+//allow a more granular level of debug messages than WP_DEBUG
+function ink_debug($message){
+    if ( isset( $ii_options[ 'debug' ] ) ) {
+        error_log( $message );
+    }
+}
+
 //functionality for inkston site family only
 function is_inkston() {
 	return is_inkstondotcom();

@@ -26,7 +26,7 @@ function ink_bulk_update_variable_product_prices( $product ) {
 			//$regular_price			 = wc_format_decimal( $raw_regular_price );
 			$regular_price			 = wc_format_decimal( $raw_regular_price );
 			if ( ! is_numeric( $regular_price ) ) {
-				error_log( 'ink_bulk_update_variable_product_prices could no interpret new price: ' . $raw_regular_price );
+				ink_debug( 'ink_bulk_update_variable_product_prices could no interpret new price: ' . $raw_regular_price );
 			}
 			ink_update_variation_prices( $product, $change_regular_price, $is_percentage, $regular_price );
 		}

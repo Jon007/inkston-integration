@@ -37,6 +37,11 @@ function ii_options_init() {
 	);
 
 	add_settings_field(
+	'debug', __( 'Debug', 'inkston-integration' ), 'debug_render', $section_group, $settings_section, array(
+		__( 'log additional debug messages from this plugin.', 'inkston-integration' )
+	)
+	);
+	add_settings_field(
 	'excerpt_length', __( 'Excerpt Length', 'inkston-integration' ), 'excerpt_length_render', $section_group, $settings_section, array(
 		__( 'Set excerpt length or leave blank to turn off functionality', 'inkston-integration' )
 	)
@@ -367,6 +372,7 @@ function ii_get_options() {
 			$ii_options[ 'badgeos_levels' ]	 = true;
 			$ii_options[ 'relevanssi' ]		 = implode( ',', array( 'inkpoints', 'inklevel', 'badgeos_achievements_list', 'robo-gallery', 'maxmegamenu' ) );
 			$ii_options[ 'bbpress' ]		 = true;
+			$ii_options[ 'debug' ]	 = true;
 			$ii_options[ 'embed' ]	 = true;
 			$ii_options[ 'excerpt_length' ]	 = 35;
 			$ii_options[ 'merge_comments' ]	 = true;
@@ -421,7 +427,9 @@ function ii_get_options() {
 function excerpt_length_render( $s ) {
 	ii_render_input( 'excerpt_length', $s );
 }
-
+function debug_render( $s ) {
+	ii_render_checkbox( 'debug', $s );
+}
 function embed_render( $s ) {
 	ii_render_checkbox( 'embed', $s );
 }
