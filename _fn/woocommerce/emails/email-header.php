@@ -33,13 +33,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<tr>
 					<td align="center" valign="top">
 						<div id="template_header_image">
-                            <a href="<?php echo(get_permalink( wc_get_page_id( 'shop' ) )) ?>">
+<a href="<?php echo(get_permalink( wc_get_page_id( 'shop' ) )) ?>">
 							<?php
 								if ( $img = get_option( 'woocommerce_email_header_image' ) ) {
 									echo '<p style="margin-top:0;"><img src="' . esc_url( $img ) . '" alt="' . get_bloginfo( 'name', 'display' ) . '" /></p>';
 								}
 							?>
-                            </a>
+</a>
 						</div>
 						<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_container">
 							<tr>

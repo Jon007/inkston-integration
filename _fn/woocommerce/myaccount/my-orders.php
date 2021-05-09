@@ -34,7 +34,7 @@ $customer_orders = get_posts(
 
 if ( $customer_orders ) : ?>
 
-	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', __( 'Recent orders', 'woocommerce' ) ); ?></h2>
+	<h2><?php echo apply_filters( 'woocommerce_my_account_my_orders_title', esc_html__( 'Recent orders', 'woocommerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h2>
 <p><?php  
     _e( 'For any orders not received yet, please view status and delivery tracking codes below.<br />If your order has arrived, please leave your review!', 'inkston-integration');
 ?></p>    

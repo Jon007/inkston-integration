@@ -12,7 +12,7 @@
  *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes mod J.Moore: custom fields section moved from inside form-shipping.php
- * @package WooCommerce\Templates
+ * @package 	WooCommerce/Templates
  * @version   3.5.0
  */
 
@@ -65,10 +65,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <div class="woo_order_customization">
 		<div class="woocommerce-additional-fields__field-wrapper">
 			<?php  //this section moved from inside form-shipping.php
-                foreach ( $checkout->get_checkout_fields( 'order' )  as $key => $field ) : ?>
+        foreach ( $checkout->get_checkout_fields( 'order' )  as $key => $field ) : ?>
 				<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 			<?php endforeach; ?>
-		</div>
+		</div>		
 </div>  
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 

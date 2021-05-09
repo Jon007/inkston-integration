@@ -25,12 +25,12 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p><?php _e( "Good day, thanks for your order! At the moment your order is on-hold until we confirm payment has been received. In the meantime, here is a reminder of what you ordered:", 'inkston-integration' ); ?></p>
 
-<?php 
+<?php
 //INKSTON: add payment link
 if ( ! $order->is_paid() ) :
 	?>
 	<p><?php printf( __( 'You may also : %2$s', 'inkston-integration' ), get_bloginfo( 'name', 'display' ), '<a href="' . esc_url( $order->get_checkout_payment_url() ) . '">' . __( 'pay for this order online', 'inkston-integration' ) . '</a>' ); ?></p>
-<?php
+	<?php
 endif;
 //END INKSTON
 

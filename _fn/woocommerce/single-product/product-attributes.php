@@ -235,8 +235,8 @@ if ( $product->get_type() == 'simple' ) {
 			. $term->description;
 		} else {
 			$shippingclassname	 .= ': ' . __( 'Standard', 'inkston-integration' );
-			$shippingclasstext	 = '<a href="' . $shippinglink . '">'
-			. __( 'Standard shipping.', 'inkston-integration' ) . '</a>';
+				$shippingclasstext	 = '<a href="' . $shippinglink . '">'
+				. __( 'Standard shipping.', 'inkston-integration' ) . '</a>';
 		}
 	}
 	$dimensionattributes[ $shippingclassname ] = $shippingclasstext;

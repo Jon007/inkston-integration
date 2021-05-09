@@ -55,8 +55,8 @@ if ( ! comments_open() ) {
 					apply_filters(
 						'woocommerce_comment_pagination_args',
 						array(
-					'prev_text'	 => '&larr;',
-					'next_text'	 => '&rarr;',
+							'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+							'next_text' => is_rtl() ? '&larr;' : '&rarr;',
 					'type'		 => 'list',
 						)
 					)
@@ -146,7 +146,7 @@ if ( ! comments_open() ) {
 		</div>
 
 	<?php else : ?>
-		<p class="woocommerce-verification-required"><?php _e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
+		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
 	<?php endif; ?>
 
 	<div class="clear"></div>

@@ -134,10 +134,10 @@ if ( ! class_exists( 'WC_Email_Customer_Shipped_Order', false ) ) :
 		 * Get email heading.
 		 *
 		 * @return string
-		public function get_heading() {
-			$heading = (function_exists( 'pll__' )) ? pll__( 'customer_shipped_order_subject' ) : $this->get_option( 'subject', $this->get_default_subject() );
-			return apply_filters( 'woocommerce_email_heading_' . $this->id, $this->format_string( $heading ), $this->object );
-		}
+		  public function get_heading() {
+		  $heading = (function_exists( 'pll__' )) ? pll__( 'customer_shipped_order_subject' ) : $this->get_option( 'subject', $this->get_default_subject() );
+		  return apply_filters( 'woocommerce_email_heading_' . $this->id, $this->format_string( $heading ), $this->object );
+		  }
 		 */
 		/**
 		 * Get content html.

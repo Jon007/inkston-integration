@@ -37,41 +37,41 @@ foreach ( $items as $item_id => $item ) :
 	?>
 	<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
 		<td class="td" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap:break-word;">
-	<?php
-	// Show title/image etc.
-	if ( $show_image ) {
-		echo wp_kses_post( apply_filters( 'woocommerce_order_item_thumbnail', $image, $item ) );
-	}
+			<?php
+			// Show title/image etc.
+			if ( $show_image ) {
+				echo wp_kses_post( apply_filters( 'woocommerce_order_item_thumbnail', $image, $item ) );
+			}
 
-	//INKSTON: add the link for the product
-	$_product	 = wc_get_product( $item[ 'variation_id' ] ? $item[ 'variation_id' ] : $item[ 'product_id' ] );
-	$link		 = $_product->get_permalink();
+			//INKSTON: add the link for the product
+			$_product	 = wc_get_product( $item[ 'variation_id' ] ? $item[ 'variation_id' ] : $item[ 'product_id' ] );
+			$link		 = $_product->get_permalink();
 
-	//if the order is completed, link directly to product review
-	if ( $order->has_status( 'completed' ) ) {
-		$link .= '#comment';
-	}
+			//if the order is completed, link directly to product review
+			if ( $order->has_status( 'completed' ) ) {
+				$link .= '#comment';
+			}
 
-	echo ( '<a href="' . $link . '">');
-	// Product name.
-	echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
-	echo ( '</a>');
-	//INKSTON: END
-	// SKU.
-	if ( $show_sku && $sku ) {
-		echo wp_kses_post( ' (#' . $sku . ')' );
-	}
+			echo ( '<a href="' . $link . '">');
+			// Product name.
+			echo wp_kses_post( apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) );
+			echo ( '</a>');
+			//INKSTON: END
+			// SKU.
+			if ( $show_sku && $sku ) {
+				echo wp_kses_post( ' (#' . $sku . ')' );
+			}
 
-	// allow other plugins to add additional product information here.
-	do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, $plain_text );
+			// allow other plugins to add additional product information here.
+			do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, $plain_text );
 
-	wc_display_item_meta( $item, array(
-		'label_before' => '<strong class="wc-item-meta-label" style="float: left; margin-right: .25em; clear: both">',
-	) );
+			wc_display_item_meta( $item, array(
+				'label_before' => '<strong class="wc-item-meta-label" style="float: left; margin-right: .25em; clear: both">',
+			) );
 
-	// allow other plugins to add additional product information here.
-	do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, $plain_text );
-	?>
+			// allow other plugins to add additional product information here.
+			do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, $plain_text );
+			?>
 		</td>
 		<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;">
 			<?php echo wp_kses_post( apply_filters( 'woocommerce_email_order_item_quantity', $item->get_quantity(), $item ) ); ?>
@@ -82,13 +82,13 @@ foreach ( $items as $item_id => $item ) :
 		?>
 		<tr>
 			<td colspan="3" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;">
-		<?php
-		echo wp_kses_post( wpautop( do_shortcode( $purchase_note ) ) );
-		?>
+				<?php
+				echo wp_kses_post( wpautop( do_shortcode( $purchase_note ) ) );
+				?>
 			</td>
 		</tr>
-				<?php
-			}
-			?>
+		<?php
+	}
+	?>
 
 <?php endforeach; ?>

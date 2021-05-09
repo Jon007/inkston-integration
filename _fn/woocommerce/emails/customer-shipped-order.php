@@ -56,7 +56,7 @@ do_action( 'woocommerce_email_order_packing_detail', $order, $sent_to_admin, $pl
 //do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, $email );
 ?>
 <p>
-	<?php esc_html_e( 'Thanks for shopping with us.', 'woocommerce' ); ?>
+<?php esc_html_e( 'Thanks for shopping with us.', 'woocommerce' ); ?>
 </p>
 <?php
 /*
