@@ -42,6 +42,10 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 				<label for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 				<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
 			</p>
+      <p style="display:none" class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+          <label for="reg_password2"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+          <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password2" id="reg_password2" value="oldpassword" />
+      </p>
 
 			<?php do_action( 'woocommerce_login_form' ); ?>
 
