@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 add_action( 'rss2_item', 'ii_rss_insert' );
 add_action( 'bbp_feed_item', 'ii_rss_insert' );
